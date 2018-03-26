@@ -6,7 +6,7 @@ export default class App extends React.Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text>DummyDial</Text>
+        <Text>DummyDial branch greg</Text>
       </View>
     );
   }
