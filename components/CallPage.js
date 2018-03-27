@@ -26,6 +26,8 @@ export default class CallPage extends React.Component {
 				/>
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
+
+
       </View>
     );
   }
