@@ -11,6 +11,7 @@ import CallPage from "./CallPage";
 
 
 
+
 export default class Home extends React.Component {
 
 	/* Main page */
@@ -24,6 +25,7 @@ export default class Home extends React.Component {
 				<Text>AHSHAIASBASB</Text>
 				<Text>AHSHAIASBASB</Text>
 				<CallPage />
+    
 				<TestInput />
 				<TextBtn />
       </View>
