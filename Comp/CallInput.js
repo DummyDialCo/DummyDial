@@ -6,12 +6,22 @@ export default class CallInput extends React.Component {
 
 	constructor(props){
 		super(props);
+
+		this.state = {
+			phoneNum:"Phone Number"
+		}
+	}
+
+	setPhoneNumber = (evt) => {
+		this.setState({
+			phoneNum:evt.target.value
+		});
 	}
 
   render() {
     return (
       <View>
-				<TextInput />
+				<TextInput onChangeText={this.setPhoneNumber} value={this.state.phoneNum} />
       </View>
     );
   }
