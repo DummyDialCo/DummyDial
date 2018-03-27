@@ -8,6 +8,7 @@ import CallBtn from "./CallBtn";
 import TextBtn from "./TextBtn";
 
 import CallPage from "./CallPage";
+import TextPage from "./TextPage";
 
 
 
@@ -20,12 +21,11 @@ export default class Home extends React.Component {
   render() {
     return (
       <View>
-				<Text>AHSHAIASBASB</Text>
-				<Text>AHSHAIASBASB</Text>
-				<Text>AHSHAIASBASB</Text>
+				<Text>DUMMY DIAL</Text>
+				<Text>DUMMY DIAL</Text>
+				<Text>DUMMY DIAL</Text>
 				<CallPage />
-				<TestInput />
-				<TextBtn />
+				<TextPage />
       </View>
     );
   }
