@@ -15,7 +15,7 @@ export default class TextBtn extends React.Component {
   render() {
     return (
       <View>
-        <Button onPress={this.sendText}>SEND TEXT</Button>
+        <Button onPress={this.sendText} title="SEND TEXT" />
       </View>
     );
   }

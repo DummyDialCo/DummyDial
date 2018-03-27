@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 import CallInput from "./CallInput";
-import TextInput from "./TextInput";
+import TestInput from "./TestInput";
 import CallBtn from "./CallBtn";
 import TextBtn from "./TextBtn";
 
@@ -18,7 +18,7 @@ export default class Home extends React.Component {
       <View>
 				<CallInput />
 				<CallBtn />
-				<TextInput />
+				<TestInput />
 				<TextBtn />
       </View>
     );

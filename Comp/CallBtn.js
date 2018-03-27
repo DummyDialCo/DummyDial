@@ -15,7 +15,7 @@ export default class CallBtn extends React.Component {
   render() {
     return (
       <View>
-				<Button onPress={this.sendCall}>SEND CALL</Button>
+				<Button onPress={this.sendCall} title="SEND CALL" />
       </View>
     );
   }
