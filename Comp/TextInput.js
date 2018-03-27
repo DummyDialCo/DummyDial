@@ -1,13 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TextInput } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
-import CallInput from "./CallInput";
-import CallBtn from "./CallBtn";
-import TextBtn from "./TextBtn";
-
 export default class TextInput extends React.Component {
-	
+
   render() {
     return (
       <View>
