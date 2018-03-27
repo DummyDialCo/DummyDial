@@ -19,26 +19,26 @@ export default class TextPage extends React.Component {
   render() {
     return (
       <View>
-        
-        
+
+
 				<TextInput
 					placeholder="Enter your number"
 					onChangeText={(recipient)=>this.setState({recipient})}
 					value={this.state.recipient}
 				/>
-                
-                <TextInput 
-                  placeholder="Enter your message"
-                  ref={(el)=>{this.myMsg=el;}}
-                  onChangeText={(myMsg)=>this.setState({myMsg})}
-                  value={this.state.myMsg}
-                  placeholderTextColor="black"
-                />
-                
+          
+        <TextInput
+          placeholder="Enter your message"
+          ref={(el)=>{this.myMsg=el;}}
+          onChangeText={(myMsg)=>this.setState({myMsg})}
+          value={this.state.myMsg}
+          placeholderTextColor="black"
+        />
+
 
         <Button onPress={this.sendText} title="SEND TEXT" color="orange" />
-            
-            
+
+
       </View>
     );
   }
