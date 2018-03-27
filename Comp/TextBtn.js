@@ -1,17 +1,21 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, Button } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
-import CallInput from "./CallInput";
-import TextInput from "./TextInput";
-import CallBtn from "./CallBtn";
-
 export default class TextBtn extends React.Component {
-	
+
+  constructor(props){
+    super(props);
+  }
+
+  sendText = () => {
+    // Fetch Twilio URL to send text
+  }
+
   render() {
     return (
       <View>
-		<Button> /* twilio function that pulls the url containing the phone number for texting */ </Button>
+		    <Button onPress={this.sendText}>SEND TEXT</Button>
       </View>
     );
   }
