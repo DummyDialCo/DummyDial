@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
-import Home from "./Comp/Home";
+import Home from "./components/Home";
 
 export default class App extends React.Component {
 

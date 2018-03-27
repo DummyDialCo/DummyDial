@@ -9,7 +9,7 @@ export default class CallBtn extends React.Component {
   }
 
   sendCall = () => {
-    // Fetches Twilio URL to send call
+    fetch("http://dummydial93.herokuapp.com/"+this.props.recipient);
   }
 
   render() {

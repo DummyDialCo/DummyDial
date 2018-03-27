@@ -8,20 +8,25 @@ export default class TestInput extends React.Component {
 		super(props);
 
 		this.state = {
-			phoneNum:"Phone Number"
+			recipient:""
 		}
 	}
 
-	setPhoneNumber = (evt) => {
-		this.setState({
-			phoneNum:evt.target.value
-		});
-	}
+	// setPhoneNumber = (evt) => {
+	// 	this.setState({
+	// 		recipient:evt.target.value
+	// 	});
+	// 	console.log(this.state.recipient);
+	// }
 
   render() {
     return (
       <View>
-				<TextInput onChangeText={this.setPhoneNumber} value={this.state.phoneNum} />
+				<TextInput
+					placeholder="Enter your number"
+					onChangeText={(recipient)=>this.setState({recipient})}
+					value={this.state.recipient}
+				/>
       </View>
     );
   }

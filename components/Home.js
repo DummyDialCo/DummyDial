@@ -7,6 +7,10 @@ import TestInput from "./TestInput";
 import CallBtn from "./CallBtn";
 import TextBtn from "./TextBtn";
 
+import CallPage from "./CallPage";
+
+
+
 export default class Home extends React.Component {
 
 	/* Main page */
@@ -16,8 +20,10 @@ export default class Home extends React.Component {
   render() {
     return (
       <View>
-				<CallInput />
-				<CallBtn />
+				<Text>AHSHAIASBASB</Text>
+				<Text>AHSHAIASBASB</Text>
+				<Text>AHSHAIASBASB</Text>
+				<CallPage />
 				<TestInput />
 				<TextBtn />
       </View>
