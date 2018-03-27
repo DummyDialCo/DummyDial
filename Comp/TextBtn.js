@@ -4,10 +4,18 @@ import { StackNavigator } from "react-navigation";
 
 export default class TextBtn extends React.Component {
 
+  constructor(props){
+    super(props);
+  }
+
+  sendText = () => {
+    // Fetch Twilio URL to send text
+  }
+
   render() {
     return (
       <View>
-		<Button> /* twilio function that pulls the url containing the phone number for texting */ </Button>
+		    <Button onPress={this.sendText}>SEND TEXT</Button>
       </View>
     );
   }

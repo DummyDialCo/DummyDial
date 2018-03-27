@@ -15,7 +15,7 @@ export default class CallBtn extends React.Component {
   render() {
     return (
       <View>
-		    <Button onPress={this.sendCall}> /* twilio function that pulls the url containing the phone number for calling */ </Button>
+				<Button onPress={this.sendCall}>SEND CALL</Button>
       </View>
     );
   }

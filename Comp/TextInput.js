@@ -4,10 +4,14 @@ import { StackNavigator } from "react-navigation";
 
 export default class TextInput extends React.Component {
 
+	constructor(props){
+		super(props);
+	}
+
   render() {
     return (
       <View>
-		<TextInput> /* this is where they put their phone number and it sends to the url that will be called on in the TextBtn page */ </TextInput>
+				<TextInput />
       </View>
     );
   }
