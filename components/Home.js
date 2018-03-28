@@ -6,6 +6,9 @@ import CallBtn from "./CallBtn";
 
 import CallPage from "./CallPage";
 import TextPage from "./TextPage";
+import AddContact from "./AddContact";
+
+import styles from "./styles/Home";
 
 
 
@@ -23,6 +26,8 @@ export default class Home extends React.Component {
 				<Text>DUMMY DIAL</Text>
 				<CallPage />
 				<TextPage />
+        <AddContact />
+        <Text style={styles.testSass}>TESTING SASS IN REACT NATIVE</Text>
       </View>
     );
   }
