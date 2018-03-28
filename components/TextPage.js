@@ -12,16 +12,33 @@ export default class TextPage extends React.Component {
 			myMsg:""
 		}
 	}
-    
-    componentDidMount = () => {
-    
+
+  componentDidMount = () => {
+
+		// NOTE
+		// Phone number storage will take place in a settings/setup page.
+		// This will be transfered at a later date.
+
+		// Retrieves the stored phone number
     AsyncStorage.getItem("storeTheNum").then((value)=>{
       console.log("value", value);
       if (value !== null){
         console.log(value);
         this.setState({
           recipient:value
-        })
+        });
+      }
+    }).catch((error)=>{
+      console.log(error);
+    });
+		// Retrieves the stored message
+		AsyncStorage.getItem("storeTheMsg").then((value)=>{
+      console.log("value", value);
+      if (value !== null){
+        console.log(value);
+        this.setState({
+          myMsg:value
+        });
       }
     }).catch((error)=>{
       console.log(error);
@@ -31,8 +48,13 @@ export default class TextPage extends React.Component {
 
   sendText = () => {
     fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
-      
-      	AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
+
+  	AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
+      console.log("resp", resp);
+    }).catch((error)=>{
+      console.log(error);
+    });
+		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((resp)=>{
       console.log("resp", resp);
     }).catch((error)=>{
       console.log(error);
@@ -55,7 +77,6 @@ export default class TextPage extends React.Component {
           ref={(el)=>{this.myMsg=el;}}
           onChangeText={(myMsg)=>this.setState({myMsg})}
           value={this.state.myMsg}
-          placeholderTextColor="black"
         />
 
 

@@ -10,19 +10,33 @@ export default class Timer extends React.Component {
 		super(props);
 
 		this.state = {
-
+      minsRemaining:0,
+      secsRemaining:0
 		}
 	}
 
+  setMins = (evt) => {
+    this.setState({
+      minsRemaining:evt.target.value
+    });
+  }
 
+  setSecs = (evt) => {
+    this.setState({
+      secsRemaining:evt.target.value
+    });
+  }
 
   render() {
     return (
       <View>
 
 
+        <TextInput placeholder="Minutes" onChangeText={this.setMins} />
+        <TextInput placeholder="Seconds" onChangeText={this.setSecs} />
+
         <TimerCountdown
-          initialSecondsRemaining={360*1000}
+          initialSecondsRemaining={(this.state.minsRemaining*60000) + (this.state.secsRemaining*1000)}
           onTimeElapsed={() => console.log('complete')}
           allowFontScaling={true}
           style={{ fontSize: 20 }}
