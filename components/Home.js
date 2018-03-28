@@ -26,12 +26,9 @@ export default class Home extends React.Component {
 				<Text>DUMMY DIAL</Text>
 				<Text>DUMMY DIAL</Text>
 				<Text>DUMMY DIAL</Text>
-				// <CallPage />
-				// <TextPage />
-        // <AddContact />
-        // <Text style={styles.testSass}>TESTING SASS IN REACT NATIVE</Text>
 
-        <Timer />
+
+        <CallPage />
       </View>
     );
   }
