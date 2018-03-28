@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 export default class TextPage extends React.Component {
@@ -12,9 +12,31 @@ export default class TextPage extends React.Component {
 			myMsg:""
 		}
 	}
+    
+    componentDidMount = () => {
+    
+    AsyncStorage.getItem("storeTheNum").then((value)=>{
+      console.log("value", value);
+      if (value !== null){
+        console.log(value);
+        this.setState({
+          recipient:value
+        })
+      }
+    }).catch((error)=>{
+      console.log(error);
+    });
+	}
+
 
   sendText = () => {
     fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
+      
+      	AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
+      console.log("resp", resp);
+    }).catch((error)=>{
+      console.log(error);
+    });
   }
 
   render() {
