@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
-import CallBtn from "./CallBtn";
+import Welcome from "./Welcome";
 
 import CallPage from "./CallPage";
 import TextPage from "./TextPage";
