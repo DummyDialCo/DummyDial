@@ -28,7 +28,7 @@ export default class Home extends React.Component {
 				<Text>DUMMY DIAL</Text>
 
 
-        <TextPage />
+        <Welcome />
       </View>
     );
   }

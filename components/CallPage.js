@@ -21,8 +21,8 @@ export default class CallPage extends React.Component {
           recipient:value
         })
       }
-    }).catch((error)=>{
-      console.log(error);
+    }).catch((err)=>{
+      console.log(err);
     });
 	}
 
@@ -31,8 +31,8 @@ export default class CallPage extends React.Component {
 
 		AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
       console.log("resp", resp);
-    }).catch((error)=>{
-      console.log(error);
+    }).catch((err)=>{
+      console.log(err);
     });
   }
 
