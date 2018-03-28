@@ -8,6 +8,8 @@ import CallPage from "./CallPage";
 import TextPage from "./TextPage";
 import AddContact from "./AddContact";
 
+import Timer from "./Timer";
+
 import styles from "./styles/Home";
 
 
@@ -24,10 +26,12 @@ export default class Home extends React.Component {
 				<Text>DUMMY DIAL</Text>
 				<Text>DUMMY DIAL</Text>
 				<Text>DUMMY DIAL</Text>
-				<CallPage />
-				<TextPage />
-        <AddContact />
-        <Text style={styles.testSass}>TESTING SASS IN REACT NATIVE</Text>
+				// <CallPage />
+				// <TextPage />
+        // <AddContact />
+        // <Text style={styles.testSass}>TESTING SASS IN REACT NATIVE</Text>
+
+        <Timer />
       </View>
     );
   }

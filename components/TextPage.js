@@ -8,7 +8,8 @@ export default class TextPage extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:""
+			recipient:"",
+			myMsg:""
 		}
 	}
 
@@ -26,7 +27,7 @@ export default class TextPage extends React.Component {
 					onChangeText={(recipient)=>this.setState({recipient})}
 					value={this.state.recipient}
 				/>
-          
+
         <TextInput
           placeholder="Enter your message"
           ref={(el)=>{this.myMsg=el;}}
