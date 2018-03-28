@@ -28,10 +28,21 @@ export default class Welcome extends React.Component {
   render() {
     return (
       <View>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+        <Text></Text>
+
 
         <Text>Welcome to Dummy Dial</Text>
 
-        <TextInput placeholder="Enter your phone number"  />
+        <TextInput
+					placeholder="Enter your number"
+					onChangeText={(recipient)=>this.setState({recipient})}
+					value={this.state.recipient}
+				/>
 
         <Button onPress={this.finishSignup} title="CONTINUE" />
 
