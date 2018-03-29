@@ -27,12 +27,10 @@ export default class Home extends React.Component {
 
       // Evaluates string value of completedSignup from Welcome.js, and displays comp accordingly
       if (value === "false"){
-        console.log(value);
         this.setState({
           display: <Welcome navigation={this.props.navigation} />
         });
       } else {
-        console.log(value);
         this.setState({
           display: <Menu navigation={this.props.navigation} />
         });

@@ -37,11 +37,22 @@ export default class Welcome extends React.Component {
     if(this.state.recipient === "")
       console.log("PHONE NUMBER EMPTY");
 
+    console.log(this.state.completedSignup);
+
   }
 
   render() {
 
     const { navigate } = this.props.navigation;
+
+    var currentButton = null;
+    if(this.state.completedSignup === "true"){
+      // Saves entered values to AsyncStorage
+      currentButton = <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
+    } else {
+      // Navigates to the Menu comp. Later: Only allow navigation if signup has been completed
+      currentButton = <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
+    }
 
     return (
       <View>
@@ -62,11 +73,7 @@ export default class Welcome extends React.Component {
 					value={this.state.recipient}
 				/>
 
-        // Saves entered values to AsyncStorage
-        <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
-
-        // Navigates to the Menu comp. Later: Only allow navigation if signup has been completed
-        <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
+        {currentButton}
 
       </View>
     );
