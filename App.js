@@ -18,7 +18,7 @@ const DummyDial = StackNavigator({
   TextPage: { screen: TextPage },
   AddContact: { screen: AddContact }
 }, {
-  initialRouteName: "Welcome",
+  initialRouteName: "Home",
   headerMode: "Screen"
 });
 
