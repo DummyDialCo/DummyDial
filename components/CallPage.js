@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 export default class CallPage extends React.Component {
@@ -14,7 +14,7 @@ export default class CallPage extends React.Component {
 
 	componentDidMount = () => {
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("value", value);
+      console.log("Stored number: ", value);
       if (value !== null){
         console.log(value);
         this.setState({
@@ -37,6 +37,9 @@ export default class CallPage extends React.Component {
   }
 
   render() {
+
+		const { navigate } = this.props.navigation;
+
     return (
       <View>
 				<TextInput
@@ -46,6 +49,11 @@ export default class CallPage extends React.Component {
 				/>
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
+
+
+				<TouchableOpacity onPress={()=>{navigate("Home")}}>
+					<Text>CLICK TO RETURN TO HOME</Text>
+				</TouchableOpacity>
 
 
       </View>

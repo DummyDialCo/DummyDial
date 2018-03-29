@@ -25,6 +25,7 @@ export default class Welcome extends React.Component {
     });
 
     this.setState({
+
       completedSignup:"true"
     });
 
@@ -36,12 +37,17 @@ export default class Welcome extends React.Component {
       console.log("PHONE NUMBER EMPTY");
     }
 
-    const { navigate } = this.props.navigation;
-    navigate("Menu");
+    // const { navigate } = this.props.navigation;
+    // navigate("Menu");
+
+    console.log(this.state.completedSignup);
 
   }
 
   render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
       <View>
         <Text></Text>
@@ -61,7 +67,8 @@ export default class Welcome extends React.Component {
 					value={this.state.recipient}
 				/>
 
-        <Button onPress={this.finishSignup} title="CONTINUE" />
+        <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
+        <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
 
       </View>
     );
