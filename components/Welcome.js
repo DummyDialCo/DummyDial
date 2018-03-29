@@ -13,7 +13,7 @@ export default class Welcome extends React.Component {
 
 		this.state = {
       recipient:"",
-      completedSignup:false
+      completedSignup:"false"
 		}
 	}
 
@@ -25,16 +25,23 @@ export default class Welcome extends React.Component {
     });
 
     this.setState({
-      completedSignup:true
+      completedSignup:"true"
     });
+
+    AsyncStorage.setItem("storeSignupStatus", this.state.completedSignup).catch((err)=>{
+      console.log(err);
+    });
+
+    if(this.state.recipient === ""){
+      console.log("PHONE NUMBER EMPTY");
+    }
+
+    const { navigate } = this.props.navigation;
+    navigate("Menu");
 
   }
 
   render() {
-    const { navigate } = this.props.navigation;
-
-    console.log(this.state.completedSignup);
-
     return (
       <View>
         <Text></Text>
@@ -54,8 +61,7 @@ export default class Welcome extends React.Component {
 					value={this.state.recipient}
 				/>
 
-        <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
-
+        <Button onPress={this.finishSignup} title="CONTINUE" />
 
       </View>
     );

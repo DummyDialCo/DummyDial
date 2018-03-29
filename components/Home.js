@@ -10,24 +10,35 @@ export default class Home extends React.Component {
 	constructor(props){
 		super(props);
 
-		this.state = {
-
-		}
+    this.state = {
+      display:null
+    }
 	}
 
+  componentDidMount = () => {
+
+    
+
+
+    // this.setState({
+    //   display: <Welcome />
+    // });
+  }
 
   render() {
 
-    // var display = null;
-    // if(this.props.completedSignUp === false){
-    //   display = "<Welcome finishSignup={this.finishSignup} />";
-    // } else {
-    //   display = <Welcome />;
-    // }
+    const { navigate } = this.props.navigation;
+
+    // IF STATEMENT WHICH DETERMINES BOOLEAN VALUE OF completedSignup IN WELCOME.JS
+
+
+
+
+
 
     return (
       <View>
-        <Welcome />
+        {this.state.display}
       </View>
     );
   }

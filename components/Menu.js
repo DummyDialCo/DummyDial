@@ -15,6 +15,9 @@ export default class Menu extends React.Component {
 
 
   render() {
+
+    const { navigate } = this.props.navigation;
+
     return (
       <View>
         <Text></Text>
@@ -25,6 +28,9 @@ export default class Menu extends React.Component {
         <Text></Text>
 
         <Text>THIS IS THE MENU PAGE</Text>
+
+        <Button onPress={()=>navigate("CallPage")} title="CALL PAGE" />
+        <Button onPress={()=>navigate("TextPage")} title="TEXT PAGE" />
 
       </View>
     );
