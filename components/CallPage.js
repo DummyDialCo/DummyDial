@@ -33,11 +33,11 @@ export default class CallPage extends React.Component {
   sendCall = () => {
 		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
 
-		AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
-      console.log("resp", resp);
-    }).catch((err)=>{
-      console.log(err);
-    });
+		// AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
+    //   console.log("resp", resp);
+    // }).catch((err)=>{
+    //   console.log(err);
+    // });
   }
 
   render() {
@@ -46,6 +46,7 @@ export default class CallPage extends React.Component {
 
     return (
       <View>
+
 				<TextInput
 					placeholder="Enter your number"
 					onChangeText={(recipient)=>this.setState({recipient})}
@@ -54,11 +55,9 @@ export default class CallPage extends React.Component {
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
 
-
 				<TouchableOpacity onPress={()=>{navigate("Home")}}>
 					<Text>CLICK TO RETURN TO HOME</Text>
 				</TouchableOpacity>
-
 
       </View>
     );

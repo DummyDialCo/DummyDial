@@ -19,26 +19,23 @@ export default class Welcome extends React.Component {
 
   finishSignup = () => {
 
-    // Stores the number asynchronously
+    // Stores the phone number asynchronously
     AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
       console.log(err);
     });
 
     this.setState({
-
       completedSignup:"true"
     });
 
+    // Stores the value of completedSignup to "true"
     AsyncStorage.setItem("storeSignupStatus", this.state.completedSignup).catch((err)=>{
       console.log(err);
     });
 
     // Add RegEx later to validate phone number
-    if(this.state.recipient === ""){
+    if(this.state.recipient === "")
       console.log("PHONE NUMBER EMPTY");
-    }
-
-    console.log(this.state.completedSignup);
 
   }
 
@@ -65,7 +62,10 @@ export default class Welcome extends React.Component {
 					value={this.state.recipient}
 				/>
 
+        // Saves entered values to AsyncStorage
         <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
+
+        // Navigates to the Menu comp. Later: Only allow navigation if signup has been completed
         <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
 
       </View>

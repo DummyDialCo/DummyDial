@@ -20,10 +20,12 @@ export default class Home extends React.Component {
 	}
 
   componentDidMount = () => {
-    AsyncStorage.getItem("storeSignupStatus").then((value)=>{
-      console.log("value", value);
 
-      // IF STATEMENT WHICH DETERMINES STRING VALUE OF completedSignup IN WELCOME.JS
+    // Retreives and determines if the user has already signed up
+    AsyncStorage.getItem("storeSignupStatus").then((value)=>{
+      console.log("The user has signed up already: ", value);
+
+      // Evaluates string value of completedSignup from Welcome.js, and displays comp accordingly
       if (value === "false"){
         console.log(value);
         this.setState({
