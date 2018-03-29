@@ -33,12 +33,10 @@ export default class Welcome extends React.Component {
       console.log(err);
     });
 
+    // Add RegEx later to validate phone number
     if(this.state.recipient === ""){
       console.log("PHONE NUMBER EMPTY");
     }
-
-    // const { navigate } = this.props.navigation;
-    // navigate("Menu");
 
     console.log(this.state.completedSignup);
 

@@ -7,6 +7,10 @@ import Menu from "./Menu";
 
 export default class Home extends React.Component {
 
+  static navigationOptions = {
+    header: null
+  };
+
 	constructor(props){
 		super(props);
 

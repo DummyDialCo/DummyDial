@@ -4,6 +4,10 @@ import { StackNavigator } from "react-navigation";
 
 export default class CallPage extends React.Component {
 
+	static navigationOptions = {
+    header: null
+  };
+
 	constructor(props){
 		super(props);
 
