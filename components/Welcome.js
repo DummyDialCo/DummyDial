@@ -1,15 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 export default class Welcome extends React.Component {
+
+  static navigationOptions = {
+    header: null
+  };
 
 	constructor(props){
 		super(props);
 
 		this.state = {
       recipient:"",
-      completedSignUp:false
+      completedSignup:false
 		}
 	}
 
@@ -21,11 +25,16 @@ export default class Welcome extends React.Component {
     });
 
     this.setState({
-      completedSignUp:true
+      completedSignup:true
     });
+
   }
 
   render() {
+    const { navigate } = this.props.navigation;
+
+    console.log(this.state.completedSignup);
+
     return (
       <View>
         <Text></Text>
@@ -36,15 +45,17 @@ export default class Welcome extends React.Component {
         <Text></Text>
 
 
-        <Text>Welcome to Dummy Dial</Text>
+        <Text>Welcome to Dummy Dial!</Text>
 
         <TextInput
 					placeholder="Enter your number"
+          placeholderTextColor="black"
 					onChangeText={(recipient)=>this.setState({recipient})}
 					value={this.state.recipient}
 				/>
 
-        <Button onPress={this.finishSignup} title="CONTINUE" />
+        <Button onPress={()=>navigate("Menu")} title="CONTINUE" />
+
 
       </View>
     );

@@ -21,7 +21,19 @@ export default class addContact extends React.Component {
 
   render() {
     return (
+
+			
+
       <View>
+
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+
+
 				<TextInput
 					placeholder="Enter Contact Name"
 					onChangeText={(contactName)=>this.setState({contactName})}
