@@ -12,16 +12,12 @@ export default class TextPage extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:"",
+			recipient:null,
 			myMsg:""
 		}
 	}
 
   componentDidMount = () => {
-
-		// NOTE
-		// Phone number storage will take place in a settings/setup page.
-		// This will be transfered at a later date.
 
 		// Retrieves the stored phone number
     AsyncStorage.getItem("storeTheNum").then((value)=>{
@@ -77,14 +73,11 @@ export default class TextPage extends React.Component {
 		<Text></Text>
 		<Text></Text>
 
-		<TextInput
-			placeholder="Enter your number"
-			onChangeText={(recipient)=>this.setState({recipient})}
-			value={this.state.recipient}
-			/>
+		<Text>{this.state.recipient}</Text>
 
         <TextInput
           placeholder="Enter your message"
+					placeholderTextColor="black"
           ref={(el)=>{this.myMsg=el;}}
           onChangeText={(myMsg)=>this.setState({myMsg})}
           value={this.state.myMsg}
