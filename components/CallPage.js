@@ -18,7 +18,7 @@ export default class CallPage extends React.Component {
 
 	componentDidMount = () => {
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("Stored number: ", value);
+      console.log("Stored number -", value);
       if (value !== null){
         console.log(value);
         this.setState({
