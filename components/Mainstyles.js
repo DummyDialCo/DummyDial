@@ -13,17 +13,13 @@ export default class Mainstyles extends React.Component {
 
   render() {
     return (
-      <View>
+	<View style={Styles.topBr}>
 		<Text></Text>
 		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		
-		<View style={Styles.all}>
+      <View style={Styles.all}>
 		<Text>hi</Text>
-		</View>
-		
       </View>
+	</View>
     );
   }
 }
