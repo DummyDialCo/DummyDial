@@ -5,8 +5,8 @@ import { StackNavigator } from "react-navigation";
 export default class TextPage extends React.Component {
 
 	static navigationOptions = {
-    header: null
-  };
+    	header: null
+  	};
 
 	constructor(props){
 		super(props);
@@ -25,28 +25,28 @@ export default class TextPage extends React.Component {
 
 		// Retrieves the stored phone number
     AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("value", value);
-      if (value !== null){
-        console.log(value);
-        this.setState({
-          recipient:value
-        });
-      }
-    }).catch((error)=>{
-      console.log(error);
-    });
+        		console.log("value", value);
+      			if (value !== null){
+					console.log(value);
+        		this.setState({
+          			recipient:value
+				});
+      		}
+		}).catch((error)=>{
+      			console.log(error);
+    		});
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
-      console.log("value", value);
-      if (value !== null){
-        console.log(value);
-        this.setState({
-          myMsg:value
-        });
-      }
-    }).catch((error)=>{
-      console.log(error);
-    });
+      			console.log("value", value);
+      			if (value !== null){
+        			console.log(value);
+        		this.setState({
+          			myMsg:value
+        		});
+      		}
+    	}).catch((error)=>{
+      		console.log(error);
+    	});
 	}
 
 
@@ -71,18 +71,17 @@ export default class TextPage extends React.Component {
 
     return (
       <View>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
 
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-
-				<TextInput
-					placeholder="Enter your number"
-					onChangeText={(recipient)=>this.setState({recipient})}
-					value={this.state.recipient}
-				/>
+		<TextInput
+			placeholder="Enter your number"
+			onChangeText={(recipient)=>this.setState({recipient})}
+			value={this.state.recipient}
+			/>
 
         <TextInput
           placeholder="Enter your message"
@@ -93,12 +92,9 @@ export default class TextPage extends React.Component {
 
 
         <Button onPress={this.sendText} title="SEND TEXT" color="orange" />
-
-				<TouchableOpacity onPress={()=>{navigate("Home")}}>
-					<Text>CLICK TO RETURN TO HOME</Text>
-				</TouchableOpacity>
-
-
+			<TouchableOpacity onPress={()=>{navigate("Home")}}>
+				<Text>CLICK TO RETURN TO HOME</Text>
+			</TouchableOpacity>
       </View>
     );
   }

@@ -5,8 +5,8 @@ import { StackNavigator } from "react-navigation";
 export default class CallPage extends React.Component {
 
 	static navigationOptions = {
-    header: null
-  };
+    	header: null
+  	};
 
 	constructor(props){
 		super(props);
@@ -30,41 +30,36 @@ export default class CallPage extends React.Component {
     });
 	}
 
-  sendCall = () => {
+  	sendCall = () => {
 		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
-
 		// AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
-    //   console.log("resp", resp);
-    // }).catch((err)=>{
-    //   console.log(err);
-    // });
-  }
+    	//   console.log("resp", resp);
+    	// }).catch((err)=>{
+    	//   console.log(err);
+    	// });
+  	}
 
   render() {
-
-		const { navigate } = this.props.navigation;
-
+		const {navigate} = this.props.navigation;
     return (
       <View>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
 
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-				<Text></Text>
-
-				<TextInput
-					placeholder="Enter your number"
-					onChangeText={(recipient)=>this.setState({recipient})}
-					value={this.state.recipient}
-				/>
+			<TextInput
+				placeholder="Enter your number"
+				onChangeText={(recipient)=>this.setState({recipient})}
+				value={this.state.recipient}
+			/>
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
 
-				<TouchableOpacity onPress={()=>{navigate("Home")}}>
-					<Text>CLICK TO RETURN TO HOME</Text>
-				</TouchableOpacity>
-
+			<TouchableOpacity onPress={()=>{navigate("Home")}}>
+				<Text>CLICK TO RETURN TO HOME</Text>
+			</TouchableOpacity>
       </View>
     );
   }
