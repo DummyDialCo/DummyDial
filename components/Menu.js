@@ -21,9 +21,8 @@ export default class Menu extends React.Component {
     // TODO: Export the value to other components OR reference it via this.props.recipient
     // Menu component retreieves phone number from AsyncStorage
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("Stored number -", value);
       if (value !== null){
-        console.log(value);
+        console.log("Stored number -", value);
         this.setState({
           recipient:value
         });
@@ -45,8 +44,8 @@ export default class Menu extends React.Component {
         <Text></Text>
         <Text></Text>
 
-        // After storing the phone number with AsyncStorage in Welcome.js, it will be retreived from AsyncStorage
-        <Text>This is your phone number: {this.state.recipient}</Text>
+        <Text>Phone number: {this.state.recipient} Remove this part later.</Text>
+        <Text></Text>
 
         <Text>THIS IS THE MENU PAGE</Text>
 

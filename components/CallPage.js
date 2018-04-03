@@ -20,9 +20,8 @@ export default class CallPage extends React.Component {
 
 		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("Stored number -", value);
       if (value !== null){
-        console.log(value);
+        console.log("Stored number -", value);
         this.setState({
           recipient:value
         })
@@ -51,7 +50,6 @@ export default class CallPage extends React.Component {
 		<Text></Text>
 		<Text></Text>
 
-			// TODO change to props, which will be retreived from Menu.js
 			<Text>{this.state.recipient}</Text>
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
