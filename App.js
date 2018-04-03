@@ -28,9 +28,9 @@ const DummyDial = StackNavigator({
 export default class App extends React.Component {
   render() {
     return (
-		<View>
-		<DummyDial />
-		</View>
+
+		  <DummyDial />
+		
     );
   }
 }
