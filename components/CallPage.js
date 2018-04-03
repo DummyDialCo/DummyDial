@@ -40,7 +40,9 @@ export default class CallPage extends React.Component {
   	}
 
   render() {
+
 		const {navigate} = this.props.navigation;
+
     return (
       <View>
 		<Text></Text>
@@ -60,6 +62,8 @@ export default class CallPage extends React.Component {
 			<TouchableOpacity onPress={()=>{navigate("Home")}}>
 				<Text>CLICK TO RETURN TO HOME</Text>
 			</TouchableOpacity>
+
+
       </View>
     );
   }
