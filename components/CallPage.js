@@ -47,6 +47,12 @@ export default class CallPage extends React.Component {
     return (
       <View>
 
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+
 				<TextInput
 					placeholder="Enter your number"
 					onChangeText={(recipient)=>this.setState({recipient})}

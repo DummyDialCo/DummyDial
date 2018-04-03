@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 export default class TextPage extends React.Component {
@@ -66,9 +66,17 @@ export default class TextPage extends React.Component {
   }
 
   render() {
+
+		const { navigate } = this.props.navigation;
+
     return (
       <View>
 
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
 
 				<TextInput
 					placeholder="Enter your number"
@@ -85,6 +93,10 @@ export default class TextPage extends React.Component {
 
 
         <Button onPress={this.sendText} title="SEND TEXT" color="orange" />
+
+				<TouchableOpacity onPress={()=>{navigate("Home")}}>
+					<Text>CLICK TO RETURN TO HOME</Text>
+				</TouchableOpacity>
 
 
       </View>
