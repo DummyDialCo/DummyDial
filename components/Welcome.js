@@ -42,10 +42,7 @@ export default class Welcome extends React.Component {
     // console.log("THIS IS THE SIGNUP STATUS FROM WELCOME.JS", this.state.completedSignup);
 
     navigate("Menu");
-
-  }
-
-
+  	}
 
   render() {
 
@@ -71,16 +68,22 @@ export default class Welcome extends React.Component {
         <Text></Text>
 
         <Text>Welcome to Dummy Dial!</Text>
-
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
         <TextInput
 			placeholder="Enter your number"
           	placeholderTextColor="black"
 			onChangeText={(recipient)=>this.setState({recipient})}
 			value={this.state.recipient}
 			/>
-
+		<Text></Text>
+		<Text></Text>
+		<Text></Text>
         <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
-
+			<TextInput>
+		placeholder="Enter your number"
+</TextInput>
       </View>
     );
   }

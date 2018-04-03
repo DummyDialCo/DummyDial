@@ -30,6 +30,7 @@ export default class Menu extends React.Component {
         <Text>THIS IS THE MENU PAGE</Text>
 
         <Button onPress={()=>navigate("CallPage")} title="CALL PAGE" />
+		<Text></Text>
         <Button onPress={()=>navigate("TextPage")} title="TEXT PAGE" />
 
       </View>
