@@ -63,18 +63,16 @@ export default class Welcome extends React.Component {
         <Text></Text>
         <Text></Text>
 
-
         <Text>Welcome to Dummy Dial!</Text>
 
         <TextInput
-					placeholder="Enter your number"
-          placeholderTextColor="black"
-					onChangeText={(recipient)=>this.setState({recipient})}
-					value={this.state.recipient}
-				/>
+			placeholder="Enter your number"
+          	placeholderTextColor="black"
+			onChangeText={(recipient)=>this.setState({recipient})}
+			value={this.state.recipient}
+			/>
 
         {currentButton}
-
       </View>
     );
   }

@@ -15,23 +15,21 @@ export default class Timer extends React.Component {
 		}
 	}
 
-  setMins = (evt) => {
-    this.setState({
-      minsRemaining:evt.target.value
-    });
-  }
-
-  setSecs = (evt) => {
-    this.setState({
-      secsRemaining:evt.target.value
-    });
-  }
-
+  	setMins = (evt) => {
+  	  this.setState({
+  	    minsRemaining:evt.target.value
+  	  });
+  	}
+	
+  	setSecs = (evt) => {
+  	  this.setState({
+  	    secsRemaining:evt.target.value
+  	  });
+  	}
+	
   render() {
     return (
       <View>
-
-
         <TextInput placeholder="Minutes" onChangeText={this.setMins} />
         <TextInput placeholder="Seconds" onChangeText={this.setSecs} />
 
@@ -41,8 +39,7 @@ export default class Timer extends React.Component {
           allowFontScaling={true}
           style={{ fontSize: 20 }}
         />
-
-
+		
       </View>
     );
   }
