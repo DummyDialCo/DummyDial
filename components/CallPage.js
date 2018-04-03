@@ -17,6 +17,8 @@ export default class CallPage extends React.Component {
 	}
 
 	componentDidMount = () => {
+
+		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
       console.log("Stored number -", value);
       if (value !== null){
@@ -30,9 +32,12 @@ export default class CallPage extends React.Component {
     });
 	}
 
+
   	sendCall = () => {
+			// TODO change to props , which will be retreived from Menu.js
 		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
   	}
+
 
   render() {
 
@@ -46,6 +51,7 @@ export default class CallPage extends React.Component {
 		<Text></Text>
 		<Text></Text>
 
+			// TODO change to props, which will be retreived from Menu.js
 			<Text>{this.state.recipient}</Text>
 
         <Button onPress={this.sendCall} title="SEND CALL" color="orange" />

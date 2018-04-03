@@ -19,7 +19,7 @@ export default class TextPage extends React.Component {
 
   componentDidMount = () => {
 
-		// Retrieves the stored phone number
+		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
     AsyncStorage.getItem("storeTheNum").then((value)=>{
         		console.log("value", value);
       			if (value !== null){
@@ -31,6 +31,8 @@ export default class TextPage extends React.Component {
 		}).catch((error)=>{
       			console.log(error);
     		});
+
+
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
       			console.log("value", value);
@@ -49,11 +51,7 @@ export default class TextPage extends React.Component {
   sendText = () => {
     fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
 
-  	AsyncStorage.setItem("storeTheNum", this.state.recipient).then((resp)=>{
-      console.log("resp", resp);
-    }).catch((error)=>{
-      console.log(error);
-    });
+		// Stores the text message body for future use when component mounts
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((resp)=>{
       console.log("resp", resp);
     }).catch((error)=>{

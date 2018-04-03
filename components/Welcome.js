@@ -9,8 +9,8 @@ export default class Welcome extends React.Component {
   };
 
 	constructor(props){
-
 		super(props);
+    
 		this.state = {
       recipient:null
 		}
@@ -20,15 +20,16 @@ export default class Welcome extends React.Component {
 
     const { navigate } = this.props.navigation;
 
-    // Stores the phone number asynchronously
+    // Stores the phone number in AsyncStorage
     AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
       console.log(err);
     });
 
-    // Add RegEx later to validate phone number
+    // TODO Add RegEx to validate phone number
     if(this.state.recipient === "")
       console.log("PHONE NUMBER EMPTY");
 
+      // TODO Send recipient state value to Menu.js
       navigate("Menu");
   	}
 
