@@ -82,8 +82,8 @@ export default class Welcome extends React.Component {
 		<Text></Text>
         <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
 			<TextInput>
-		placeholder="Enter your number"
-</TextInput>
+				placeholder="Enter your number"
+			</TextInput>
       </View>
     );
   }
