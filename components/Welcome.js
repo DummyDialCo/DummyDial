@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 import Styles from "./scss/Styles.scss";
@@ -52,9 +52,11 @@ export default class Welcome extends React.Component {
 		<Text>
 		{"\n"}
 		{"\n"}
-		{"\n"}
-		{"\n"}
-		{"\n"}
+		</Text>
+		
+		<Image source={require("./imgs/phoneIconB.png")}/>
+	
+		<Text>
 		{"\n"}
 		</Text>
 
@@ -95,9 +97,6 @@ export default class Welcome extends React.Component {
 		</TouchableOpacity>
 
 		<Text>
-		{"\n"}
-		{"\n"}
-		{"\n"}
 		{"\n"}
 		{"\n"}
 		{"\n"}

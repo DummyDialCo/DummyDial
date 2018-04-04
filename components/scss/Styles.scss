@@ -111,9 +111,16 @@ $white: #FFF;
 	box-shadow: .1rem .3rem .1rem $lightgrey;
 }
 
+.mBarL {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin-left: .8rem;
+}
+
 .mTitle {
 	color: $grey;
-	margin-left: 3rem;
+	margin-left: 1rem;
 	font-size: 1.1rem;
 }
 
