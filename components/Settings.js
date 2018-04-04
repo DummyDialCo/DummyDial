@@ -44,6 +44,7 @@ export default class CallPage extends React.Component {
 	      console.log(err);
 	    });
 		} else {
+			// TODO Change this to a notification for the user
 			console.log("PHONE NUMBER INVALID");
 		}
 
