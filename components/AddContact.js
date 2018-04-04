@@ -4,10 +4,6 @@ import { StackNavigator } from "react-navigation";
 
 export default class addContact extends React.Component {
 
-	static navigationOptions = {
-		header: null
-	};
-
 	constructor(props){
 		super(props);
 		this.state = {

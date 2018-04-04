@@ -6,10 +6,6 @@ import Styles from "./scss/Styles.scss";
 
 export default class Welcome extends React.Component {
 
-  static navigationOptions = {
-    header: null
-  };
-
 	constructor(props){
 		super(props);
 

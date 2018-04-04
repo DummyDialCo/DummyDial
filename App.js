@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View } from 'react-native';
-import { StackNavigator } from "react-navigation";
+
+import { StackNavigator } from 'react-navigation';
 
 import Styles from "./components/scss/Styles.scss";
 
@@ -11,7 +12,6 @@ import CallPage from "./components/CallPage";
 import TextPage from "./components/TextPage";
 import Settings from "./components/Settings";
 import AddContact from "./components/AddContact";
-import Mainstyles from "./components/Mainstyles";
 
 /* Only Stack Navigator controls in this file */
 const DummyDial = StackNavigator({
@@ -20,12 +20,17 @@ const DummyDial = StackNavigator({
   			Menu: { screen: Menu },
   			CallPage: { screen: CallPage },
   			TextPage: { screen: TextPage },
-        Settings: { screen: Settings },
+        	Settings: { screen: Settings },
   			AddContact: { screen: AddContact }
 			}, {
   				initialRouteName: "Home",
-  				headerMode: "Screen"
-			});
+  				headerMode: "none",
+				transitionConfig: () => ({
+    		  		transitionSpec: {
+						duration: 0
+    		  			},
+    				}),
+				});
 
 export default class App extends React.Component {
   render() {

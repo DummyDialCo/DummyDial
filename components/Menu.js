@@ -6,11 +6,6 @@ import Styles from "./scss/Styles.scss";
 
 export default class Menu extends React.Component {
 
-  static navigationOptions = {
-    header: null
-  };
-
-
   render() {
 
     const { navigate } = this.props.navigation;
