@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
+
 import Styles from "./scss/Styles.scss";
 
 export default class Menu extends React.Component {
@@ -15,19 +16,81 @@ export default class Menu extends React.Component {
     const { navigate } = this.props.navigation;
 
     return (
-      <View>
-   
+       <View style={Styles.all}>
 
-        <Text>Phone number: {this.props.recipient} Remove this part later.</Text>
-        <Text></Text>
-
-        <Text> Main Menu </Text>
-
-        <Button onPress={()=>navigate("CallPage")} title="Call Timer" style={Styles.inpt}/>
+		<View style={Styles.tBan}></View>
+		
+		<Text>
+		{"\n"}
+		</Text>
+		
+		<Text style={Styles.subTitle}>Dummy Dial</Text>
 		<Text></Text>
-        <Button onPress={()=>navigate("TextPage")} title="Text Timer & Body" />
-    <Text></Text>
-        <Button onPress={()=>navigate("Settings")} title="Settings" />
+		
+		<Text>
+		{"\n"}
+		{"\n"}
+		</Text>
+
+        <Text style={Styles.usrPhnNum}>{this.props.recipient}</Text>
+		
+        <Text>
+		{"\n"}
+		{"\n"}
+		</Text>
+
+        <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("CallPage")}>
+		<View style={Styles.inptInc}></View>
+		<Text style={Styles.mTitle}>Call Page</Text>
+
+		<Text style={Styles.arw}>
+			>
+		</Text>
+		</TouchableOpacity>
+		
+		<Text></Text>
+	
+        <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("TextPage")}>
+		<View style={Styles.inptInc}></View>
+		<Text style={Styles.mTitle}>Text Body & Timer</Text>
+		
+		<Text style={Styles.arw}>
+			>
+		</Text>
+		</TouchableOpacity>
+		
+    	<Text></Text>
+		
+        <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("Settings")}>
+		<View style={Styles.inptInc}></View>
+		<Text style={Styles.mTitle}>Settings</Text>
+		
+		<Text style={Styles.arw}>
+			>
+		</Text>
+		</TouchableOpacity>
+		
+		<Text>
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		</Text>
+		
+		<TouchableOpacity style={Styles.btnM}>
+			<View style={Styles.btnMCont}>
+			<View style={Styles.inptIncM}></View>
+			<Text style={Styles.btnMTxt}>Call Now</Text>
+			</View>
+		</TouchableOpacity>
+			
+		<Text></Text>
+		
+		<TouchableOpacity style={Styles.btnM}>
+			<View style={Styles.btnMCont}>
+			<View style={Styles.inptIncM}></View>
+			<Text style={Styles.btnMTxt}>Text Now</Text>
+			</View>
+		</TouchableOpacity>
 
       </View>
     );

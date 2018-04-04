@@ -14,7 +14,7 @@ export default class Welcome extends React.Component {
 		super(props);
 
 		this.state = {
-      recipient:null
+      	recipient:null
 		}
 	}
 
@@ -22,27 +22,26 @@ export default class Welcome extends React.Component {
 
     const { navigate } = this.props.navigation;
 
-    // Stores the phone number in AsyncStorage
-    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-      console.log(err);
-    });
+	  // Stores the phone number in AsyncStorage
+	  AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+		  console.log(err);
+    	});
 
-    // TODO Add RegEx to validate phone number
-    if(this.state.recipient === "")
-      console.log("PHONE NUMBER EMPTY");
+	  // TODO Add RegEx to validate phone number
+	  if(this.state.recipient === "")
+      	console.log("PHONE NUMBER EMPTY");
 
-      // TODO Send recipient state value to Menu.js
-      navigate("Menu");
+      	// TODO Send recipient state value to Menu.js
+      	navigate("Menu");
   	}
 
   render() {
-
     return (
       <View style={Styles.all}>
+		
+		<View style={Styles.tBan}></View>
 
 		<Text>
-		{"\n"}
-		{"\n"}
 		{"\n"}
 		{"\n"}
 		{"\n"}
@@ -59,7 +58,7 @@ export default class Welcome extends React.Component {
 		</Text>
 
 		<Text style={Styles.steps}>
-		Step 1)
+		Step 1
 		{"\n"}
 		Enter your phone number
 		{"\n"}
@@ -77,13 +76,13 @@ export default class Welcome extends React.Component {
 
 		<Text></Text>
 
-		<View style={Styles.qInfo}>
+		<TouchableOpacity style={Styles.qInfo}>
 		<Text style={Styles.qInfoTxt}>
 		Why do you need my number </Text>
 		<View style={Styles.qMrk}>
 		<Text style={Styles.qMrkTxt}>?</Text>
 		</View>
-		</View>
+		</TouchableOpacity>
 
 		<Text>
 		{"\n"}
