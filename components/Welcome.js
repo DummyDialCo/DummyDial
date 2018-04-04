@@ -12,7 +12,7 @@ export default class Welcome extends React.Component {
 
 	constructor(props){
 		super(props);
-    
+
 		this.state = {
       recipient:null
 		}
@@ -23,9 +23,9 @@ export default class Welcome extends React.Component {
     const { navigate } = this.props.navigation;
 
     // Stores the phone number in AsyncStorage
-    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-      console.log(err);
-    });
+    // AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+    //   console.log(err);
+    // });
 
     // TODO Add RegEx to validate phone number
     if(this.state.recipient === "")
@@ -39,7 +39,7 @@ export default class Welcome extends React.Component {
 
     return (
       <View style={Styles.all}>
-		
+
 		<Text>
 		{"\n"}
 		{"\n"}
@@ -50,14 +50,14 @@ export default class Welcome extends React.Component {
 		{"\n"}
 		{"\n"}
 		</Text>
-		
+
         <Text style={Styles.title}>Dummy Dial</Text>
-		
+
 		<Text>
 		{"\n"}
 		{"\n"}
 		</Text>
-		
+
 		<Text style={Styles.steps}>
 		Step 1)
 		{"\n"}
@@ -74,7 +74,7 @@ export default class Welcome extends React.Component {
 			/>
 		<View style={Styles.inptInc}></View>
 		</View>
-			
+
 		<Text></Text>
 		
 		<View style={Styles.qInfo}>
@@ -92,9 +92,9 @@ export default class Welcome extends React.Component {
 		{"\n"}
 		{"\n"}
 		{"\n"}
-		{"\n"}	
+		{"\n"}
 		</Text>
-		
+
         <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
 			<Text style={Styles.btnTxt}>Submit</Text>
 		</TouchableOpacity>

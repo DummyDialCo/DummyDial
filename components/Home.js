@@ -22,23 +22,23 @@ export default class Home extends React.Component {
   componentDidMount = () => {
 
     // Retreives and determines if the user has already signed up
-    AsyncStorage.getItem("storeTheNum").then((value)=>{
-      console.log("You have signed up already, your phone number is -", value);
-
-      // Evaluates whether or not a phone number was entered in Welcome.js, and displays comp accordingly
-      if(value){
-        this.setState({
-          display: <Menu navigation={this.props.navigation} recipient={value} />
-        });
-      } else {
-        this.setState({
-          display: <Welcome navigation={this.props.navigation} />
-        });
-      }
-
-    }).catch((err)=>{
-      console.log(err);
-    });
+    // AsyncStorage.getItem("storeTheNum").then((value)=>{
+    //   console.log("You have signed up already, your phone number is -", value);
+    //
+    //   // Evaluates whether or not a phone number was entered in Welcome.js, and displays comp accordingly
+    //   if(value){
+    //     this.setState({
+    //       display: <Menu navigation={this.props.navigation} recipient={value} />
+    //     });
+    //   } else {
+    //     this.setState({
+    //       display: <Welcome navigation={this.props.navigation} />
+    //     });
+    //   }
+    //
+    // }).catch((err)=>{
+    //   console.log(err);
+    // });
   }
 
   render() {

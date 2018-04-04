@@ -20,29 +20,29 @@ export default class TextPage extends React.Component {
   componentDidMount = () => {
 
 		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
-		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      if (value !== null){
-        console.log("Stored number -", value);
-        this.setState({
-          recipient:value
-        })
-      }
-    }).catch((err)=>{
-      console.log(err);
-    });
+		// AsyncStorage.getItem("storeTheNum").then((value)=>{
+    //   if (value !== null){
+    //     console.log("Stored number -", value);
+    //     this.setState({
+    //       recipient:value
+    //     })
+    //   }
+    // }).catch((err)=>{
+    //   console.log(err);
+    // });
 
 
 		// Retrieves the stored message
-		AsyncStorage.getItem("storeTheMsg").then((value)=>{
-      			if (value !== null){
-        			console.log("Your stored text message is -", value);
-        		this.setState({
-          			myMsg:value
-        		});
-      		}
-    	}).catch((error)=>{
-      		console.log(error);
-    	});
+		// AsyncStorage.getItem("storeTheMsg").then((value)=>{
+    //   			if (value !== null){
+    //     			console.log("Your stored text message is -", value);
+    //     		this.setState({
+    //       			myMsg:value
+    //     		});
+    //   		}
+    // 	}).catch((error)=>{
+    //   		console.log(error);
+    // 	});
 	}
 
 
@@ -50,11 +50,11 @@ export default class TextPage extends React.Component {
     fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
 
 		// Stores the text message body for future use when component mounts
-		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((resp)=>{
-      console.log("Message sent");
-    }).catch((error)=>{
-      console.log(error);
-    });
+		// AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((resp)=>{
+    //   console.log("Message sent");
+    // }).catch((error)=>{
+    //   console.log(error);
+    // });
   }
 
   render() {
