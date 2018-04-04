@@ -58,7 +58,6 @@ export default class CallPage extends React.Component {
 				<Text>CLICK TO RETURN TO HOME</Text>
 			</TouchableOpacity>
 
-
       </View>
     );
   }
