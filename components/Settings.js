@@ -80,6 +80,7 @@ export default class CallPage extends React.Component {
 			<Text>EDIT PHONE NUMBER HERE</Text>
 			<TextInput
                 keyboardType="number-pad"
+                returnKeyType='done'
 				placeholder="New phone number..."
 				ref="newPhoneInput"
 				onChangeText={(recipient)=>this.setState({recipient})}
