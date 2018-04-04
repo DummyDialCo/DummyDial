@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
+
+import Styles from "./scss/Styles.scss";
 
 export default class Welcome extends React.Component {
 
@@ -36,30 +38,66 @@ export default class Welcome extends React.Component {
   render() {
 
     return (
-      <View>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
-        <Text></Text>
+      <View style={Styles.all}>
+		
+		<Text>
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		</Text>
+		
+        <Text style={Styles.title}>Dummy Dial</Text>
+		
+		<Text>
+		{"\n"}
+		{"\n"}
+		</Text>
+		
+		<Text style={Styles.steps}>
+		Step 1)
+		{"\n"}
+		Enter your phone number
+		{"\n"}
+		</Text>
 
-        <Text>Welcome to Dummy Dial!</Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
+		<View style={Styles.inptIcnCont}>
         <TextInput
-			placeholder="Enter your number"
-          	placeholderTextColor="black"
+			style={Styles.inpt}
+			placeholder="xxx-xxx-xxxx"
 			onChangeText={(recipient)=>this.setState({recipient})}
 			value={this.state.recipient}
 			/>
+		<View style={Styles.inptInc}></View>
+		</View>
+			
 		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-        <Button onPress={this.finishSignup} title="SAVE PHONE NUMBER" />
-			<TextInput
-				placeholder="Enter your number" />
+		
+		<View style={Styles.qInfo}>
+		<Text style={Styles.qInfoTxt}>
+		Why do you need my number </Text>
+		<View style={Styles.qMrk}>
+		<Text style={Styles.qMrkTxt}>?</Text>
+		</View>
+		</View>
+
+		<Text>
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}	
+		</Text>
+		
+        <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
+			<Text style={Styles.btnTxt}>Submit</Text>
+		</TouchableOpacity>
       </View>
     );
   }

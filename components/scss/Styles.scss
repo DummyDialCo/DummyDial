@@ -1,9 +1,85 @@
-@import url('https://fonts.googleapis.com/css?family=Raleway');
-
 $blue: #5CACEE;
+$grey: #AAA;
+$lightgrey: #CCC;
+$white: #FFF;
 
 .all {
-	width: 10rem;
-	height: 10rem;
+	width: 100%;
+	height: 100%;
+	background-color: $white;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.title {
+	color: $grey;
+	font-size: 3rem;
+}
+
+.steps {
+	color: $grey;
+	font-size: 1.3rem;
+	text-align: center;
+}
+
+.inptIcnCont {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.inptInc {
+	width: 2rem;
+	height: 2rem;
 	background-color: $blue;
+	position: absolute;
+	border-radius: 10rem;
+	margin-left: .5rem;
+}
+
+.inpt {
+	width: 18rem;
+	height: 3rem;
+	color: $blue;
+	font-size: 1.3rem;
+	padding-left: 3rem;
+	border-radius: .5rem;
+	box-shadow: .2rem .2rem .2rem #aaa;
+}
+
+.qInfo {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+}
+
+.qInfoTxt {
+	color: $grey;
+}
+
+.qMrk {
+	width: 1.5rem;
+	height: 1.5rem;
+	background-color: $blue;
+	border-radius: 10rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.qMrkTxt {
+	color: $white;
+}
+
+.btn {
+	width: 8rem;
+	height: 2.5rem;
+	background-color: $blue;
+	border-radius: .5rem;
+	justify-content: center;
+	align-items: center;
+}
+
+.btnTxt {
+	color: $white;
 }
