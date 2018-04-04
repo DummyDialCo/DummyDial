@@ -9,6 +9,7 @@ import Home from "./components/Home";
 import Menu from "./components/Menu";
 import CallPage from "./components/CallPage";
 import TextPage from "./components/TextPage";
+import Settings from "./components/Settings";
 import AddContact from "./components/AddContact";
 import Mainstyles from "./components/Mainstyles";
 
@@ -19,6 +20,7 @@ const DummyDial = StackNavigator({
   			Menu: { screen: Menu },
   			CallPage: { screen: CallPage },
   			TextPage: { screen: TextPage },
+        Settings: { screen: Settings },
   			AddContact: { screen: AddContact }
 			}, {
   				initialRouteName: "Home",
