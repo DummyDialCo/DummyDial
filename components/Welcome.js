@@ -23,9 +23,9 @@ export default class Welcome extends React.Component {
     const { navigate } = this.props.navigation;
 
     // Stores the phone number in AsyncStorage
-    // AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-    //   console.log(err);
-    // });
+    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+      console.log(err);
+    });
 
     // TODO Add RegEx to validate phone number
     if(this.state.recipient === "")
@@ -76,7 +76,7 @@ export default class Welcome extends React.Component {
 		</View>
 
 		<Text></Text>
-		
+
 		<View style={Styles.qInfo}>
 		<Text style={Styles.qInfoTxt}>
 		Why do you need my number </Text>
