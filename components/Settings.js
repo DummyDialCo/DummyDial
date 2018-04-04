@@ -79,11 +79,12 @@ export default class CallPage extends React.Component {
 
 			<Text>EDIT PHONE NUMBER HERE</Text>
 			<TextInput
+                keyboardType="number-pad"
 				placeholder="New phone number..."
 				ref="newPhoneInput"
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
-				keyboardType="numeric"
+				
 			/>
 
 			<TouchableOpacity onPress={this.changePhoneNumber}>

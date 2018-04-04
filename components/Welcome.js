@@ -74,6 +74,7 @@ export default class Welcome extends React.Component {
 
 		<View style={Styles.inptIcnCont}>
         <TextInput
+            keyboardType="number-pad"
 			style={Styles.inpt}
 			placeholder="xxx-xxx-xxxx"
 			onChangeText={(recipient)=>this.setState({recipient})}
