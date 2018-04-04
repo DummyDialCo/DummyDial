@@ -18,22 +18,30 @@ export default class Welcome extends React.Component {
 		}
 	}
 
+
+  validatePhoneNum = (phoneNum) => {
+		const regex = /^\d{10}/;
+		return regex.test(phoneNum);
+	}
+
+
   finishSignup = () => {
 
     const { navigate } = this.props.navigation;
 
-	  // Stores the phone number in AsyncStorage
-	  AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-		  console.log(err);
-    	});
+    if(this.validatePhoneNum(this.state.recipient)){
+			// Stores the phone number in AsyncStorage
+      AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+        console.log(err);
+      });
+		} else {
+      // TODO Change this to a notification for the user
+			console.log("PHONE NUMBER INVALID");
+		}
 
-	  // TODO Add RegEx to validate phone number
-	  if(this.state.recipient === "")
-      	console.log("PHONE NUMBER EMPTY");
+    navigate("Menu");
 
-      	// TODO Send recipient state value to Menu.js
-      	navigate("Menu");
-  	}
+	}
 
   render() {
     return (

@@ -31,15 +31,22 @@ export default class CallPage extends React.Component {
 	}
 
 
-	changePhoneNumber = () => {
-		// Stores the phone number in AsyncStorage
-    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-      console.log(err);
-    });
+	validatePhoneNum = (phoneNum) => {
+		const regex = /^\d{10}/;
+		return regex.test(phoneNum);
+	}
 
-    // TODO Add RegEx to validate phone number
-    if(this.refs.newPhoneInput === "")
-      console.log("PHONE NUMBER EMPTY");
+	changePhoneNumber = () => {
+
+		if(this.validatePhoneNum(this.state.recipient)){
+			// Stores the phone number in AsyncStorage
+	    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+	      console.log(err);
+	    });
+		} else {
+			// TODO Change this to a notification for the user
+			console.log("PHONE NUMBER INVALID");
+		}
 
 	}
 
@@ -62,7 +69,6 @@ export default class CallPage extends React.Component {
 			{"\n"}
 		</Text>
 
-			<Text>YOUR PHONE NUMBER: {this.state.recipient}</Text>
 
 			<Text>
 				{"\n"}
@@ -71,12 +77,13 @@ export default class CallPage extends React.Component {
 				{"\n"}
 			</Text>
 
-			<Text>CHANGE YOUR PHONE NUMBER HERE</Text>
+			<Text>EDIT PHONE NUMBER HERE</Text>
 			<TextInput
 				placeholder="New phone number..."
 				ref="newPhoneInput"
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
+				keyboardType="numeric"
 			/>
 
 			<TouchableOpacity onPress={this.changePhoneNumber}>
