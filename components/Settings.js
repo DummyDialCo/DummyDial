@@ -1,7 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, TouchableHighlight, Icon } from 'react-native';
 import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
+import { Linking } from 'react-native'
 
 export default class CallPage extends React.Component {
 
@@ -106,7 +107,6 @@ export default class CallPage extends React.Component {
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
 			/>
-            
            
                 
         <TouchableOpacity style={Styles.mBar}  onPress={this.changePhoneNumber}>
@@ -142,8 +142,12 @@ export default class CallPage extends React.Component {
 		<Text style={Styles.mTitle}> FAQs </Text>
 		</View>
 		</TouchableOpacity>
-
-
+        
+         <TouchableOpacity onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}>
+                      <Text>Email</Text> 
+    </TouchableOpacity>
+         
+                
 
       </View>
     );
