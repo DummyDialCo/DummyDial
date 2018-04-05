@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
+import Styles from "./scss/Styles.scss";
 
 export default class CallPage extends React.Component {
 
@@ -52,7 +53,11 @@ export default class CallPage extends React.Component {
 		const {navigate} = this.props.navigation;
 
     return (
-      <View>
+      <View style={Styles.all}>
+        
+        <View style={Styles.tBan}></View>
+        
+        
 		<Text>
 			{"\n"}
 			{"\n"}
