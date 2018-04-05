@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, TouchableHighlight, Icon } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, TouchableHighlight, Icon, Image } from 'react-native';
 import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
 import { Linking } from 'react-native'
@@ -127,8 +127,11 @@ export default class CallPage extends React.Component {
         
         	<Text></Text>
         
-        	 <TouchableOpacity style={Styles.mBar}>
+        	 <TouchableOpacity
+        onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}
+        style={Styles.mBar}>
 		<View style={Styles.mBarL}>
+            
 		<Image source={require("./imgs/mailicon.png")}/>
 		<Text style={Styles.mTitle}> Contact Us </Text>
 		</View>
@@ -136,16 +139,14 @@ export default class CallPage extends React.Component {
 
         	<Text></Text>
         
-            <TouchableOpacity style={Styles.mBar}>
+            <TouchableOpacity style={Styles.mBar}>  
 		<View style={Styles.mBarL}>
 		<Image source={require("./imgs/questionicon.png")}/>
 		<Text style={Styles.mTitle}> FAQs </Text>
 		</View>
 		</TouchableOpacity>
         
-         <TouchableOpacity onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}>
-                      <Text>Email</Text> 
-    </TouchableOpacity>
+         
          
                 
 
