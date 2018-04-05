@@ -15,6 +15,7 @@ export default class CallPage extends React.Component {
 
 	componentDidMount = () => {
 
+		// Retrieves phone number from AsyncStorage when the component mounts
 		AsyncStorage.getItem("storeTheNum").then((value)=>{
       if (value !== null){
         console.log("Stored number -", value);
@@ -53,44 +54,51 @@ export default class CallPage extends React.Component {
 		const {navigate} = this.props.navigation;
 
     return (
+        
+        
       <View style={Styles.all}>
         
         <View style={Styles.tBan}></View>
         
-        
+      <View>
+
+			<Text>
+				{"\n"}
+			</Text>
+
+			<View>
+				<Text onPress={()=>{navigate("Home")}}>BACK</Text>
+				<Text>Settings</Text>
+			</View>
+
+
+    
 		<Text>
 			{"\n"}
 			{"\n"}
 			{"\n"}
 			{"\n"}
-			THIS IS THE SETTINGS PAGE!
+			{this.state.recipient}
 			{"\n"}
 			{"\n"}
 			{"\n"}
 			{"\n"}
+			Change Your Number
 		</Text>
 
 
-			<Text>
-				{"\n"}
-				{"\n"}
-				{"\n"}
-				{"\n"}
-			</Text>
-
-			<Text>EDIT PHONE NUMBER HERE</Text>
 			<TextInput
                 keyboardType="number-pad"
                 returnKeyType='done'
-				placeholder="New phone number..."
+				placeholder="Change Phone Number"
+				placeholderTextColor="black"
 				ref="newPhoneInput"
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
-				
 			/>
 
 			<TouchableOpacity onPress={this.changePhoneNumber}>
-				<Text>SAVE</Text>
+				<Text>Done</Text>
 			</TouchableOpacity>
 
 
@@ -101,9 +109,19 @@ export default class CallPage extends React.Component {
 				{"\n"}
 			</Text>
 
-			<TouchableOpacity onPress={()=>{navigate("Home")}}>
-				<Text>CLICK TO RETURN TO HOME</Text>
+			<TouchableOpacity>
+				<Text>Access My Contacts</Text>
 			</TouchableOpacity>
+
+			<TouchableOpacity>
+				<Text>Contact Us</Text>
+			</TouchableOpacity>
+
+			<TouchableOpacity>
+				<Text>Leave a Rating</Text>
+			</TouchableOpacity>
+
+
 
       </View>
     );
