@@ -60,7 +60,7 @@ export default class CallPage extends React.Component {
         
         <View style={Styles.tBan}></View>
         
-      <View>
+  
 
 			<Text>
 				{"\n"}
