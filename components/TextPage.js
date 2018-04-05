@@ -8,7 +8,7 @@ export default class TextPage extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:null,
+			recipient:this.props.navigation.state.params.recipient,
 			myMsg:""
 		}
 	}
@@ -16,16 +16,16 @@ export default class TextPage extends React.Component {
   componentDidMount = () => {
 
 		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
-		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      if (value !== null){
-        console.log("Stored number -", value);
-        this.setState({
-          recipient:value
-        })
-      }
-    }).catch((err)=>{
-      console.log(err);
-    });
+		// AsyncStorage.getItem("storeTheNum").then((value)=>{
+    //   if (value !== null){
+    //     console.log("Stored number -", value);
+    //     this.setState({
+    //       recipient:value
+    //     })
+    //   }
+    // }).catch((err)=>{
+    //   console.log(err);
+    // });
 
 
 		// Retrieves the stored message

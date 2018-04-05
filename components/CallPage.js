@@ -8,24 +8,24 @@ export default class CallPage extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:null
+			recipient:this.props.navigation.state.params.recipient
 		}
 	}
 
-	componentDidMount = () => {
-
-		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
-		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      if (value !== null){
-        console.log("Stored number -", value);
-        this.setState({
-          recipient:value
-        })
-      }
-    }).catch((err)=>{
-      console.log(err);
-    });
-	}
+	// componentDidMount = () => {
+	//
+	// 	// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
+	// 	AsyncStorage.getItem("storeTheNum").then((value)=>{
+  //     if (value !== null){
+  //       console.log("Stored number -", value);
+  //       this.setState({
+  //         recipient:value
+  //       })
+  //     }
+  //   }).catch((err)=>{
+  //     console.log(err);
+  //   });
+	// }
 
 
   	sendCall = () => {

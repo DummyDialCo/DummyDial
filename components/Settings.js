@@ -10,24 +10,26 @@ export default class CallPage extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:null
+			recipient:this.props.navigation.state.params.recipient
 		}
 	}
 
-	componentDidMount = () => {
-
-		// Retrieves phone number from AsyncStorage when the component mounts
-		AsyncStorage.getItem("storeTheNum").then((value)=>{
-      if (value !== null){
-        console.log("Stored number -", value);
-        this.setState({
-          recipient:value
-        })
-      }
-    }).catch((err)=>{
-      console.log(err);
-    });
-	}
+	// componentDidMount = () => {
+	//
+	// 	console.log("PASSING THROUGH PROPS", this.props.navigation.state.params.recipient);
+	//
+	// 	// Retrieves phone number from AsyncStorage when the component mounts
+	// 	// AsyncStorage.getItem("storeTheNum").then((value)=>{
+  //   //   if (value !== null){
+  //   //     console.log("Stored number -", value);
+  //   //     this.setState({
+  //   //       recipient:value
+  //   //     })
+  //   //   }
+  //   // }).catch((err)=>{
+  //   //   console.log(err);
+  //   // });
+	// }
 
 
 	validatePhoneNum = (phoneNum) => {
@@ -55,49 +57,49 @@ export default class CallPage extends React.Component {
 		const {navigate} = this.props.navigation;
 
     return (
-        
-        
+
+
       <View style={Styles.all}>
-        
+
         <View style={Styles.tBan}>
          <Text> </Text>
         <Text style={Styles.tBanTitle}> Settings </Text>
-        
+
         		<Text onPress={()=>{navigate("Home")}} style={Styles.backBtn}>
         <Image source={require("./imgs/backicon.png")}/>
-                       
+
         </Text>
         </View>
-        
-  
 
 
-    
-		<View style={Styles.userNumS}> 
-            
+
+
+
+		<View style={Styles.userNumS}>
+
             <Text>
 
 			{"\n"}
 			{"\n"}
 			{"\n"}
 			{"\n"}
-    
+
     <Image source={require("./imgs/personicon.png")}/>
-                   
+
             {"\n"}
             {"\n"}
-    
-        	Your Phone Number:  
+
+        	Your Phone Number:
 			{this.state.recipient}
-    
+
 			{"\n"}
 			{"\n"}
-		
+
 		</Text>
 </View>
 
         	<Text> Change Your Number </Text>
-            
+
 			<TextInput
                 keyboardType="number-pad"
                 returnKeyType='done'
@@ -107,10 +109,10 @@ export default class CallPage extends React.Component {
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
 			/>
-           
-                
+
+
         <TouchableOpacity style={Styles.mBar}  onPress={this.changePhoneNumber}>
-			
+
 		<View style={Styles.mBarL}>
 		<Text style={Styles.mTitle}> Change Phone Number </Text>
 		</View>
@@ -118,37 +120,37 @@ export default class CallPage extends React.Component {
 
         	<Text></Text>
       <TouchableOpacity style={Styles.mBar}>
-			
+
 		<View style={Styles.mBarL}>
 		<Image source={require("./imgs/plusicon.png")}/>
 		<Text style={Styles.mTitle}> Access My Contacts </Text>
 		</View>
 		</TouchableOpacity>
-        
+
         	<Text></Text>
-        
+
         	 <TouchableOpacity
         onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}
         style={Styles.mBar}>
 		<View style={Styles.mBarL}>
-            
+
 		<Image source={require("./imgs/mailicon.png")}/>
 		<Text style={Styles.mTitle}> Contact Us </Text>
 		</View>
 		</TouchableOpacity>
 
         	<Text></Text>
-        
-            <TouchableOpacity style={Styles.mBar}>  
+
+            <TouchableOpacity style={Styles.mBar}>
 		<View style={Styles.mBarL}>
 		<Image source={require("./imgs/questionicon.png")}/>
 		<Text style={Styles.mTitle}> FAQs </Text>
 		</View>
 		</TouchableOpacity>
-        
-         
-         
-                
+
+
+
+
 
       </View>
     );
