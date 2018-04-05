@@ -13,13 +13,27 @@ $white: #FFF;
 
 .tBan {
 	width: 100%;
-	height: 1.3rem;
+	height: 3.5rem;
 	background-color: $blue;
+    display: flex;
+	align-items: center;
+    
 }
 
 .title {
 	color: $grey;
 	font-size: 3rem;
+}
+
+.tBanTitle {
+    color: $white;
+	font-size: 1.4rem;
+    margin-top: .5rem;
+}
+
+.backBtn {
+
+    
 }
 
 .steps {
@@ -92,12 +106,13 @@ $white: #FFF;
 
 .subTitle {
 	color: $grey;
-	font-size: 2rem;
+	font-size: 1.6rem;
 }
+
 
 .usrPhnNum {
 	color: $grey;
-	font-size: 1.5rem;
+	font-size: 1.2rem;
 }
 
 .mBar {
@@ -159,3 +174,14 @@ $white: #FFF;
 	background-color: $white;
 	border-radius: 10rem;
 }
+
+.userNumS {
+   width: 100%;
+    display: flex;
+	flex-direction: column;
+	align-items: center;
+    justify-content: center;
+}
+
+
+

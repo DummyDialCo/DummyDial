@@ -13,27 +13,29 @@ export default class Menu extends React.Component {
     return (
        <View style={Styles.all}>
 
-		<View style={Styles.tBan}></View>
+		<View style={Styles.tBan}>
+        <Text> </Text>
+        <Text style={Styles.tBanTitle}> Main Menu </Text>
+        
+        </View>
 		
 		<Text>
 		{"\n"}
+        {"\n"}
+        {"\n"}
 		</Text>
 		
-		<Text style={Styles.subTitle}>Dummy Dial</Text>
+		<Text style={Styles.subTitle}>DummyDial</Text>
 		<Text></Text>
-		
-		<Text>
-		{"\n"}
-		{"\n"}
-		</Text>
 
         <Text style={Styles.usrPhnNum}>{this.props.recipient}</Text>
 		
-        <Text>
-		{"\n"}
-		{"\n"}
-		</Text>
 
+	<Text>
+		{"\n"}
+        {"\n"}
+		</Text>
+        
         <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("CallPage")}>
 		<View style={Styles.mBarL}>
 		<Image source={require("./imgs/phoneIconBM.png")}/>
@@ -55,7 +57,7 @@ export default class Menu extends React.Component {
 		</View>
 		
 		<Text style={Styles.arw}>
-			>
+            >
 		</Text>
 		</TouchableOpacity>
 		

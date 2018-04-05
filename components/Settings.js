@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image } from 'react-native';
 import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
 
@@ -58,35 +58,45 @@ export default class CallPage extends React.Component {
         
       <View style={Styles.all}>
         
-        <View style={Styles.tBan}></View>
+        <View style={Styles.tBan}>
+         <Text> </Text>
+        <Text style={Styles.tBanTitle}> Settings </Text>
+        
+        		<Text onPress={()=>{navigate("Home")}} style={Styles.backBtn}>
+        <Image source={require("./imgs/backicon.png")}/>
+                       
+        </Text>
+        </View>
         
   
 
-			<Text>
-				{"\n"}
-			</Text>
-
-			<View>
-				<Text onPress={()=>{navigate("Home")}}>BACK</Text>
-				<Text>Settings</Text>
-			</View>
-
 
     
-		<Text>
+		<View style={Styles.userNumS}> 
+            
+            <Text>
+
 			{"\n"}
 			{"\n"}
 			{"\n"}
 			{"\n"}
+    
+    <Image source={require("./imgs/personicon.png")}/>
+                   
+            {"\n"}
+            {"\n"}
+    
+        	Your Phone Number:  
 			{this.state.recipient}
+    
 			{"\n"}
 			{"\n"}
-			{"\n"}
-			{"\n"}
-			Change Your Number
+		
 		</Text>
+</View>
 
-
+        	<Text> Change Your Number </Text>
+            
 			<TextInput
                 keyboardType="number-pad"
                 returnKeyType='done'
@@ -96,30 +106,42 @@ export default class CallPage extends React.Component {
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
 			/>
+            
+           
+                
+        <TouchableOpacity style={Styles.mBar}  onPress={this.changePhoneNumber}>
+			
+		<View style={Styles.mBarL}>
+		<Text style={Styles.mTitle}> Change Phone Number </Text>
+		</View>
+		</TouchableOpacity>
 
-			<TouchableOpacity onPress={this.changePhoneNumber}>
-				<Text>Done</Text>
-			</TouchableOpacity>
+        	<Text></Text>
+      <TouchableOpacity style={Styles.mBar}>
+			
+		<View style={Styles.mBarL}>
+		<Image source={require("./imgs/plusicon.png")}/>
+		<Text style={Styles.mTitle}> Access My Contacts </Text>
+		</View>
+		</TouchableOpacity>
+        
+        	<Text></Text>
+        
+        	 <TouchableOpacity style={Styles.mBar}>
+		<View style={Styles.mBarL}>
+		<Image source={require("./imgs/mailicon.png")}/>
+		<Text style={Styles.mTitle}> Contact Us </Text>
+		</View>
+		</TouchableOpacity>
 
-
-			<Text>
-				{"\n"}
-				{"\n"}
-				{"\n"}
-				{"\n"}
-			</Text>
-
-			<TouchableOpacity>
-				<Text>Access My Contacts</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity>
-				<Text>Contact Us</Text>
-			</TouchableOpacity>
-
-			<TouchableOpacity>
-				<Text>Leave a Rating</Text>
-			</TouchableOpacity>
+        	<Text></Text>
+        
+            <TouchableOpacity style={Styles.mBar}>
+		<View style={Styles.mBarL}>
+		<Image source={require("./imgs/questionicon.png")}/>
+		<Text style={Styles.mTitle}> FAQs </Text>
+		</View>
+		</TouchableOpacity>
 
 
 
