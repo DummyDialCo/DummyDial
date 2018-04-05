@@ -14,20 +14,6 @@ export default class TextPage extends React.Component {
 	}
 
   componentDidMount = () => {
-
-		// TODO get value using props so AsyncStorage doesn't have to be called when component mounts
-		// AsyncStorage.getItem("storeTheNum").then((value)=>{
-    //   if (value !== null){
-    //     console.log("Stored number -", value);
-    //     this.setState({
-    //       recipient:value
-    //     })
-    //   }
-    // }).catch((err)=>{
-    //   console.log(err);
-    // });
-
-
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
       			if (value !== null){

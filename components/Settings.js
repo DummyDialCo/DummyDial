@@ -14,24 +14,6 @@ export default class CallPage extends React.Component {
 		}
 	}
 
-	// componentDidMount = () => {
-	//
-	// 	console.log("PASSING THROUGH PROPS", this.props.navigation.state.params.recipient);
-	//
-	// 	// Retrieves phone number from AsyncStorage when the component mounts
-	// 	// AsyncStorage.getItem("storeTheNum").then((value)=>{
-  //   //   if (value !== null){
-  //   //     console.log("Stored number -", value);
-  //   //     this.setState({
-  //   //       recipient:value
-  //   //     })
-  //   //   }
-  //   // }).catch((err)=>{
-  //   //   console.log(err);
-  //   // });
-	// }
-
-
 	validatePhoneNum = (phoneNum) => {
 		const regex = /^\d{10}/;
 		return regex.test(phoneNum);
@@ -40,7 +22,7 @@ export default class CallPage extends React.Component {
 	changePhoneNumber = () => {
 
 		if(this.validatePhoneNum(this.state.recipient)){
-			// Stores the phone number in AsyncStorage
+			// Stores the new phone number in AsyncStorage
 	    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
 	      console.log(err);
 	    });
