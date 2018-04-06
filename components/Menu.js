@@ -7,104 +7,77 @@ import Styles from "./scss/Styles.scss";
 export default class Menu extends React.Component {
 
   constructor(props){
-      super(props);
+    super(props);
 
-      this.state = {
-        recipient: this.props.recipient
-      }
+    this.state = {
+      recipient: this.props.recipient
+    }
   }
 
-
   render() {
-
     const { navigate } = this.props.navigation;
 
     return (
-       <View style={Styles.all}>
-
-		<View style={Styles.tBan}>
-        <Text> </Text>
-        <Text style={Styles.tBanTitle}> Main Menu </Text>
-
+      <View style={Styles.all}>
+        <View style={Styles.tBan}>
+          <Text> </Text>
+          <Text style={Styles.tBanTitle}>Main Menu</Text>
         </View>
 
-		<Text>
-		{"\n"}
-        {"\n"}
-        {"\n"}
-		</Text>
+        <Text>{"\n"}{"\n"}{"\n"}</Text>
 
-		<Text style={Styles.subTitle}>DummyDial</Text>
-		<Text></Text>
+        <Text style={Styles.subTitle}>DummyDial</Text>
+        <Text></Text>
 
         <Text style={Styles.usrPhnNum}>{this.props.recipient}</Text>
 
-
-	<Text>
-		{"\n"}
-        {"\n"}
-		</Text>
+        <Text>{"\n"}{"\n"}</Text>
 
         <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("CallPage", {recipient: this.state.recipient})}>
-		<View style={Styles.mBarL}>
-		<Image source={require("./imgs/phoneIconBM.png")}/>
-		<Text style={Styles.mTitle}>Call Page</Text>
-		</View>
+          <View style={Styles.mBarL}>
+            <Image source={require("./imgs/phoneIconBM.png")}/>
+            <Text style={Styles.mTitle}>Call Page</Text>
+          </View>
+          <Text style={Styles.arw}>></Text>
+        </TouchableOpacity>
 
-		<Text style={Styles.arw}>
-			>
-		</Text>
-		</TouchableOpacity>
-
-		<Text></Text>
+        <Text></Text>
 
         <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <View style={Styles.mBarL}>
+            <Image source={require("./imgs/textIconB.png")}/>
+            <Text style={Styles.mTitle}>Text Body & Timer</Text>
+          </View>
+          <Text style={Styles.arw}>></Text>
+        </TouchableOpacity>
 
-		<View style={Styles.mBarL}>
-		<Image source={require("./imgs/textIconB.png")}/>
-		<Text style={Styles.mTitle}>Text Body & Timer</Text>
-		</View>
-
-		<Text style={Styles.arw}>
-            >
-		</Text>
-		</TouchableOpacity>
-
-    	<Text></Text>
+        <Text></Text>
 
         <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+          <View style={Styles.mBarL}>
+            <Image source={require("./imgs/settingsIcon.png")}/>
+            <Text style={Styles.mTitle}>Settings</Text>
+          </View>
+          <Text style={Styles.arw}>></Text>
+        </TouchableOpacity>
 
-		<View style={Styles.mBarL}>
-		<Image source={require("./imgs/settingsIcon.png")}/>
-		<Text style={Styles.mTitle}>Settings</Text>
-		</View>
+        <Text>{"\n"}{"\n"}{"\n"}</Text>
 
-		<Text style={Styles.arw}>
-			>
-		</Text>
-		</TouchableOpacity>
+        <TouchableOpacity style={Styles.btnM}>
+          <View style={Styles.btnMCont}>
+            <Image source={require("./imgs/phoneIconW.png")}/>
+            <Text style={Styles.btnMTxt}>Call Now</Text>
+          </View>
+        </TouchableOpacity>
 
-		<Text>
-		{"\n"}
-		{"\n"}
-		{"\n"}
-		</Text>
+        <Text></Text>
 
-		<TouchableOpacity style={Styles.btnM}>
-			<View style={Styles.btnMCont}>
-			<Image source={require("./imgs/phoneIconW.png")}/>
-			<Text style={Styles.btnMTxt}>Call Now</Text>
-			</View>
-		</TouchableOpacity>
-
-		<Text></Text>
-
-		<TouchableOpacity style={Styles.btnM}>
-			<View style={Styles.btnMCont}>
-			<Image source={require("./imgs/textIconW.png")}/>
-			<Text style={Styles.btnMTxt}>Text Now</Text>
-			</View>
-		</TouchableOpacity>
+        <TouchableOpacity style={Styles.btnM}>
+          <View style={Styles.btnMCont}>
+            <Image source={require("./imgs/textIconW.png")}/>
+            <Text style={Styles.btnMTxt}>Text Now</Text>
+          </View>
+        </TouchableOpacity>
 
       </View>
     );

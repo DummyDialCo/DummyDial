@@ -10,9 +10,9 @@ export default class Home extends React.Component {
 	constructor(props){
 		super(props);
 
-    this.state = {
-      display:null
-    }
+		this.state = {
+			display:null
+		}
 	}
 
   componentDidMount = () => {
@@ -38,7 +38,6 @@ export default class Home extends React.Component {
   }
 
   render() {
-
     return (
       <View>
         {this.state.display}

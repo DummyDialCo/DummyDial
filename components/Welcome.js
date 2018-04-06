@@ -10,98 +10,83 @@ export default class Welcome extends React.Component {
 		super(props);
 
 		this.state = {
-      	recipient:null
+			recipient:null
 		}
 	}
 
-
-  validatePhoneNum = (phoneNum) => {
+	validatePhoneNum = (phoneNum) => {
 		const regex = /^\d{10}/;
 		return regex.test(phoneNum);
 	}
 
+	finishSignup = () => {
 
-  finishSignup = () => {
+		const { navigate } = this.props.navigation;
 
-    const { navigate } = this.props.navigation;
-
-    if(this.validatePhoneNum(this.state.recipient)){
+		if(this.validatePhoneNum(this.state.recipient)){
 			// Stores the phone number in AsyncStorage
-      AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
-        console.log(err);
-      });
+			AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+				console.log(err);
+			});
 		} else {
-      // TODO Change this to a notification for the user
+			// TODO Change this to a notification for the user
 			console.log("PHONE NUMBER INVALID");
 		}
-
-    navigate("Menu");
-
+		navigate("Menu");
 	}
 
-  render() {
-    return (
-      <View style={Styles.all}>
-		
-		<View style={Styles.tBan}></View>
+	render() {
+		return (
+			<View style={Styles.all}>
+				<View style={Styles.tBan}></View>
+				<Text>
+					{"\n"}
+					{"\n"}
+				</Text>
 
-		<Text>
-		{"\n"}
-		{"\n"}
-		</Text>
-		
-		<Image source={require("./imgs/phoneIconB.png")}/>
-	
-		<Text>
-		{"\n"}
-		</Text>
+				<Image source={require("./imgs/phoneIconB.png")}/>
 
-        <Text style={Styles.title}>Dummy Dial</Text>
+				<Text>
+					{"\n"}
+				</Text>
 
-		<Text>
-		{"\n"}
-		{"\n"}
-		</Text>
+				<Text style={Styles.title}>Dummy Dial</Text>
 
-		<Text style={Styles.steps}>
-		Step 1
-		{"\n"}
-		Enter your phone number
-		{"\n"}
-		</Text>
+				<Text>
+					{"\n"}
+					{"\n"}
+				</Text>
 
-		<View style={Styles.inptIcnCont}>
-        <TextInput
-            keyboardType="number-pad"
-            returnKeyType='done'
-			style={Styles.inpt}
-			placeholder="xxx-xxx-xxxx"
-			onChangeText={(recipient)=>this.setState({recipient})}
-			value={this.state.recipient}
-			/>
-		<View style={Styles.inptInc}></View>
-		</View>
+				<Text style={Styles.steps}>Step 1{"\n"}Enter your phone number{"\n"}</Text>
 
-		<Text></Text>
+				<View style={Styles.inptIcnCont}>
 
-		<TouchableOpacity style={Styles.qInfo}>
-		<Text style={Styles.qInfoTxt}>
-		Why do you need my number </Text>
-		<View style={Styles.qMrk}>
-		<Text style={Styles.qMrkTxt}>?</Text>
-		</View>
-		</TouchableOpacity>
+					<TextInput
+						keyboardType="number-pad"
+						returnKeyType='done'
+						style={Styles.inpt}
+						placeholder="xxx-xxx-xxxx"
+						onChangeText={(recipient)=>this.setState({recipient})}
+						value={this.state.recipient}
+					/>
 
-		<Text>
-		{"\n"}
-		{"\n"}
-		{"\n"}
-		{"\n"}
-		</Text>
+					<View style={Styles.inptInc}></View>
+				</View>
 
-        <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
-			<Text style={Styles.btnTxt}>Submit</Text>
-		</TouchableOpacity>
+				<Text></Text>
+
+				<TouchableOpacity style={Styles.qInfo}>
+					<Text style={Styles.qInfoTxt}>Why do you need my number</Text>
+					<View style={Styles.qMrk}>
+						<Text style={Styles.qMrkTxt}>?</Text>
+					</View>
+				</TouchableOpacity>
+
+				<Text>{"\n"}{"\n"}{"\n"}{"\n"}</Text>
+
+				<TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
+					<Text style={Styles.btnTxt}>Submit</Text>
+				</TouchableOpacity>
       </View>
     );
   }

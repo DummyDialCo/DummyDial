@@ -16,23 +16,22 @@ import AddContact from "./components/AddContact";
 
 /* Only Stack Navigator controls in this file */
 const DummyDial = StackNavigator({
-  			Home: { screen: Home },
-  			Welcome: { screen: Welcome },
-  			Menu: { screen: Menu },
-  			CallPage: { screen: CallPage },
-  			TextPage: { screen: TextPage },
-        	Settings: { screen: Settings },
-          FAQs: { screen: FAQs },
-  			AddContact: { screen: AddContact }
-			}, {
-  				initialRouteName: "Home",
-  				headerMode: "none",
-				transitionConfig: () => ({
-    		  		transitionSpec: {
-						duration: 0
-    		  			},
-    				}),
-				});
+  Home: { screen: Home },
+  Welcome: { screen: Welcome },
+  Menu: { screen: Menu },
+  CallPage: { screen: CallPage },
+  Settings: { screen: Settings },
+  FAQs: { screen: FAQs },
+  AddContact: { screen: AddContact }
+}, {
+  initialRouteName: "Home",
+  headerMode: "none",
+    transitionConfig: () => ({
+      transitionSpec: {
+        duration: 0
+      },
+    }),
+  });
 
 export default class App extends React.Component {
   render() {
