@@ -76,6 +76,7 @@ export default class Settings extends React.Component {
 				ref="newPhoneInput"
 				onChangeText={(recipient)=>this.setState({recipient})}
 				value={this.state.recipient}
+				onSubmitEditing={this.changePhoneNumber}
 			/>
 
 
