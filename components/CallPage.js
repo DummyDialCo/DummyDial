@@ -19,35 +19,30 @@ export default class CallPage extends React.Component {
 	}
 
 
-  render() {
-
+	render() {
 		const {navigate} = this.props.navigation;
 
-    return (
-      <View>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
+		return (
+			<View>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
 
-			<Text>{this.state.recipient}</Text>
+				<Text>{this.state.recipient}</Text>
 
-        <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
+				<Button onPress={this.sendCall} title="SEND CALL" color="orange" />
 
-			<TouchableOpacity onPress={()=>{navigate("Home")}}>
-				<Text>CLICK TO RETURN TO HOME</Text>
-			</TouchableOpacity>
+				<TouchableOpacity onPress={()=>{navigate("Home")}}>
+					<Text>CLICK TO RETURN TO HOME</Text>
+				</TouchableOpacity>
 
-			<Text>
-				{"\n"}
-				{"\n"}
-				{"\n"}
-			</Text>
+				<Text>{"\n"}{"\n"}{"\n"}</Text>
 
-			<Timer />
+				<Timer />
 
-      </View>
+			</View>
     );
   }
 }

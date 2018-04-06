@@ -13,60 +13,60 @@ export default class TextPage extends React.Component {
 		}
 	}
 
-  componentDidMount = () => {
+	componentDidMount = () => {
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
-      			if (value !== null){
-        			console.log("Your stored text message is -", value);
-        		this.setState({
-          			myMsg:value
-        		});
-      		}
-    	}).catch((error)=>{
-      		console.log(error);
-    	});
+			if (value !== null){
+				console.log("Your stored text message is -", value);
+				this.setState({
+					myMsg:value
+				});
+			}
+		}).catch((error)=>{
+			console.log(error);
+		});
 	}
 
 
-  sendText = () => {
-    fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
+	sendText = () => {
+		fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
 
 		// Stores the text message body for future use when component mounts
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((resp)=>{
-      console.log("Message sent");
-    }).catch((error)=>{
-      console.log(error);
-    });
-  }
+			console.log("Message sent");
+		}).catch((error)=>{
+			console.log(error);
+		});
+	}
 
-  render() {
-
+	render() {
 		const { navigate } = this.props.navigation;
 
-    return (
-      <View>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
+		return (
+			<View>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
+				<Text></Text>
 
-		<Text>{this.state.recipient}</Text>
+				<Text>{this.state.recipient}</Text>
 
-        <TextInput
-          placeholder="Enter your message"
+				<TextInput
+					placeholder="Enter your message"
 					placeholderTextColor="black"
-          ref={(el)=>{this.myMsg=el;}}
-          onChangeText={(myMsg)=>this.setState({myMsg})}
-          value={this.state.myMsg}
-        />
+					ref={(el)=>{this.myMsg=el;}}
+					onChangeText={(myMsg)=>this.setState({myMsg})}
+					value={this.state.myMsg}
+				/>
 
+				<Button onPress={this.sendText} title="SEND TEXT" color="orange" />
 
-        <Button onPress={this.sendText} title="SEND TEXT" color="orange" />
-			<TouchableOpacity onPress={()=>{navigate("Home")}}>
-				<Text>CLICK TO RETURN TO HOME</Text>
-			</TouchableOpacity>
-      </View>
+				<TouchableOpacity onPress={()=>{navigate("Home")}}>
+					<Text>CLICK TO RETURN TO HOME</Text>
+				</TouchableOpacity>
+
+			</View>
     );
   }
 }

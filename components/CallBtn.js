@@ -12,10 +12,11 @@ export default class CallBtn extends React.Component {
     fetch("http://dummydial93.herokuapp.com/"+this.props.recipient);
   }
 
+
   render() {
     return (
       <View>
-		<Button onPress={this.sendCall} title="SEND CALL" color="orange" />
+        <Button onPress={this.sendCall} title="SEND CALL" color="orange" />
       </View>
     );
   }

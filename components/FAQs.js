@@ -10,32 +10,25 @@ export default class FAQs extends React.Component {
 		super(props);
 
 		this.state = {
-      recipient:this.props.navigation.state.params.recipient
+			recipient:this.props.navigation.state.params.recipient
 		}
 	}
 
 
-  render() {
-
+	render() {
 		const {navigate} = this.props.navigation;
 
-    return (
+		return (
+			<View style={Styles.all}>
+				<View style={Styles.tBan}>
+					<Text></Text>
+					<Text style={Styles.tBanTitle}>FAQs</Text>
 
-
-      <View style={Styles.all}>
-
-        <View style={Styles.tBan}>
-         <Text> </Text>
-        <Text style={Styles.tBanTitle}> FAQs </Text>
-
-      		<Text onPress={()=>{navigate("Settings", {recipient: this.state.recipient})}} style={Styles.backBtn}>
-            <Image source={require("./imgs/backicon.png")}/>
-
-          </Text>
-        </View>
-
-
-      </View>
+					<Text onPress={()=>{navigate("Settings", {recipient: this.state.recipient})}} style={Styles.backBtn}>
+						<Image source={require("./imgs/backicon.png")}/>
+					</Text>
+				</View>
+			</View>
     );
   }
 }

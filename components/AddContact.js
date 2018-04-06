@@ -6,8 +6,9 @@ export default class addContact extends React.Component {
 
 	constructor(props){
 		super(props);
+
 		this.state = {
-      	contactName:""
+			contactName:""
 		}
 	}
 
@@ -16,24 +17,19 @@ export default class addContact extends React.Component {
 		console.log("New contact");
 	}
 
-  render() {
-    return (
-      <View>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		<Text></Text>
-		
-		<TextInput
-			placeholder="Enter contact name"
-			onChangeText={(contactName)=>this.setState({contactName})}
-			value={this.state.contactName}
-			/>
+	render() {
+		return (
+			<View>
+				<Text>{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}{"\n"}</Text>
 
-        <Button onPress={this.addToContacts} title="ADD CONTACT" color="orange" />
-      </View>
+				<TextInput
+					placeholder="Enter contact name"
+					onChangeText={(contactName)=>this.setState({contactName})}
+					value={this.state.contactName}
+				/>
+
+				<Button onPress={this.addToContacts} title="ADD CONTACT" color="orange" />
+			</View>
     );
   }
 }
