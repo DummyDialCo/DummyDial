@@ -10,28 +10,39 @@ export default class Timer extends React.Component {
 		super(props);
 
 		this.state = {
-      minsRemaining:0,
-      secsRemaining:0
+      minsRemaining:5,
+      secsRemaining:2
 		}
 	}
 
-  	setMins = (evt) => {
-  	  this.setState({
-  	    minsRemaining:evt.target.value
-  	  });
-  	}
-	
-  	setSecs = (evt) => {
-  	  this.setState({
-  	    secsRemaining:evt.target.value
-  	  });
-  	}
-	
+  	// setMins = () => {
+  	//   this.setState({
+  	//     minsRemaining:parseInt(this.refs.minInput.value)
+  	//   });
+  	// }
+		//
+  	// setSecs = () => {
+  	//   this.setState({
+  	//     secsRemaining:parseInt(this.refs.secInput.value)
+  	//   });
+  	// }
+
+		startTimer = () => {
+			this.setState({
+				minsRemaining: this.refs.secInput.value,
+				secsRemaining: this.refs.minInput.value
+			});
+		}
+
+
+
   render() {
     return (
       <View>
-        <TextInput placeholder="Minutes" onChangeText={this.setMins} />
-        <TextInput placeholder="Seconds" onChangeText={this.setSecs} />
+        <TextInput placeholder="Minutes" ref="minInput" keyboardType="numeric" />
+        <TextInput placeholder="Seconds" ref="secInput" keyboardType="numeric" />
+
+				<Button onPress={this.startTimer} title="START" />
 
         <TimerCountdown
           initialSecondsRemaining={(this.state.minsRemaining*60000) + (this.state.secsRemaining*1000)}
@@ -39,7 +50,7 @@ export default class Timer extends React.Component {
           allowFontScaling={true}
           style={{ fontSize: 20 }}
         />
-		
+
       </View>
     );
   }

@@ -11,6 +11,7 @@ import Menu from "./components/Menu";
 import CallPage from "./components/CallPage";
 import TextPage from "./components/TextPage";
 import Settings from "./components/Settings";
+import Faqs from "./components/Faqs";
 import AddContact from "./components/AddContact";
 
 /* Only Stack Navigator controls in this file */
@@ -21,6 +22,7 @@ const DummyDial = StackNavigator({
   			CallPage: { screen: CallPage },
   			TextPage: { screen: TextPage },
         	Settings: { screen: Settings },
+          Faqs: { screen: Faqs },
   			AddContact: { screen: AddContact }
 			}, {
   				initialRouteName: "Home",
