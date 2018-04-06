@@ -11,7 +11,7 @@ import Menu from "./components/Menu";
 import CallPage from "./components/CallPage";
 import TextPage from "./components/TextPage";
 import Settings from "./components/Settings";
-import Faqs from "./components/Faqs";
+import FAQs from "./components/FAQs";
 import AddContact from "./components/AddContact";
 
 /* Only Stack Navigator controls in this file */
