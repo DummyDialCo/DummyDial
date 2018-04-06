@@ -39,8 +39,8 @@ export default class Timer extends React.Component {
 	render() {
 		return (
 			<View>
-				<TextInput placeholder="Minutes" ref="minInput" keyboardType="numeric" />
-				<TextInput placeholder="Seconds" ref="secInput" keyboardType="numeric" />
+				<TextInput placeholder="Minutes" ref="minInput" keyboardType="numeric" returnKeyType='done' />
+				<TextInput placeholder="Seconds" ref="secInput" keyboardType="numeric" returnKeyType='done' />
 
 				<Button onPress={this.startTimer} title="START" />
 
