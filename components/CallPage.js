@@ -2,6 +2,8 @@ import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
+import Timer from "./Timer";
+
 export default class CallPage extends React.Component {
 
 	constructor(props){
@@ -36,6 +38,14 @@ export default class CallPage extends React.Component {
 			<TouchableOpacity onPress={()=>{navigate("Home")}}>
 				<Text>CLICK TO RETURN TO HOME</Text>
 			</TouchableOpacity>
+
+			<Text>
+				{"\n"}
+				{"\n"}
+				{"\n"}
+			</Text>
+
+			<Timer />
 
       </View>
     );
