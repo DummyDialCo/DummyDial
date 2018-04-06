@@ -30,11 +30,6 @@ export default class Settings extends React.Component {
 			// TODO Change this to a notification for the user
 			console.log("PHONE NUMBER INVALID");
 		}
-
-		if (StoreReview.isAvailable) {
-		  StoreReview.requestReview();
-		}
-
 	}
 
 
@@ -84,9 +79,9 @@ export default class Settings extends React.Component {
 			/>
 
 
-      <TouchableOpacity style={Styles.mBar}  onPress={this.changePhoneNumber}>
+      <TouchableOpacity style={Styles.mBar} onPress={this.changePhoneNumber}>
 				<View style={Styles.mBarL}>
-				<Text style={Styles.mTitle}> Change Phone Number </Text>
+					<Text style={Styles.mTitle}> Change Phone Number </Text>
 				</View>
 			</TouchableOpacity>
 
