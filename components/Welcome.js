@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
 import { StackNavigator } from "react-navigation";
 
 import Styles from "./scss/Styles.scss";
@@ -37,6 +37,7 @@ export default class Welcome extends React.Component {
 
 	render() {
 		return (
+            <KeyboardAvoidingView behavior="position">
 			<View style={Styles.all}>
 				<View style={Styles.tBan}></View>
 				<Text>
@@ -88,6 +89,7 @@ export default class Welcome extends React.Component {
 					<Text style={Styles.btnTxt}>Submit</Text>
 				</TouchableOpacity>
       </View>
+                    </KeyboardAvoidingView>
     );
   }
 }
