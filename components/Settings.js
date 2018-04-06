@@ -113,7 +113,7 @@ export default class Settings extends React.Component {
 
         	<Text></Text>
 
-      <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("Faqs", {recipient: this.state.recipient})}>
+      <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("FAQs", {recipient: this.state.recipient})}>
 				<View style={Styles.mBarL}>
 					<Image source={require("./imgs/questionicon.png")}/>
 					<Text style={Styles.mTitle}> FAQs </Text>

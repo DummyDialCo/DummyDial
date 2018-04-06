@@ -22,7 +22,7 @@ const DummyDial = StackNavigator({
   			CallPage: { screen: CallPage },
   			TextPage: { screen: TextPage },
         	Settings: { screen: Settings },
-          Faqs: { screen: Faqs },
+          FAQs: { screen: FAQs },
   			AddContact: { screen: AddContact }
 			}, {
   				initialRouteName: "Home",

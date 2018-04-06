@@ -4,7 +4,7 @@ import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
 import { Linking } from 'react-native';
 
-export default class Faqs extends React.Component {
+export default class FAQs extends React.Component {
 
 	constructor(props){
 		super(props);
