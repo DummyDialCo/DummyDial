@@ -48,17 +48,16 @@ export default class Welcome extends React.Component {
 				<Image source={require("./imgs/phoneIconB.png")}/>
 
 				<Text>
-					{"\n"}
 				</Text>
 
-				<Text style={Styles.title}>Dummy Dial</Text>
+				<Text style={Styles.title}>DummyDial</Text>
 
 				<Text>
 					{"\n"}
-					{"\n"}
+                {"\n"}
 				</Text>
 
-				<Text style={Styles.steps}>Step 1{"\n"}Enter your phone number{"\n"}</Text>
+				<Text style={Styles.steps}>Step 1) {"\n"}Enter Your Phone Number{"\n"}</Text>
 
 				<View style={Styles.inptIcnCont}>
 
@@ -72,10 +71,24 @@ export default class Welcome extends React.Component {
 					/>
 
 					<View style={Styles.inptInc}></View>
+                    
 				</View>
+				<Text>       
+                {"\n"} 
+                <Text> 
+                </Text>
+                </Text>
+             
 
-				<Text></Text>
-
+                    	<TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
+					<Text style={Styles.btnTxt}>Submit</Text>
+				</TouchableOpacity>
+                    
+                    	<Text>
+					{"\n"}
+                    {"\n"}
+				</Text>
+                    
 				<TouchableOpacity style={Styles.qInfo}>
 					<Text style={Styles.qInfoTxt}>Why do you need my number</Text>
 					<View style={Styles.qMrk}>
@@ -85,9 +98,7 @@ export default class Welcome extends React.Component {
 
 				<Text>{"\n"}{"\n"}{"\n"}{"\n"}</Text>
 
-				<TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
-					<Text style={Styles.btnTxt}>Submit</Text>
-				</TouchableOpacity>
+			
       </View>
                     </KeyboardAvoidingView>
     );
