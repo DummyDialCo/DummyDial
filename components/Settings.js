@@ -28,7 +28,7 @@ export default class Settings extends React.Component {
 	    });
 		} else {
 			// TODO Change this to a notification for the user
-			console.log("PHONE NUMBER INVALID");
+			throw "INVALID PHONE NUMBER"
 		}
 	}
 
