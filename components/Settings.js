@@ -45,9 +45,6 @@ export default class Settings extends React.Component {
         <View style={Styles.tBan}>
         	<Text> </Text>
       		<Text style={Styles.tBanTitle}> Settings </Text>
-      		<Text onPress={()=>{navigate("Home")}} style={Styles.backBtn}>
-      			<Image source={require("./imgs/backicon.png")}/>
-					</Text>
         </View>
 
 				<View style={Styles.userNumS}>
@@ -116,6 +113,21 @@ export default class Settings extends React.Component {
 				</View>
 			</TouchableOpacity>
 
+
+			<View style={Styles.navBar}>
+				<TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+					<Text>Instant</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+					<Text>Text Body</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+					<Text>Timer</Text>
+				</TouchableOpacity>
+				<TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+					<Text>Settings</Text>
+				</TouchableOpacity>
+			</View>
 
 
       </View>

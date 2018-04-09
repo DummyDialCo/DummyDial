@@ -1,6 +1,7 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
+import Styles from "./scss/Styles.scss";
 
 import TimerCountdown from "react-native-timer-countdown";
 
@@ -37,6 +38,9 @@ export default class Timer extends React.Component {
 
 
 	render() {
+
+		const {navigate} = this.props.navigation;
+
 		return (
 			<View>
 				<TextInput placeholder="Minutes" ref="minInput" keyboardType="numeric" returnKeyType='done' />
@@ -50,6 +54,23 @@ export default class Timer extends React.Component {
 					allowFontScaling={true}
 					style={{ fontSize: 20 }}
 				/>
+
+
+				<View style={Styles.navBar}>
+          <TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+            <Text>Instant</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+            <Text>Text Body</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+            <Text>Timer</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+            <Text>Settings</Text>
+          </TouchableOpacity>
+        </View>
+
 
 			</View>
     );

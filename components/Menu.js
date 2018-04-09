@@ -80,7 +80,7 @@ export default class Menu extends React.Component {
         </TouchableOpacity>
 
         <View style={Styles.navBar}>
-          <TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
             <Text>Instant</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>

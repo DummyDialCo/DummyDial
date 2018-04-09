@@ -1,6 +1,7 @@
 import React from 'react';
 import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity } from 'react-native';
 import { StackNavigator } from "react-navigation";
+import Styles from "./scss/Styles.scss";
 
 export default class TextPage extends React.Component {
 
@@ -62,9 +63,22 @@ export default class TextPage extends React.Component {
 
 				<Button onPress={this.sendText} title="SEND TEXT" color="orange" />
 
-				<TouchableOpacity onPress={()=>{navigate("Home")}}>
-					<Text>CLICK TO RETURN TO HOME</Text>
-				</TouchableOpacity>
+
+				<View style={Styles.navBar}>
+          <TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+            <Text>Instant</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+            <Text>Text Body</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+            <Text>Timer</Text>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+            <Text>Settings</Text>
+          </TouchableOpacity>
+        </View>
+
 
 			</View>
     );
