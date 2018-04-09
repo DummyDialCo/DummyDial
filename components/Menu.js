@@ -14,6 +14,7 @@ export default class Menu extends React.Component {
     }
   }
 
+
   render() {
     const { navigate } = this.props.navigation;
 

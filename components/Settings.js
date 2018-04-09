@@ -14,8 +14,9 @@ export default class Settings extends React.Component {
 		}
 	}
 
+
 	validatePhoneNum = (phoneNum) => {
-		const regex = /^\d{10}/;
+		const regex = /^\d{10}$/;
 		return regex.test(phoneNum);
 	}
 
@@ -28,7 +29,7 @@ export default class Settings extends React.Component {
 	    });
 		} else {
 			// TODO Change this to a notification for the user
-			throw "INVALID PHONE NUMBER"
+			throw "INVALID PHONE NUMBER";
 		}
 	}
 
@@ -115,7 +116,7 @@ export default class Settings extends React.Component {
 
 
 			<View style={Styles.navBar}>
-				<TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+				<TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient}, {visitedInstant: this.state.visitedInstant})}>
 					<Text>Instant</Text>
 				</TouchableOpacity>
 				<TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>

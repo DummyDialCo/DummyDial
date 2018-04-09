@@ -57,7 +57,7 @@ export default class Timer extends React.Component {
 
 
 				<View style={Styles.navBar}>
-          <TouchableOpacity onPress={()=>navigate("Menu", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
             <Text>Instant</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>

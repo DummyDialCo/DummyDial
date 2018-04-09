@@ -15,7 +15,7 @@ export default class Welcome extends React.Component {
 	}
 
 	validatePhoneNum = (phoneNum) => {
-		const regex = /^\d{10}/;
+		const regex = /^\d{10}$/;
 		return regex.test(phoneNum);
 	}
 
@@ -30,7 +30,7 @@ export default class Welcome extends React.Component {
 			});
 		} else {
 			// TODO Change this to a notification for the user
-			console.log("PHONE NUMBER INVALID");
+			throw "INVALID PHONE NUMBER";
 		}
 		navigate("Menu");
 	}
@@ -71,24 +71,24 @@ export default class Welcome extends React.Component {
 					/>
 
 					<View style={Styles.inptInc}></View>
-                    
+
 				</View>
-				<Text>       
-                {"\n"} 
-                <Text> 
+				<Text>
+                {"\n"}
+                <Text>
                 </Text>
                 </Text>
-             
+
 
                     	<TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
 					<Text style={Styles.btnTxt}>Submit</Text>
 				</TouchableOpacity>
-                    
+
                     	<Text>
 					{"\n"}
                     {"\n"}
 				</Text>
-                    
+
 				<TouchableOpacity style={Styles.qInfo}>
 					<Text style={Styles.qInfoTxt}>Why do you need my number</Text>
 					<View style={Styles.qMrk}>
@@ -98,7 +98,7 @@ export default class Welcome extends React.Component {
 
 				<Text>{"\n"}{"\n"}{"\n"}{"\n"}</Text>
 
-			
+
       </View>
                     </KeyboardAvoidingView>
     );
