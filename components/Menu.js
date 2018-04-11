@@ -30,7 +30,7 @@ export default class Menu extends React.Component {
         });
       } else {
         this.setState({
-          myMsg:"DEFAULT MESSAGE CHANGE LATER"
+          myMsg:"Emergency, come now!"
         });
       }
 		}).catch((error)=>{
