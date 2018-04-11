@@ -51,13 +51,6 @@ export default class Settings extends React.Component {
 			{'\n'}
 			</Text>
 
-			<Text style={Styles.steps}>Your current number</Text>
-			<View style={Styles.smBreak2}></View>
-			<Text style={Styles.blueTxt}>{this.state.recipient}
-			{'\n'}
-			{'\n'}
-			</Text>
-
 		<View style={Styles.settingsInpCont}>
 
 		<Text style={Styles.steps}>Change or update your number here
