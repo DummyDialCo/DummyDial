@@ -82,7 +82,7 @@ export default class TextPage extends React.Component {
 
         <TextInput
 			style={Styles.inptTxtMsg}
-			multiline = {true}
+		    returnKeyType="done"
 			numberOfLines = {4}
 			placeholder='eg. Emergency come now!'
 			ref={(el)=>{this.myMsg=el;}}
