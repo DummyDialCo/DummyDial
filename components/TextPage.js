@@ -1,5 +1,6 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image, keyboardAvoidingView,
+Keyboard } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
@@ -10,7 +11,8 @@ export default class TextPage extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
-			myMsg:''
+			myMsg:'',
+			behavior: 'position'
 		}
 	}
 
@@ -54,6 +56,18 @@ export default class TextPage extends React.Component {
 
 		fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
+	
+	componentWillMount() {
+		this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide',this._keyboardDidHide);
+    }
+
+	componentWillUnmount(){
+		this.keyboardDidHideListener.remove();
+	}
+
+	_keyboardDidHide() {
+		Keyboard.dismiss();
+	}
 
 
 	render() {
@@ -68,7 +82,10 @@ export default class TextPage extends React.Component {
 		</Text>
         <Text style={Styles.tBanTitle}>Text Body</Text>
         </View>
-
+			
+  		<View behavior={this.state.behavior}>
+    	<View>
+			
         <Text>
 		{'\n'}
 		{'\n'}
@@ -86,12 +103,15 @@ export default class TextPage extends React.Component {
 			multiline={true}
 			numberOfLines={4}
 			blurOnSubmit={true}
+			underlineColorAndroid='transparent'
+          	returnKeyType={'default'}
 			placeholder='eg. Emergency come now!'
 			ref={(el)=>{this.myMsg=el;}}
 			onChangeText={(myMsg)=>this.setState({myMsg})}
 			value={this.state.myMsg}
 			onSubmitEditing={this.saveText}
 			/>
+			
 		</View>
 
         <Text>
@@ -99,7 +119,7 @@ export default class TextPage extends React.Component {
 		</Text>
 
 		<View style={Styles.BtnCont}>
-			<TouchableOpacity style={Styles.btn} onPress={this.saveText}>
+			<TouchableOpacity style={Styles.btn} onPress={this.saveText} onPress={this._keyboardDidHide}>
 				<Image
 		  		source={require("./imgs/savew.png")}
 				style={{width: 21, height: 21}}
@@ -114,9 +134,12 @@ export default class TextPage extends React.Component {
 		  		source={require("./imgs/textw.png")}
 				style={{width: 27, height: 21}}
 				/>
-				<Text style={Styles.btnTTxt}>Text</Text>
+				<Text style={Styles.btnTTxt} onPress={this._keyboardDidHide}>Text</Text>
 			</TouchableOpacity>
 		</View>
+	  </View>
+    </View>
+		
 
 		<View style={Styles.navBar}>
 
