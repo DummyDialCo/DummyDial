@@ -70,7 +70,7 @@ export default class Settings extends React.Component {
 					style={Styles.setInpt}
 					keyboardType='number-pad'
 					returnKeyType='done'
-					placeholder='xxx-xxx-xxxx'
+					placeholder={this.state.recipient}
 					onChangeText={(recipient)=>this.setState({recipient})}
 					onSubmitEditing={this.changePhoneNumber}
 				/>
