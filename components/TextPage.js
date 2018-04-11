@@ -129,7 +129,7 @@ export default class TextPage extends React.Component {
 
 			<View style={Styles.smBreak3}></View>
 
-			<TouchableOpacity style={Styles.btn} onPress={this.sendText}>
+			<TouchableOpacity style={Styles.btn} onPress={this.sendText} onPress={this._keyboardDidHide}>
 				<Image
 		  		source={require("./imgs/textw.png")}
 				style={{width: 27, height: 21}}
