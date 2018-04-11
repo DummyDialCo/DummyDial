@@ -39,7 +39,7 @@ export default class Settings extends React.Component {
 
     return (
 		<View style={Styles.all}>
-		
+
 		<View style={Styles.tBan}>
 			<Text></Text>
 			<Text></Text>
@@ -49,22 +49,22 @@ export default class Settings extends React.Component {
          	<Text>
 			{'\n'}
 			</Text>
-			
+
 			<Text style={Styles.steps}>Your current number
 			{'\n'}
 			</Text>
-			<Text style={Styles.blueTxt}>{this.props.recipient}
+			<Text style={Styles.blueTxt}>{this.state.recipient}
 			{'\n'}
 			{'\n'}
 			</Text>
-			
+
 		<View style={Styles.settingsInpCont}>
-				
+
 		<Text style={Styles.steps}>Change or update your number here
 			</Text>
-		
+
 			<View style={Styles.smBreak2}></View>
-		
+
 			<View style={Styles.setInpBtnCont}>
 			 <TextInput
 					style={Styles.setInpt}
@@ -72,24 +72,24 @@ export default class Settings extends React.Component {
 					returnKeyType='done'
 					placeholder='xxx-xxx-xxxx'
 					/>
-		
+
 				<TouchableOpacity style={Styles.btn} onPress={this.changePhoneNumber}>
-				<Image 
+				<Image
 		  		source={require("./imgs/savew.png")}
 				style={{width: 21, height: 21}}
 				/>
 				<Text style={Styles.btnTTxt}>Save</Text>
 				</TouchableOpacity>
-				
+
 			</View>
-			
+
 		<View style={Styles.smBreak}></View>
-			
+
         <Text style={Styles.steps}>Add this number to your contacts
 			</Text>
-		
+
 			<View style={Styles.smBreak2}></View>
-			
+
 			<View style={Styles.setInpBtnCont}>
 			 <TextInput
 					style={Styles.setInpt}
@@ -97,95 +97,95 @@ export default class Settings extends React.Component {
 					returnKeyType='done'
 					placeholder='xxx-xxx-xxxx'
 					/>
-							
+
 				<TouchableOpacity style={Styles.btn}>
-				<Image 
+				<Image
 		  		source={require("./imgs/copyw.png")}
 				style={{width: 19, height: 21}}
 				/>
 				<Text style={Styles.btnTTxt}>Copy</Text>
 				</TouchableOpacity>
 			</View>
-			
+
 		</View>
-			
+
         <Text>
 		{'\n'}
 		</Text>
-					
+
 		<TouchableOpacity style={Styles.setBtnsCont} onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}>
-		
+
 			<View style={Styles.setBtnL}>
-				<Image 
+				<Image
 				style={{width: 28, height: 21}}
 				source={require('./imgs/mail.png')}/>
-						
+
 				<Text style={Styles.setBtnsTitle}>Contact us</Text>
 			</View>
-				
+
 				<Text style={Styles.setArw}>></Text>
-				
+
 		</TouchableOpacity>
-				
+
 		<View style={Styles.smBreak2}></View>
-					
+
 		<TouchableOpacity style={Styles.setBtnsCont} onPress={()=>navigate("FAQs", {recipient: this.state.recipient})}>
-			
+
 			<View style={Styles.setBtnL}>
-				<Image 
+				<Image
 				style={{width: 28, height: 28}}
-				source={require('./imgs/qmark.png')}/>		
+				source={require('./imgs/qmark.png')}/>
 				<Text style={Styles.setBtnsTitle}>FAQs</Text>
 			</View>
-				
+
 				<Text style={Styles.setArw}>></Text>
-				
+
 		</TouchableOpacity>
-		
+
 <View style={Styles.navBar}>
-			
+
           <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
-			
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 23, height: 25}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
-			  
+
           </TouchableOpacity>
-			  
+
           <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 32, height: 25}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/sgearb.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>
-			
+
           </TouchableOpacity>
         </View>
 	</View>

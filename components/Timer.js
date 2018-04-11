@@ -11,6 +11,7 @@ export default class Timer extends React.Component {
 		super(props);
 
 		this.state = {
+			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:5,
 			secsRemaining:2
 		}
@@ -43,7 +44,7 @@ export default class Timer extends React.Component {
 
 		return (
 			<View style={Styles.all}>
-		
+
 			<View style={Styles.tBan}>
         	<Text></Text>
 			<Text></Text>
@@ -53,7 +54,7 @@ export default class Timer extends React.Component {
         	<Text>
 			{'\n'}
 			</Text>
-			
+
 			<Text style={Styles.steps}>Do not close app while timer is running
 			{'\n'}
 			</Text>
@@ -61,54 +62,54 @@ export default class Timer extends React.Component {
 			{'\n'}
 			{'\n'}
 			</Text>
-			
+
 			<View style={Styles.timerInpCont}>
 			<TextInput
 				style={Styles.timerInp}
-				placeholder='00' 
-				ref='hrInput' 
-				keyboardType='numeric' 
-				returnKeyType='done' 
+				placeholder='00'
+				ref='hrInput'
+				keyboardType='numeric'
+				returnKeyType='done'
 				/>
-			
+
 			<Text style={Styles.timerInp}>:</Text>
-			
+
 			<TextInput
 				style={Styles.timerInp}
-				placeholder='00' 
-				ref='minInput' 
-				keyboardType='numeric' 
-				returnKeyType='done' 
+				placeholder='00'
+				ref='minInput'
+				keyboardType='numeric'
+				returnKeyType='done'
 				/>
-			
+
 			<Text style={Styles.timerInp}>:</Text>
-			
-			<TextInput 
+
+			<TextInput
 				style={Styles.timerInp}
-				placeholder='00' 
-				ref='secInput' 
-				keyboardType='numeric' 
-				returnKeyType='done' 
+				placeholder='00'
+				ref='secInput'
+				keyboardType='numeric'
+				returnKeyType='done'
 				/>
 			</View>
-			
+
         	<Text>
 			{'\n'}
 			</Text>
-			
+
 			<View style={Styles.BtnCont}>
 			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-			 	<Image 
+			 	<Image
 				source={require("./imgs/phonew.png")}
 				style={{width: 19, height: 21}}
 				/>
 				<Text style={Styles.btnTTxt}>Call</Text>
 			</TouchableOpacity>
-				
+
 			<View style={Styles.smBreak3}></View>
-			
+
 			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-				<Image 
+				<Image
 		  		source={require("./imgs/textw.png")}
 				style={{width: 27, height: 21}}
 				/>
@@ -117,49 +118,49 @@ export default class Timer extends React.Component {
 			</View>
 
 		<View style={Styles.navBar}>
-			
+
           <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
-			
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 23, height: 25}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
-			  
+
           </TouchableOpacity>
-			  
+
           <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 32, height: 25}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/stimeb.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>
-			
+
           </TouchableOpacity>
         </View>
 	</View>
