@@ -43,7 +43,7 @@ export default class TextPage extends React.Component {
 
 	sendText = () => {
 
-		// This function is included in both saveText() and sendText() so that either can be clicked, and the message body will be saved
+		// Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
 		// saving text message to AsyncStorage
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
