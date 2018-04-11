@@ -1,8 +1,8 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image, KeyboardAvoidingView } from 'react-native';
-import { StackNavigator } from "react-navigation";
+import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image, KeyboardAvoidingView, Header } from 'react-native';
+import { StackNavigator } from 'react-navigation';
 
-import Styles from "./scss/Styles.scss";
+import Styles from './scss/Styles.scss';
 
 export default class Welcome extends React.Component {
 
@@ -25,82 +25,101 @@ export default class Welcome extends React.Component {
 
 		if(this.validatePhoneNum(this.state.recipient)){
 			// Stores the phone number in AsyncStorage
-			AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
+			AsyncStorage.setItem('storeTheNum', this.state.recipient).catch((err)=>{
 				console.log(err);
 			});
 		} else {
 			// TODO Change this to a notification for the user
-			throw "INVALID PHONE NUMBER";
+			throw 'INVALID PHONE NUMBER';
 		}
-		navigate("Menu");
+		navigate('Menu');
 	}
 
 	render() {
 		return (
-            <KeyboardAvoidingView behavior="position">
 			<View style={Styles.all}>
-				<View style={Styles.tBan}></View>
+			
+			<View style={Styles.tBan}>
+			<Text></Text>
+			<Text></Text>
+			<Text style={Styles.tBanTitle}>Welcome</Text>
+			</View>
+			
 				<Text>
-					{"\n"}
-					{"\n"}
+				{'\n'}
+				{'\n'}
 				</Text>
+			
+				<KeyboardAvoidingView>
+				<View style={Styles.all}>
 
-				<Image source={require("./imgs/phoneIconB.png")}/>
+				<Image 
+				source={require('./imgs/sphoneb.png')}
+				style={{width: 56, height: 60}}
+				/>
 
-				<Text>
-				</Text>
+				<View style={Styles.smBreak2}></View>
 
 				<Text style={Styles.title}>DummyDial</Text>
 
 				<Text>
-					{"\n"}
-                {"\n"}
+				{'\n'}
+                {'\n'}
 				</Text>
 
-				<Text style={Styles.steps}>Step 1) {"\n"}Enter Your Phone Number{"\n"}</Text>
+				<Text style={Styles.steps1}>Step 1)
+				{'\n'}
+				Enter Your Phone Number
+				</Text>
+				
+				<View style={Styles.smBreak2}></View>
 
 				<View style={Styles.inptIcnCont}>
-
 					<TextInput
-						keyboardType="number-pad"
-						returnKeyType='done'
 						style={Styles.inpt}
-						placeholder="xxx-xxx-xxxx"
+						keyboardType='number-pad'
+						returnKeyType='done'
+						placeholder='xxx-xxx-xxxx'
 						onChangeText={(recipient)=>this.setState({recipient})}
 						value={this.state.recipient}
 					/>
-
-					<View style={Styles.inptInc}></View>
-
 				</View>
+					
+				<View style={Styles.smBreak2}></View>
+				
+				<Text style={Styles.star}>* This can be changed later in settings</Text>
+				
 				<Text>
-                {"\n"}
-                <Text>
-                </Text>
+                {'\n'}
                 </Text>
 
-
-                    	<TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
+                 <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
 					<Text style={Styles.btnTxt}>Submit</Text>
-				</TouchableOpacity>
+				 </TouchableOpacity>
 
-                    	<Text>
-					{"\n"}
-                    {"\n"}
+                <Text>
+				{'\n'}
+				{'\n'}
 				</Text>
 
 				<TouchableOpacity style={Styles.qInfo}>
-					<Text style={Styles.qInfoTxt}>Why do you need my number</Text>
+					<Text style={Styles.blueTxt}>Why do you need my number</Text>
+					<Text> </Text>
 					<View style={Styles.qMrk}>
-						<Text style={Styles.qMrkTxt}>?</Text>
+					<Text style={Styles.qMrkTxt}>?</Text>
 					</View>
 				</TouchableOpacity>
 
-				<Text>{"\n"}{"\n"}{"\n"}{"\n"}</Text>
+				<Text>
+				{'\n'}
+				{'\n'}
+				{'\n'}
+				{'\n'}
+				</Text>
 
-
-      </View>
-                    </KeyboardAvoidingView>
+      			</View>
+			</KeyboardAvoidingView>
+		</View>
     );
   }
 }

@@ -3,17 +3,17 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import { StackNavigator } from 'react-navigation';
 
-import Styles from "./components/scss/Styles.scss";
+import Styles from './components/scss/Styles.scss';
 
-import Welcome from "./components/Welcome";
-import Home from "./components/Home";
-import Menu from "./components/Menu";
-import CallPage from "./components/CallPage";
-import TextPage from "./components/TextPage";
-import Timer from "./components/Timer";
-import Settings from "./components/Settings";
-import FAQs from "./components/FAQs";
-import AddContact from "./components/AddContact";
+import Welcome from './components/Welcome';
+import Home from './components/Home';
+import Menu from './components/Menu';
+import CallPage from './components/CallPage';
+import TextPage from './components/TextPage';
+import Timer from './components/Timer';
+import Settings from './components/Settings';
+import FAQs from './components/FAQs';
+import AddContact from './components/AddContact';
 
 /* Only Stack Navigator controls in this file */
 const DummyDial = StackNavigator({
@@ -27,8 +27,8 @@ const DummyDial = StackNavigator({
   FAQs: { screen: FAQs },
   AddContact: { screen: AddContact }
 }, {
-  initialRouteName: "Home",
-  headerMode: "none",
+  initialRouteName: 'Home',
+  headerMode: 'none',
     transitionConfig: () => ({
       transitionSpec: {
         duration: 0

@@ -14,7 +14,6 @@ export default class Settings extends React.Component {
 		}
 	}
 
-
 	validatePhoneNum = (phoneNum) => {
 		const regex = /^\d{10}$/;
 		return regex.test(phoneNum);
@@ -39,99 +38,157 @@ export default class Settings extends React.Component {
 		const {navigate} = this.props.navigation;
 
     return (
+		<View style={Styles.all}>
+		
+		<View style={Styles.tBan}>
+			<Text></Text>
+			<Text></Text>
+			<Text style={Styles.tBanTitle}>Settings</Text>
+			</View>
 
-
-      <View style={Styles.all}>
-
-        <View style={Styles.tBan}>
-        	<Text> </Text>
-      		<Text style={Styles.tBanTitle}> Settings </Text>
+         	<Text>
+			{'\n'}
+			</Text>
+			
+			<Text style={Styles.steps}>Your current number
+			{'\n'}
+			</Text>
+			<Text style={Styles.blueTxt}>{this.props.recipient}
+			{'\n'}
+			{'\n'}
+			</Text>
+			
+		<View style={Styles.settingsInpCont}>
+				
+		<Text style={Styles.steps}>Change or update your number here
+			</Text>
+		
+			<View style={Styles.smBreak2}></View>
+		
+			<View style={Styles.setInpBtnCont}>
+			 <TextInput
+					style={Styles.setInpt}
+					keyboardType='number-pad'
+					returnKeyType='done'
+					placeholder='xxx-xxx-xxxx'
+					/>
+		
+				<TouchableOpacity style={Styles.btn} onPress={this.changePhoneNumber}>
+				<Image 
+		  		source={require("./imgs/savew.png")}
+				style={{width: 21, height: 21}}
+				/>
+				<Text style={Styles.btnTTxt}>Save</Text>
+				</TouchableOpacity>
+				
+			</View>
+			
+		<View style={Styles.smBreak}></View>
+			
+        <Text style={Styles.steps}>Add this number to your contacts
+			</Text>
+		
+			<View style={Styles.smBreak2}></View>
+			
+			<View style={Styles.setInpBtnCont}>
+			 <TextInput
+					style={Styles.setInpt}
+					keyboardType='number-pad'
+					returnKeyType='done'
+					placeholder='xxx-xxx-xxxx'
+					/>
+							
+				<TouchableOpacity style={Styles.btn}>
+				<Image 
+		  		source={require("./imgs/copyw.png")}
+				style={{width: 19, height: 21}}
+				/>
+				<Text style={Styles.btnTTxt}>Copy</Text>
+				</TouchableOpacity>
+			</View>
+			
+		</View>
+			
+        <Text>
+		{'\n'}
+		</Text>
+					
+		<TouchableOpacity style={Styles.setBtnsCont} onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}>
+		
+			<View style={Styles.setBtnL}>
+				<Image 
+				style={{width: 28, height: 21}}
+				source={require('./imgs/mail.png')}/>
+						
+				<Text style={Styles.setBtnsTitle}>Contact us</Text>
+			</View>
+				
+				<Text style={Styles.setArw}>></Text>
+				
+		</TouchableOpacity>
+				
+		<View style={Styles.smBreak2}></View>
+					
+		<TouchableOpacity style={Styles.setBtnsCont} onPress={()=>navigate("FAQs", {recipient: this.state.recipient})}>
+			
+			<View style={Styles.setBtnL}>
+				<Image 
+				style={{width: 28, height: 28}}
+				source={require('./imgs/qmark.png')}/>		
+				<Text style={Styles.setBtnsTitle}>FAQs</Text>
+			</View>
+				
+				<Text style={Styles.setArw}>></Text>
+				
+		</TouchableOpacity>
+		
+<View style={Styles.navBar}>
+			
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
+			
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 23, height: 25}}
+			source={require("./imgs/sphone.png")}/>
+            <Text style={Styles.navTxt}>Instant</Text>
+			</View>
+			  
+          </TouchableOpacity>
+			  
+          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 32, height: 25}}
+			source={require("./imgs/stext.png")}/>
+            <Text style={Styles.navTxt}>Text Body</Text>
+			</View>
+			
+          </TouchableOpacity>
+			
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 25, height: 25}}
+			source={require("./imgs/stime.png")}/>
+            <Text style={Styles.navTxt}>Timer</Text>
+			</View>
+			
+          </TouchableOpacity>
+			
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 25, height: 25}}
+			source={require("./imgs/sgearb.png")}/>
+            <Text style={Styles.navTxt}>Settings</Text>
+			</View>
+			
+          </TouchableOpacity>
         </View>
-
-				<View style={Styles.userNumS}>
-
-          <Text>
-					{"\n"}{"\n"}{"\n"}{"\n"}
-
-					<Image source={require("./imgs/personicon.png")}/>
-
-          {"\n"}{"\n"}
-
-        	Your Phone Number: {this.state.recipient}
-
-					{"\n"}{"\n"}
-
-					</Text>
-			</View>
-
-    	<Text> Change Your Number </Text>
-
-			<TextInput
-        keyboardType="number-pad"
-        returnKeyType='done'
-				placeholder="Change Phone Number"
-				placeholderTextColor="black"
-				ref="newPhoneInput"
-				onChangeText={(recipient)=>this.setState({recipient})}
-				value={this.state.recipient}
-				onSubmitEditing={this.changePhoneNumber}
-			/>
-
-
-      <TouchableOpacity style={Styles.mBar} onPress={this.changePhoneNumber}>
-				<View style={Styles.mBarL}>
-					<Text style={Styles.mTitle}> Change Phone Number </Text>
-				</View>
-			</TouchableOpacity>
-
-        	<Text></Text>
-
-      <TouchableOpacity style={Styles.mBar}>
-				<View style={Styles.mBarL}>
-					<Image source={require("./imgs/plusicon.png")}/>
-					<Text style={Styles.mTitle}> Access My Contacts </Text>
-				</View>
-			</TouchableOpacity>
-
-    	<Text></Text>
-
-    	 <TouchableOpacity
-        onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}
-        style={Styles.mBar}>
-					<View style={Styles.mBarL}>
-
-					<Image source={require("./imgs/mailicon.png")}/>
-					<Text style={Styles.mTitle}> Contact Us </Text>
-				</View>
-			</TouchableOpacity>
-
-        	<Text></Text>
-
-      <TouchableOpacity style={Styles.mBar} onPress={()=>navigate("FAQs", {recipient: this.state.recipient})}>
-				<View style={Styles.mBarL}>
-					<Image source={require("./imgs/questionicon.png")}/>
-					<Text style={Styles.mTitle}> FAQs </Text>
-				</View>
-			</TouchableOpacity>
-
-
-			<View style={Styles.navBar}>
-				<TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient}, {visitedInstant: this.state.visitedInstant})}>
-					<Text>Instant</Text>
-				</TouchableOpacity>
-				<TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
-					<Text>Text Body</Text>
-				</TouchableOpacity>
-				<TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
-					<Text>Timer</Text>
-				</TouchableOpacity>
-				<TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
-					<Text>Settings</Text>
-				</TouchableOpacity>
-			</View>
-
-
-      </View>
+	</View>
     );
   }
 }

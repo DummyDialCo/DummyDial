@@ -18,36 +18,94 @@ export default class FAQs extends React.Component {
 	render() {
 		const {navigate} = this.props.navigation;
 
-		return (
-			<View style={Styles.all}>
-				<View style={Styles.tBan}>
-					<Text></Text>
-					<Text style={Styles.tBanTitle}>FAQs</Text>
-
-					<Text onPress={()=>{navigate("Settings", {recipient: this.state.recipient})}} style={Styles.backBtn}>
-						<Image source={require("./imgs/backicon.png")}/>
-					</Text>
-
-					<Text>Why do you need my number?</Text>
-					<Text>Dummy Dial works by sending real calls and text messages straight to your phone.{"\n"}</Text>
-
-					<Text>Will my number be shared?</Text>
-					<Text>Your phone number will be kept confidential and never be shared.{"\n"}</Text>
-
-					<Text>Why do I have to create a contact using a certain number?</Text>
-					<Text>Dummy Dial uses a custom number to send your calls and texts, and you have to save this number into your phones contacts however you would like the ID of the caller to appear.
-					{"\n"}Example: enter the number into your contacts as "Mom", then when receiving the call or text, it will appear as if "Mom" is contacting you.{"\n"}</Text>
-
-					<Text>For all other inquiries:{"\n"}</Text>
-					<TouchableOpacity onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')} style={Styles.mBar}>
-	 					<View style={Styles.mBarL}>
-		 					<Image source={require("./imgs/mailicon.png")}/>
-		 					<Text style={Styles.mTitle}> Contact Us </Text>
-	 					</View>
-	 				</TouchableOpacity>
-
-				</View>
+		return (			   
+		<View style={Styles.all}>
+		
+        	<View style={Styles.tBan} onPress={()=>{navigate("Settings", {recipient: this.state.recipient})}}>
+			<Text></Text>
+			<Text></Text>
+			<Text style={Styles.tBanTitle}>FAQs</Text>
 			</View>
+
+		<Text style={Styles.faqTxt}>
+		<Text style={Styles.blueTxt}>Why do you need my number?</Text>
+		{'\n'}
+		<Text style={Styles.faqTxtParas}>Dummy Dial works by sending real calls and text messages straight to your own phone.</Text>
+		{'\n'}
+		{'\n'}
+		<Text style={Styles.blueTxt}>Will my number be shared?</Text>
+		{'\n'}	
+		<Text style={Styles.faqTxtParas}>Your phone number will be kept confidential and never be shared.</Text>
+		{'\n'}
+		{'\n'}
+		<Text style={Styles.blueTxt}>Why do I have to create a contact using a certain number?</Text>
+		{'\n'}	
+		<Text style={Styles.faqTxtParas}>Dummy Dial uses a custom number to send you calls and texts, you have to save this number into your phones contacts how you’d like the the ID of the caller or texter to appear.</Text>
+		{'\n'}
+		{'\n'}
+		<Text style={Styles.faqTxtParas}>Example: enter the number into your contacts as “Mom” then when recieving a call or text it will appear as “Mom” contacting you.</Text>
+		{'\n'}
+		{'\n'}	
+		<Text style={Styles.blueTxt}>For all other inquiries:</Text>
+		</Text>
+		<TouchableOpacity style={Styles.setBtnsCont} onPress={() => Linking.openURL('mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all')}>
+		<View style={Styles.setBtnL}>
+			<Image 
+			style={{width: 28, height: 21}}
+			source={require('./imgs/mail.png')}/>
+			<Text style={Styles.setBtnsTitle}>Contact us</Text>
+		</View>
+				
+			<Text style={Styles.setArw}>></Text>
+		</TouchableOpacity>
+									
+<View style={Styles.navBar}>
+			
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
+			
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 23, height: 25}}
+			source={require("./imgs/sphone.png")}/>
+            <Text style={Styles.navTxt}>Instant</Text>
+			</View>
+			  
+          </TouchableOpacity>
+			  
+          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 32, height: 25}}
+			source={require("./imgs/stext.png")}/>
+            <Text style={Styles.navTxt}>Text Body</Text>
+			</View>
+			
+          </TouchableOpacity>
+			
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 25, height: 25}}
+			source={require("./imgs/stime.png")}/>
+            <Text style={Styles.navTxt}>Timer</Text>
+			</View>
+			
+          </TouchableOpacity>
+			
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+			  
+			<View style={Styles.navBarBtn}>
+			<Image 
+			style={{width: 25, height: 25}}
+			source={require("./imgs/sgearb.png")}/>
+            <Text style={Styles.navTxt}>Settings</Text>
+			</View>
+			
+          </TouchableOpacity>
+        </View>
+	  </View>
     );
   }
 }

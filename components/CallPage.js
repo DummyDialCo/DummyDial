@@ -43,7 +43,7 @@ export default class CallPage extends React.Component {
 				<Timer />
 
 
-				<View style={Styles.navBar}>
+		<View style={Styles.navBar}>
           <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
             <Text>Instant</Text>
           </TouchableOpacity>
