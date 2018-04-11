@@ -71,12 +71,13 @@ export default class Settings extends React.Component {
 					keyboardType='number-pad'
 					returnKeyType='done'
 					placeholder='xxx-xxx-xxxx'
-					/>
+					onChangeText={(recipient)=>this.setState({recipient})}
+				/>
 
 				<TouchableOpacity style={Styles.btn} onPress={this.changePhoneNumber}>
 				<Image
 		  		source={require("./imgs/savew.png")}
-				style={{width: 21, height: 21}}
+					style={{width: 21, height: 21}}
 				/>
 				<Text style={Styles.btnTTxt}>Save</Text>
 				</TouchableOpacity>
