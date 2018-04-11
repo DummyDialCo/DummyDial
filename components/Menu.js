@@ -10,13 +10,18 @@ export default class Menu extends React.Component {
     super(props);
 
     this.state = {
-      recipient: this.props.recipient,
+      recipient:null,
       myMsg:""
     }
   }
 
 
   componentDidMount(){
+
+    AsyncStorage.getItem('storeTheNum').then((value)=>{
+      this.setState({ recipient: value });
+    }).catch(err=>console.log(err));
+
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
   			console.log('You have a stored message', value);
@@ -67,7 +72,7 @@ export default class Menu extends React.Component {
 		{"\n"}
 		</Text>
 
-        <Text style={Styles.usrPhnNum}>{this.props.recipient}</Text>
+        <Text style={Styles.usrPhnNum}>{this.state.recipient}</Text>
 
         <Text>
 		{"\n"}

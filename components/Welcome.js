@@ -32,31 +32,31 @@ export default class Welcome extends React.Component {
 			// TODO Change this to a notification for the user
 			throw 'INVALID PHONE NUMBER';
 		}
-		navigate('Menu');
+		navigate('Menu', { recipient: this.state.recipient});
 	}
 
 	render() {
 		return (
 			<View style={Styles.all}>
-			
+
 			<View style={Styles.tBan}>
 			<Text>
 			{'\n'}
 			</Text>
 			<Text style={Styles.tBanTitle}>Welcome</Text>
 			</View>
-			
+
 				<Text>
 				{'\n'}
 				{'\n'}
 				{'\n'}
 				{'\n'}
 				</Text>
-			
+
 				<KeyboardAvoidingView>
 				<View style={Styles.all}>
 
-				<Image 
+				<Image
 				source={require('./imgs/sphoneb.png')}
 				style={{width: 56, height: 60}}
 				/>
@@ -66,7 +66,7 @@ export default class Welcome extends React.Component {
 				<Text style={Styles.title}>DummyDial</Text>
 
 				<View style={Styles.smBreak}></View>
-				
+
 				<View style={Styles.smBreak2}></View>
 
 				<View style={Styles.inptIcnCont}>
@@ -76,14 +76,13 @@ export default class Welcome extends React.Component {
 						returnKeyType='done'
 						placeholder='Enter your phone number'
 						onChangeText={(recipient)=>this.setState({recipient})}
-						value={this.state.recipient}
 					/>
 				</View>
-					
+
 				<View style={Styles.smBreak2}></View>
-				
+
 				<Text style={Styles.star}>* This can be changed later in settings</Text>
-				
+
 				<Text>
                 {'\n'}
                 </Text>
