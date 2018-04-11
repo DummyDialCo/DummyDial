@@ -34,6 +34,7 @@ export default class TextPage extends React.Component {
 
 
 	saveText = () => {
+		Keyboard.dismiss();
 		// saving text message to AsyncStorage
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
        console.log("resp", value);
@@ -44,7 +45,7 @@ export default class TextPage extends React.Component {
 
 
 	sendText = () => {
-
+		Keyboard.dismiss();
 		// Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
 		// saving text message to AsyncStorage
@@ -119,7 +120,7 @@ export default class TextPage extends React.Component {
 		</Text>
 
 		<View style={Styles.BtnCont}>
-			<TouchableOpacity style={Styles.btn} onPress={this.saveText} onPress={this._keyboardDidHide}>
+			<TouchableOpacity style={Styles.btn} onPress={this.saveText}>
 				<Image
 		  		source={require("./imgs/savew.png")}
 				style={{width: 21, height: 21}}
@@ -129,12 +130,12 @@ export default class TextPage extends React.Component {
 
 			<View style={Styles.smBreak3}></View>
 
-			<TouchableOpacity style={Styles.btn} onPress={this.sendText} onPress={this._keyboardDidHide}>
+			<TouchableOpacity style={Styles.btn} onPress={this.sendText}>
 				<Image
 		  		source={require("./imgs/textw.png")}
 				style={{width: 27, height: 21}}
 				/>
-				<Text style={Styles.btnTTxt} onPress={this._keyboardDidHide}>Text</Text>
+				<Text style={Styles.btnTTxt}>Text</Text>
 			</TouchableOpacity>
 		</View>
 	  </View>
