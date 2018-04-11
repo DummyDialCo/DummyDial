@@ -50,9 +50,8 @@ export default class Settings extends React.Component {
 			{'\n'}
 			</Text>
 
-			<Text style={Styles.steps}>Your current number
-			{'\n'}
-			</Text>
+			<Text style={Styles.steps}>Your current number</Text>
+			<View style={Styles.smBreak2}></View>
 			<Text style={Styles.blueTxt}>{this.state.recipient}
 			{'\n'}
 			{'\n'}
@@ -93,13 +92,11 @@ export default class Settings extends React.Component {
 			<View style={Styles.smBreak2}></View>
 
 			<View style={Styles.setInpBtnCont}>
-			 <TextInput
-					style={Styles.setInpt}
-					keyboardType='number-pad'
-					returnKeyType='done'
-					placeholder='xxx-xxx-xxxx'
-					/>
-
+				
+			 <View style={Styles.contNum}>
+				 <Text style={Styles.steps}>1 (604) 330-2056</Text>
+			 </View>
+			 
 				<TouchableOpacity style={Styles.btn}>
 				<Image
 		  		source={require("./imgs/copyw.png")}

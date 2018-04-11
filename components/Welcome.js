@@ -69,7 +69,7 @@ export default class Welcome extends React.Component {
 
 				<Text style={Styles.steps1}>Step 1)
 				{'\n'}
-				Enter Your Phone Number
+				Enter your phone number below
 				</Text>
 				
 				<View style={Styles.smBreak2}></View>

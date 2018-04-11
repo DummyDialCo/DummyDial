@@ -248,6 +248,18 @@ $greybg: #F6F6F6;
 	padding-left: 1rem;
 }
 
+.contNum {
+	height: 2.6rem;
+	display: flex;
+	justify-content: center;
+	flexGrow: 1;
+	background-color: $white;
+	border-radius: .5rem;
+	box-shadow: .1rem .3rem .1rem $lightgrey;
+	margin-right: .5rem;
+	padding-left: 1rem;
+}
+
 .setBtnsCont {
 	width: 20rem;
 	height: 3rem;
