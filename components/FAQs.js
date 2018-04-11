@@ -22,8 +22,9 @@ export default class FAQs extends React.Component {
 		<View style={Styles.all}>
 
         	<View style={Styles.tBan} onPress={()=>{navigate("Settings", {recipient: this.state.recipient})}}>
-			<Text></Text>
-			<Text></Text>
+			<Text>
+			{'\n'}
+			</Text>
 			<Text style={Styles.tBanTitle}>FAQs</Text>
 			</View>
 

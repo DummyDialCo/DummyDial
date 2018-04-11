@@ -101,16 +101,19 @@ $greybg: #F6F6F6;
 
 .inpt {
 	width: 18rem;
-	height: 3rem;
+	height: 2.6rem;
+	display: flex;
 	color: $blue;
-	font-size: 1.3rem;
-	border-radius: .5rem;
 	background-color: $white;
-	text-align: center;
+	font-size: 1.1rem;
+	border-radius: .5rem;
 	box-shadow: .1rem .3rem .1rem $lightgrey;
+	margin-right: .5rem;
+	padding-left: 1rem;
 }
 
 .star {
+	width: 18rem;
 	color: $grey;
 	font-size: .9rem;
 }

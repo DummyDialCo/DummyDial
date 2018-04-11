@@ -63,8 +63,9 @@ export default class TextPage extends React.Component {
       	<View style={Styles.all}>
 
         <View style={Styles.tBan}>
-        <Text></Text>
-		<Text></Text>
+        <Text>
+		{'\n'}
+		</Text>
         <Text style={Styles.tBanTitle}>Text Body</Text>
         </View>
 

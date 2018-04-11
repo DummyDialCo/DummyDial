@@ -41,8 +41,9 @@ export default class Settings extends React.Component {
 		<View style={Styles.all}>
 
 		<View style={Styles.tBan}>
-			<Text></Text>
-			<Text></Text>
+			<Text>
+			{'\n'}
+			</Text>
 			<Text style={Styles.tBanTitle}>Settings</Text>
 			</View>
 

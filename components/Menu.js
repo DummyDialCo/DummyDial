@@ -53,8 +53,9 @@ export default class Menu extends React.Component {
       <View style={Styles.all}>
 
         <View style={Styles.tBan}>
-        <Text></Text>
-		<Text></Text>
+        <Text>
+		{'\n'}
+		</Text>
         <Text style={Styles.tBanTitle}>Main Menu</Text>
         </View>
 

@@ -40,12 +40,15 @@ export default class Welcome extends React.Component {
 			<View style={Styles.all}>
 			
 			<View style={Styles.tBan}>
-			<Text></Text>
-			<Text></Text>
+			<Text>
+			{'\n'}
+			</Text>
 			<Text style={Styles.tBanTitle}>Welcome</Text>
 			</View>
 			
 				<Text>
+				{'\n'}
+				{'\n'}
 				{'\n'}
 				{'\n'}
 				</Text>
@@ -62,15 +65,7 @@ export default class Welcome extends React.Component {
 
 				<Text style={Styles.title}>DummyDial</Text>
 
-				<Text>
-				{'\n'}
-                {'\n'}
-				</Text>
-
-				<Text style={Styles.steps1}>Step 1)
-				{'\n'}
-				Enter your phone number below
-				</Text>
+				<View style={Styles.smBreak}></View>
 				
 				<View style={Styles.smBreak2}></View>
 
@@ -79,7 +74,7 @@ export default class Welcome extends React.Component {
 						style={Styles.inpt}
 						keyboardType='number-pad'
 						returnKeyType='done'
-						placeholder='xxx-xxx-xxxx'
+						placeholder='Enter your phone number'
 						onChangeText={(recipient)=>this.setState({recipient})}
 						value={this.state.recipient}
 					/>
