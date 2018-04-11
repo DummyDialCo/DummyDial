@@ -72,6 +72,7 @@ export default class Settings extends React.Component {
 					returnKeyType='done'
 					placeholder='xxx-xxx-xxxx'
 					onChangeText={(recipient)=>this.setState({recipient})}
+					onSubmitEditing={this.changePhoneNumber}
 				/>
 
 				<TouchableOpacity style={Styles.btn} onPress={this.changePhoneNumber}>

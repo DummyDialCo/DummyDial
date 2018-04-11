@@ -14,13 +14,17 @@ export default class Menu extends React.Component {
     }
   }
 
+  sendCall = () => {
+		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+	}
+
 
   render() {
     const { navigate } = this.props.navigation;
 
     return (
       <View style={Styles.all}>
-		
+
         <View style={Styles.tBan}>
         <Text></Text>
 		<Text></Text>
@@ -41,9 +45,9 @@ export default class Menu extends React.Component {
 		{"\n"}
 		</Text>
 
-        <TouchableOpacity style={Styles.btnM}>
+        <TouchableOpacity style={Styles.btnM} onPress={this.sendCall}>
           <View style={Styles.btnMCont}>
-            <Image 
+            <Image
 			source={require("./imgs/phonew.png")}
 			style={{width: 40, height: 43}}
 			/>
@@ -55,59 +59,59 @@ export default class Menu extends React.Component {
 
         <TouchableOpacity style={Styles.btnM}>
           <View style={Styles.btnMCont}>
-            <Image 
+            <Image
 		  	source={require("./imgs/textw.png")}
 			style={{width: 43, height: 34}}
 			/>
             <Text style={Styles.btnMTxt}>Text Now</Text>
           </View>
         </TouchableOpacity>
-			
+
 
         <View style={Styles.navBar}>
-			
+
           <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
-			
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 23, height: 25}}
 			source={require("./imgs/sphoneb.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
-			  
+
           </TouchableOpacity>
-			  
+
           <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 32, height: 25}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
-			
+
           </TouchableOpacity>
-			
+
           <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
-			  
+
 			<View style={Styles.navBarBtn}>
-			<Image 
+			<Image
 			style={{width: 25, height: 25}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>
-			
+
           </TouchableOpacity>
         </View>
       </View>
