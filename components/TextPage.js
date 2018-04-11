@@ -83,8 +83,9 @@ export default class TextPage extends React.Component {
 
         <TextInput
 			style={Styles.inptTxtMsg}
-		    returnKeyType="done"
-			numberOfLines = {4}
+			multiline={true}
+			numberOfLines={4}
+			blurOnSubmit={true}
 			placeholder='eg. Emergency come now!'
 			ref={(el)=>{this.myMsg=el;}}
 			onChangeText={(myMsg)=>this.setState({myMsg})}
