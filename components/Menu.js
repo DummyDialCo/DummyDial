@@ -10,12 +10,39 @@ export default class Menu extends React.Component {
     super(props);
 
     this.state = {
-      recipient: this.props.recipient
+      recipient: this.props.recipient,
+      myMsg:""
     }
   }
 
+
+  componentDidMount(){
+    AsyncStorage.getItem('storeTheMsg').then((value)=>{
+      if(value){
+  			console.log('You have a stored message', value);
+        this.setState({
+          myMsg:value
+        });
+      } else {
+        this.setState({
+          myMsg:"DEFAULT MESSAGE CHANGE LATER"
+        });
+      }
+		}).catch((error)=>{
+			console.log(error);
+		});
+
+    console.log(this.state.myMsg);
+  }
+
+
   sendCall = () => {
 		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+	}
+
+
+  sendText = () => {
+    fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
 
 
@@ -57,7 +84,8 @@ export default class Menu extends React.Component {
 
         <View style={Styles.smBreak}></View>
 
-        <TouchableOpacity style={Styles.btnM}>
+
+        <TouchableOpacity style={Styles.btnM} onPress={this.sendText}>
           <View style={Styles.btnMCont}>
             <Image
 		  	source={require("./imgs/textw.png")}
