@@ -14,15 +14,9 @@ export default class Instant extends React.Component {
       myMsg:""
     }
   }
-
-
-  sendCall = () => {
-		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
-	}
-
-
-  sendText = () => {
-    // Determines if there is already a stored message
+    
+    componentDidMount(){
+         // Determines if there is already a stored message
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
   			console.log('You have a stored message', value);
@@ -37,7 +31,34 @@ export default class Instant extends React.Component {
 		}).catch((error)=>{
 			console.log(error);
 		});
-    console.log(this.state.myMsg);
+        
+        // Determines if there is already a stored message
+    AsyncStorage.getItem('storeTheMsg').then((value)=>{
+      if(value){
+  			console.log('You have a stored message', value);
+        this.setState({
+          myMsg:value
+        });
+      } else {
+        this.setState({
+          myMsg:"Emergency, come now!"
+        });
+      }
+		}).catch((error)=>{
+			console.log(error);
+		}); 
+        
+    }
+
+
+  sendCall = () => {
+		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+	}
+
+
+  sendText = () => {
+   
+  
     fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
 
