@@ -262,6 +262,16 @@ $greybg: #F6F6F6;
 	padding-left: 1rem;
 }
 
+.setInptValid {
+	@extend .setInpt;
+	border: 0.2rem solid green;
+}
+
+.setInptInvalid {
+	@extend .setInpt;
+	border: 0.2rem solid red;
+}
+
 .contNum {
 	height: 2.6rem;
 	display: flex;
