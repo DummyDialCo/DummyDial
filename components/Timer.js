@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image } fr
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
-import TimerCountdown from 'react-native-timer-countdown';
+import CircularProgressDisplay from 'react-native-progress-circular';
 
 export default class Timer extends React.Component {
 
@@ -13,9 +13,31 @@ export default class Timer extends React.Component {
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:5,
-			secsRemaining:2
+			secsRemaining:2,
+			progress:0
 		}
 	}
+
+	getInitialState(){
+
+    return { progress:0};
+  }
+	componentDidMount(){
+    // automatically increment the progress
+    var time = 150;
+    var count = 0;
+    setInterval(() => {
+      if (++count < 15){
+        return;
+      }
+      var progress = this.state.progress + Math.round((Math.random() * 4));
+      if (progress >100) {
+        progress = 0;
+        count = 0;
+      }
+      this.setState({progress: progress});
+    }, time);
+  }
 
 	// setMins = () => {
 	//   this.setState({
@@ -42,6 +64,15 @@ export default class Timer extends React.Component {
 
 		const {navigate} = this.props.navigation;
 
+		var progress = this.state.progress;
+    // displayed inside of the component
+    var innerDisplay = (
+      <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
+      alignItems: 'center', backgroundColor: '#036282'}}>
+        <Text style={{fontSize: 30}}>{progress}</Text>
+      </View>
+    );
+
 		return (
 			<View style={Styles.all}>
 
@@ -64,58 +95,38 @@ export default class Timer extends React.Component {
 			{'\n'}
 			</Text>
 
-			<View style={Styles.timerInpCont}>
-			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='hrInput'
-				keyboardType='numeric'
-				returnKeyType='done'
-				/>
 
-			<Text style={Styles.timerInp}>:</Text>
+      <View>
+        <CircularProgressDisplay.Hollow size={200}
+        progressBarWidth={20} outlineWidth={0} outlineColor={'black'}
+        backgroundColor={'orange'} progressBarColor={'#02BAF7'}
+        innerComponent={innerDisplay} rotate={((progress/100)*360)}/>
+      </View>
 
-			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='minInput'
-				keyboardType='numeric'
-				returnKeyType='done'
-				/>
 
-			<Text style={Styles.timerInp}>:</Text>
-
-			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='secInput'
-				keyboardType='numeric'
-				returnKeyType='done'
-				/>
-			</View>
-
-        	<Text>
+			<Text>
+			{'\n'}
 			{'\n'}
 			</Text>
 
 			<View style={Styles.BtnCont}>
-			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-			 	<Image
-				source={require("./imgs/phonew.png")}
-				style={{width: 19, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Call</Text>
-			</TouchableOpacity>
+				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+				 	<Image
+					source={require("./imgs/phonew.png")}
+					style={{width: 19, height: 21}}
+					/>
+					<Text style={Styles.btnTTxt}>Call</Text>
+				</TouchableOpacity>
 
-			<View style={Styles.smBreak3}></View>
+				<View style={Styles.smBreak3}></View>
 
-			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-				<Image
-		  		source={require("./imgs/textw.png")}
-				style={{width: 27, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Text</Text>
-			</TouchableOpacity>
+				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+					<Image
+			  		source={require("./imgs/textw.png")}
+					style={{width: 27, height: 21}}
+					/>
+					<Text style={Styles.btnTTxt}>Text</Text>
+				</TouchableOpacity>
 			</View>
 
 		<View style={Styles.navBar}>
