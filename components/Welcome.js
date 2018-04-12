@@ -49,25 +49,23 @@ export default class Welcome extends React.Component {
 				<Text>
 				{'\n'}
 				{'\n'}
-				{'\n'}
-				{'\n'}
 				</Text>
 
 				<KeyboardAvoidingView>
 				<View style={Styles.all}>
 
 				<Image
-				source={require('./imgs/sphoneb.png')}
-				style={{width: 56, height: 60}}
+				source={require('./imgs/DDLogo.png')}
 				/>
 
 				<View style={Styles.smBreak2}></View>
-
+    
 				<Text style={Styles.title}>DummyDial</Text>
-
+                <Text> </Text>
 				<View style={Styles.smBreak}></View>
 
 				<View style={Styles.smBreak2}></View>
+                
 
 				<View style={Styles.inptIcnCont}>
 					<TextInput
@@ -85,8 +83,9 @@ export default class Welcome extends React.Component {
 
 				<Text>
                 {'\n'}
+                <Text> </Text>
+                <Text> </Text>
                 </Text>
-
                  <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
 					<Text style={Styles.btnTxt}>Submit</Text>
 				 </TouchableOpacity>
@@ -94,6 +93,7 @@ export default class Welcome extends React.Component {
                 <Text>
 				{'\n'}
 				{'\n'}
+                {'\n'}
 				</Text>
 
 				<TouchableOpacity style={Styles.qInfo}>
