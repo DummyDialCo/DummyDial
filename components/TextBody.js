@@ -17,12 +17,11 @@ export default class TextBody extends React.Component {
 	}
 
 	componentDidMount = () => {
-		console.log("comp mounted");
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
-      console.log("value", value);
       if (value !== null){
-        console.log(value);
+				// Logs out the current message if there is one
+        console.log("Current stored text body:",value);
         this.setState({
           myMsg:value
         });
@@ -37,7 +36,8 @@ export default class TextBody extends React.Component {
 		Keyboard.dismiss();
 		// saving text message to AsyncStorage
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
-       console.log("resp", value);
+			// Logs out the message which you just saved
+       console.log("Saved text body:", value);
      }).catch((err)=>{
        console.log(err);
 		 });
@@ -50,7 +50,7 @@ export default class TextBody extends React.Component {
 
 		// saving text message to AsyncStorage
 		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
-       console.log("resp", value);
+       console.log("Saved text body:", value);
      }).catch((err)=>{
        console.log(err);
 		 });
