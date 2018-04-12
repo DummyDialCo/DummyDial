@@ -18,10 +18,12 @@ export default class Timer extends React.Component {
 		}
 	}
 
-	getInitialState(){
 
+	getInitialState(){
     return { progress:0};
   }
+
+
 	componentDidMount(){
     // automatically increment the progress
     var time = 150;
@@ -39,18 +41,6 @@ export default class Timer extends React.Component {
     }, time);
   }
 
-	// setMins = () => {
-	//   this.setState({
-	//     minsRemaining:parseInt(this.refs.minInput.value)
-	//   });
-	// }
-	//
-	// setSecs = () => {
-	//   this.setState({
-	//     secsRemaining:parseInt(this.refs.secInput.value)
-	//   });
-	// }
-
 
 	startTimer = () => {
 		this.setState({
@@ -64,12 +54,10 @@ export default class Timer extends React.Component {
 
 		const {navigate} = this.props.navigation;
 
-		var progress = this.state.progress;
-    // displayed inside of the component
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
-      alignItems: 'center', backgroundColor: '#036282'}}>
-        <Text style={{fontSize: 30}}>{progress}</Text>
+      	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
+        <Text style={{fontSize: 30}}>{this.state.progress}</Text>
       </View>
     );
 
@@ -97,10 +85,14 @@ export default class Timer extends React.Component {
 
 
       <View>
-        <CircularProgressDisplay.Hollow size={200}
-        progressBarWidth={20} outlineWidth={0} outlineColor={'black'}
-        backgroundColor={'orange'} progressBarColor={'#02BAF7'}
-        innerComponent={innerDisplay} rotate={((progress/100)*360)}/>
+        <CircularProgressDisplay.Hollow
+					size={200}
+	        progressBarWidth={10}
+	        backgroundColor={'#a5a5a5'}
+					progressBarColor={'#02BAF7'}
+	        innerComponent={innerDisplay}
+					rotate={((this.state.progress/100)*360)}
+				/>
       </View>
 
 
