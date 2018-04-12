@@ -20,6 +20,7 @@ export default class Welcome extends React.Component {
 		return regex.test(phoneNum);
 	}
 
+
 	finishSignup = () => {
 
 		const { navigate } = this.props.navigation;
@@ -36,6 +37,7 @@ export default class Welcome extends React.Component {
 			});
 		}
 	}
+
 
 	render() {
 		return (
@@ -75,7 +77,16 @@ export default class Welcome extends React.Component {
 						keyboardType='number-pad'
 						returnKeyType='done'
 						placeholder='Enter your phone number'
-						onChangeText={(recipient)=>this.setState({recipient})}
+						onChangeText={
+							(recipient)=>{
+								this.setState({recipient});
+								if(this.validatePhoneNum(recipient)){
+									this.setState({
+										inputFormStatus:Styles.inptValid
+									});
+								}
+							}
+						}
 					/>
 				</View>
 
