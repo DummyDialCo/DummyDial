@@ -29,13 +29,12 @@ export default class Welcome extends React.Component {
 			AsyncStorage.setItem('storeTheNum', this.state.recipient).catch((err)=>{
 				console.log(err);
 			});
-			navigate('Instant', { recipient: this.state.recipient});
+			navigate('Home', { recipient: this.state.recipient});
 		} else {
 			this.setState({
 				inputFormStatus:Styles.inptInvalid
 			});
 		}
-
 	}
 
 	render() {
