@@ -3,7 +3,7 @@ import { StyleSheet, Text, View, TextInput, Button, AsyncStorage } from 'react-n
 import { StackNavigator } from "react-navigation";
 
 import Welcome from "./Welcome";
-import Menu from "./Menu";
+import Instant from "./Instant";
 
 export default class Home extends React.Component {
 
