@@ -61,7 +61,7 @@ export default class Instant extends React.Component {
         <Text>
 		{'\n'}
 		</Text>
-        <Text style={Styles.tBanTitle}>Main Menu</Text>
+        <Text style={Styles.tBanTitle}>Instant</Text>
         </View>
 
         <Text>
