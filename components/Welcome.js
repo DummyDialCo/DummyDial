@@ -10,7 +10,8 @@ export default class Welcome extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:null
+			recipient:null,
+			inputFormStatus:Styles.inpt
 		}
 	}
 
@@ -28,11 +29,13 @@ export default class Welcome extends React.Component {
 			AsyncStorage.setItem('storeTheNum', this.state.recipient).catch((err)=>{
 				console.log(err);
 			});
+			navigate('Instant', { recipient: this.state.recipient});
 		} else {
-			// TODO Change this to a notification for the user
-			throw 'INVALID PHONE NUMBER';
+			this.setState({
+				inputFormStatus:Styles.inptInvalid
+			});
 		}
-		navigate('Instant', { recipient: this.state.recipient});
+
 	}
 
 	render() {
@@ -59,17 +62,17 @@ export default class Welcome extends React.Component {
 				/>
 
 				<View style={Styles.smBreak2}></View>
-    
+
 				<Text style={Styles.title}>DummyDial</Text>
                 <Text> </Text>
 				<View style={Styles.smBreak}></View>
 
 				<View style={Styles.smBreak2}></View>
-                
+
 
 				<View style={Styles.inptIcnCont}>
 					<TextInput
-						style={Styles.inpt}
+						style={this.state.inputFormStatus}
 						keyboardType='number-pad'
 						returnKeyType='done'
 						placeholder='Enter your phone number'
