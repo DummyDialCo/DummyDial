@@ -112,6 +112,12 @@ $greybg: #F6F6F6;
 	padding-left: 1rem;
 }
 
+.inptInvalid {
+	@extend .inpt;
+	border-color: red;
+	background-color: red;
+}
+
 .star {
 	width: 18rem;
 	color: $grey;
