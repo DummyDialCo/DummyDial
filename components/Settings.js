@@ -49,6 +49,9 @@ export default class Settings extends React.Component {
 
          	<Text>
 			{'\n'}
+        	{'\n'}
+        	{'\n'}
+        	{'\n'}
 			</Text>
 
 		<View style={Styles.settingsInpCont}>
