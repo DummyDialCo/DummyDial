@@ -10,18 +10,19 @@ export default class Instant extends React.Component {
     super(props);
 
     this.state = {
-      recipient:null,
+      recipient:this.props.recipient,
       myMsg:""
     }
   }
 
 
-  componentDidMount(){
+  sendCall = () => {
+		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+	}
 
-    AsyncStorage.getItem('storeTheNum').then((value)=>{
-      this.setState({ recipient: value });
-    }).catch(err=>console.log(err));
 
+  sendText = () => {
+    // Determines if there is already a stored message
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
   			console.log('You have a stored message', value);
@@ -36,17 +37,7 @@ export default class Instant extends React.Component {
 		}).catch((error)=>{
 			console.log(error);
 		});
-
     console.log(this.state.myMsg);
-  }
-
-
-  sendCall = () => {
-		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
-	}
-
-
-  sendText = () => {
     fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
 
