@@ -7,7 +7,7 @@ import Styles from './components/scss/Styles.scss';
 
 import Welcome from './components/Welcome';
 import Home from './components/Home';
-import Menu from './components/Menu';
+import Instant from './components/Instant';
 import CallPage from './components/CallPage';
 import TextBody from './components/TextBody';
 import Timer from './components/Timer';
