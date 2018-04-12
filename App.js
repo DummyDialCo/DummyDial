@@ -8,7 +8,6 @@ import Styles from './components/scss/Styles.scss';
 import Welcome from './components/Welcome';
 import Home from './components/Home';
 import Instant from './components/Instant';
-import CallPage from './components/CallPage';
 import TextBody from './components/TextBody';
 import Timer from './components/Timer';
 import Settings from './components/Settings';
@@ -20,7 +19,6 @@ const DummyDial = StackNavigator({
   Home: { screen: Home },
   Welcome: { screen: Welcome },
   Instant: { screen: Instant },
-  CallPage: { screen: CallPage },
   TextBody: { screen: TextBody },
   Timer: { screen: Timer },
   Settings: { screen: Settings },
