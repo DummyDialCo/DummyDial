@@ -4,7 +4,7 @@ Keyboard } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
-export default class TextPage extends React.Component {
+export default class TextBody extends React.Component {
 
 	constructor(props){
 		super(props);
@@ -57,7 +57,7 @@ export default class TextPage extends React.Component {
 
 		fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
-	
+
 	componentWillMount() {
 		this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide',this._keyboardDidHide);
     }
@@ -83,10 +83,10 @@ export default class TextPage extends React.Component {
 		</Text>
         <Text style={Styles.tBanTitle}>Text Body</Text>
         </View>
-			
+
   		<View behavior={this.state.behavior}>
     	<View>
-			
+
         <Text>
 		{'\n'}
 		{'\n'}
@@ -112,7 +112,7 @@ export default class TextPage extends React.Component {
 			value={this.state.myMsg}
 			onSubmitEditing={this.saveText}
 			/>
-			
+
 		</View>
 
         <Text>
@@ -140,7 +140,7 @@ export default class TextPage extends React.Component {
 		</View>
 	  </View>
     </View>
-		
+
 
 		<View style={Styles.navBar}>
 

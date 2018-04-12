@@ -4,7 +4,7 @@ import { StackNavigator } from "react-navigation";
 
 import Styles from "./scss/Styles.scss";
 
-export default class Menu extends React.Component {
+export default class Instant extends React.Component {
 
   constructor(props){
     super(props);
@@ -115,7 +115,7 @@ export default class Menu extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image

@@ -47,7 +47,7 @@ export default class CallPage extends React.Component {
           <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
             <Text>Instant</Text>
           </TouchableOpacity>
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
             <Text>Text Body</Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>

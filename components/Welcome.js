@@ -32,7 +32,7 @@ export default class Welcome extends React.Component {
 			// TODO Change this to a notification for the user
 			throw 'INVALID PHONE NUMBER';
 		}
-		navigate('Menu', { recipient: this.state.recipient});
+		navigate('Instant', { recipient: this.state.recipient});
 	}
 
 	render() {

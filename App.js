@@ -9,7 +9,7 @@ import Welcome from './components/Welcome';
 import Home from './components/Home';
 import Menu from './components/Menu';
 import CallPage from './components/CallPage';
-import TextPage from './components/TextPage';
+import TextBody from './components/TextBody';
 import Timer from './components/Timer';
 import Settings from './components/Settings';
 import FAQs from './components/FAQs';
@@ -19,9 +19,9 @@ import AddContact from './components/AddContact';
 const DummyDial = StackNavigator({
   Home: { screen: Home },
   Welcome: { screen: Welcome },
-  Menu: { screen: Menu },
+  Instant: { screen: Instant },
   CallPage: { screen: CallPage },
-  TextPage: { screen: TextPage },
+  TextBody: { screen: TextBody },
   Timer: { screen: Timer },
   Settings: { screen: Settings },
   FAQs: { screen: FAQs },

@@ -19,11 +19,11 @@ export default class Home extends React.Component {
 
     // Retreives and determines if the user has already signed up
     AsyncStorage.getItem("storeTheNum").then((value)=>{
-			
+
       // Evaluates whether or not a phone number was entered in Welcome.js, and displays comp accordingly
       if(value){
         this.setState({
-          display: <Menu navigation={this.props.navigation} recipient={value} />
+          display: <Instant navigation={this.props.navigation} recipient={value} />
         });
       } else {
         this.setState({

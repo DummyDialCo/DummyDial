@@ -131,7 +131,7 @@ export default class Timer extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image

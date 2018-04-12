@@ -86,11 +86,11 @@ export default class Settings extends React.Component {
 			<View style={Styles.smBreak2}></View>
 
 			<View style={Styles.setInpBtnCont}>
-				
+
 			 <View style={Styles.contNum}>
 				 <Text style={Styles.steps}>1 (604) 330-2056</Text>
 			 </View>
-			 
+
 				<TouchableOpacity style={Styles.btn}>
 				<Image
 		  		source={require("./imgs/copyw.png")}
@@ -148,7 +148,7 @@ export default class Settings extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
