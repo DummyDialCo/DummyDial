@@ -111,7 +111,7 @@ export default class TextBody extends React.Component {
 			blurOnSubmit={true}
 			underlineColorAndroid='transparent'
           	returnKeyType={'default'}
-			placeholder='eg. Emergency come now!'
+			placeholder='eg. "Emergency, come home now!" '
 			ref={(el)=>{this.myMsg=el;}}
 			onChangeText={(myMsg)=>this.setState({myMsg})}
 			value={this.state.myMsg}
