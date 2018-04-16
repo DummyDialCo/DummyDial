@@ -79,13 +79,12 @@ export default class Instant extends React.Component {
         <Text>
 		{"\n"}
 		{"\n"}
-		{"\n"}
-		{"\n"}
 		</Text>
-        <Text style={Styles.instTitle}> Instantly Receive a Call or Text! </Text>
+        <Text> </Text>
+        <Text style={Styles.steps}> Instantly Receive a Call or Text! </Text>
         <Text>
 		</Text>
-        <Text style={Styles.usrPhnNum}>{this.state.recipient}</Text>
+        <Text style={Styles.blueTxt}>{this.state.recipient}</Text>
 
         <Text>
         {"\n"}

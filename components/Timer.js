@@ -72,7 +72,6 @@ export default class Timer extends React.Component {
         	</View>
 
         	<Text>
-			{'\n'}
             {'\n'}
             {'\n'}
 			</Text>
@@ -88,12 +87,12 @@ export default class Timer extends React.Component {
 
       <View>
         <CircularProgressDisplay.Hollow
-					size={200}
+            size={200}
 	        progressBarWidth={10}
-	        backgroundColor={'#a5a5a5'}
-					progressBarColor={'#02BAF7'}
+	        backgroundColor={'#ffffff'}
+            progressBarColor={'#02BAF7'}
 	        innerComponent={innerDisplay}
-					rotate={((this.state.progress/100)*360)}
+            rotate={((this.state.progress/100)*360)}
 				/>
       </View>
 

@@ -1,7 +1,7 @@
 $blue: #5CACEE;
 $grey: #AAA;
 $lightgrey: #CECECE;
-$darkgrey: #a4a4a4;
+$darkgrey: #919191;
 $white: #FFF;
 $greybg: #F6F6F6;
 
@@ -73,7 +73,7 @@ $greybg: #F6F6F6;
 }
 
 .steps1 {
-	color: $grey;
+	color: $darkgrey;
 	font-size: 1.1rem;
 	text-align: center;
 }
@@ -164,17 +164,6 @@ $greybg: #F6F6F6;
 	font-size: 1.2rem;
 }
 
-.usrPhnNum {
-	color: $blue;
-	font-size: 1.2rem;
-}
-
-.instTitle {
-    color: $darkgrey;
-	font-size: 1.3rem;
-    
-}
-
 .btnM {
 	width: 16rem;
 	height: 5.5rem;
@@ -228,6 +217,7 @@ $greybg: #F6F6F6;
 	border-radius: 10rem;
 	border-color: $white;
 }
+
 
 .timerInp {
 	color: $grey;

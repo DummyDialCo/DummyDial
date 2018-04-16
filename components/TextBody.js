@@ -90,9 +90,7 @@ export default class TextBody extends React.Component {
         <Text>
 		{'\n'}
 		{'\n'}
-		{'\n'}
         {'\n'}
-            
 		</Text>
 
 		<View style={Styles.txtMsgInpCont}>

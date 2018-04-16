@@ -53,7 +53,6 @@ export default class Settings extends React.Component {
 			</View>
 
          	<Text>
-			{'\n'}
         	{'\n'}
         	{'\n'}
         	{'\n'}
