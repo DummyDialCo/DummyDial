@@ -83,11 +83,13 @@ export default class Instant extends React.Component {
 		{"\n"}
 		{"\n"}
 		</Text>
-
+        <Text style={Styles.instTitle}> Instantly Receive a Call or Text! </Text>
+        <Text>
+		</Text>
         <Text style={Styles.usrPhnNum}>{this.state.recipient}</Text>
 
         <Text>
-		{"\n"}
+        {"\n"}
 		</Text>
 
         <TouchableOpacity style={Styles.btnM} onPress={this.sendCall}>
@@ -120,7 +122,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 27, height: 30}}
 			source={require("./imgs/sphoneb.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -131,7 +133,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -142,7 +144,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -153,7 +155,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

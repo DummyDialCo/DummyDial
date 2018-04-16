@@ -61,7 +61,7 @@ export default class Settings extends React.Component {
 
 		<View style={Styles.settingsInpCont}>
 
-		<Text style={Styles.steps}>Change or update your number here
+		<Text style={Styles.steps}>Change or update your phone number
 			</Text>
 
 			<View style={Styles.smBreak2}></View>
@@ -105,7 +105,7 @@ export default class Settings extends React.Component {
 			<View style={Styles.setInpBtnCont}>
 
 			 <View style={Styles.contNum}>
-				 <Text style={Styles.steps}>1 (604) 330-2056</Text>
+				 <Text style={Styles.setPhnNum}>1(604)3302056</Text>
 			 </View>
 
 				<TouchableOpacity style={Styles.btn}>
@@ -158,7 +158,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 28, height: 30}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -169,7 +169,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -180,7 +180,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -191,7 +191,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgearb.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

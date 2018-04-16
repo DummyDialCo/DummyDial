@@ -91,10 +91,15 @@ export default class TextBody extends React.Component {
 		{'\n'}
 		{'\n'}
 		{'\n'}
+        {'\n'}
+            
 		</Text>
 
 		<View style={Styles.txtMsgInpCont}>
-		<Text style={Styles.steps}>Create content of text body below
+		<Text style={Styles.steps}> Enter Text Message Content Below
+		</Text>
+            
+        <Text>
 		</Text>
 
 		<View style={Styles.smBreak2}></View>
@@ -148,7 +153,7 @@ export default class TextBody extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 28, height: 30}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -159,7 +164,7 @@ export default class TextBody extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stextb.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -170,7 +175,7 @@ export default class TextBody extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -181,7 +186,7 @@ export default class TextBody extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

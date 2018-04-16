@@ -1,7 +1,7 @@
 $blue: #5CACEE;
 $grey: #AAA;
 $lightgrey: #CECECE;
-$darkgrey: #a5a5a5;
+$darkgrey: #848484;
 $white: #FFF;
 $greybg: #F6F6F6;
 
@@ -47,7 +47,7 @@ $greybg: #F6F6F6;
 .navTxt {
 	color: $grey;
 	padding-top: .5rem;
-	font-size: .9rem;
+	font-size: .95rem;
 }
 
 .blueTxt {
@@ -79,8 +79,8 @@ $greybg: #F6F6F6;
 }
 
 .steps {
-	color: $grey;
-	font-size: 1.1rem;
+	color: $darkgrey;
+	font-size: 1.2rem;
 	text-align: left;
 }
 
@@ -165,8 +165,14 @@ $greybg: #F6F6F6;
 }
 
 .usrPhnNum {
-	color: $grey;
-	font-size: 2rem;
+	color: $blue;
+	font-size: 1.2rem;
+}
+
+.instTitle {
+    color: $darkgrey;
+	font-size: 1.3rem;
+    
 }
 
 .btnM {
@@ -179,6 +185,7 @@ $greybg: #F6F6F6;
 	border-radius: 1rem;
 	box-shadow: .1rem .3rem .1rem $lightgrey;
 }
+
 
 .btnMCont {
 	display: flex;
@@ -295,6 +302,12 @@ $greybg: #F6F6F6;
 	padding: 1rem;
 	border-radius: .5rem;
 	box-shadow: .1rem .3rem .1rem $lightgrey;
+}
+
+.setPhnNum {
+    color: $grey;
+    font-size: 1.1rem;
+    
 }
 
 .setBtnL {
