@@ -13,8 +13,9 @@ export default class Timer extends React.Component {
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:0,
-			secsRemaining:6,
-			progress:0
+			secsRemaining:0,
+			progress:0,
+			totalSecsRemaining:0
 		}
 	}
 
@@ -22,28 +23,18 @@ export default class Timer extends React.Component {
 	getInitialState(){
     return { progress:0};
   }
-
-
-	componentDidMount(){
-    // automatically increment the progress
-		// var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
-    // setInterval(() => {
-    //   var progress = this.state.progress + 1;
-    //   if (progress > totalSecsRemaining)
-    //     progress = 0;
-    //   this.setState({progress: progress});
-    // }, 1000);
-  }
-
+	
 
 	startTimer = () => {
-		var totalSecsRemaining = this.state.secsRemaining*1000;
+		var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
+		this.setState({totalSecsRemaining: totalSecsRemaining});
     setInterval(() => {
-			this.setState({secsRemaining: (totalSecsRemaining-1000)/1000});
 			console.log(this.state.progress);
 			totalSecsRemaining -= 1000;
+			console.log("total secs rem", (this.state.totalSecsRemaining/1000));
+			this.setState({totalSecsRemaining: totalSecsRemaining});
       var progress = this.state.progress + 1;
-      if (totalSecsRemaining < 0){
+      if (totalSecsRemaining <= 0){
 				throw "DONE";
 			}
 
@@ -59,7 +50,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.secsRemaining}</Text>
+        <Text style={{fontSize: 30}}>{this.state.totalSecsRemaining / 1000}</Text>
       </View>
     );
 
@@ -87,8 +78,18 @@ export default class Timer extends React.Component {
 			</Text>
 
 
+			<TextInput
+				returnKeyType='done'
+				keyboardType='number-pad'
+				placeholder='Minutes'
+				onChangeText={
+					(minsRemaining)=>{this.setState({minsRemaining})}
+				}
+			/>
 
 			<TextInput
+				returnKeyType='done'
+				keyboardType='number-pad'
 				placeholder='Seconds'
 				onChangeText={
 					(secsRemaining)=>{this.setState({secsRemaining})}
@@ -108,7 +109,7 @@ export default class Timer extends React.Component {
             progressBarColor={'#02BAF7'}
              easing= "linear"
 	        innerComponent={innerDisplay}
-            rotate={((this.state.progress/this.state.secsRemaining)*360)}
+            rotate={((this.state.progress/(this.state.totalSecsRemaining/1000))*180)}
 				/>
       </View>
 
