@@ -32,7 +32,7 @@ export default class Timer extends React.Component {
       if (++count < 15){
         return;
       }
-      var progress = this.state.progress + Math.round((Math.random() * 4));
+      var progress = this.state.progress + 1;
       if (progress >100) {
         progress = 0;
         count = 0;
