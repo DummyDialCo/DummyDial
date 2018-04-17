@@ -39,8 +39,9 @@ export default class Timer extends React.Component {
 				this.setState({progress: progress});
 			}
 
-      if (this.state.totalSecsRemaining < 0){
-				throw "DONE";
+      if (this.state.totalSecsRemaining === 0){
+          console.log(this.state.recipient);
+				fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
 
     }, 1000);
