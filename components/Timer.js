@@ -26,19 +26,12 @@ export default class Timer extends React.Component {
 
 	componentDidMount(){
     // automatically increment the progress
-    var time = 150;
-    var count = 0;
     setInterval(() => {
-      if (++count < 15){
-        return;
-      }
       var progress = this.state.progress + 1;
-      if (progress >100) {
+      if (progress >100)
         progress = 0;
-        count = 0;
-      }
       this.setState({progress: progress});
-    }, time);
+    }, 1000);
   }
 
 
