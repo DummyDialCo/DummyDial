@@ -12,8 +12,8 @@ export default class Timer extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
-			minsRemaining:5,
-			secsRemaining:2,
+			minsRemaining:0,
+			secsRemaining:0,
 			progress:0
 		}
 	}
@@ -26,20 +26,28 @@ export default class Timer extends React.Component {
 
 	componentDidMount(){
     // automatically increment the progress
-    setInterval(() => {
-      var progress = this.state.progress + 1;
-      if (progress >100)
-        progress = 0;
-      this.setState({progress: progress});
-    }, 1000);
+		// var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
+    // setInterval(() => {
+    //   var progress = this.state.progress + 1;
+    //   if (progress > totalSecsRemaining)
+    //     progress = 0;
+    //   this.setState({progress: progress});
+    // }, 1000);
   }
 
 
 	startTimer = () => {
-		this.setState({
-			minsRemaining: this.refs.secInput.value,
-			secsRemaining: this.refs.minInput.value
-		});
+		var totalSecsRemaining = this.state.secsRemaining*1000;
+    setInterval(() => {
+			totalSecsRemaining -= 1000;
+      var progress = this.state.progress + 1;
+      if (totalSecsRemaining === 0){
+				totalSecsRemaining = 0;
+				clearInterval();
+			}
+
+      this.setState({progress: progress});
+    }, 1000);
 	}
 
 
@@ -78,6 +86,19 @@ export default class Timer extends React.Component {
 			</Text>
 
 
+
+			<TextInput
+				placeholder='Seconds'
+				onChangeText={
+					(secsRemaining)=>{this.setState({secsRemaining})}
+				}
+			/>
+
+			<TouchableOpacity onPress={this.startTimer}>
+				<Text>Call</Text>
+			</TouchableOpacity>
+
+
       <View>
         <CircularProgressDisplay.Hollow
             size={200}
@@ -86,7 +107,7 @@ export default class Timer extends React.Component {
             progressBarColor={'#02BAF7'}
              easing= "linear"
 	        innerComponent={innerDisplay}
-            rotate={((this.state.progress/100)*360)}
+            rotate={((this.state.progress/this.state.secsRemaining)*360)}
 				/>
       </View>
 
