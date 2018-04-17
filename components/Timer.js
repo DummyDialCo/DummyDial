@@ -23,22 +23,26 @@ export default class Timer extends React.Component {
 	getInitialState(){
     return { progress:0};
   }
-	
+
 
 	startTimer = () => {
 		var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
+
 		this.setState({totalSecsRemaining: totalSecsRemaining});
-    setInterval(() => {
-			console.log(this.state.progress);
-			totalSecsRemaining -= 1000;
-			console.log("total secs rem", (this.state.totalSecsRemaining/1000));
-			this.setState({totalSecsRemaining: totalSecsRemaining});
-      var progress = this.state.progress + 1;
-      if (totalSecsRemaining <= 0){
+
+    var beginCount = setInterval(() => {
+			if(this.state.totalSecsRemaining > -1){
+				totalSecsRemaining -= 1000;
+				console.log("total secs rem", (this.state.totalSecsRemaining/1000));
+				this.setState({totalSecsRemaining: totalSecsRemaining});
+	      var progress = this.state.progress + 1;
+				this.setState({progress: progress});
+			}
+
+      if (this.state.totalSecsRemaining < 0){
 				throw "DONE";
 			}
 
-      this.setState({progress: progress});
     }, 1000);
 	}
 
@@ -96,6 +100,8 @@ export default class Timer extends React.Component {
 				}
 			/>
 
+
+
 			<TouchableOpacity onPress={this.startTimer}>
 				<Text>Call</Text>
 			</TouchableOpacity>
@@ -109,7 +115,7 @@ export default class Timer extends React.Component {
             progressBarColor={'#02BAF7'}
              easing= "linear"
 	        innerComponent={innerDisplay}
-            rotate={((this.state.progress/(this.state.totalSecsRemaining/1000))*180)}
+            rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
 				/>
       </View>
 
