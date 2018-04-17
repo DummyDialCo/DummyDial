@@ -13,7 +13,7 @@ export default class Timer extends React.Component {
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:0,
-			secsRemaining:0,
+			secsRemaining:6,
 			progress:0
 		}
 	}
@@ -39,11 +39,12 @@ export default class Timer extends React.Component {
 	startTimer = () => {
 		var totalSecsRemaining = this.state.secsRemaining*1000;
     setInterval(() => {
+			this.setState({secsRemaining: (totalSecsRemaining-1000)/1000});
+			console.log(this.state.progress);
 			totalSecsRemaining -= 1000;
       var progress = this.state.progress + 1;
-      if (totalSecsRemaining === 0){
-				totalSecsRemaining = 0;
-				clearInterval();
+      if (totalSecsRemaining < 0){
+				throw "DONE";
 			}
 
       this.setState({progress: progress});
@@ -58,7 +59,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.progress}</Text>
+        <Text style={{fontSize: 30}}>{this.state.secsRemaining}</Text>
       </View>
     );
 
