@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image, Easing } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
@@ -91,6 +91,7 @@ export default class Timer extends React.Component {
 	        progressBarWidth={10}
 	        backgroundColor={'#ffffff'}
             progressBarColor={'#02BAF7'}
+             easing= "linear"
 	        innerComponent={innerDisplay}
             rotate={((this.state.progress/100)*360)}
 				/>
