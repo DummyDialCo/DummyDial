@@ -10,7 +10,8 @@ export default class Settings extends React.Component {
 		super(props);
 
 		this.state = {
-			recipient:this.props.navigation.state.params.recipient
+			recipient:this.props.navigation.state.params.recipient,
+			inputFormStatus:Styles.setInpt
 		}
 	}
 
@@ -26,9 +27,13 @@ export default class Settings extends React.Component {
 	    AsyncStorage.setItem("storeTheNum", this.state.recipient).catch((err)=>{
 	      console.log(err);
 	    });
+			this.setState({
+				inputFormStatus:Styles.setInpt
+			});
 		} else {
-			// TODO Change this to a notification for the user
-			throw "INVALID PHONE NUMBER";
+			this.setState({
+				inputFormStatus:Styles.setInptInvalid
+			});
 		}
 	}
 
@@ -48,7 +53,6 @@ export default class Settings extends React.Component {
 			</View>
 
          	<Text>
-			{'\n'}
         	{'\n'}
         	{'\n'}
         	{'\n'}
@@ -56,18 +60,27 @@ export default class Settings extends React.Component {
 
 		<View style={Styles.settingsInpCont}>
 
-		<Text style={Styles.steps}>Change or update your number here
+		<Text style={Styles.steps}>Change or update your phone number
 			</Text>
 
 			<View style={Styles.smBreak2}></View>
 
 			<View style={Styles.setInpBtnCont}>
 			 <TextInput
-					style={Styles.setInpt}
+					style={this.state.inputFormStatus}
 					keyboardType='number-pad'
 					returnKeyType='done'
 					placeholder={this.state.recipient}
-					onChangeText={(recipient)=>this.setState({recipient})}
+					onChangeText={
+						(recipient)=>{
+							this.setState({recipient});
+							if(this.validatePhoneNum(recipient)){
+								this.setState({
+									inputFormStatus:Styles.setInptValid
+								});
+							}
+						}
+					}
 					onSubmitEditing={this.changePhoneNumber}
 				/>
 
@@ -91,7 +104,7 @@ export default class Settings extends React.Component {
 			<View style={Styles.setInpBtnCont}>
 
 			 <View style={Styles.contNum}>
-				 <Text style={Styles.steps}>1 (604) 330-2056</Text>
+				 <Text style={Styles.setPhnNum}>1(604)3302056</Text>
 			 </View>
 
 				<TouchableOpacity style={Styles.btn}>
@@ -144,7 +157,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 28, height: 30}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -155,7 +168,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -166,7 +179,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -177,7 +190,7 @@ export default class Settings extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgearb.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

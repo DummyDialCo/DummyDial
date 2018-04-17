@@ -1,9 +1,9 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image, Easing } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
-import TimerCountdown from 'react-native-timer-countdown';
+import CircularProgressDisplay from 'react-native-progress-circular';
 
 export default class Timer extends React.Component {
 
@@ -12,35 +12,55 @@ export default class Timer extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
-			minsRemaining:5,
-			secsRemaining:2
+			minsRemaining:0,
+			secsRemaining:0,
+			progress:0
 		}
 	}
 
-	// setMins = () => {
-	//   this.setState({
-	//     minsRemaining:parseInt(this.refs.minInput.value)
-	//   });
-	// }
-	//
-	// setSecs = () => {
-	//   this.setState({
-	//     secsRemaining:parseInt(this.refs.secInput.value)
-	//   });
-	// }
+
+	getInitialState(){
+    return { progress:0};
+  }
+
+
+	componentDidMount(){
+    // automatically increment the progress
+		// var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
+    // setInterval(() => {
+    //   var progress = this.state.progress + 1;
+    //   if (progress > totalSecsRemaining)
+    //     progress = 0;
+    //   this.setState({progress: progress});
+    // }, 1000);
+  }
 
 
 	startTimer = () => {
-		this.setState({
-			minsRemaining: this.refs.secInput.value,
-			secsRemaining: this.refs.minInput.value
-		});
+		var totalSecsRemaining = this.state.secsRemaining*1000;
+    setInterval(() => {
+			totalSecsRemaining -= 1000;
+      var progress = this.state.progress + 1;
+      if (totalSecsRemaining === 0){
+				totalSecsRemaining = 0;
+				clearInterval();
+			}
+
+      this.setState({progress: progress});
+    }, 1000);
 	}
 
 
 	render() {
 
 		const {navigate} = this.props.navigation;
+
+    var innerDisplay = (
+      <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
+      	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
+        <Text style={{fontSize: 30}}>{this.state.progress}</Text>
+      </View>
+    );
 
 		return (
 			<View style={Styles.all}>
@@ -53,7 +73,8 @@ export default class Timer extends React.Component {
         	</View>
 
         	<Text>
-			{'\n'}
+            {'\n'}
+            {'\n'}
 			</Text>
 
 			<Text style={Styles.steps}>Do not close app while timer is running
@@ -64,58 +85,56 @@ export default class Timer extends React.Component {
 			{'\n'}
 			</Text>
 
-			<View style={Styles.timerInpCont}>
-			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='hrInput'
-				keyboardType='numeric'
-				returnKeyType='done'
-				/>
 
-			<Text style={Styles.timerInp}>:</Text>
 
 			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='minInput'
-				keyboardType='numeric'
-				returnKeyType='done'
+				placeholder='Seconds'
+				onChangeText={
+					(secsRemaining)=>{this.setState({secsRemaining})}
+				}
+			/>
+
+			<TouchableOpacity onPress={this.startTimer}>
+				<Text>Call</Text>
+			</TouchableOpacity>
+
+
+      <View>
+        <CircularProgressDisplay.Hollow
+            size={200}
+	        progressBarWidth={10}
+	        backgroundColor={'#ffffff'}
+            progressBarColor={'#02BAF7'}
+             easing= "linear"
+	        innerComponent={innerDisplay}
+            rotate={((this.state.progress/this.state.secsRemaining)*360)}
 				/>
+      </View>
 
-			<Text style={Styles.timerInp}>:</Text>
 
-			<TextInput
-				style={Styles.timerInp}
-				placeholder='00'
-				ref='secInput'
-				keyboardType='numeric'
-				returnKeyType='done'
-				/>
-			</View>
-
-        	<Text>
+			<Text>
+			{'\n'}
 			{'\n'}
 			</Text>
 
 			<View style={Styles.BtnCont}>
-			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-			 	<Image
-				source={require("./imgs/phonew.png")}
-				style={{width: 19, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Call</Text>
-			</TouchableOpacity>
+				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+				 	<Image
+					source={require("./imgs/phonew.png")}
+					style={{width: 19, height: 21}}
+					/>
+					<Text style={Styles.btnTTxt}>Call</Text>
+				</TouchableOpacity>
 
-			<View style={Styles.smBreak3}></View>
+				<View style={Styles.smBreak3}></View>
 
-			<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
-				<Image
-		  		source={require("./imgs/textw.png")}
-				style={{width: 27, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Text</Text>
-			</TouchableOpacity>
+				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+					<Image
+			  		source={require("./imgs/textw.png")}
+					style={{width: 27, height: 21}}
+					/>
+					<Text style={Styles.btnTTxt}>Text</Text>
+				</TouchableOpacity>
 			</View>
 
 		<View style={Styles.navBar}>
@@ -124,7 +143,7 @@ export default class Timer extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 28, height: 30}}
 			source={require("./imgs/sphone.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -135,7 +154,7 @@ export default class Timer extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -146,7 +165,7 @@ export default class Timer extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stimeb.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -157,7 +176,7 @@ export default class Timer extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

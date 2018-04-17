@@ -10,18 +10,13 @@ export default class Instant extends React.Component {
     super(props);
 
     this.state = {
-      recipient:null,
+      recipient:this.props.recipient,
       myMsg:""
     }
   }
-
-
-  componentDidMount(){
-
-    AsyncStorage.getItem('storeTheNum').then((value)=>{
-      this.setState({ recipient: value });
-    }).catch(err=>console.log(err));
-
+    
+    componentDidMount(){
+         // Determines if there is already a stored message
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
   			console.log('You have a stored message', value);
@@ -36,9 +31,24 @@ export default class Instant extends React.Component {
 		}).catch((error)=>{
 			console.log(error);
 		});
-
-    console.log(this.state.myMsg);
-  }
+        
+        // Determines if there is already a stored message
+    AsyncStorage.getItem('storeTheMsg').then((value)=>{
+      if(value){
+  			console.log('You have a stored message', value);
+        this.setState({
+          myMsg:value
+        });
+      } else {
+        this.setState({
+          myMsg:"Emergency, come now!"
+        });
+      }
+		}).catch((error)=>{
+			console.log(error);
+		}); 
+        
+    }
 
 
   sendCall = () => {
@@ -47,6 +57,8 @@ export default class Instant extends React.Component {
 
 
   sendText = () => {
+   
+  
     fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
 
@@ -67,15 +79,15 @@ export default class Instant extends React.Component {
         <Text>
 		{"\n"}
 		{"\n"}
-		{"\n"}
-		{"\n"}
-		{"\n"}
 		</Text>
-
-        <Text style={Styles.usrPhnNum}>{this.state.recipient}</Text>
+        <Text> </Text>
+        <Text style={Styles.steps}> Instantly Receive a Call or Text! </Text>
+        <Text>
+		</Text>
+        <Text style={Styles.blueTxt}>{this.state.recipient}</Text>
 
         <Text>
-		{"\n"}
+        {"\n"}
 		</Text>
 
         <TouchableOpacity style={Styles.btnM} onPress={this.sendCall}>
@@ -108,7 +120,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 23, height: 25}}
+			style={{width: 27, height: 30}}
 			source={require("./imgs/sphoneb.png")}/>
             <Text style={Styles.navTxt}>Instant</Text>
 			</View>
@@ -119,7 +131,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 32, height: 25}}
+			style={{width: 37, height: 30}}
 			source={require("./imgs/stext.png")}/>
             <Text style={Styles.navTxt}>Text Body</Text>
 			</View>
@@ -130,7 +142,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/stime.png")}/>
             <Text style={Styles.navTxt}>Timer</Text>
 			</View>
@@ -141,7 +153,7 @@ export default class Instant extends React.Component {
 
 			<View style={Styles.navBarBtn}>
 			<Image
-			style={{width: 25, height: 25}}
+			style={{width: 30, height: 30}}
 			source={require("./imgs/sgear.png")}/>
             <Text style={Styles.navTxt}>Settings</Text>
 			</View>

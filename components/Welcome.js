@@ -20,6 +20,7 @@ export default class Welcome extends React.Component {
 		return regex.test(phoneNum);
 	}
 
+
 	finishSignup = () => {
 
 		const { navigate } = this.props.navigation;
@@ -29,14 +30,14 @@ export default class Welcome extends React.Component {
 			AsyncStorage.setItem('storeTheNum', this.state.recipient).catch((err)=>{
 				console.log(err);
 			});
-			navigate('Instant', { recipient: this.state.recipient});
+			navigate('Home', { recipient: this.state.recipient});
 		} else {
 			this.setState({
 				inputFormStatus:Styles.inptInvalid
 			});
 		}
-
 	}
+
 
 	render() {
 		return (
@@ -77,7 +78,16 @@ export default class Welcome extends React.Component {
 						keyboardType='number-pad'
 						returnKeyType='done'
 						placeholder='Enter your phone number'
-						onChangeText={(recipient)=>this.setState({recipient})}
+						onChangeText={
+							(recipient)=>{
+								this.setState({recipient});
+								if(this.validatePhoneNum(recipient)){
+									this.setState({
+										inputFormStatus:Styles.inptValid
+									});
+								}
+							}
+						}
 					/>
 				</View>
 
