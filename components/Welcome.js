@@ -58,7 +58,8 @@ export default class Welcome extends React.Component {
 				<View style={Styles.all}>
 
 				<Image
-				source={require('./imgs/DDLogo.png')}
+				source={require('./imgs/DDlogo.png')}
+				style={{width: 111, height: 140}}
 				/>
 
 				<View style={Styles.smBreak2}></View>
