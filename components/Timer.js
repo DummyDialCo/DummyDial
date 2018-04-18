@@ -46,8 +46,6 @@ export default class Timer extends React.Component {
       if (secondsDigit <= 9) secZero = "0";
 			if(minutesDigit <= 9) minZero = "0";
 
-			totalSecsRemaining--;
-
       this.setState({
         timeString:minZero+minutesDigit+":"+secZero+secondsDigit
       });
