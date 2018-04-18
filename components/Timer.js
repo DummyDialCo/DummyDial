@@ -15,7 +15,9 @@ export default class Timer extends React.Component {
 			minsRemaining:0,
 			secsRemaining:0,
 			progress:0,
-			totalSecsRemaining:0
+			progressBarColor:"transparent",
+			totalSecsRemaining:0,
+			timeRemaining:""
 		}
 	}
 
@@ -27,19 +29,36 @@ export default class Timer extends React.Component {
 
 	startTimer = () => {
 		var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
+		var total = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
 
-		this.setState({totalSecsRemaining: totalSecsRemaining});
+		this.setState({
+			totalSecsRemaining: totalSecsRemaining,
+			progressBarColor: "#5CACEE"
+		});
 
     var beginCount = setInterval(() => {
+
+			var zero = "";
+      var secondsDigit = total % 60;
+      var minutesDigit = Math.floor(total/60);
+      if (secondsDigit <= 9){
+        zero = "0";
+      }
+			total--;
+
+      this.setState({
+        timeRemaining:minutesDigit+":"+zero+secondsDigit
+      });
+
 			if(this.state.totalSecsRemaining > -1){
 				totalSecsRemaining -= 1000;
-				console.log("total secs rem", (this.state.totalSecsRemaining/1000));
 				this.setState({totalSecsRemaining: totalSecsRemaining});
 	      var progress = this.state.progress + 1;
 				this.setState({progress: progress});
 			}
 
       if (this.state.totalSecsRemaining === 0){
+				clearInterval(beginCount);
           console.log(this.state.recipient);
 				fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
@@ -55,7 +74,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.totalSecsRemaining / 1000}</Text>
+        <Text style={{fontSize: 30}}>{this.state.timeRemaining}</Text>
       </View>
     );
 
@@ -113,7 +132,7 @@ export default class Timer extends React.Component {
             size={200}
 	        progressBarWidth={10}
 	        backgroundColor={'#ffffff'}
-            progressBarColor={'#02BAF7'}
+            progressBarColor={this.state.progressBarColor}
              easing= "linear"
 	        innerComponent={innerDisplay}
             rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
