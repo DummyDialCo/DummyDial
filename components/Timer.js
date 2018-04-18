@@ -4,7 +4,6 @@ import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
 import CircularProgressDisplay from 'react-native-progress-circular';
-import TimePicker from 'react-native-simple-time-picker';
 
 export default class Timer extends React.Component {
 
@@ -19,9 +18,6 @@ export default class Timer extends React.Component {
 			progressBarColor:"transparent",
 			totalSecsRemaining:0,
 			timeString:"00:00",
-			timePickerDisplayStatus: "block",
-			circleDisplayStatus:"none",
-
 
 			hours: "00",
     	minutes: "00",
@@ -37,12 +33,6 @@ export default class Timer extends React.Component {
 
 	startTimer = () => {
 
-		this.setState({
-			timePickerDisplayStatus:"none",
-			circleDisplayStatus: "block"
-		});
-
-		// var totalSecsRemaining = (this.state.minsRemaining*60) + (this.state.secsRemaining);
 		var totalSecsRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
 		console.log(totalSecsRemaining);
 
@@ -90,7 +80,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</Text>
+        <Text style={{fontSize: 30}}>{this.state.timeString}</Text>
       </View>
     );
 
@@ -114,22 +104,23 @@ export default class Timer extends React.Component {
 			</Text>
 
 
-        <TimePicker
-          selectedHours={parseInt(this.state.hours)}
-          selectedMinutes={parseInt(this.state.minutes)}
-          onChange={(hours, minutes) => {
+			<TextInput
+				returnKeyType='done'
+				keyboardType='number-pad'
+				placeholder='Minutes'
+				onChangeText={
+					(minsRemaining)=>{this.setState({minsRemaining})}
+				}
+			/>
 
-						if(hours <= 9 && minutes <= 9)
-							this.setState({ hours: "0"+hours, minutes: "0"+minutes });
-						else if(hours <= 9 && minutes >= 10)
-							this.setState({ hours: "0"+hours, minutes: minutes });
-						else if(hours >= 10 && minutes <= 9)
-							this.setState({ hours: hours, minutes: "0"+minutes });
-						else
-							this.setState({ hours: hours, minutes: minutes });
-					}}
-        />
-
+			<TextInput
+				returnKeyType='done'
+				keyboardType='number-pad'
+				placeholder='Seconds'
+				onChangeText={
+					(secsRemaining)=>{this.setState({secsRemaining})}
+				}
+			/>
 
 
       <View display={this.state.circleDisplayStatus}>
