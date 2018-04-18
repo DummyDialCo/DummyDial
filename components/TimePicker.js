@@ -4,9 +4,8 @@ import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
 import CircularProgressDisplay from 'react-native-progress-circular';
-import TimePicker from 'react-native-simple-time-picker';
 
-export default class Timer extends React.Component {
+export default class CircleCountdown extends React.Component {
 
 	constructor(props){
 		super(props);
