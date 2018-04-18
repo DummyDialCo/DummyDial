@@ -109,7 +109,17 @@ export default class Timer extends React.Component {
         <TimePicker
           selectedHours={parseInt(this.state.hours)}
           selectedMinutes={parseInt(this.state.minutes)}
-          onChange={(hours, minutes) => this.setState({ hours: hours, minutes: minutes })}
+          onChange={(hours, minutes) => {
+
+						if(hours <= 9 && minutes <= 9)
+							this.setState({ hours: "0"+hours, minutes: "0"+minutes });
+						else if(hours <= 9 && minutes >= 10)
+							this.setState({ hours: "0"+hours, minutes: minutes });
+						else if(hours >= 10 && minutes <= 9)
+							this.setState({ hours: hours, minutes: "0"+minutes });
+						else
+							this.setState({ hours: hours, minutes: minutes });
+					}}
         />
 
 
