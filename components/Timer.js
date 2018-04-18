@@ -17,7 +17,7 @@ export default class Timer extends React.Component {
 			progress:0,
 			progressBarColor:"transparent",
 			totalSecsRemaining:0,
-			timeRemaining:""
+			timeString:"00:00"
 		}
 	}
 
@@ -28,8 +28,9 @@ export default class Timer extends React.Component {
 
 
 	startTimer = () => {
-		var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
-		var total = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
+		// var totalSecsRemaining = (this.state.minsRemaining*60) + (this.state.secsRemaining);
+		var totalSecsRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
+		console.log(totalSecsRemaining);
 
 		this.setState({
 			totalSecsRemaining: totalSecsRemaining,
@@ -38,28 +39,31 @@ export default class Timer extends React.Component {
 
     var beginCount = setInterval(() => {
 
-			var zero = "";
-      var secondsDigit = total % 60;
-      var minutesDigit = Math.floor(total/60);
-      if (secondsDigit <= 9){
-        zero = "0";
-      }
-			total--;
+			var minZero = "";
+			var secZero = "";
+      var secondsDigit = totalSecsRemaining % 60;
+      var minutesDigit = Math.floor(totalSecsRemaining/60);
+      if (secondsDigit <= 9) secZero = "0";
+			if(minutesDigit <= 9) minZero = "0";
+
+			totalSecsRemaining--;
 
       this.setState({
-        timeRemaining:minutesDigit+":"+zero+secondsDigit
+        timeString:minZero+minutesDigit+":"+secZero+secondsDigit
       });
 
 			if(this.state.totalSecsRemaining > -1){
-				totalSecsRemaining -= 1000;
-				this.setState({totalSecsRemaining: totalSecsRemaining});
-	      var progress = this.state.progress + 1;
-				this.setState({progress: progress});
+				totalSecsRemaining--;
+				this.setState({
+					totalSecsRemaining: totalSecsRemaining
+				});
+				var updateProgress = this.state.progress + 1;
+				this.setState({progress: updateProgress});
 			}
 
       if (this.state.totalSecsRemaining === 0){
 				clearInterval(beginCount);
-          console.log(this.state.recipient);
+        console.log(this.state.recipient);
 				fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
 
@@ -74,7 +78,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.timeRemaining}</Text>
+        <Text style={{fontSize: 30}}>{this.state.timeString}</Text>
       </View>
     );
 
