@@ -4,6 +4,7 @@ import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
 import CircularProgressDisplay from 'react-native-progress-circular';
+import TimePicker from 'react-native-simple-time-picker';
 
 export default class Timer extends React.Component {
 
@@ -17,7 +18,12 @@ export default class Timer extends React.Component {
 			progress:0,
 			progressBarColor:"transparent",
 			totalSecsRemaining:0,
-			timeString:"00:00"
+			timeString:"00:00",
+
+
+			hours: "00",
+    	minutes: "00",
+			seconds:"00"
 		}
 	}
 
@@ -55,8 +61,8 @@ export default class Timer extends React.Component {
 				this.setState({
 					totalSecsRemaining: totalSecsRemaining
 				});
-				var updateProgress = this.state.progress + 1;
-				this.setState({progress: updateProgress});
+				var progress = this.state.progress + 1;
+				this.setState({progress: progress});
 			}
 
       if (this.state.totalSecsRemaining === 0){
@@ -76,7 +82,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.timeString}</Text>
+        <Text style={{fontSize: 30}}>{this.state.hours}:{this.state.minutes}:{this.state.seconds}</Text>
       </View>
     );
 
@@ -98,35 +104,14 @@ export default class Timer extends React.Component {
 			<Text style={Styles.steps}>Do not close app while timer is running
 			{'\n'}
 			</Text>
-			<Text style={Styles.blueTxt}>Tap to set timer
-			{'\n'}
-			{'\n'}
-			</Text>
 
 
-			<TextInput
-				returnKeyType='done'
-				keyboardType='number-pad'
-				placeholder='Minutes'
-				onChangeText={
-					(minsRemaining)=>{this.setState({minsRemaining})}
-				}
-			/>
+        <TimePicker
+          selectedHours={parseInt(this.state.hours)}
+          selectedMinutes={parseInt(this.state.minutes)}
+          onChange={(hours, minutes) => this.setState({ hours: hours, minutes: minutes })}
+        />
 
-			<TextInput
-				returnKeyType='done'
-				keyboardType='number-pad'
-				placeholder='Seconds'
-				onChangeText={
-					(secsRemaining)=>{this.setState({secsRemaining})}
-				}
-			/>
-
-
-
-			<TouchableOpacity onPress={this.startTimer}>
-				<Text>Call</Text>
-			</TouchableOpacity>
 
 
       <View>
