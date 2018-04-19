@@ -172,7 +172,7 @@ export default class TextBody extends React.Component {
 			<Image
 			style={{width: 37, height: 30}}
 			source={require("./imgs/stextb.png")}/>
-            <Text style={Styles.navTxt}>Text Body</Text>
+            <Text style={Styles.navTxtB}>Text Body</Text>
 			</View>
 
           </TouchableOpacity>

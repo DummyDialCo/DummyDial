@@ -122,7 +122,7 @@ export default class Instant extends React.Component {
 			<Image
 			style={{width: 27, height: 30}}
 			source={require("./imgs/sphoneb.png")}/>
-            <Text style={Styles.navTxt}>Instant</Text>
+            <Text style={Styles.navTxtB}>Instant</Text>
 			</View>
 
           </TouchableOpacity>
