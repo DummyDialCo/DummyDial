@@ -192,7 +192,7 @@ export default class Settings extends React.Component {
 			<Image
 			style={{width: 30, height: 30}}
 			source={require("./imgs/sgearb.png")}/>
-            <Text style={Styles.navTxt}>Settings</Text>
+            <Text style={Styles.navTxtB}>Settings</Text>
 			</View>
 
           </TouchableOpacity>

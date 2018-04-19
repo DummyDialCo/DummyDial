@@ -50,6 +50,12 @@ $greybg: #F6F6F6;
 	font-size: .95rem;
 }
 
+.navTxtB {
+    @extend .navTxt; 
+    color: $blue;
+    
+}
+
 .blueTxt {
 	color: $blue;
 	font-size: 1.1rem;

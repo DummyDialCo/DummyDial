@@ -188,7 +188,7 @@ export default class Timer extends React.Component {
 			<Image
 			style={{width: 30, height: 30}}
 			source={require("./imgs/stimeb.png")}/>
-            <Text style={Styles.navTxt}>Timer</Text>
+            <Text style={Styles.navTxtB}>Timer</Text>
 			</View>
 
           </TouchableOpacity>
