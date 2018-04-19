@@ -27,21 +27,31 @@ export default class Timer extends React.Component {
   }
 
 	componentDidMount = () => {
-		var fromProps = this.props.navigation.state.params.totalTimeRemaining;
-		console.log("PROPS", Math.floor(fromProps/60)+":"+(fromProps%60));
-		// if(Math.floor(fromProps/60) <= 9){
-		//
-		// }
+		var fromPropsDidMount = this.props.navigation.state.params.totalTimeRemaining;
+		// console.log("PROPS", Math.floor(fromPropsDidMount/60)+":"+(fromPropsDidMount%60));
+
+		if (fromPropsDidMount){
+			this.setState({
+				totalTimeRemaining: fromPropsDidMount
+			});
+			this.startTimer();
+		}
 	}
 
 	startTimer = () => {
 
-		var totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
+		var totalTimeRemaining;
+		var fromPropsStartTimer = this.props.navigation.state.params.totalTimeRemaining;
+
+		if(fromPropsStartTimer){
+			totalTimeRemaining = fromPropsStartTimer;
+		} else {
+			totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
+		}
 
     var beginCount = setInterval(() => {
-
-			console.log(this.state.totalTimeRemaining);
-
+			console.log("PROGRESS:", this.state.progress);
+			console.log("TIME REMAINING:", this.state.totalTimeRemaining);
 			var minZero = "";
 			var secZero = "";
       var secondsDigit = totalTimeRemaining % 60;
@@ -65,6 +75,7 @@ export default class Timer extends React.Component {
 
       if (this.state.totalTimeRemaining === -1){
 				clearInterval(beginCount);
+				console.log("CALLING...");
 				fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
 
@@ -180,7 +191,7 @@ export default class Timer extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
