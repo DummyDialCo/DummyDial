@@ -14,58 +14,48 @@ export default class Timer extends React.Component {
 			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:0,
 			secsRemaining:0,
-			progress:0,
+			totalTimeRemaining:0, // (in seconds)
+			progress:-1, // number of seconds the timer has been running - set to -1 so that the circle completes at 00:00 and not 00:01
 			progressBarColor:"transparent",
-			totalSecsRemaining:0,
-			timeString:"00:00",
-
-			hours: "00",
-    	minutes: "00",
-			seconds:"00"
+			timeString:"00:00" // default display inside the circle
 		}
 	}
 
 
 	getInitialState(){
-    return { progress:0};
+    return { progress:-1};
   }
 
 
 	startTimer = () => {
 
-		var totalSecsRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
-		console.log(totalSecsRemaining);
-
-		this.setState({
-			totalSecsRemaining: totalSecsRemaining,
-			progressBarColor: "#5CACEE"
-		});
+		var totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
 
     var beginCount = setInterval(() => {
 
 			var minZero = "";
 			var secZero = "";
-      var secondsDigit = totalSecsRemaining % 60;
-      var minutesDigit = Math.floor(totalSecsRemaining/60);
+      var secondsDigit = totalTimeRemaining % 60;
+      var minutesDigit = Math.floor(totalTimeRemaining/60);
       if (secondsDigit <= 9) secZero = "0";
 			if(minutesDigit <= 9) minZero = "0";
 
       this.setState({
-        timeString:minZero+minutesDigit+":"+secZero+secondsDigit
+        timeString:minZero+minutesDigit+":"+secZero+secondsDigit,
+				progressBarColor: "#5CACEE"
       });
 
-			if(this.state.totalSecsRemaining > -1){
-				totalSecsRemaining--;
+			if(this.state.totalTimeRemaining > -1){
+				totalTimeRemaining--;
 				this.setState({
-					totalSecsRemaining: totalSecsRemaining
+					totalTimeRemaining: totalTimeRemaining
 				});
 				var progress = this.state.progress + 1;
 				this.setState({progress: progress});
 			}
 
-      if (this.state.totalSecsRemaining === 0){
+      if (this.state.totalTimeRemaining === -1){
 				clearInterval(beginCount);
-        console.log(this.state.recipient);
 				fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
 
@@ -105,6 +95,7 @@ export default class Timer extends React.Component {
 
 
 			<TextInput
+				style={Styles.inpt}
 				returnKeyType='done'
 				keyboardType='number-pad'
 				placeholder='Minutes'
@@ -113,17 +104,24 @@ export default class Timer extends React.Component {
 				}
 			/>
 
+			<Text></Text>
+
 			<TextInput
+				style={Styles.inpt}
 				returnKeyType='done'
 				keyboardType='number-pad'
 				placeholder='Seconds'
 				onChangeText={
-					(secsRemaining)=>{this.setState({secsRemaining})}
+					(secsRemaining)=>{
+
+						this.setState({secsRemaining})
+					}
 				}
 			/>
 
+			<Text>{"\n"}</Text>
 
-      <View display={this.state.circleDisplayStatus}>
+
         <CircularProgressDisplay.Hollow
             size={200}
 	        progressBarWidth={10}
@@ -133,7 +131,6 @@ export default class Timer extends React.Component {
 	        innerComponent={innerDisplay}
             rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
 				/>
-      </View>
 
 
 			<Text>
