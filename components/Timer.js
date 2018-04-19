@@ -26,12 +26,21 @@ export default class Timer extends React.Component {
     return { progress:-1};
   }
 
+	componentDidMount = () => {
+		var fromProps = this.props.navigation.state.params.totalTimeRemaining;
+		console.log("PROPS", Math.floor(fromProps/60)+":"+(fromProps%60));
+		// if(Math.floor(fromProps/60) <= 9){
+		//
+		// }
+	}
 
 	startTimer = () => {
 
 		var totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
 
     var beginCount = setInterval(() => {
+
+			console.log(this.state.totalTimeRemaining);
 
 			var minZero = "";
 			var secZero = "";
@@ -171,7 +180,7 @@ export default class Timer extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image

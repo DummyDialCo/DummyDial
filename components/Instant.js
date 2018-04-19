@@ -14,8 +14,9 @@ export default class Instant extends React.Component {
       myMsg:""
     }
   }
-    
+
     componentDidMount(){
+      
          // Determines if there is already a stored message
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
@@ -31,7 +32,7 @@ export default class Instant extends React.Component {
 		}).catch((error)=>{
 			console.log(error);
 		});
-        
+
         // Determines if there is already a stored message
     AsyncStorage.getItem('storeTheMsg').then((value)=>{
       if(value){
@@ -46,8 +47,8 @@ export default class Instant extends React.Component {
       }
 		}).catch((error)=>{
 			console.log(error);
-		}); 
-        
+		});
+
     }
 
 
@@ -57,8 +58,8 @@ export default class Instant extends React.Component {
 
 
   sendText = () => {
-   
-  
+
+
     fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
 	}
 

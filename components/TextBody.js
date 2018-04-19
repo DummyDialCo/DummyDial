@@ -11,12 +11,14 @@ export default class TextBody extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
+			totalTimeRemaining:this.props.navigation.state.params.totalTimeRemaining,
 			myMsg:'',
 			behavior: 'position'
 		}
 	}
 
 	componentDidMount = () => {
+		console.log(this.state.totalTimeRemaining);
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
       if (value !== null){
@@ -29,6 +31,15 @@ export default class TextBody extends React.Component {
 		}).catch((error)=>{
 			console.log(error);
 		});
+
+		if(this.state.totalTimeRemaining){
+			setInterval(()=>{
+				var countingDown = this.state.totalTimeRemaining - 1;
+				this.setState({
+					totalTimeRemaining: countingDown
+				});
+			}, 1000);
+		}
 	}
 
 
@@ -166,7 +177,7 @@ export default class TextBody extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
