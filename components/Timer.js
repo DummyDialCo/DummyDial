@@ -27,13 +27,17 @@ export default class Timer extends React.Component {
   }
 
 	componentDidMount = () => {
-		var fromPropsDidMount = this.props.navigation.state.params.totalTimeRemaining;
+		var timeFromProps = this.props.navigation.state.params.totalTimeRemaining;
+		var progressFromProps = this.props.navigation.state.params.progress;
+		console.log(progressFromProps);
 		// console.log("PROPS", Math.floor(fromPropsDidMount/60)+":"+(fromPropsDidMount%60));
 
-		if (fromPropsDidMount){
+		if (timeFromProps && progressFromProps){
 			this.setState({
-				totalTimeRemaining: fromPropsDidMount
+				totalTimeRemaining: timeFromProps,
+				progress: this.props.navigation.state.params.progress
 			});
+			console.log("PROPS PROGRESS", this.props.navigation.state.params.progress);
 			this.startTimer();
 		}
 	}
@@ -43,15 +47,15 @@ export default class Timer extends React.Component {
 		var totalTimeRemaining;
 		var fromPropsStartTimer = this.props.navigation.state.params.totalTimeRemaining;
 
-		if(fromPropsStartTimer){
+		if(fromPropsStartTimer)
 			totalTimeRemaining = fromPropsStartTimer;
-		} else {
+		else
 			totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
-		}
+
 
     var beginCount = setInterval(() => {
-			console.log("PROGRESS:", this.state.progress);
-			console.log("TIME REMAINING:", this.state.totalTimeRemaining);
+			// console.log("PROGRESS:", this.state.progress);
+			// console.log("TIME REMAINING:", this.state.totalTimeRemaining);
 			var minZero = "";
 			var secZero = "";
       var secondsDigit = totalTimeRemaining % 60;

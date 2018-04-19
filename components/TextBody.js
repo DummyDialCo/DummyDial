@@ -19,6 +19,8 @@ export default class TextBody extends React.Component {
 	}
 
 	componentDidMount = () => {
+		console.log("TIME REMAINING", this.state.totalTimeRemaining);
+		console.log("PROGRESS", this.state.progress);
 		// Retrieves the stored message
 		AsyncStorage.getItem("storeTheMsg").then((value)=>{
       if (value !== null){
