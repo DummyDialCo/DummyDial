@@ -96,9 +96,6 @@ export default class TextBody extends React.Component {
 		<View style={Styles.txtMsgInpCont}>
 		<Text style={Styles.steps}> Enter Text Message Content Below
 		</Text>
-            
-        <Text>
-		</Text>
 
 		<View style={Styles.smBreak2}></View>
 

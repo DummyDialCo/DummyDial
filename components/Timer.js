@@ -14,39 +14,51 @@ export default class Timer extends React.Component {
 			recipient:this.props.navigation.state.params.recipient,
 			minsRemaining:0,
 			secsRemaining:0,
-			progress:0
+			totalTimeRemaining:0, // (in seconds)
+			progress:-1, // number of seconds the timer has been running - set to -1 so that the circle completes at 00:00 and not 00:01
+			progressBarColor:"transparent",
+			timeString:"00:00" // default display inside the circle
 		}
 	}
 
 
 	getInitialState(){
-    return { progress:0};
-  }
-
-
-	componentDidMount(){
-    // automatically increment the progress
-		// var totalSecsRemaining = (this.state.minsRemaining*60000) + (this.state.secsRemaining*1000);
-    // setInterval(() => {
-    //   var progress = this.state.progress + 1;
-    //   if (progress > totalSecsRemaining)
-    //     progress = 0;
-    //   this.setState({progress: progress});
-    // }, 1000);
+    return { progress:-1};
   }
 
 
 	startTimer = () => {
-		var totalSecsRemaining = this.state.secsRemaining*1000;
-    setInterval(() => {
-			totalSecsRemaining -= 1000;
-      var progress = this.state.progress + 1;
-      if (totalSecsRemaining === 0){
-				totalSecsRemaining = 0;
-				clearInterval();
+
+		var totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
+
+    var beginCount = setInterval(() => {
+
+			var minZero = "";
+			var secZero = "";
+      var secondsDigit = totalTimeRemaining % 60;
+      var minutesDigit = Math.floor(totalTimeRemaining/60);
+      if (secondsDigit <= 9) secZero = "0";
+			if(minutesDigit <= 9) minZero = "0";
+
+      this.setState({
+        timeString:minZero+minutesDigit+":"+secZero+secondsDigit,
+				progressBarColor: "#5CACEE"
+      });
+
+			if(this.state.totalTimeRemaining > -1){
+				totalTimeRemaining--;
+				this.setState({
+					totalTimeRemaining: totalTimeRemaining
+				});
+				var progress = this.state.progress + 1;
+				this.setState({progress: progress});
 			}
 
-      this.setState({progress: progress});
+      if (this.state.totalTimeRemaining === -1){
+				clearInterval(beginCount);
+				fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
+			}
+
     }, 1000);
 	}
 
@@ -58,7 +70,7 @@ export default class Timer extends React.Component {
     var innerDisplay = (
       <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.progress}</Text>
+        <Text style={{fontSize: 30}}>{this.state.timeString}</Text>
       </View>
     );
 
@@ -80,36 +92,45 @@ export default class Timer extends React.Component {
 			<Text style={Styles.steps}>Do not close app while timer is running
 			{'\n'}
 			</Text>
-			<Text style={Styles.blueTxt}>Tap to set timer
-			{'\n'}
-			{'\n'}
-			</Text>
-
 
 
 			<TextInput
-				placeholder='Seconds'
+				style={Styles.inpt}
+				returnKeyType='done'
+				keyboardType='number-pad'
+				placeholder='Minutes'
 				onChangeText={
-					(secsRemaining)=>{this.setState({secsRemaining})}
+					(minsRemaining)=>{this.setState({minsRemaining})}
 				}
 			/>
 
-			<TouchableOpacity onPress={this.startTimer}>
-				<Text>Call</Text>
-			</TouchableOpacity>
+			<Text></Text>
+
+			<TextInput
+				style={Styles.inpt}
+				returnKeyType='done'
+				keyboardType='number-pad'
+				placeholder='Seconds'
+				onChangeText={
+					(secsRemaining)=>{
+
+						this.setState({secsRemaining})
+					}
+				}
+			/>
+
+			<Text>{"\n"}</Text>
 
 
-      <View>
         <CircularProgressDisplay.Hollow
             size={200}
 	        progressBarWidth={10}
 	        backgroundColor={'#ffffff'}
-            progressBarColor={'#02BAF7'}
+            progressBarColor={this.state.progressBarColor}
              easing= "linear"
 	        innerComponent={innerDisplay}
-            rotate={((this.state.progress/this.state.secsRemaining)*360)}
+            rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
 				/>
-      </View>
 
 
 			<Text>
