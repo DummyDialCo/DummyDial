@@ -52,7 +52,7 @@ export default class Instant extends React.Component {
 
 
   sendCall = () => {
-		fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+		fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
 	}
 
 

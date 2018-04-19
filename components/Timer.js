@@ -56,7 +56,7 @@ export default class Timer extends React.Component {
 
       if (this.state.totalTimeRemaining === -1){
 				clearInterval(beginCount);
-				fetch("http://dummydial93.herokuapp.com/"+this.state.recipient);
+				fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
 			}
 
     }, 1000);
