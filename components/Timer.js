@@ -17,7 +17,8 @@ export default class Timer extends React.Component {
 			totalTimeRemaining:0, // (in seconds)
 			progress:-1, // number of seconds the timer has been running - set to -1 so that the circle completes at 00:00 and not 00:01
 			progressBarColor:"transparent",
-			timeString:"00:00" // default display inside the circle
+			timeString:"00:00", // default display inside the circle
+			displayingInputs:true
 		}
 	}
 
@@ -29,20 +30,29 @@ export default class Timer extends React.Component {
 	componentDidMount = () => {
 		var timeFromProps = this.props.navigation.state.params.totalTimeRemaining;
 		var progressFromProps = this.props.navigation.state.params.progress;
-		console.log(progressFromProps);
+		// console.log(progressFromProps);
 		// console.log("PROPS", Math.floor(fromPropsDidMount/60)+":"+(fromPropsDidMount%60));
 
-		if (timeFromProps && progressFromProps){
+		if (timeFromProps){
 			this.setState({
-				totalTimeRemaining: timeFromProps,
-				progress: this.props.navigation.state.params.progress
+				totalTimeRemaining: timeFromProps
 			});
-			console.log("PROPS PROGRESS", this.props.navigation.state.params.progress);
+			// console.log("PROPS PROGRESS", this.props.navigation.state.params.progress);
 			this.startTimer();
 		}
+		// if (this.props.navigation.state.params.progress){
+		// 	this.setState({
+		// 		progress: this.props.navigation.state.params.progress
+		// 	});
+		// 	console.log("PROPS PROGRESS", this.state.progress);
+		// 	this.startTimer();
+		// }
 	}
 
 	startTimer = () => {
+		this.setState({
+			displayingInputs:false
+		});
 
 		var totalTimeRemaining;
 		var fromPropsStartTimer = this.props.navigation.state.params.totalTimeRemaining;
@@ -73,7 +83,12 @@ export default class Timer extends React.Component {
 				this.setState({
 					totalTimeRemaining: totalTimeRemaining
 				});
-				var progress = this.state.progress + 1;
+				var progress;
+				if(!this.props.navigation.state.params.progress){
+					progress = this.state.progress + 1;
+				} else {
+					progress = this.props.navigation.state.params.progress + 1;
+				}
 				this.setState({progress: progress});
 			}
 
@@ -91,12 +106,43 @@ export default class Timer extends React.Component {
 
 		const {navigate} = this.props.navigation;
 
-    var innerDisplay = (
-      <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
+    var innerDisplay;
+
+		if(this.state.displayingInputs){
+			innerDisplay = (
+	      <View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
+	      	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
+					<View style={Styles.timerInputContainer}>
+						<TextInput
+							style={Styles.timerInpMins}
+							placeholder="00"
+							returnKeyType='done'
+							keyboardType='number-pad'
+							onChangeText={
+								(minsRemaining)=>{this.setState({minsRemaining})}
+							}
+						/>
+						<Text style={Styles.timerInp}>:</Text>
+						<TextInput
+							style={Styles.timerInp}
+							placeholder="00"
+							returnKeyType='done'
+							keyboardType='number-pad'
+							onChangeText={
+								(secsRemaining)=>{this.setState({secsRemaining})}
+							}
+						/>
+					</View>
+	      </View>
+	    );
+		} else {
+			innerDisplay = (
+				<View style={{width: 200, height: 200, flex:1, justifyContent: 'center',
       	alignItems: 'center', backgroundColor: '#f6f6f6'}}>
-        <Text style={{fontSize: 30}}>{this.state.timeString}</Text>
-      </View>
-    );
+					<Text style={Styles.timerInp}>{this.state.timeString}</Text>
+				</View>
+			);
+		}
 
 		return (
 			<View style={Styles.all}>
@@ -118,32 +164,7 @@ export default class Timer extends React.Component {
 			</Text>
 
 
-			<TextInput
-				style={Styles.inpt}
-				returnKeyType='done'
-				keyboardType='number-pad'
-				placeholder='Minutes'
-				onChangeText={
-					(minsRemaining)=>{this.setState({minsRemaining})}
-				}
-			/>
-
-			<Text></Text>
-
-			<TextInput
-				style={Styles.inpt}
-				returnKeyType='done'
-				keyboardType='number-pad'
-				placeholder='Seconds'
-				onChangeText={
-					(secsRemaining)=>{
-
-						this.setState({secsRemaining})
-					}
-				}
-			/>
-
-			<Text>{"\n"}</Text>
+			<Text>{"\n"}{"\n"}</Text>
 
 
         <CircularProgressDisplay.Hollow

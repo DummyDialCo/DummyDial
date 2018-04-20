@@ -51,9 +51,9 @@ $greybg: #F6F6F6;
 }
 
 .navTxtB {
-    @extend .navTxt; 
+    @extend .navTxt;
     color: $blue;
-    
+
 }
 
 .blueTxt {
@@ -230,6 +230,14 @@ $greybg: #F6F6F6;
 	font-size: 2.3rem;
 	font-weight: 900;
 }
+.timerInpMins {
+	@extend .timerInp;
+	text-align: right;
+}
+.timerInputContainer {
+	display: flex;
+	flex-direction: row;
+}
 
 .BtnCont {
 	width: 100%;
@@ -303,7 +311,7 @@ $greybg: #F6F6F6;
 .setPhnNum {
     color: $grey;
     font-size: 1.1rem;
-    
+
 }
 
 .setBtnL {
