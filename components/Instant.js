@@ -114,7 +114,7 @@ export default class Instant extends React.Component {
 
         <View style={Styles.navBar}>
 
-          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -125,7 +125,7 @@ export default class Instant extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -136,7 +136,7 @@ export default class Instant extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -147,7 +147,7 @@ export default class Instant extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image

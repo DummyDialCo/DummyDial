@@ -11,9 +11,26 @@ export default class Settings extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
+			totalTimeRemaining:this.props.navigation.state.params.totalTimeRemaining,
+			progress: this.props.navigation.state.params.progress,
 			inputFormStatus:Styles.setInpt
 		}
 	}
+
+
+	componentDidMount(){
+		if(this.state.totalTimeRemaining){
+			setInterval(()=>{
+				var timerDown = this.state.totalTimeRemaining - 1;
+				var progressUp = this.state.progress + 1;
+				this.setState({
+					totalTimeRemaining: timerDown,
+					progress: progressUp
+				});
+			}, 1000);
+		}
+	}
+
 
 	validatePhoneNum = (phoneNum) => {
 		const regex = /^\d{10}$/;
@@ -153,7 +170,7 @@ export default class Settings extends React.Component {
 
 <View style={Styles.navBar}>
 
-          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -164,7 +181,7 @@ export default class Settings extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextBody", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -175,7 +192,7 @@ export default class Settings extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -186,7 +203,7 @@ export default class Settings extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image

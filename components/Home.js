@@ -11,11 +11,12 @@ export default class Home extends React.Component {
 		super(props);
 
 		this.state = {
-			display:null
+			display:null,
 		}
 	}
 
   componentDidMount = () => {
+
     // Retreives and determines if the user has already signed up
     AsyncStorage.getItem("storeTheNum").then((value)=>{
 

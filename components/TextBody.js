@@ -12,7 +12,7 @@ export default class TextBody extends React.Component {
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
 			totalTimeRemaining:this.props.navigation.state.params.totalTimeRemaining,
-			progress: this.props.navigation.state.params.progress,
+			progress:this.props.navigation.state.params.progress,
 			myMsg:'',
 			behavior: 'position'
 		}
@@ -159,7 +159,7 @@ export default class TextBody extends React.Component {
 
 		<View style={Styles.navBar}>
 
-          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -170,7 +170,7 @@ export default class TextBody extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
@@ -192,7 +192,7 @@ export default class TextBody extends React.Component {
 
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient})}>
+          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
 
 			<View style={Styles.navBarBtn}>
 			<Image
