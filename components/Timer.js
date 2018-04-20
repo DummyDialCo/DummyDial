@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image, Easing } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image, Easing, AsyncStorage } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Styles from './scss/Styles.scss';
 
@@ -12,13 +12,16 @@ export default class Timer extends React.Component {
 
 		this.state = {
 			recipient:this.props.navigation.state.params.recipient,
+			myMsg:"",
 			minsRemaining:0,
 			secsRemaining:0,
 			totalTimeRemaining:0, // (in seconds)
 			progress:-1, // number of seconds the timer has been running - set to -1 so that the circle completes at 00:00 and not 00:01
 			progressBarColor:"transparent",
 			timeString:"00:00", // default display inside the circle
-			displayingInputs:true
+			displayingInputs:true,
+			clickedCall:false,
+			clickedText:false
 		}
 	}
 
@@ -28,25 +31,31 @@ export default class Timer extends React.Component {
   }
 
 	componentDidMount = () => {
+
+		AsyncStorage.getItem('storeTheMsg').then((value)=>{
+      if(value){
+  			console.log('You have a stored message', value);
+        this.setState({
+          myMsg:value
+        });
+      } else {
+        this.setState({
+          myMsg:"Emergency, come now!"
+        });
+      }
+		}).catch((error)=>{
+			console.log(error);
+		});
+
 		var timeFromProps = this.props.navigation.state.params.totalTimeRemaining;
 		var progressFromProps = this.props.navigation.state.params.progress;
-		// console.log(progressFromProps);
-		// console.log("PROPS", Math.floor(fromPropsDidMount/60)+":"+(fromPropsDidMount%60));
 
 		if (timeFromProps){
 			this.setState({
 				totalTimeRemaining: timeFromProps
 			});
-			// console.log("PROPS PROGRESS", this.props.navigation.state.params.progress);
 			this.startTimer();
 		}
-		// if (this.props.navigation.state.params.progress){
-		// 	this.setState({
-		// 		progress: this.props.navigation.state.params.progress
-		// 	});
-		// 	console.log("PROPS PROGRESS", this.state.progress);
-		// 	this.startTimer();
-		// }
 	}
 
 	startTimer = () => {
@@ -62,10 +71,7 @@ export default class Timer extends React.Component {
 		else
 			totalTimeRemaining = (parseFloat(this.state.minsRemaining*60) + parseFloat(this.state.secsRemaining));
 
-
     var beginCount = setInterval(() => {
-			// console.log("PROGRESS:", this.state.progress);
-			// console.log("TIME REMAINING:", this.state.totalTimeRemaining);
 			var minZero = "";
 			var secZero = "";
       var secondsDigit = totalTimeRemaining % 60;
@@ -94,11 +100,25 @@ export default class Timer extends React.Component {
 
       if (this.state.totalTimeRemaining === -1){
 				clearInterval(beginCount);
-				console.log("CALLING...");
-				fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
+				this.sendCallorText();
 			}
 
     }, 1000);
+	}
+
+
+	sendCallorText = () => {
+		if(this.state.clickedCall){
+			fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
+			this.setState({
+				clickedCall:false
+			});
+		} else if (this.state.clickedText){
+			fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
+			this.setState({
+				clickedText:false
+			});
+		}
 	}
 
 
@@ -184,7 +204,12 @@ export default class Timer extends React.Component {
 			</Text>
 
 			<View style={Styles.BtnCont}>
-				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+				<TouchableOpacity style={Styles.btn} onPress={()=>{
+					this.startTimer();
+					this.setState({
+						clickedCall:true
+					});
+				}}>
 				 	<Image
 					source={require("./imgs/phonew.png")}
 					style={{width: 19, height: 21}}
@@ -194,7 +219,12 @@ export default class Timer extends React.Component {
 
 				<View style={Styles.smBreak3}></View>
 
-				<TouchableOpacity style={Styles.btn} onPress={this.startTimer}>
+				<TouchableOpacity style={Styles.btn} onPress={()=>{
+					this.startTimer();
+					this.setState({
+						clickedText:true
+					});
+				}}>
 					<Image
 			  		source={require("./imgs/textw.png")}
 					style={{width: 27, height: 21}}
