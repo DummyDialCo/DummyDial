@@ -21,7 +21,9 @@ export default class Timer extends React.Component {
 			timeString:"00:00", // default display inside the circle
 			displayingInputs:true,
 			clickedCall:false,
-			clickedText:false
+			clickedText:false,
+			pausePlayButton:"",
+			mode:false
 		}
 	}
 
@@ -60,7 +62,8 @@ export default class Timer extends React.Component {
 
 	startTimer = () => {
 		this.setState({
-			displayingInputs:false
+			displayingInputs:false,
+			pausePlayButton:"PAUSE"
 		});
 
 		var totalTimeRemaining;
@@ -92,15 +95,25 @@ export default class Timer extends React.Component {
 				var progress;
 				if(!this.props.navigation.state.params.progress){
 					progress = this.state.progress + 1;
-				} else {
-					progress = this.props.navigation.state.params.progress + 1;
+					this.setState({progress: progress});
+					console.log("totalTimeRemaining", this.state.totalTimeRemaining);
+					// console.log("secs", this.state.secsRemaining);
+					// console.log("if progress", this.state.progress);
 				}
-				this.setState({progress: progress});
+				// else if (this.props.navigation.state.params.progress){
+				// 	propsProgress = this.props.navigation.state.params.progress + 1;
+				// 	this.setState({progress: propsProgress});
+				// 	console.log("else propsProgress", this.state.progress);
+				// }
+				// this.setState({progress: progress});
 			}
 
       if (this.state.totalTimeRemaining === -1){
 				clearInterval(beginCount);
 				this.sendCallorText();
+				this.setState({
+					displayingInputs:true
+				});
 			}
 
     }, 1000);
@@ -194,7 +207,8 @@ export default class Timer extends React.Component {
             progressBarColor={this.state.progressBarColor}
              easing= "linear"
 	        innerComponent={innerDisplay}
-            rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
+            // rotate={((this.state.progress/(parseFloat(this.state.minsRemaining*60)+parseFloat(this.state.secsRemaining)))*360)}
+						rotate={((this.state.progress/this.state.totalTimeRemaining)*360)}
 				/>
 
 
@@ -232,6 +246,30 @@ export default class Timer extends React.Component {
 					<Text style={Styles.btnTTxt}>Text</Text>
 				</TouchableOpacity>
 			</View>
+
+
+
+
+			<TouchableOpacity onPress={()=>{
+				if(!this.state.mode){
+					this.setState({
+						mode:true,
+						pausePlayButton: "PLAY"
+					});
+					return;
+				} else if(this.state.mode){
+					this.setState({
+						mode:false,
+						pausePlayButton: "PAUSE"
+					});
+					return;
+				}
+			}}>
+				<Text>{this.state.pausePlayButton}</Text>
+			</TouchableOpacity>
+
+
+
 
 		<View style={Styles.navBar}>
 
