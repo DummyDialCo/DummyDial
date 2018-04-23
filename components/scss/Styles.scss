@@ -37,6 +37,10 @@ $greybg: #F6F6F6;
 	bottom: 0;
 	padding: 1rem;
 }
+.navBarHidden {
+	@extend .navBar;
+	display: none;
+}
 
 .navBarBtn {
 	display: flex;
@@ -162,6 +166,10 @@ $greybg: #F6F6F6;
 	align-items: center;
 	border-radius: 0.5rem;
 	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
+}
+.greyBtn {
+	@extend .btn;
+	background-color: $darkgrey;
 }
 
 .btnTxt {
