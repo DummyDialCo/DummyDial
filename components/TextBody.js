@@ -1,209 +1,252 @@
-import React from 'react';
-import { StyleSheet, Text, View, TextInput, Button, AsyncStorage, TouchableOpacity, Image, keyboardAvoidingView,
-Keyboard } from 'react-native';
-import { StackNavigator } from 'react-navigation';
-import Styles from './scss/Styles.scss';
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  TextInput,
+  Button,
+  AsyncStorage,
+  TouchableOpacity,
+  Image,
+  keyboardAvoidingView,
+  Keyboard
+} from "react-native";
+import { StackNavigator } from "react-navigation";
+import Styles from "./scss/Styles.scss";
 
 export default class TextBody extends React.Component {
+  constructor(props) {
+    super(props);
 
-	constructor(props){
-		super(props);
+    this.state = {
+      recipient: this.props.navigation.state.params.recipient,
+      totalTimeRemaining: this.props.navigation.state.params.totalTimeRemaining,
+      progress: this.props.navigation.state.params.progress,
+      myMsg: "",
+      behavior: "position"
+    };
+  }
 
-		this.state = {
-			recipient:this.props.navigation.state.params.recipient,
-			totalTimeRemaining:this.props.navigation.state.params.totalTimeRemaining,
-			progress:this.props.navigation.state.params.progress,
-			myMsg:'',
-			behavior: 'position'
-		}
-	}
+  componentDidMount = () => {
+    console.log("TIME REMAINING", this.state.totalTimeRemaining);
+    console.log("PROGRESS", this.state.progress);
+    // Retrieves the stored message
+    AsyncStorage.getItem("storeTheMsg")
+      .then(value => {
+        if (value !== null) {
+          // Logs out the current message if there is one
+          console.log("Current stored text body:", value);
+          this.setState({
+            myMsg: value
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
 
-	componentDidMount = () => {
-		console.log("TIME REMAINING", this.state.totalTimeRemaining);
-		console.log("PROGRESS", this.state.progress);
-		// Retrieves the stored message
-		AsyncStorage.getItem("storeTheMsg").then((value)=>{
-      if (value !== null){
-				// Logs out the current message if there is one
-        console.log("Current stored text body:",value);
+    if (this.state.totalTimeRemaining) {
+      setInterval(() => {
+        var timerDown = this.state.totalTimeRemaining - 1;
+        var progressUp = this.state.progress + 1;
         this.setState({
-          myMsg:value
+          totalTimeRemaining: timerDown,
+          progress: progressUp
         });
-       }
-		}).catch((error)=>{
-			console.log(error);
-		});
-
-		if(this.state.totalTimeRemaining){
-			setInterval(()=>{
-				var timerDown = this.state.totalTimeRemaining - 1;
-				var progressUp = this.state.progress + 1;
-				this.setState({
-					totalTimeRemaining: timerDown,
-					progress: progressUp
-				});
-			}, 1000);
-		}
-	}
-
-
-	saveText = () => {
-		Keyboard.dismiss();
-		// saving text message to AsyncStorage
-		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
-			// Logs out the message which you just saved
-       console.log("Saved text body:", value);
-     }).catch((err)=>{
-       console.log(err);
-		 });
-	}
-
-
-	sendText = () => {
-		Keyboard.dismiss();
-		// Included in both saveText() and sendText() so that either can be clicked, and the message body will save
-
-		// saving text message to AsyncStorage
-		AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then((value)=>{
-       console.log("Saved text body:", value);
-     }).catch((err)=>{
-       console.log(err);
-		 });
-
-		fetch('https://quiet-fortress-33478.herokuapp.com/'+this.state.recipient+'/'+this.state.myMsg);
-	}
-
-	componentWillMount() {
-		this.keyboardDidHideListener = Keyboard.addListener('keyboardDidHide',this._keyboardDidHide);
+      }, 1000);
     }
+  };
 
-	componentWillUnmount(){
-		this.keyboardDidHideListener.remove();
-	}
+  saveText = () => {
+    Keyboard.dismiss();
+    // saving text message to AsyncStorage
+    AsyncStorage.setItem("storeTheMsg", this.state.myMsg)
+      .then(value => {
+        // Logs out the message which you just saved
+        console.log("Saved text body:", value);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
-	_keyboardDidHide() {
-		Keyboard.dismiss();
-	}
+  sendText = () => {
+    Keyboard.dismiss();
+    // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
+    // saving text message to AsyncStorage
+    AsyncStorage.setItem("storeTheMsg", this.state.myMsg)
+      .then(value => {
+        console.log("Saved text body:", value);
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-	render() {
-		const { navigate } = this.props.navigation;
+    fetch(
+      "https://quiet-fortress-33478.herokuapp.com/" +
+        this.state.recipient +
+        "/" +
+        this.state.myMsg
+    );
+  };
 
-		return (
-      	<View style={Styles.all}>
+  componentWillMount() {
+    this.keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      this._keyboardDidHide
+    );
+  }
 
+  componentWillUnmount() {
+    this.keyboardDidHideListener.remove();
+  }
+
+  _keyboardDidHide() {
+    Keyboard.dismiss();
+  }
+
+  render() {
+    const { navigate } = this.props.navigation;
+
+    return (
+      <View style={Styles.all}>
         <View style={Styles.tBan}>
-        <Text>
-		{'\n'}
-		</Text>
-        <Text style={Styles.tBanTitle}>Text Body</Text>
+          <Text>{"\n"}</Text>
+          <Text style={Styles.tBanTitle}>Text Body</Text>
         </View>
 
-  		<View behavior={this.state.behavior}>
-    	<View>
+        <View behavior={this.state.behavior}>
+          <View>
+            <Text>
+              {"\n"}
+              {"\n"}
+              {"\n"}
+            </Text>
 
-        <Text>
-		{'\n'}
-		{'\n'}
-        {'\n'}
-		</Text>
+            <View style={Styles.txtMsgInpCont}>
+              <Text style={Styles.steps}>
+                {" "}
+                Enter Text Message Content Below
+              </Text>
 
-		<View style={Styles.txtMsgInpCont}>
-		<Text style={Styles.steps}> Enter Text Message Content Below
-		</Text>
+              <View style={Styles.smBreak2} />
 
-		<View style={Styles.smBreak2}></View>
+              <TextInput
+                style={Styles.inptTxtMsg}
+                multiline={true}
+                numberOfLines={4}
+                blurOnSubmit={true}
+                underlineColorAndroid="transparent"
+                returnKeyType={"default"}
+                placeholder="eg. &quot;Emergency, come home now!&quot; "
+                ref={el => {
+                  this.myMsg = el;
+                }}
+                onChangeText={myMsg => this.setState({ myMsg })}
+                value={this.state.myMsg}
+                onSubmitEditing={this.saveText}
+              />
+            </View>
 
-        <TextInput
-			style={Styles.inptTxtMsg}
-			multiline={true}
-			numberOfLines={4}
-			blurOnSubmit={true}
-			underlineColorAndroid='transparent'
-          	returnKeyType={'default'}
-			placeholder='eg. "Emergency, come home now!" '
-			ref={(el)=>{this.myMsg=el;}}
-			onChangeText={(myMsg)=>this.setState({myMsg})}
-			value={this.state.myMsg}
-			onSubmitEditing={this.saveText}
-			/>
+            <Text>{"\n"}</Text>
 
-		</View>
+            <View style={Styles.BtnCont}>
+              <TouchableOpacity style={Styles.btn} onPress={this.saveText}>
+                <Image
+                  source={require("./imgs/savew.png")}
+                  style={{ width: 21, height: 21 }}
+                />
+                <Text style={Styles.btnTTxt}>Save</Text>
+              </TouchableOpacity>
 
-        <Text>
-		{'\n'}
-		</Text>
+              <View style={Styles.smBreak3} />
 
-		<View style={Styles.BtnCont}>
-			<TouchableOpacity style={Styles.btn} onPress={this.saveText}>
-				<Image
-		  		source={require("./imgs/savew.png")}
-				style={{width: 21, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Save</Text>
-			</TouchableOpacity>
+              <TouchableOpacity style={Styles.btn} onPress={this.sendText}>
+                <Image
+                  source={require("./imgs/textw.png")}
+                  style={{ width: 27, height: 21 }}
+                />
+                <Text style={Styles.btnTTxt}>Text</Text>
+              </TouchableOpacity>
+            </View>
+          </View>
+        </View>
 
-			<View style={Styles.smBreak3}></View>
-
-			<TouchableOpacity style={Styles.btn} onPress={this.sendText}>
-				<Image
-		  		source={require("./imgs/textw.png")}
-				style={{width: 27, height: 21}}
-				/>
-				<Text style={Styles.btnTTxt}>Text</Text>
-			</TouchableOpacity>
-		</View>
-	  </View>
-    </View>
-
-
-		<View style={Styles.navBar}>
-
-          <TouchableOpacity onPress={()=>navigate("Home", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
-
-			<View style={Styles.navBarBtn}>
-			<Image
-			style={{width: 28, height: 30}}
-			source={require("./imgs/sphone.png")}/>
-            <Text style={Styles.navTxt}>Instant</Text>
-			</View>
-
+        <View style={Styles.navBar}>
+          <TouchableOpacity
+            onPress={() =>
+              navigate("Home", {
+                recipient: this.state.recipient,
+                totalTimeRemaining: this.state.totalTimeRemaining,
+                progress: this.state.progress
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 28, height: 30 }}
+                source={require("./imgs/sphone.png")}
+              />
+              <Text style={Styles.navTxt}>Instant</Text>
+            </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("TextPage", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
-
-			<View style={Styles.navBarBtn}>
-			<Image
-			style={{width: 37, height: 30}}
-			source={require("./imgs/stextb.png")}/>
-            <Text style={Styles.navTxtB}>Text Body</Text>
-			</View>
-
+          <TouchableOpacity
+            onPress={() =>
+              navigate("TextPage", {
+                recipient: this.state.recipient,
+                totalTimeRemaining: this.state.totalTimeRemaining,
+                progress: this.state.progress
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 37, height: 30 }}
+                source={require("./imgs/stextb.png")}
+              />
+              <Text style={Styles.navTxtB}>Text Body</Text>
+            </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Timer", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
-
-			<View style={Styles.navBarBtn}>
-			<Image
-			style={{width: 30, height: 30}}
-			source={require("./imgs/stime.png")}/>
-            <Text style={Styles.navTxt}>Timer</Text>
-			</View>
-
+          <TouchableOpacity
+            onPress={() =>
+              navigate("Timer", {
+                recipient: this.state.recipient,
+                totalTimeRemaining: this.state.totalTimeRemaining,
+                progress: this.state.progress
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 30, height: 30 }}
+                source={require("./imgs/stime.png")}
+              />
+              <Text style={Styles.navTxt}>Timer</Text>
+            </View>
           </TouchableOpacity>
 
-          <TouchableOpacity onPress={()=>navigate("Settings", {recipient: this.state.recipient, totalTimeRemaining: this.state.totalTimeRemaining, progress: this.state.progress})}>
-
-			<View style={Styles.navBarBtn}>
-			<Image
-			style={{width: 30, height: 30}}
-			source={require("./imgs/sgear.png")}/>
-            <Text style={Styles.navTxt}>Settings</Text>
-			</View>
-
+          <TouchableOpacity
+            onPress={() =>
+              navigate("Settings", {
+                recipient: this.state.recipient,
+                totalTimeRemaining: this.state.totalTimeRemaining,
+                progress: this.state.progress
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 30, height: 30 }}
+                source={require("./imgs/sgear.png")}
+              />
+              <Text style={Styles.navTxt}>Settings</Text>
+            </View>
           </TouchableOpacity>
         </View>
-	</View>
+      </View>
     );
   }
 }
