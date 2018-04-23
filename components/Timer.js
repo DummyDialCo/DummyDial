@@ -301,7 +301,19 @@ export default class Timer extends React.Component {
           <Text>{this.state.pausePlayButton}</Text>
         </TouchableOpacity>
 
-        <TouchableOpacity>
+        <TouchableOpacity onPress={()=>{
+					this.setState({
+						totalTimeRemaining: 0,
+						minsRemaining: 0,
+						secsRemaining: 0,
+						isPaused:true,
+						timeString: "00:00",
+						progress: 0,
+						progressBarColor: "transparent",
+						displayingInputs: true,
+						pausePlayButton: ""
+					})
+				}}>
           <Text>RESET TIMER</Text>
         </TouchableOpacity>
 
