@@ -312,7 +312,7 @@ export default class Timer extends React.Component {
                 recipient: this.state.recipient,
                 totalTimeRemaining: this.state.totalTimeRemaining,
                 progress: this.state.progress
-              });
+              })
             }
           >
             <View style={Styles.navBarBtn}>
@@ -330,7 +330,7 @@ export default class Timer extends React.Component {
                 recipient: this.state.recipient,
                 totalTimeRemaining: this.state.totalTimeRemaining,
                 progress: this.state.progress
-              });
+              })
             }
           >
             <View style={Styles.navBarBtn}>
@@ -348,7 +348,7 @@ export default class Timer extends React.Component {
                 recipient: this.state.recipient,
                 totalTimeRemaining: this.state.totalTimeRemaining,
                 progress: this.state.progress
-              });
+              })
             }
           >
             <View style={Styles.navBarBtn}>
@@ -366,7 +366,7 @@ export default class Timer extends React.Component {
                 recipient: this.state.recipient,
                 totalTimeRemaining: this.state.totalTimeRemaining,
                 progress: this.state.progress
-              });
+              })
             }
           >
             <View style={Styles.navBarBtn}>
