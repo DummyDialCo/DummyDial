@@ -21,24 +21,10 @@ export default class Settings extends React.Component {
 
     this.state = {
       recipient: this.props.navigation.state.params.recipient,
-      totalTimeRemaining: this.props.navigation.state.params.totalTimeRemaining,
-      progress: this.props.navigation.state.params.progress,
       inputFormStatus: Styles.setInpt
     };
   }
 
-  componentDidMount() {
-    if (this.state.totalTimeRemaining) {
-      setInterval(() => {
-        var timerDown = this.state.totalTimeRemaining - 1;
-        var progressUp = this.state.progress + 1;
-        this.setState({
-          totalTimeRemaining: timerDown,
-          progress: progressUp
-        });
-      }, 1000);
-    }
-  }
 
   validatePhoneNum = phoneNum => {
     const regex = /^\d{10}$/;
@@ -138,7 +124,7 @@ export default class Settings extends React.Component {
           style={Styles.setBtnsCont}
           onPress={() =>
             Linking.openURL(
-              "mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all"
+              "mailto:rajanrai93@icloud.com"
             )
           }
         >
@@ -175,9 +161,7 @@ export default class Settings extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Home", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -193,9 +177,7 @@ export default class Settings extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("TextBody", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -211,9 +193,7 @@ export default class Settings extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Timer", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -229,9 +209,7 @@ export default class Settings extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Settings", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >

@@ -121,9 +121,7 @@ export default class Instant extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Home", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -139,9 +137,7 @@ export default class Instant extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("TextBody", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -157,9 +153,7 @@ export default class Instant extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Timer", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -175,9 +169,7 @@ export default class Instant extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Settings", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >

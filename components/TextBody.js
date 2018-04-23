@@ -20,41 +20,26 @@ export default class TextBody extends React.Component {
 
     this.state = {
       recipient: this.props.navigation.state.params.recipient,
-      totalTimeRemaining: this.props.navigation.state.params.totalTimeRemaining,
-      progress: this.props.navigation.state.params.progress,
       myMsg: "",
       behavior: "position"
     };
   }
 
   componentDidMount = () => {
-    console.log("TIME REMAINING", this.state.totalTimeRemaining);
-    console.log("PROGRESS", this.state.progress);
     // Retrieves the stored message
     AsyncStorage.getItem("storeTheMsg")
-      .then(value => {
-        if (value !== null) {
-          // Logs out the current message if there is one
-          console.log("Current stored text body:", value);
-          this.setState({
-            myMsg: value
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-
-    if (this.state.totalTimeRemaining) {
-      setInterval(() => {
-        var timerDown = this.state.totalTimeRemaining - 1;
-        var progressUp = this.state.progress + 1;
+    .then(value => {
+      if (value !== null) {
+        // Logs out the current message if there is one
+        console.log("Current stored text body:", value);
         this.setState({
-          totalTimeRemaining: timerDown,
-          progress: progressUp
+          myMsg: value
         });
-      }, 1000);
-    }
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
   saveText = () => {
@@ -177,9 +162,7 @@ export default class TextBody extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Home", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -195,9 +178,7 @@ export default class TextBody extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("TextPage", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -213,9 +194,7 @@ export default class TextBody extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Timer", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -231,9 +210,7 @@ export default class TextBody extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Settings", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >

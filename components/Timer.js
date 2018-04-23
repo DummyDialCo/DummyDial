@@ -35,7 +35,8 @@ export default class Timer extends React.Component {
       mode: false,
       clickedReset: false,
       isPaused: false,
-			prevInterval: null
+			prevInterval: null,
+			buttonsDisabled: false
     };
   }
 
@@ -77,7 +78,8 @@ export default class Timer extends React.Component {
       displayingInputs: false,
       pausePlayButton: "PAUSE",
 			isPaused:false,
-			totalTimeRemaining: 0
+			totalTimeRemaining: 0,
+			buttonsDisabled:true
     });
 
     var totalTimeRemaining;
@@ -113,7 +115,7 @@ export default class Timer extends React.Component {
           if (!this.props.navigation.state.params.progress) {
             progress = this.state.progress + 1;
             this.setState({ progress: progress });
-            //console.log("totalTimeRemaining", this.state.totalTimeRemaining);
+            console.log("totalTimeRemaining:", this.state.totalTimeRemaining);
           }
 
           if (this.state.totalTimeRemaining === -1) {
@@ -254,6 +256,7 @@ export default class Timer extends React.Component {
 
         <View style={Styles.BtnCont}>
           <TouchableOpacity
+						disabled={this.state.buttonsDisabled}
             style={Styles.btn}
             onPress={() => {
               this.startTimer();
@@ -272,6 +275,7 @@ export default class Timer extends React.Component {
           <View style={Styles.smBreak3} />
 
           <TouchableOpacity
+						disabled={this.state.buttonsDisabled}
             style={Styles.btn}
             onPress={() => {
               this.startTimer();
@@ -279,9 +283,8 @@ export default class Timer extends React.Component {
                 clickedText: true
               });
 
-							if (this.state.prevInterval != null) {
+							if (this.state.prevInterval != null)
 								clearInterval(this.state.prevInterval);
-							}
             }}
           >
             <Image
@@ -340,9 +343,7 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Home", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -358,9 +359,7 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("TextBody", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -376,9 +375,7 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Timer", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
@@ -394,9 +391,7 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             onPress={() =>
               navigate("Settings", {
-                recipient: this.state.recipient,
-                totalTimeRemaining: this.state.totalTimeRemaining,
-                progress: this.state.progress
+                recipient: this.state.recipient
               })
             }
           >
