@@ -34,7 +34,8 @@ export default class Timer extends React.Component {
       pausePlayButton: "",
       mode: false,
       clickedReset: false,
-      isPaused: false
+      isPaused: false,
+			prevInterval: null
     };
   }
 
@@ -74,13 +75,15 @@ export default class Timer extends React.Component {
   startTimer = () => {
     this.setState({
       displayingInputs: false,
-      pausePlayButton: "PAUSE"
+      pausePlayButton: "PAUSE",
+			isPaused:false,
+			totalTimeRemaining: 0
     });
 
     var totalTimeRemaining;
     var fromPropsStartTimer = this.props.navigation.state.params
       .totalTimeRemaining;
-
+			console.log(totalTimeRemaining);
     if (fromPropsStartTimer) totalTimeRemaining = fromPropsStartTimer;
     else
       totalTimeRemaining =
@@ -110,7 +113,7 @@ export default class Timer extends React.Component {
           if (!this.props.navigation.state.params.progress) {
             progress = this.state.progress + 1;
             this.setState({ progress: progress });
-            console.log("totalTimeRemaining", this.state.totalTimeRemaining);
+            //console.log("totalTimeRemaining", this.state.totalTimeRemaining);
           }
 
           if (this.state.totalTimeRemaining === -1) {
@@ -123,6 +126,17 @@ export default class Timer extends React.Component {
         }
       }
     }, 1000);
+
+		this.setState({
+			prevInterval: beginCount
+		});
+
+		if(this.state.clickedReset){
+			this.setState({
+				clickedReset: false
+			});
+			return;
+		}
   };
 
   sendCallorText = () => {
@@ -264,6 +278,10 @@ export default class Timer extends React.Component {
               this.setState({
                 clickedText: true
               });
+
+							if (this.state.prevInterval != null) {
+								clearInterval(this.state.prevInterval);
+							}
             }}
           >
             <Image
@@ -311,7 +329,8 @@ export default class Timer extends React.Component {
 						progress: 0,
 						progressBarColor: "transparent",
 						displayingInputs: true,
-						pausePlayButton: ""
+						pausePlayButton: "",
+						clickedReset: true
 					})
 				}}>
           <Text>RESET TIMER</Text>
