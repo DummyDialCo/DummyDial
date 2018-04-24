@@ -23,11 +23,12 @@ export default class Timer extends React.Component {
       recipient: this.props.navigation.state.params.recipient,
       myMsg: "",
       // time props
-      minsRemaining: 0,
-      secsRemaining: 0,
+      minsRemaining: "00",
+      secsRemaining: "00",
       totalSeconds: 0,
+      initialTotalSeconds: 0,
       // progress bar
-      progress: 0,
+      progress: -1,
       progressBarColor: "transparent",
       // btn styling - !clicked turns grey
       callBtnStyles: Styles.btn,
@@ -49,7 +50,7 @@ export default class Timer extends React.Component {
   }
 
   getInitialState() {
-    return { progress: 0 };
+    return { progress: -1 };
   }
 
   componentDidMount = () => {
@@ -72,14 +73,15 @@ export default class Timer extends React.Component {
   };
 
   startedTimer = () => {
+    var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
     this.setState({
+      initialTotalSeconds: totalSeconds,
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Click here to exit timer",
       pauseBtn: "PAUSE",
       stopBtn: "STOP",
     });
-
-    var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
+    console.log(this.state.initialTotalSeconds);
 
     var beginCount = setInterval(() => {
       // checks if the timer is paused, or if there is already
@@ -96,24 +98,24 @@ export default class Timer extends React.Component {
 
         this.setState({
           timeString: minZero + minutesDigit + ":" + secZero + secondsDigit,
-          // progressBarColor: "#5CACEE"
+          progressBarColor: "#5CACEE"
         });
 
         if (this.state.totalSeconds > -1) {
           totalSeconds--;
-          var progress = this.state.progress + 1;
+          // var progress = this.state.progress + 1;
           this.setState({
             totalSeconds: totalSeconds,
-            progress: progress
+            progress: this.state.progress+1
           });
           console.log("Time remaining:", this.state.totalSeconds);
 
-          if (this.state.totalSeconds === 0) {
+          if (this.state.totalSeconds === -1) {
             // clearInterval(beginCount);
             // this.sendCallorText();
             this.setState({
               displayingInputs: true,
-              timerIsRunning: false
+              timerIsRunning: false,
             });
 						// this.resetTimer();
           }
@@ -133,7 +135,8 @@ export default class Timer extends React.Component {
       this.setState({
         isPaused: true,
         mode: true,
-        pauseBtn: "PLAY"
+        pauseBtn: "PLAY",
+        displayingInputs: true
       });
       return;
     } else if (this.state.mode) {
@@ -175,8 +178,8 @@ export default class Timer extends React.Component {
         <View style={Styles.circleInnerDisplay}>
           <View style={Styles.timerInputContainer}>
             <TextInput
-              style={Styles.timerInp}
-              placeholder="00"
+              style={Styles.timerInpMins}
+              placeholder={this.state.minsRemaining}
               returnKeyType="done"
               keyboardType="number-pad"
               onChangeText={minsRemaining => this.setState({ minsRemaining })}
@@ -184,12 +187,19 @@ export default class Timer extends React.Component {
             <Text style={Styles.timerInp}>:</Text>
             <TextInput
               style={Styles.timerInp}
-              placeholder="00"
+              placeholder={this.state.secsRemaining}
               returnKeyType="done"
               keyboardType="number-pad"
               onChangeText={secsRemaining => this.setState({ secsRemaining })}
             />
-          </View>
+            </View>
+            <TouchableOpacity onPress={this.pauseTimer}>
+              <Text>{this.state.pauseBtn}</Text>
+            </TouchableOpacity>
+
+            <TouchableOpacity onPress={this.resetTimer}>
+              <Text>{this.state.stopBtn}</Text>
+            </TouchableOpacity>
         </View>
       );
     }
@@ -223,7 +233,7 @@ export default class Timer extends React.Component {
           progressBarColor={this.state.progressBarColor}
           easing="linear"
           innerComponent={innerDisplay}
-          rotate={this.state.progress / this.state.totalSeconds * 360}
+          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
         />
 
         <Text>
