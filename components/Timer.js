@@ -36,6 +36,7 @@ export default class Timer extends React.Component {
       clickedCallBtn: false,
       clickedTextBtn: false,
       // events after the timer starts
+      timerIsRunning: false,
       navBarHiding: Styles.navBar,
       pauseBtn: "",
       stopBtn: "",
@@ -75,12 +76,15 @@ export default class Timer extends React.Component {
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Click here to exit timer",
       pauseBtn: "PAUSE",
-      stopBtn: "STOP"
+      stopBtn: "STOP",
     });
 
     var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
 
     var beginCount = setInterval(() => {
+      // checks if the timer is paused, or if there is already
+      // an instance running if a timer is already running,
+      // clicking between call/text will not create a new timer
       if (!this.state.isPaused) {
 
         var minZero = "";
@@ -92,7 +96,7 @@ export default class Timer extends React.Component {
 
         this.setState({
           timeString: minZero + minutesDigit + ":" + secZero + secondsDigit,
-          progressBarColor: "#5CACEE"
+          // progressBarColor: "#5CACEE"
         });
 
         if (this.state.totalSeconds > -1) {
@@ -108,7 +112,8 @@ export default class Timer extends React.Component {
             // clearInterval(beginCount);
             // this.sendCallorText();
             this.setState({
-              displayingInputs: true
+              displayingInputs: true,
+              timerIsRunning: false
             });
 						// this.resetTimer();
           }
@@ -230,13 +235,16 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             style={this.state.callBtnStyles}
             onPress={() => {
-              this.startedTimer();
+              if(!this.state.timerIsRunning){
+                this.startedTimer();
+              }
               this.setState({
                 callBtnStyles: Styles.btn,
                 textBtnStyles: Styles.greyBtn,
                 clickedCallBtn: true,
                 clickedTextBtn: false,
-                displayingInputs: false
+                displayingInputs: false,
+                timerIsRunning: true
               });
             }}
           >
@@ -252,13 +260,16 @@ export default class Timer extends React.Component {
           <TouchableOpacity
             style={this.state.textBtnStyles}
             onPress={() => {
-              this.startedTimer();
+              if(!this.state.timerIsRunning){
+                this.startedTimer();
+              }
               this.setState({
                 callBtnStyles: Styles.greyBtn,
                 textBtnStyles: Styles.btn,
                 clickedCallBtn: false,
                 clickedTextBtn: true,
-                displayingInputs: false
+                displayingInputs: false,
+                timerIsRunning: true
               });
             }}
           >
