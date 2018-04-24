@@ -27,11 +27,11 @@ export default class Timer extends React.Component {
       secsRemaining: "00",
       totalSeconds: 0,
       initialTotalSeconds: 0,
-      newMinsRemaining: "00",
-      newSecsRemaining: "00",
+      newMinsRemaining: "00", // becomes the input placeholders when paused
+      newSecsRemaining: "00", // becomes the input placeholders when paused
       // progress bar
       progress: -1,
-      progressBarColor: "transparent",
+      progressBarColor: "transparent", // turns blue when timer starts
       // btn styling - !clicked turns grey
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
@@ -40,14 +40,13 @@ export default class Timer extends React.Component {
       clickedTextBtn: false,
       // events after the timer starts
       timerIsRunning: false,
-      navBarHiding: Styles.navBar,
-      pauseBtn: "",
-      stopBtn: "",
-      pausePlayButton: "",
+      navBarHiding: Styles.navBar, // style changes to hidden when timer is running
+      pauseBtn: "", // button text = change to icon later
+      stopBtn: "", // button text - change to icon later
       displayingInputs:true,
       isPaused: false,
-      mode: null,
-      timeString: "..."
+      mode: null, // controls whether pause/play is active
+      timeString: "..." // displayed briefly after timer is initialized
     };
   }
 
@@ -58,16 +57,8 @@ export default class Timer extends React.Component {
   componentDidMount = () => {
     AsyncStorage.getItem("storeTheMsg")
       .then(value => {
-        if (value) {
-          console.log("You have a stored message", value);
-          this.setState({
-            myMsg: value
-          });
-        } else {
-          this.setState({
-            myMsg: "Emergency, come now!"
-          });
-        }
+        if (value) this.setState({ myMsg: value });
+        else this.setState({ myMsg: "Emergency, come now!" });
       })
       .catch(error => {
         console.log(error);
@@ -114,8 +105,13 @@ export default class Timer extends React.Component {
           console.log("Time remaining:", this.state.totalSeconds);
 
           if (this.state.totalSeconds === -1) {
-            // clearInterval(beginCount);
-            // this.sendCallorText();
+            clearInterval(beginCount);
+
+            // if(this.state.clickedCallBtn)
+            //   fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
+            // else if(this.state.clickedTextBtn)
+            //   fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
+
             this.setState({
               displayingInputs: true,
               timerIsRunning: false,
@@ -125,12 +121,6 @@ export default class Timer extends React.Component {
         }
       }
     }, 1000);
-
-    // this will run at the end of the interval, put it in later
-    // if(this.state.clickedCallBtn)
-    //   fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
-    // else if(this.state.clickedTextBtn)
-    //   fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
   };
 
   pauseTimer = () => {
@@ -189,6 +179,9 @@ export default class Timer extends React.Component {
               returnKeyType="done"
               keyboardType="number-pad"
               onChangeText={minsRemaining => this.setState({ minsRemaining })}
+
+              // NOTE IF MINSREMAINING DECREMENTED DOWN, IT COULD BE USED FOR SETTING THE TIMER WHEN PAUSED
+
             />
             <Text style={Styles.timerInp}>:</Text>
             <TextInput
@@ -198,14 +191,14 @@ export default class Timer extends React.Component {
               keyboardType="number-pad"
               onChangeText={secsRemaining => this.setState({ secsRemaining })}
             />
-            </View>
-            <TouchableOpacity onPress={this.pauseTimer}>
-              <Text>{this.state.pauseBtn}</Text>
-            </TouchableOpacity>
+          </View>
+          <TouchableOpacity onPress={this.pauseTimer}>
+            <Text>{this.state.pauseBtn}</Text>
+          </TouchableOpacity>
 
-            <TouchableOpacity onPress={this.resetTimer}>
-              <Text>{this.state.stopBtn}</Text>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={this.resetTimer}>
+            <Text>{this.state.stopBtn}</Text>
+          </TouchableOpacity>
         </View>
       );
     }
