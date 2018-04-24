@@ -171,6 +171,14 @@ $greybg: #F6F6F6;
 	@extend .btn;
 	background-color: $darkgrey;
 }
+.circleInnerDisplay {
+	width: 200;
+	height: 200;
+	flex: 1;
+	justifyContent: center;
+	alignItems: center;
+	backgroundColor: $greybg;
+}
 
 .btnTxt {
 	color: $white;
