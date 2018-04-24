@@ -27,6 +27,8 @@ export default class Timer extends React.Component {
       secsRemaining: "00",
       totalSeconds: 0,
       initialTotalSeconds: 0,
+      newMinsRemaining: "00",
+      newSecsRemaining: "00",
       // progress bar
       progress: -1,
       progressBarColor: "transparent",
@@ -98,15 +100,16 @@ export default class Timer extends React.Component {
 
         this.setState({
           timeString: minZero + minutesDigit + ":" + secZero + secondsDigit,
-          progressBarColor: "#5CACEE"
+          progressBarColor: "#5CACEE",
+          newMinsRemaining: minZero + minutesDigit,
+          newSecsRemaining: secZero + secondsDigit
         });
 
         if (this.state.totalSeconds > -1) {
           totalSeconds--;
-          // var progress = this.state.progress + 1;
           this.setState({
             totalSeconds: totalSeconds,
-            progress: this.state.progress+1
+            progress: this.state.progress + 1
           });
           console.log("Time remaining:", this.state.totalSeconds);
 
@@ -123,7 +126,7 @@ export default class Timer extends React.Component {
       }
     }, 1000);
 
-    // this will run at the end of the interval
+    // this will run at the end of the interval, put it in later
     // if(this.state.clickedCallBtn)
     //   fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
     // else if(this.state.clickedTextBtn)
@@ -132,6 +135,7 @@ export default class Timer extends React.Component {
 
   pauseTimer = () => {
     if (!this.state.mode) {
+      // PAUSED
       this.setState({
         isPaused: true,
         mode: true,
@@ -140,10 +144,12 @@ export default class Timer extends React.Component {
       });
       return;
     } else if (this.state.mode) {
+      // UNPAUSED
       this.setState({
         isPaused: false,
         mode: false,
-        pauseBtn: "PAUSE"
+        pauseBtn: "PAUSE",
+        displayingInputs: false
       });
       return;
     }
@@ -179,7 +185,7 @@ export default class Timer extends React.Component {
           <View style={Styles.timerInputContainer}>
             <TextInput
               style={Styles.timerInpMins}
-              placeholder={this.state.minsRemaining}
+              placeholder={this.state.newMinsRemaining}
               returnKeyType="done"
               keyboardType="number-pad"
               onChangeText={minsRemaining => this.setState({ minsRemaining })}
@@ -187,7 +193,7 @@ export default class Timer extends React.Component {
             <Text style={Styles.timerInp}>:</Text>
             <TextInput
               style={Styles.timerInp}
-              placeholder={this.state.secsRemaining}
+              placeholder={this.state.newSecsRemaining}
               returnKeyType="done"
               keyboardType="number-pad"
               onChangeText={secsRemaining => this.setState({ secsRemaining })}
