@@ -240,13 +240,13 @@ var blckScreen = (
         </Text>
 
         <Text style={Styles.steps}>
-          Do Not Close App While Timer is Running
+          Do not close app while timer is running
           {"\n"}
         </Text>
 
         <TouchableOpacity onPress={this.displayedBlack}> 
             <Text style={Styles.blueTxt}> 
-            Tap Here for Black Screen  
+            Tap here for black screen
             </Text>
         </TouchableOpacity>
         

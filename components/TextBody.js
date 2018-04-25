@@ -59,14 +59,7 @@ export default class TextBody extends React.Component {
     Keyboard.dismiss();
     // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
-    // saving text message to AsyncStorage
-    AsyncStorage.setItem("storeTheMsg", this.state.myMsg)
-      .then(value => {
-        console.log("Saved text body:", value);
-      })
-      .catch(err => {
-        console.log(err);
-      });
+   this.saveText();
 
     fetch(
       "https://quiet-fortress-33478.herokuapp.com/" +
@@ -111,8 +104,7 @@ export default class TextBody extends React.Component {
 
             <View style={Styles.txtMsgInpCont}>
               <Text style={Styles.steps}>
-                {" "}
-                Enter Text Message Content Below
+                Enter text message content below
               </Text>
 
               <View style={Styles.smBreak2} />
@@ -124,7 +116,7 @@ export default class TextBody extends React.Component {
                 blurOnSubmit={true}
                 underlineColorAndroid="transparent"
                 returnKeyType={"default"}
-                placeholder="eg. &quot;Emergency, come home now!&quot; "
+                placeholder="eg. &quot;Emergency, come now!&quot; "
                 ref={el => {
                   this.myMsg = el;
                 }}

@@ -134,7 +134,7 @@ export default class Settings extends React.Component {
               source={require("./imgs/mail.png")}
             />
 
-            <Text style={Styles.setBtnsTitle}>Contact us</Text>
+            <Text style={Styles.setBtnsTitle}>Contact Us</Text>
           </View>
 
           <Text style={Styles.setArw}>></Text>
