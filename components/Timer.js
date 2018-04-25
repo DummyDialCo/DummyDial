@@ -46,7 +46,9 @@ export default class Timer extends React.Component {
       displayingInputs:true,
       isPaused: false,
       mode: null, // controls whether pause/play is active
-      timeString: "..." // displayed briefly after timer is initialized
+      timeString: "...", // displayed briefly after timer is initialized
+      displayBlack: Styles.blckBGhidden,
+      blckActive: null
     };
   }
 
@@ -150,6 +152,22 @@ export default class Timer extends React.Component {
     // reset function
   };
 
+    
+    displayedBlack = () => {
+       if(!this.state.blckActive){
+           this.setState({
+               displayBlack: Styles.blckBG,
+               blckActive: true
+           })
+       } else {
+           this.setState({
+               displayBlack: Styles.blckBGhidden,
+               blckActive: false
+           })
+       }
+    };
+    
+    
   render() {
     const { navigate } = this.props.navigation;
 
@@ -203,9 +221,13 @@ export default class Timer extends React.Component {
       );
     }
 
+var blckScreen = (
+    <TouchableOpacity onPress={this.displayedBlack} style={this.state.displayBlack}>
+    </TouchableOpacity>
+
+);
+                  
     return (
-        
-    <View style={Styles.clearBG}> 
       <View style={Styles.all}>
         <View style={Styles.tBan}>
           <Text>{"\n"}</Text>
@@ -222,10 +244,10 @@ export default class Timer extends React.Component {
           {"\n"}
         </Text>
 
-        <TouchableOpacity> 
-        <Text style={Styles.blueTxt}> 
-        Tap Here for Black Screen  
-        </Text>
+        <TouchableOpacity onPress={this.displayedBlack}> 
+            <Text style={Styles.blueTxt}> 
+            Tap Here for Black Screen  
+            </Text>
         </TouchableOpacity>
         
         <Text>     
@@ -362,8 +384,8 @@ export default class Timer extends React.Component {
             </View>
           </TouchableOpacity>
         </View>
+                {blckScreen}
       </View>
-</View>
     );
   }
 }
