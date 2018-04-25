@@ -4,6 +4,7 @@ $lightgrey: #CECECE;
 $darkgrey: #919191;
 $white: #FFF;
 $greybg: #F6F6F6;
+$black: #000000;
 
 .all {
 	width: 100%;
@@ -354,4 +355,10 @@ $greybg: #F6F6F6;
 .faqTxtParas {
 	color: $grey;
 	font-size: 0.9rem;
+}
+
+.clearBG {
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
 }

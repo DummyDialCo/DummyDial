@@ -204,6 +204,8 @@ export default class Timer extends React.Component {
     }
 
     return (
+        
+    <View style={Styles.clearBG}> 
       <View style={Styles.all}>
         <View style={Styles.tBan}>
           <Text>{"\n"}</Text>
@@ -216,12 +218,17 @@ export default class Timer extends React.Component {
         </Text>
 
         <Text style={Styles.steps}>
-          Do not close app while timer is running
+          Do Not Close App While Timer is Running
           {"\n"}
         </Text>
 
-        <Text>
-          {"\n"}
+        <TouchableOpacity> 
+        <Text style={Styles.blueTxt}> 
+        Tap Here for Black Screen  
+        </Text>
+        </TouchableOpacity>
+        
+        <Text>     
           {"\n"}
         </Text>
 
@@ -356,6 +363,7 @@ export default class Timer extends React.Component {
           </TouchableOpacity>
         </View>
       </View>
+</View>
     );
   }
 }
