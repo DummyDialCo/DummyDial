@@ -130,13 +130,15 @@ export default class Timer extends React.Component {
       // PAUSED
       var minZero = "";
       if(Math.floor(this.state.totalSeconds / 60) < 10) minZero = "0";
+      var secZero = "";
+      if((this.state.totalSeconds % 60) < 10) secZero = "0";
       this.setState({
         isPaused: true,
         mode: true,
         pauseBtn: require("./imgs/playicon.png"),
         displayingInputs: true,
         minsRemaining: minZero + Math.floor(this.state.totalSeconds / 60) + "",
-        secsRemaining: this.state.totalSeconds % 60 + ""
+        secsRemaining: secZero + this.state.totalSeconds % 60 + ""
       });
       return;
     } else if (this.state.mode) {
