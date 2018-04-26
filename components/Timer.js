@@ -47,8 +47,8 @@ export default class Timer extends React.Component {
       isPaused: true,
       mode: null, // controls whether pause/play is active
       timeString: "...", // displayed briefly after timer is initialized
-      displayBlack: Styles.blckBGhidden,
-      blckActive: null
+      displayBlack: Styles.blckBGhidden, // styling changes to display: flex; after
+      blckActive: null // function changes this to a boolean
     };
   }
 
@@ -80,7 +80,6 @@ export default class Timer extends React.Component {
       isPaused: false,
       totalSeconds: totalSeconds
     });
-    console.log(this.state.initialTotalSeconds);
 
     this.beginCount = setInterval(() => {
       // checks if the timer is paused, or if there is already
@@ -100,7 +99,7 @@ export default class Timer extends React.Component {
           newMinsRemaining: minZero + minutesDigit,
           newSecsRemaining: secZero + secondsDigit,
           minsRemaining:
-            minZero + Math.floor(this.state.totalSeconds / 60) + "",
+            minZero + Math.floor(this.state.totalSeconds / 60) + "", // + "" converts it to a string
           secsRemaining: secZero + this.state.totalSeconds % 60 + ""
         });
 
@@ -112,17 +111,11 @@ export default class Timer extends React.Component {
           console.log("Time remaining:", this.state.totalSeconds);
 
           if (this.state.totalSeconds === -1) {
+            
             if (this.state.clickedCallBtn) {
-              fetch(
-                "https://dummydial93.herokuapp.com/" + this.state.recipient
-              );
+              fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
             } else if (this.state.clickedTextBtn) {
-              fetch(
-                "https://quiet-fortress-33478.herokuapp.com/" +
-                  this.state.recipient +
-                  "/" +
-                  this.state.myMsg
-              );
+              fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
             }
 
             this.resetTimer();
@@ -155,11 +148,6 @@ export default class Timer extends React.Component {
           parseFloat(this.state.minsRemaining * 60) +
           parseFloat(this.state.secsRemaining)
       });
-      console.log(
-        "calculation",
-        parseFloat(this.state.minsRemaining * 60),
-        parseFloat(this.state.secsRemaining)
-      );
       return;
     }
   };
@@ -220,12 +208,10 @@ export default class Timer extends React.Component {
             editable={this.state.isPaused}
             onChangeText={minsRemaining => {
               if (this.state.isPaused) {
-                console.log(minsRemaining);
                 minsRemaining = parseInt(minsRemaining);
                 if (minsRemaining < 10) {
                   minsRemaining = "0" + minsRemaining;
                 }
-                console.log(minsRemaining);
                 minsRemaining = "" + minsRemaining;
                 minsRemaining =
                   minsRemaining[minsRemaining.length - 2] +
@@ -245,12 +231,10 @@ export default class Timer extends React.Component {
             editable={this.state.isPaused}
             onChangeText={secsRemaining => {
               if (this.state.isPaused) {
-                console.log(secsRemaining);
                 secsRemaining = parseInt(secsRemaining);
                 if (secsRemaining < 10) {
                   secsRemaining = "0" + secsRemaining;
                 }
-                console.log(secsRemaining);
                 secsRemaining = "" + secsRemaining;
                 secsRemaining =
                   secsRemaining[secsRemaining.length - 2] +
