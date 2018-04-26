@@ -145,6 +145,7 @@ export default class Timer extends React.Component {
       // UNPAUSED
       var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
       this.setState({
+        progress: -1,
         isPaused: false,
         mode: false,
         pauseBtn: require("./imgs/pauseicon.png"),
