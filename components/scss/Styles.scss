@@ -349,7 +349,7 @@ $black: #000000;
 
 .faqTxt {
 	text-align: left;
-	padding: 2rem;
+	padding: 1.5rem;
 }
 
 .faqTxtParas {
@@ -369,5 +369,13 @@ $black: #000000;
 .blckBGhidden {
     @extend .blckBG;
    display: none;
+    
+}
+
+.whiteBG {
+    width: 90%;
+    height: 62%;
+    background-color: white;
+    border-radius: .7rem;
     
 }
