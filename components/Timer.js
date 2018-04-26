@@ -143,14 +143,14 @@ export default class Timer extends React.Component {
       return;
     } else if (this.state.mode) {
       // UNPAUSED
+      var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
       this.setState({
         isPaused: false,
         mode: false,
         pauseBtn: require("./imgs/pauseicon.png"),
         displayingInputs: false,
-        totalSeconds:
-          parseFloat(this.state.minsRemaining * 60) +
-          parseFloat(this.state.secsRemaining)
+        totalSeconds: totalSeconds,
+        initialTotalSeconds: totalSeconds
       });
       return;
     }
@@ -298,7 +298,7 @@ export default class Timer extends React.Component {
           progressBarColor={this.state.progressBarColor}
           easing="linear"
           innerComponent={innerDisplay}
-          rotate={this.state.progress / this.state.totalSeconds * 360}
+          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
         />
 
         <Text>
