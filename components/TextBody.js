@@ -8,7 +8,6 @@ import {
   AsyncStorage,
   TouchableOpacity,
   Image,
-  keyboardAvoidingView,
   Keyboard
 } from "react-native";
 import { StackNavigator } from "react-navigation";

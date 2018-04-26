@@ -8,7 +8,8 @@ import {
   TouchableOpacity,
   Image,
   Easing,
-  AsyncStorage
+  AsyncStorage,
+  Keyboard
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
@@ -66,15 +67,32 @@ export default class Timer extends React.Component {
         console.log(error);
       });
   };
+	
+ 	componentWillMount() {
+    	this.keyboardDidHideListener = Keyboard.addListener(
+			"keyboardDidHide",
+			this._keyboardDidHide
+		);
+	}
 
+	componentWillUnmount() {
+		this.keyboardDidHideListener.remove();
+  	}
+
+  	_keyboardDidHide() {
+		Keyboard.dismiss();
+  	}
+	
   startedTimer = () => {
+	Keyboard.dismiss();
+	  
     var totalSeconds =
       parseFloat(this.state.minsRemaining * 60) +
       parseFloat(this.state.secsRemaining);
     this.setState({
       initialTotalSeconds: totalSeconds,
       navBarHiding: Styles.navBarHidden,
-      exitTimerMessage: "Click here to exit timer",
+      exitTimerMessage: "Tap here to exit timer",
       pauseBtn: require("./imgs/pauseicon.png"),
       stopBtn: require("./imgs/stopicon.png"),
       isPaused: false,
@@ -203,6 +221,14 @@ export default class Timer extends React.Component {
 
     var innerDisplay = (
       <View style={Styles.circleInnerDisplay}>
+		
+		<Text>
+        {"\n"}
+		{"\n"}
+		{"\n"}
+		{"\n"}
+       </Text>
+		
         <View style={Styles.timerInputContainer}>
           <TextInput
             style={Styles.timerInpMins}
@@ -249,64 +275,10 @@ export default class Timer extends React.Component {
             value={this.state.secsRemaining}
           />
         </View>
-        <View style={Styles.pausePlayBtnCont}>
-          <TouchableOpacity onPress={this.pauseTimer}>
-            <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
-          </TouchableOpacity>
-
-          <TouchableOpacity onPress={this.resetTimer}>
-            <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-
-    var blckScreen = (
-      <TouchableOpacity
-        onPress={this.displayedBlack}
-        style={this.state.displayBlack}
-      />
-    );
-
-    return (
-      <View style={Styles.all}>
-        <View style={Styles.tBan}>
-          <Text>{"\n"}</Text>
-          <Text style={Styles.tBanTitle}>Timer</Text>
-        </View>
-
-        <Text>
-          {"\n"}
-          {"\n"}
-        </Text>
-
-        <Text style={Styles.steps}>
-          Do not close app while timer is running
-          {"\n"}
-        </Text>
-
-        <TouchableOpacity onPress={this.displayedBlack}>
-          <Text style={Styles.blueTxt}>Tap here for black screen</Text>
-        </TouchableOpacity>
-
-        <Text>{"\n"}</Text>
-
-        <CircularProgressDisplay.Hollow
-          size={200}
-          progressBarWidth={10}
-          backgroundColor={"#ffffff"}
-          progressBarColor={this.state.progressBarColor}
-          easing="linear"
-          innerComponent={innerDisplay}
-          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
-        />
-
-        <Text>
-          {"\n"}
-          {"\n"}
-        </Text>
-
-        <View style={Styles.BtnCont}>
+			
+			<View style={Styles.smBreak2} />
+			
+		<View style={Styles.BtnCont}>
           <TouchableOpacity
             style={this.state.callBtnStyles}
             onPress={() => {
@@ -325,7 +297,7 @@ export default class Timer extends React.Component {
           >
             <Image
               source={require("./imgs/phonew.png")}
-              style={{ width: 19, height: 21 }}
+              style={{ width: 24, height: 26 }}
             />
             <Text style={Styles.btnTTxt}>Call</Text>
           </TouchableOpacity>
@@ -355,26 +327,77 @@ export default class Timer extends React.Component {
             <Text style={Styles.btnTTxt}>Text</Text>
           </TouchableOpacity>
         </View>
+			
+			<Text>
+			{"\n"}
+			</Text>
+		  
+        <View style={Styles.pausePlayBtnCont}>
+          <TouchableOpacity onPress={this.pauseTimer}>
+            <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+			
+		<View style={Styles.smBreak3}/>
+
+          <TouchableOpacity onPress={this.resetTimer}>
+            <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+        </View>
+			
+      </View>
+    );
+
+    var blckScreen = (
+      <TouchableOpacity
+        onPress={this.displayedBlack}
+        style={this.state.displayBlack}
+      />
+    );
+
+    return (
+      <View style={Styles.all}>
+        <View style={Styles.tBan}>
+          <Text>{"\n"}</Text>
+          <Text style={Styles.tBanTitle}>Timer</Text>
+        </View>
 
         <Text>
           {"\n"}
           {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
-          {"\n"}
+		  {"\n"}
         </Text>
+		
+        <Text style={Styles.steps}>
+          Do not close app while timer is running
+        </Text>
+		
+		<View style={Styles.smBreak2} />
+		
+		<TouchableOpacity onPress={this.displayedBlack}>
+          <Text style={Styles.blueTxt}>Tap here for black screen</Text>
+        </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.resetTimer}>
-          <Text>{this.state.exitTimerMessage}</Text>
+		<View style={Styles.smBreak} />
+		
+        <CircularProgressDisplay.Hollow
+          size={330}
+          progressBarWidth={5}
+          backgroundColor={"#ffffff"}
+          progressBarColor={this.state.progressBarColor}
+          easing="linear"
+          innerComponent={innerDisplay}
+          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
+        />
+
+        <Text>{"\n"}</Text>
+
+        <TouchableOpacity style={Styles.navBar} onPress={this.resetTimer}>
+          <Text style={Styles.stopTimeTxt}>{this.state.exitTimerMessage}</Text>
         </TouchableOpacity>
 
         <View style={this.state.navBarHiding}>
-          <TouchableOpacity
+         
+		<TouchableOpacity
             onPress={() =>
               navigate("Home", { recipient: this.state.recipient })
             }
