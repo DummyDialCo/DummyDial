@@ -262,6 +262,10 @@ $black: #000000;
 	justify-content: center;
 }
 
+.pausePlayBtnCont {
+	@extend .BtnCont;
+}
+
 .btnTTxt {
 	color: $white;
 	font-size: 1.2rem;
@@ -363,11 +367,11 @@ $black: #000000;
     background-color: black;
     position: absolute;
     display: flex;
-       
+
 }
 
 .blckBGhidden {
     @extend .blckBG;
    display: none;
-    
+
 }

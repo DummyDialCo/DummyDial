@@ -41,8 +41,8 @@ export default class Timer extends React.Component {
       // events after the timer starts
       timerIsRunning: false,
       navBarHiding: Styles.navBar, // style changes to hidden when timer is running
-      pauseBtn: "", // button text = change to icon later
-      stopBtn: "", // button text - change to icon later
+      pauseBtn: null, // source of the image - changes once timer starts
+      stopBtn: null, // source of the image - changes once timer starts
       displayingInputs: true,
       isPaused: true,
       mode: null, // controls whether pause/play is active
@@ -75,8 +75,8 @@ export default class Timer extends React.Component {
       initialTotalSeconds: totalSeconds,
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Click here to exit timer",
-      pauseBtn: "PAUSE",
-      stopBtn: "STOP",
+      pauseBtn: require("./imgs/pauseicon.png"),
+      stopBtn: require("./imgs/stopicon.png"),
       isPaused: false,
       totalSeconds: totalSeconds
     });
@@ -111,7 +111,7 @@ export default class Timer extends React.Component {
           console.log("Time remaining:", this.state.totalSeconds);
 
           if (this.state.totalSeconds === -1) {
-            
+
             if (this.state.clickedCallBtn) {
               fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
             } else if (this.state.clickedTextBtn) {
@@ -128,12 +128,14 @@ export default class Timer extends React.Component {
   pauseTimer = () => {
     if (!this.state.mode) {
       // PAUSED
+      var minZero = "";
+      if(Math.floor(this.state.totalSeconds / 60) < 10) minZero = "0";
       this.setState({
         isPaused: true,
         mode: true,
-        pauseBtn: "PLAY",
+        pauseBtn: require("./imgs/playicon.png"),
         displayingInputs: true,
-        minsRemaining: Math.floor(this.state.totalSeconds / 60) + "",
+        minsRemaining: minZero + Math.floor(this.state.totalSeconds / 60) + "",
         secsRemaining: this.state.totalSeconds % 60 + ""
       });
       return;
@@ -142,7 +144,7 @@ export default class Timer extends React.Component {
       this.setState({
         isPaused: false,
         mode: false,
-        pauseBtn: "PAUSE",
+        pauseBtn: require("./imgs/pauseicon.png"),
         displayingInputs: false,
         totalSeconds:
           parseFloat(this.state.minsRemaining * 60) +
@@ -169,8 +171,8 @@ export default class Timer extends React.Component {
       clickedTextBtn: false,
       timerIsRunning: false,
       navBarHiding: Styles.navBar,
-      pauseBtn: "",
-      stopBtn: "",
+      pauseBtn: null,
+      stopBtn: null,
       displayingInputs: true,
       isPaused: true,
       mode: null,
@@ -245,13 +247,15 @@ export default class Timer extends React.Component {
             value={this.state.secsRemaining}
           />
         </View>
-        <TouchableOpacity onPress={this.pauseTimer}>
-          <Text>{this.state.pauseBtn}</Text>
-        </TouchableOpacity>
+        <View style={Styles.pausePlayBtnCont}>
+          <TouchableOpacity onPress={this.pauseTimer}>
+            <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
 
-        <TouchableOpacity onPress={this.resetTimer}>
-          <Text>{this.state.stopBtn}</Text>
-        </TouchableOpacity>
+          <TouchableOpacity onPress={this.resetTimer}>
+            <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+        </View>
       </View>
     );
 
