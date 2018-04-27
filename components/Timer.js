@@ -277,8 +277,67 @@ export default class Timer extends React.Component {
           />
         </View>
 			
-			<View style={Styles.smBreak2} />
+		<View style={Styles.smBreak2}/>
+		  
+        <View style={Styles.pausePlayBtnCont}>
+          <TouchableOpacity onPress={this.pauseTimer}>
+            <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
 			
+		<View style={Styles.smBreak4}/>
+
+          <TouchableOpacity onPress={this.resetTimer}>
+            <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
+          </TouchableOpacity>
+        </View>
+			
+      </View>
+    );
+
+    var blckScreen = (
+      <TouchableOpacity
+        onPress={this.displayedBlack}
+        style={this.state.displayBlack}
+      />
+    );
+
+    return (
+      <View style={Styles.all}>
+        <View style={Styles.tBan}>
+          <Text>{"\n"}</Text>
+          <Text style={Styles.tBanTitle}>Timer</Text>
+        </View>
+
+        <Text>
+          {"\n"}
+          {"\n"}
+		  {"\n"}
+        </Text>
+		
+        <Text style={Styles.steps}>
+          Do not close app while timer is running
+        </Text>
+		
+		<View style={Styles.smBreak2} />
+		
+		<TouchableOpacity onPress={this.displayedBlack}>
+          <Text style={Styles.blueTxt}>Tap here for black screen</Text>
+        </TouchableOpacity>
+
+		<View style={Styles.smBreak} />
+		
+        <CircularProgressDisplay.Hollow
+          size={250}
+          progressBarWidth={5}
+          backgroundColor={"#ffffff"}
+          progressBarColor={this.state.progressBarColor}
+          easing="linear"
+          innerComponent={innerDisplay}
+          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
+        />
+
+        <Text>{"\n"}</Text>
+		
 		<View style={Styles.BtnCont}>
           <TouchableOpacity
             style={this.state.callBtnStyles}
@@ -328,69 +387,6 @@ export default class Timer extends React.Component {
             <Text style={Styles.btnTTxt}>Text</Text>
           </TouchableOpacity>
         </View>
-			
-			<Text>
-			{"\n"}
-			</Text>
-		  
-        <View style={Styles.pausePlayBtnCont}>
-          <TouchableOpacity onPress={this.pauseTimer}>
-            <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
-          </TouchableOpacity>
-			
-		<View style={Styles.smBreak3}/>
-
-          <TouchableOpacity onPress={this.resetTimer}>
-            <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
-          </TouchableOpacity>
-        </View>
-			
-      </View>
-    );
-
-    var blckScreen = (
-      <TouchableOpacity
-        onPress={this.displayedBlack}
-        style={this.state.displayBlack}
-      />
-    );
-
-    return (
-      <View style={Styles.all}>
-        <View style={Styles.tBan}>
-          <Text>{"\n"}</Text>
-          <Text style={Styles.tBanTitle}>Timer</Text>
-        </View>
-
-        <Text>
-          {"\n"}
-          {"\n"}
-		  {"\n"}
-        </Text>
-		
-        <Text style={Styles.steps}>
-          Do not close app while timer is running
-        </Text>
-		
-		<View style={Styles.smBreak2} />
-		
-		<TouchableOpacity onPress={this.displayedBlack}>
-          <Text style={Styles.blueTxt}>Tap here for black screen</Text>
-        </TouchableOpacity>
-
-		<View style={Styles.smBreak} />
-		
-        <CircularProgressDisplay.Hollow
-          size={330}
-          progressBarWidth={5}
-          backgroundColor={"#ffffff"}
-          progressBarColor={this.state.progressBarColor}
-          easing="linear"
-          innerComponent={innerDisplay}
-          rotate={this.state.progress / this.state.initialTotalSeconds * 360}
-        />
-
-        <Text>{"\n"}</Text>
 
         <TouchableOpacity style={Styles.navBar} onPress={this.resetTimer}>
           <Text style={Styles.stopTimeTxt}>{this.state.exitTimerMessage}</Text>
