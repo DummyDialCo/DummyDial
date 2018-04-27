@@ -41,24 +41,6 @@ export default class Instant extends React.Component {
       .catch(error => {
         console.log(error);
       });
-
-    // Determines if there is already a stored message
-    AsyncStorage.getItem("storeTheMsg")
-      .then(value => {
-        if (value) {
-          console.log("You have a stored message", value);
-          this.setState({
-            myMsg: value
-          });
-        } else {
-          this.setState({
-            myMsg: "Emergency, come now!"
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   sendCall = () => {
