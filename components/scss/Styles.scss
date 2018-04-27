@@ -84,7 +84,14 @@ $black: #000000;
 
 .title {
 	color: $darkgrey;
-	font-size: 2.4rem;
+	font-size: 1.9rem;
+}
+
+.steps2 {
+	color: $darkgrey;
+	font-size: 1rem;
+	text-align: left;
+	width: 19rem;
 }
 
 .steps1 {
@@ -97,6 +104,7 @@ $black: #000000;
 	color: $darkgrey;
 	font-size: 1.1rem;
 	text-align: left;
+	width: 19rem;
 }
 
 .inptIcnCont {
