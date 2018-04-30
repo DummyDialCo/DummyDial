@@ -109,7 +109,7 @@ export default class Welcome extends React.Component {
               Calls & texts will appear with this ID:
             </Text>
 
-			<View style={Styles.smBreak2} />
+			<View style={Styles.smBreak2}/>
 
             <View style={Styles.inptIcnCont}>
               <TextInput
