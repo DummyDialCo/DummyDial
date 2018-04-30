@@ -56,29 +56,27 @@ export default class Welcome extends React.Component {
           <Text style={Styles.tBanTitle}>Welcome</Text>
         </View>
 
-        <Text>
-        {"\n"}
-		{"\n"}
-        </Text>
+        <View style={Styles.smBreak2}>
+            <Text> </Text>
+            </View>
 
         <KeyboardAvoidingView>
           <View style={Styles.all}>
             <Image
               source={require("./imgs/DDLogo.png")}
-              style={{ width: 88, height: 110 }}
+              style={{ width: 78, height: 100 }}
             />
 
             <View style={Styles.smBreak2} />
-
+    
             <Text style={Styles.title}>DummyDial</Text>
 			
             <Text>
 				{"\n"}
-				{"\n"}
 			</Text>
 			
 			<Text style={Styles.steps2}>
-              Calls & texts will be sent to this number
+              Calls & texts will be sent to this number:
             </Text>
 
 			<View style={Styles.smBreak2} />
@@ -103,7 +101,7 @@ export default class Welcome extends React.Component {
 			  <View style={Styles.smBreak} />
 			  
 			 <Text style={Styles.steps2}>
-              Calls & texts will appear with this ID
+              Calls & texts will appear with this ID:
             </Text>
 
 			<View style={Styles.smBreak2} />
@@ -121,22 +119,24 @@ export default class Welcome extends React.Component {
               * These can be changed later in settings
             </Text>
 
-           	<Text>
-              {"\n"}
-            </Text>
+           	<Text></Text>
+            <Text></Text>
 			
             <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
               <Text style={Styles.btnTxt}>Submit</Text>
             </TouchableOpacity>
 
+              
             <View style={Styles.smBreak} />
-
+                <Text> </Text>
+              
             <TouchableOpacity style={Styles.qInfo}>
-              <Text style={Styles.blueTxt}>FAQ</Text>
+              <Text style={Styles.blueTxt}>FAQs</Text>
               <Text> </Text>
-              <View style={Styles.qMrk}>
-                <Text style={Styles.qMrkTxt}>?</Text>
-              </View>
+                 <View style={Styles.qMrk}>
+                  <Text style={Styles.qMrkTxt}>?</Text>
+                  </View>
+             
             </TouchableOpacity>
 
             <Text>

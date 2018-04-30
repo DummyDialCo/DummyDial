@@ -328,7 +328,7 @@ export default class Timer extends React.Component {
 		
         <CircularProgressDisplay.Hollow
           size={250}
-          progressBarWidth={5}
+          progressBarWidth={9}
           backgroundColor={"#ffffff"}
           progressBarColor={this.state.progressBarColor}
           easing="linear"
