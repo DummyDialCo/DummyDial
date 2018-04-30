@@ -96,6 +96,7 @@ export default class Welcome extends React.Component {
                       inputFormStatus: Styles.inptValid
                     });
                   } else if(this.state.inputFormStatus === Styles.inptValid && !this.validatePhoneNum(recipient)){
+                    // Condition only changes to invalid if it was previously true
                     this.setState({
                       inputFormStatus: Styles.inptInvalid
                     });
