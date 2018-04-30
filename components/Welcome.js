@@ -70,17 +70,17 @@ export default class Welcome extends React.Component {
             <View style={Styles.smBreak2} />
     
             <Text style={Styles.title}>DummyDial</Text>
-			
+
             <Text>
 				{"\n"}
 			</Text>
-			
+
 			<Text style={Styles.steps2}>
               Calls & texts will be sent to this number:
             </Text>
 
 			<View style={Styles.smBreak2} />
-			  
+
             <View style={Styles.inptIcnCont}>
               <TextInput
                 style={this.state.inputFormStatus}
@@ -93,22 +93,27 @@ export default class Welcome extends React.Component {
                     this.setState({
                       inputFormStatus: Styles.inptValid
                     });
+                  } else if(this.state.inputFormStatus === Styles.inptValid && !this.validatePhoneNum(recipient)){
+                    // Condition only changes to invalid if it was previously true
+                    this.setState({
+                      inputFormStatus: Styles.inptInvalid
+                    });
                   }
                 }}
               />
             </View>
-			  
+
 			  <View style={Styles.smBreak} />
-			  
+
 			 <Text style={Styles.steps2}>
               Calls & texts will appear with this ID:
             </Text>
 
 			<View style={Styles.smBreak2} />
-			  
+
             <View style={Styles.inptIcnCont}>
               <TextInput
-                style={this.state.inputFormStatus}
+                style={Styles.inpt}
                 placeholder="Enter fake contact name"
               />
             </View>
@@ -119,9 +124,16 @@ export default class Welcome extends React.Component {
               * These can be changed later in settings
             </Text>
 
+<<<<<<< HEAD
            	<Text></Text>
             <Text></Text>
 			
+=======
+           	<Text>
+              {"\n"}
+            </Text>
+
+>>>>>>> 21f1aee6066dde77e0600af1344516a0be352433
             <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
               <Text style={Styles.btnTxt}>Submit</Text>
             </TouchableOpacity>
