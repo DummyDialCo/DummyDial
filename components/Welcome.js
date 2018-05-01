@@ -21,7 +21,7 @@ export default class Welcome extends React.Component {
 
     this.state = {
       recipient: null,
-      inputFormStatus: Styles.inptCheck
+      inputFormStatus: null
     };
   }
 
@@ -41,7 +41,7 @@ export default class Welcome extends React.Component {
       navigate("Home", { recipient: this.state.recipient });
     } else {
       this.setState({
-        inputFormStatus: Styles.inptInvalid
+        inputFormStatus: require("./imgs/checkX.png")
       });
     }
   };
@@ -68,7 +68,7 @@ export default class Welcome extends React.Component {
             />
 
             <View style={Styles.smBreak2} />
-    
+
             <Text style={Styles.title}>DummyDial</Text>
 
             <Text>
@@ -82,11 +82,11 @@ export default class Welcome extends React.Component {
 			<View style={Styles.smBreak2} />
 
             <View style={Styles.inptIcnCont}>
-				
+
 			<View style={Styles.inptCheckCont}>
-				
+
               <TextInput
-                style={this.state.inputFormStatus}
+                style={Styles.inptCheck}
                 keyboardType="number-pad"
                 returnKeyType="done"
                 placeholder="Enter your phone number"
@@ -94,26 +94,27 @@ export default class Welcome extends React.Component {
                   this.setState({ recipient });
                   if (this.validatePhoneNum(recipient)) {
                     this.setState({
-                      inputFormStatus: Styles.inptValid
+                      inputFormStatus: require("./imgs/check.png")
                     });
-                  } else if(this.state.inputFormStatus === Styles.inptValid && !this.validatePhoneNum(recipient)){
+                  } else if(this.state.inputFormStatus === require("./imgs/check.png") && !this.validatePhoneNum(recipient)){
                     // Condition only changes to invalid if it was previously true
                     this.setState({
-                      inputFormStatus: Styles.inptInvalid
+                      inputFormStatus: require("./imgs/checkX.png")
+
                     });
                   }
                 }}
               />
-			  
+
 			  	<View style={Styles.checkBox}>
 				  <Image
-              	  source={require("./imgs/check.png")}
+              	  source={this.state.inputFormStatus}
 				  style={Styles.check}
             	  />
 				</View>
-				  
+
 			</View>
-			  
+
             </View>
 
 			  <View style={Styles.smBreak} />
@@ -139,22 +140,22 @@ export default class Welcome extends React.Component {
 
            	<Text></Text>
             <Text></Text>
-			
+
             <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
               <Text style={Styles.btnTxt}>Submit</Text>
             </TouchableOpacity>
 
-              
+
             <View style={Styles.smBreak} />
                 <Text></Text>
-              
+
             <TouchableOpacity style={Styles.qInfo}>
               <Text style={Styles.blueTxt}>FAQs</Text>
               <Text> </Text>
                  <View style={Styles.qMrk}>
                   <Text style={Styles.qMrkTxt}>?</Text>
                   </View>
-             
+
             </TouchableOpacity>
 
             <Text>

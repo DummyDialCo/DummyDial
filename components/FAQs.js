@@ -60,7 +60,7 @@ export default class FAQs extends React.Component {
             Why do I have to create a contact using a certain number?
           </Text>
           {"\n"}
-        
+
           <Text style={Styles.faqTxtParas}>
             Dummy Dial uses a custom number to send you calls and texts. Saving this number into your contacts allows you to change the appearance of calls & texts.
           </Text>
@@ -73,7 +73,7 @@ export default class FAQs extends React.Component {
           </Text>
           {"\n"}
           {"\n"}
-   
+
     <Text style={Styles.blueTxt}>For all other inquiries:</Text>
         </Text>
            </View>
@@ -83,7 +83,7 @@ export default class FAQs extends React.Component {
           style={Styles.setBtnsCont}
           onPress={() =>
             Linking.openURL(
-              "mailto:rajanrai93@icloud.com?subject=DummyDial Sucks&body=That is all"
+              "mailto:rajanrai93@icloud.com?subject=DummyDial&body="
             )
           }
         >
