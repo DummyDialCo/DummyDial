@@ -21,7 +21,8 @@ export default class Welcome extends React.Component {
 
     this.state = {
       recipient: null,
-      inputFormStatus: null
+      inputFormStatus: null,
+      checkStyling: Styles.check
     };
   }
 
@@ -99,8 +100,8 @@ export default class Welcome extends React.Component {
                   } else if(this.state.inputFormStatus === require("./imgs/check.png") && !this.validatePhoneNum(recipient)){
                     // Condition only changes to invalid if it was previously true
                     this.setState({
-                      inputFormStatus: require("./imgs/checkX.png")
-
+                      inputFormStatus: require("./imgs/checkX.png"),
+                      checkStyling: Styles.checkX
                     });
                   }
                 }}
@@ -109,7 +110,7 @@ export default class Welcome extends React.Component {
 			  	<View style={Styles.checkBox}>
 				  <Image
               	  source={this.state.inputFormStatus}
-				  style={Styles.check}
+				  style={this.state.checkStyling}
             	  />
 				</View>
 
