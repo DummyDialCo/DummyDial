@@ -50,15 +50,18 @@ export default class Welcome extends React.Component {
   render() {
     var faqs = (
       <View style={this.state.displayFAQ}>
-        <TouchableOpacity
-          onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}
-        >
-          <Text>CLOSE FAQS</Text>
-        </TouchableOpacity>
-
-        <Text style={Styles.tBanTitle}>FAQs</Text>
-        <Text />
+			
         <View style={Styles.whiteBG}>
+			
+		<TouchableOpacity
+          onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}>
+			  
+          <Text>CLOSE FAQS</Text>
+		  
+        </TouchableOpacity>
+			
+		<Text style={Styles.blueTxt}>FAQs</Text>	
+		  
           <Text style={Styles.faqTxt}>
             <Text style={Styles.blueTxt}>Why do you need my number?</Text>
             {"\n"}
