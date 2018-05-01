@@ -21,8 +21,7 @@ export default class Welcome extends React.Component {
 
     this.state = {
       recipient: null,
-      inputFormStatus: null,
-      checkStyling: Styles.check
+      inputFormStatus: null
     };
   }
 
@@ -42,7 +41,7 @@ export default class Welcome extends React.Component {
       navigate("Home", { recipient: this.state.recipient });
     } else {
       this.setState({
-        inputFormStatus: require("./imgs/checkX.png")
+        inputFormStatus: require("./imgs/checkXC.png")
       });
     }
   };
@@ -95,13 +94,12 @@ export default class Welcome extends React.Component {
                   this.setState({ recipient });
                   if (this.validatePhoneNum(recipient)) {
                     this.setState({
-                      inputFormStatus: require("./imgs/check.png")
+                      inputFormStatus: require("./imgs/checkC.png")
                     });
-                  } else if(this.state.inputFormStatus === require("./imgs/check.png") && !this.validatePhoneNum(recipient)){
+                  } else if(this.state.inputFormStatus === require("./imgs/checkC.png") && !this.validatePhoneNum(recipient)){
                     // Condition only changes to invalid if it was previously true
                     this.setState({
-                      inputFormStatus: require("./imgs/checkX.png"),
-                      checkStyling: Styles.checkX
+                      inputFormStatus: require("./imgs/checkXC.png")
                     });
                   }
                 }}
@@ -110,7 +108,7 @@ export default class Welcome extends React.Component {
 			  	<View style={Styles.checkBox}>
 				  <Image
               	  source={this.state.inputFormStatus}
-				  style={this.state.checkStyling}
+				  style={Styles.check}
             	  />
 				</View>
 

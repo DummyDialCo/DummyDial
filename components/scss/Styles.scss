@@ -144,11 +144,6 @@ $black: #000000;
 .check {
 	position: absolute;
 	width: 1.5rem;
-	height: 1rem;
-}
-
-.checkX {
-	@extend .check;
 	height: 1.5rem;
 }
 
