@@ -115,6 +115,8 @@ $black: #000000;
 .inptCheckCont {
 	width: 19rem;
 	height: 2.7rem;
+	display: flex;
+	align-items: flex-end;
 }
 
 .inptCheck {
@@ -132,10 +134,10 @@ $black: #000000;
 
 .checkBox {
 	height: 100%;
-	width: 96%;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	margin-right: .5rem;
 }
 
 .check {
