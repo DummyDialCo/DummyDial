@@ -21,7 +21,7 @@ export default class Welcome extends React.Component {
 
     this.state = {
       recipient: null,
-      inputFormStatus: Styles.inpt
+      inputFormStatus: Styles.inptCheck
     };
   }
 
@@ -82,6 +82,9 @@ export default class Welcome extends React.Component {
 			<View style={Styles.smBreak2} />
 
             <View style={Styles.inptIcnCont}>
+				
+			<View style={Styles.inptCheckCont}>
+				
               <TextInput
                 style={this.state.inputFormStatus}
                 keyboardType="number-pad"
@@ -101,6 +104,16 @@ export default class Welcome extends React.Component {
                   }
                 }}
               />
+			  
+			  	<View style={Styles.checkBox}>
+				  <Image
+              	  source={require("./imgs/check.png")}
+				  style={Styles.check}
+            	  />
+				</View>
+				  
+			</View>
+			  
             </View>
 
 			  <View style={Styles.smBreak} />
@@ -133,7 +146,7 @@ export default class Welcome extends React.Component {
 
               
             <View style={Styles.smBreak} />
-                <Text> </Text>
+                <Text></Text>
               
             <TouchableOpacity style={Styles.qInfo}>
               <Text style={Styles.blueTxt}>FAQs</Text>

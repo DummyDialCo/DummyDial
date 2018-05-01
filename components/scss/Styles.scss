@@ -112,13 +112,36 @@ $black: #000000;
 	align-items: center;
 }
 
-.inptInc {
-	width: 1.8rem;
-	height: 1.8rem;
-	background-color: $blue;
+.inptCheckCont {
+	width: 19rem;
+	height: 2.7rem;
+}
+
+.inptCheck {
 	position: absolute;
-	border-radius: 10rem;
-	margin-left: 0.5rem;
+	width: 19rem;
+	height: 2.7rem;
+	display: flex;
+	color: $blue;
+	background-color: $white;
+	font-size: 1.1rem;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
+	padding-left: 1rem;
+}
+
+.checkBox {
+	height: 100%;
+	width: 96%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.check {
+	position: absolute;
+	width: 1.5rem;
+	height: 1rem;
 }
 
 .inpt {
@@ -130,7 +153,6 @@ $black: #000000;
 	font-size: 1.1rem;
 	border-radius: 0.5rem;
 	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
-	margin-right: 0.5rem;
 	padding-left: 1rem;
 }
 
