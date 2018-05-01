@@ -21,7 +21,8 @@ export default class Welcome extends React.Component {
 
     this.state = {
       recipient: null,
-      inputFormStatus: null
+      inputFormStatus: null,
+      displayFAQ: Styles.faqPopupHidden
     };
   }
 
@@ -47,18 +48,65 @@ export default class Welcome extends React.Component {
   };
 
   render() {
+    var faqs = (
+      <View style={this.state.displayFAQ}>
+        <TouchableOpacity
+          onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}
+        >
+          <Text>CLOSE FAQS</Text>
+        </TouchableOpacity>
+
+        <Text style={Styles.tBanTitle}>FAQs</Text>
+        <Text />
+        <View style={Styles.whiteBG}>
+          <Text style={Styles.faqTxt}>
+            <Text style={Styles.blueTxt}>Why do you need my number?</Text>
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Dummy Dial works by sending real calls and text messages straight
+              to your own phone.
+            </Text>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.blueTxt}>Will my number be shared?</Text>
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Your phone number will be kept confidential and never shared.
+            </Text>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.blueTxt}>
+              Why do I have to create a contact using a certain number?
+            </Text>
+            {"\n"}
+
+            <Text style={Styles.faqTxtParas}>
+              Dummy Dial uses a custom number to send you calls and texts.
+              Saving this number into your contacts allows you to change the
+              appearance of calls & texts.
+            </Text>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Example: enter the number into your contacts as “Mom” then when
+              recieving a call or text it will appear as though “Mom” contacting
+              you.
+            </Text>
+          </Text>
+        </View>
+      </View>
+    );
+
     return (
       <View style={Styles.all}>
         <View style={Styles.tBan}>
-        <Text>
-		{"\n"}
-		</Text>
+          <Text>{"\n"}</Text>
           <Text style={Styles.tBanTitle}>Welcome</Text>
         </View>
 
         <View style={Styles.smBreak2}>
-            <Text> </Text>
-            </View>
+          <Text> </Text>
+        </View>
 
         <KeyboardAvoidingView>
           <View style={Styles.all}>
@@ -71,58 +119,56 @@ export default class Welcome extends React.Component {
 
             <Text style={Styles.title}>DummyDial</Text>
 
-            <Text>
-				{"\n"}
-			</Text>
+            <Text>{"\n"}</Text>
 
-			<Text style={Styles.steps2}>
+            <Text style={Styles.steps2}>
               Calls & texts will be sent to this number:
             </Text>
 
-			<View style={Styles.smBreak2} />
+            <View style={Styles.smBreak2} />
 
             <View style={Styles.inptIcnCont}>
+              <View style={Styles.inptCheckCont}>
+                <TextInput
+                  style={Styles.inptCheck}
+                  keyboardType="number-pad"
+                  returnKeyType="done"
+                  placeholder="Enter your phone number"
+                  onChangeText={recipient => {
+                    this.setState({ recipient });
+                    if (this.validatePhoneNum(recipient)) {
+                      this.setState({
+                        inputFormStatus: require("./imgs/checkC.png")
+                      });
+                    } else if (
+                      this.state.inputFormStatus ===
+                        require("./imgs/checkC.png") &&
+                      !this.validatePhoneNum(recipient)
+                    ) {
+                      // Condition only changes to invalid if it was previously true
+                      this.setState({
+                        inputFormStatus: require("./imgs/checkXC.png")
+                      });
+                    }
+                  }}
+                />
 
-			<View style={Styles.inptCheckCont}>
-
-              <TextInput
-                style={Styles.inptCheck}
-                keyboardType="number-pad"
-                returnKeyType="done"
-                placeholder="Enter your phone number"
-                onChangeText={recipient => {
-                  this.setState({ recipient });
-                  if (this.validatePhoneNum(recipient)) {
-                    this.setState({
-                      inputFormStatus: require("./imgs/checkC.png")
-                    });
-                  } else if(this.state.inputFormStatus === require("./imgs/checkC.png") && !this.validatePhoneNum(recipient)){
-                    // Condition only changes to invalid if it was previously true
-                    this.setState({
-                      inputFormStatus: require("./imgs/checkXC.png")
-                    });
-                  }
-                }}
-              />
-
-			  	<View style={Styles.checkBox}>
-				  <Image
-              	  source={this.state.inputFormStatus}
-				  style={Styles.check}
-            	  />
-				</View>
-
-			</View>
-
+                <View style={Styles.checkBox}>
+                  <Image
+                    source={this.state.inputFormStatus}
+                    style={Styles.check}
+                  />
+                </View>
+              </View>
             </View>
 
-			  <View style={Styles.smBreak} />
+            <View style={Styles.smBreak} />
 
-			 <Text style={Styles.steps2}>
+            <Text style={Styles.steps2}>
               Calls & texts will appear with this ID:
             </Text>
 
-			<View style={Styles.smBreak2}/>
+            <View style={Styles.smBreak2} />
 
             <View style={Styles.inptIcnCont}>
               <TextInput
@@ -137,24 +183,28 @@ export default class Welcome extends React.Component {
               * These can be changed later in settings
             </Text>
 
-           	<Text></Text>
-            <Text></Text>
+            <Text />
+            <Text />
 
             <TouchableOpacity style={Styles.btn} onPress={this.finishSignup}>
               <Text style={Styles.btnTxt}>Submit</Text>
             </TouchableOpacity>
 
-
             <View style={Styles.smBreak} />
-                <Text></Text>
+            <Text />
 
-            <TouchableOpacity style={Styles.qInfo}>
+            <TouchableOpacity
+              style={Styles.qInfo}
+              onPress={() => {
+                this.setState({ displayFAQ: Styles.faqPopup });
+                console.log("clicked faqs");
+              }}
+            >
               <Text style={Styles.blueTxt}>FAQs</Text>
               <Text> </Text>
-                 <View style={Styles.qMrk}>
-                  <Text style={Styles.qMrkTxt}>?</Text>
-                  </View>
-
+              <View style={Styles.qMrk}>
+                <Text style={Styles.qMrkTxt}>?</Text>
+              </View>
             </TouchableOpacity>
 
             <Text>
@@ -165,6 +215,8 @@ export default class Welcome extends React.Component {
             </Text>
           </View>
         </KeyboardAvoidingView>
+
+        {faqs}
       </View>
     );
   }
