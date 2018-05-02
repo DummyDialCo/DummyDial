@@ -21,7 +21,7 @@ export default class Settings extends React.Component {
 
     this.state = {
       recipient: this.props.navigation.state.params.recipient,
-      inputFormStatus: Styles.setInpt
+      inputFormStatus: require("./imgs/checkXC.png")
     };
   }
 
@@ -64,13 +64,13 @@ export default class Settings extends React.Component {
         </Text>
 
         <View style={Styles.settingsInpCont}>
-          <Text style={Styles.steps}>Change or update your phone number</Text>
+          <Text style={Styles.steps}>Update your phone number</Text>
 
           <View style={Styles.smBreak2} />
 
           <View style={Styles.setInpBtnCont}>
             <TextInput
-              style={this.state.inputFormStatus}
+              style={Styles.setInpt}
               keyboardType="number-pad"
               returnKeyType="done"
               placeholder={this.state.recipient}
@@ -78,12 +78,29 @@ export default class Settings extends React.Component {
                 this.setState({ recipient });
                 if (this.validatePhoneNum(recipient)) {
                   this.setState({
-                    inputFormStatus: Styles.setInptValid
+                    inputFormStatus: require("./imgs/checkC.png")
+                  });
+                } else if (
+                  this.state.inputFormStatus ===
+                    require("./imgs/checkC.png") &&
+                  !this.validatePhoneNum(recipient)
+                ) {
+                  // Condition only changes to invalid if it was previously true
+                  this.setState({
+                    inputFormStatus: require("./imgs/checkXC.png")
                   });
                 }
               }}
               onSubmitEditing={this.changePhoneNumber}
             />
+
+            <View>
+              <Text>{"\n"}{"\n"}{"\n"}</Text>
+              <Image
+                source={this.state.inputFormStatus}
+                style={Styles.check}
+              />
+            </View>
 
             <TouchableOpacity
               style={Styles.btn}
@@ -124,7 +141,7 @@ export default class Settings extends React.Component {
           style={Styles.setBtnsCont}
           onPress={() =>
             Linking.openURL(
-              "mailto:rajanrai93@icloud.com"
+              "mailto:dummydialapp@gmail.com"
             )
           }
         >

@@ -57,9 +57,9 @@ export default class Welcome extends React.Component {
 		{"\n"} 
 		{"\n"}
 		</Text>
-			
+		
         <View style={Styles.whiteBG}>
-			
+
 		<TouchableOpacity
           onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}>
 		
@@ -67,7 +67,9 @@ export default class Welcome extends React.Component {
             source={require("./imgs/greyX.png")}
             style={Styles.faqX}
             />
-		  
+
+        </TouchableOpacity>
+		
           <Text style={Styles.faqTxt}>
 			  
 			<Text style={Styles.blueTxt}>FAQs</Text>
