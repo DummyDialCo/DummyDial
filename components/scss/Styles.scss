@@ -304,16 +304,18 @@ $black: #000000;
 }
 
 .checkBoxSet {
-	width: 95%;
 	height: 100%;
 	display: flex;
 	align-items: flex-end;
 	justify-content: center;
+	margin-right: 0.5rem;
 }
 
 .setInptBox {
 	height: 2.6rem;
 	display: flex;
+	align-items: flex-end;
+	justify-content: center;
 	flexGrow: 1;
 	margin-right: 0.5rem;
 }
