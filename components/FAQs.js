@@ -29,16 +29,16 @@ export default class FAQs extends React.Component {
 
     return (
       <View style={Styles.all}>
-        <View
+        <TouchableOpacity
           style={Styles.tBan}
           onPress={() => {
             navigate("Settings", { recipient: this.state.recipient });
           }}
         >
           <Text>{"\n"}</Text>
-		
+
         <Text style={Styles.tBanTitle}>FAQs</Text>
-        </View>
+        </TouchableOpacity>
             <Text></Text>
         <View style={Styles.whiteBG}>
         <Text style={Styles.faqTxt}>
