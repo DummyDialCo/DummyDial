@@ -21,10 +21,9 @@ export default class Settings extends React.Component {
 
     this.state = {
       recipient: this.props.navigation.state.params.recipient,
-      inputFormStatus: require("./imgs/checkXC.png")
+      inputFormStatus: null
     };
   }
-
 
   validatePhoneNum = phoneNum => {
     const regex = /^\d{10}$/;
@@ -64,7 +63,7 @@ export default class Settings extends React.Component {
         </Text>
 
         <View style={Styles.settingsInpCont}>
-		
+
           <Text style={Styles.steps2}>Update your phone number</Text>
 
           <View style={Styles.smBreak2} />

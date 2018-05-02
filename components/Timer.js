@@ -67,7 +67,7 @@ export default class Timer extends React.Component {
         console.log(error);
       });
   };
-	
+
  	componentWillMount() {
     	this.keyboardDidHideListener = Keyboard.addListener(
 			"keyboardDidHide",
@@ -82,10 +82,10 @@ export default class Timer extends React.Component {
   	_keyboardDidHide() {
 		Keyboard.dismiss();
   	}
-	
+
   startedTimer = () => {
 	Keyboard.dismiss();
-	  
+
     var totalSeconds =
       parseFloat(this.state.minsRemaining * 60) +
       parseFloat(this.state.secsRemaining);
@@ -163,7 +163,7 @@ export default class Timer extends React.Component {
       // UNPAUSED
       var totalSeconds = parseFloat(this.state.minsRemaining * 60) + parseFloat(this.state.secsRemaining);
       this.setState({
-        progress: -1,
+        progress: 0,
         isPaused: false,
         mode: false,
         pauseBtn: require("./imgs/pauseicon.png"),
@@ -222,14 +222,14 @@ export default class Timer extends React.Component {
 
     var innerDisplay = (
       <View style={Styles.circleInnerDisplay}>
-		
+
 		<Text>
         {"\n"}
 		{"\n"}
 		{"\n"}
 		{"\n"}
        </Text>
-		
+
         <View style={Styles.timerInputContainer}>
           <TextInput
             style={Styles.timerInpMins}
@@ -276,21 +276,21 @@ export default class Timer extends React.Component {
             value={this.state.secsRemaining}
           />
         </View>
-			
+
 		<View style={Styles.smBreak2}/>
-		  
+
         <View style={Styles.pausePlayBtnCont}>
           <TouchableOpacity onPress={this.pauseTimer}>
             <Image source={this.state.pauseBtn} style={{ width: 30, height: 30 }} />
           </TouchableOpacity>
-			
+
 		<View style={Styles.smBreak4}/>
 
           <TouchableOpacity onPress={this.resetTimer}>
             <Image source={this.state.stopBtn} style={{ width: 30, height: 30 }} />
           </TouchableOpacity>
         </View>
-			
+
       </View>
     );
 
@@ -313,19 +313,19 @@ export default class Timer extends React.Component {
           {"\n"}
 		  {"\n"}
         </Text>
-		
+
         <Text style={Styles.steps}>
           Do not close app while timer is running
         </Text>
-		
+
 		<View style={Styles.smBreak2} />
-		
+
 		<TouchableOpacity onPress={this.displayedBlack}>
           <Text style={Styles.blueTxt}>Tap here for black screen</Text>
         </TouchableOpacity>
 
 		<View style={Styles.smBreak} />
-		
+
         <CircularProgressDisplay.Hollow
           size={250}
           progressBarWidth={9}
@@ -337,7 +337,7 @@ export default class Timer extends React.Component {
         />
 
         <Text>{"\n"}</Text>
-		
+
 		<View style={Styles.BtnCont}>
           <TouchableOpacity
             style={this.state.callBtnStyles}
@@ -393,7 +393,7 @@ export default class Timer extends React.Component {
         </TouchableOpacity>
 
         <View style={this.state.navBarHiding}>
-         
+
 		<TouchableOpacity
             onPress={() =>
               navigate("Home", { recipient: this.state.recipient })
