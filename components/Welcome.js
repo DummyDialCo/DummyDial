@@ -67,8 +67,6 @@ export default class Welcome extends React.Component {
             source={require("./imgs/greyX.png")}
             style={Styles.faqX}
             />
-
-        </TouchableOpacity>
 		
           <Text style={Styles.faqTxt}>
 			  
@@ -111,7 +109,7 @@ export default class Welcome extends React.Component {
               recieving a call or text it will appear as though “Mom” contacting
               you.
             </Text>
-          </Text> 
+          </Text>
 		</TouchableOpacity>
        </View>
       </View>

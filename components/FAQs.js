@@ -36,7 +36,8 @@ export default class FAQs extends React.Component {
           }}
         >
           <Text>{"\n"}</Text>
-          <Text style={Styles.tBanTitle}>FAQs</Text>
+		
+        <Text style={Styles.tBanTitle}>FAQs</Text>
         </View>
             <Text></Text>
         <View style={Styles.whiteBG}>
