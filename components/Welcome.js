@@ -50,21 +50,35 @@ export default class Welcome extends React.Component {
   render() {
     var faqs = (
       <View style={this.state.displayFAQ}>
+		
+		<Text>
+		{"\n"} 
+		{"\n"} 
+		{"\n"} 
+		{"\n"}
+		</Text>
 			
         <View style={Styles.whiteBG}>
 			
 		<TouchableOpacity
           onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}>
-			  
-          <Text>CLOSE FAQS</Text>
-		  
-        </TouchableOpacity>
-			
-		<Text style={Styles.blueTxt}>FAQs</Text>	
+		
+			<Image
+            source={require("./imgs/greyX.png")}
+            style={Styles.faqX}
+            />
 		  
           <Text style={Styles.faqTxt}>
+			  
+			<Text style={Styles.blueTxt}>FAQs</Text>
+			
+            {"\n"} 
+			{"\n"} 
+			
             <Text style={Styles.blueTxt}>Why do you need my number?</Text>
+			
             {"\n"}
+	
             <Text style={Styles.faqTxtParas}>
               Dummy Dial works by sending real calls and text messages straight
               to your own phone.
@@ -95,8 +109,9 @@ export default class Welcome extends React.Component {
               recieving a call or text it will appear as though “Mom” contacting
               you.
             </Text>
-          </Text>
-        </View>
+          </Text> 
+		</TouchableOpacity>
+       </View>
       </View>
     );
 
@@ -218,8 +233,7 @@ export default class Welcome extends React.Component {
             </Text>
           </View>
         </KeyboardAvoidingView>
-
-        {faqs}
+			{faqs}
       </View>
     );
   }
