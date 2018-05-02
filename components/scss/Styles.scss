@@ -303,10 +303,26 @@ $black: #000000;
 	justify-content: center;
 }
 
-.setInpt {
+.checkBoxSet {
+	width: 95%;
+	height: 100%;
+	display: flex;
+	align-items: flex-end;
+	justify-content: center;
+}
+
+.setInptBox {
 	height: 2.6rem;
 	display: flex;
 	flexGrow: 1;
+	margin-right: 0.5rem;
+}
+
+.setInpt {
+	position: absolute;
+	height: 2.6rem;
+	width: 100%;
+	display: flex;
 	color: $blue;
 	background-color: $white;
 	font-size: 1.1rem;

@@ -64,11 +64,13 @@ export default class Settings extends React.Component {
         </Text>
 
         <View style={Styles.settingsInpCont}>
-          <Text style={Styles.steps}>Update your phone number</Text>
+		
+          <Text style={Styles.steps2}>Update your phone number</Text>
 
           <View style={Styles.smBreak2} />
 
           <View style={Styles.setInpBtnCont}>
+		 	<View style={Styles.setInptBox}>
             <TextInput
               style={Styles.setInpt}
               keyboardType="number-pad"
@@ -94,18 +96,18 @@ export default class Settings extends React.Component {
               onSubmitEditing={this.changePhoneNumber}
             />
 
-            <View>
-              <Text>{"\n"}{"\n"}{"\n"}</Text>
+            <View style={Styles.checkBoxSet}>
               <Image
                 source={this.state.inputFormStatus}
                 style={Styles.check}
               />
             </View>
+			</View>
 
             <TouchableOpacity
               style={Styles.btn}
               onPress={this.changePhoneNumber}
-            >
+			>
               <Image
                 source={require("./imgs/savew.png")}
                 style={{ width: 21, height: 21 }}
@@ -114,9 +116,9 @@ export default class Settings extends React.Component {
             </TouchableOpacity>
           </View>
 
-          <View style={Styles.smBreak} />
+          <View style={Styles.smBreak2} />
 
-          <Text style={Styles.steps}>Add this number to your contacts</Text>
+          <Text style={Styles.steps2}>Add this number to your contacts</Text>
 
           <View style={Styles.smBreak2} />
 
