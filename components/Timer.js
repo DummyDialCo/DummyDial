@@ -24,8 +24,9 @@ export default class Timer extends React.Component {
       myMsg: "",
       // time props
       value: 0,
-      totalSeconds: 0,
+      total: 0,
       timeString: "00:00",
+      initialTime: 0,
       // btn styling - !clicked turns grey
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
@@ -50,71 +51,56 @@ export default class Timer extends React.Component {
       });
   };
 
- 	componentWillMount() {
-    	this.keyboardDidHideListener = Keyboard.addListener(
-			"keyboardDidHide",
-			this._keyboardDidHide
-		);
-	}
+  componentWillMount() {
+    this.keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      this._keyboardDidHide
+    );
+  }
 
-	componentWillUnmount() {
-		this.keyboardDidHideListener.remove();
-  	}
+  componentWillUnmount() {
+    this.keyboardDidHideListener.remove();
+  }
 
-  	_keyboardDidHide() {
-		Keyboard.dismiss();
-  	}
-
+  _keyboardDidHide() {
+    Keyboard.dismiss();
+  }
 
   startedTimer = () => {
-	Keyboard.dismiss();
-
-
+    Keyboard.dismiss();
 
     this.setState({
       navBarHiding: Styles.navBarHidden,
-      exitTimerMessage: "Tap here to exit timer"
+      exitTimerMessage: "Tap here to exit timer",
     });
 
     this.beginCount = setInterval(() => {
 
+      if (this.state.total > 0) {
+        this.setState({
+          total: this.state.total - 1,
+        });
 
-      var minZero = "";
-      var minDigit = Math.floor(this.state.totalSeconds / 60);
-      var secZero = "";
-      var secDigit = this.state.totalSeconds % 60;
-      if (minDigit <= 9) minZero = "0";
-      if(secDigit <= 9 ) secZero = "0";
-      this.setState({
-        timeString: minZero + minDigit + ":" + secZero + secDigit
-      });
+        console.log("Total", this.state.total);
 
-        if (this.state.totalSeconds > 0) {
-          this.setState({
-            totalSeconds: this.state.totalSeconds - 1,
-            // value: (this.state.value/60) - 1
-          });
-          console.log("Time remaining:", this.state.totalSeconds);
 
-          if (this.state.totalSeconds === 0) {
-
-            if (this.state.clickedCallBtn) {
-              fetch("https://dummydial93.herokuapp.com/"+this.state.recipient);
-            } else if (this.state.clickedTextBtn) {
-              fetch("https://quiet-fortress-33478.herokuapp.com/"+this.state.recipient+"/"+this.state.myMsg);
-            }
-
-            this.resetTimer();
+        if (this.state.total === 0) {
+          if (this.state.clickedCallBtn) {
+            fetch("https://dummydial93.herokuapp.com/" + this.state.recipient);
+          } else if (this.state.clickedTextBtn) {
+            fetch("https://quiet-fortress-33478.herokuapp.com/" + this.state.recipient + "/" + this.state.myMsg);
           }
+
+          this.resetTimer();
+        }
       }
     }, 1000);
   };
 
+
   resetTimer = () => {
     clearInterval(this.beginCount);
-    this.setState({
-
-    });
+    this.setState({});
   };
 
   displayedBlack = () => {
@@ -151,62 +137,60 @@ export default class Timer extends React.Component {
         <Text>
           {"\n"}
           {"\n"}
-		  {"\n"}
+          {"\n"}
         </Text>
 
         <Text style={Styles.steps}>
           Do not close app while timer is running
         </Text>
 
-		<View style={Styles.smBreak2} />
+        <View style={Styles.smBreak2} />
 
-		<TouchableOpacity onPress={this.displayedBlack}>
+        <TouchableOpacity onPress={this.displayedBlack}>
           <Text style={Styles.blueTxt}>Tap here for black screen</Text>
         </TouchableOpacity>
 
-		<View style={Styles.smBreak} />
+        <View style={Styles.smBreak} />
 
-    <Slider
-            trackStyle={{ height: 20, backgroundColor: "#fff", borderRadius: 50 }}
-            thumbStyle={{ width: 40, height: 40, borderRadius: 20 }}
-            thumbTintColor={"#5cacee"}
-            animateTransitions={true}
-            minimumTrackTintColor={"#5cacee"}
+        <Slider
+          trackStyle={{ height: 20, backgroundColor: "#fff", borderRadius: 50 }}
+          thumbStyle={{ width: 40, height: 40, borderRadius: 20 }}
+          thumbTintColor={"#5cacee"}
+          minimumTrackTintColor={"#5cacee"}
+          style={{
+            width: 300,
+            direction: "ltr"
+          }}
+          value={this.state.value}
+          step={1}
+          minimumValue={0}
+          maximumValue={30}
+          onValueChange={(value) => {
+            this.setState({
+              value: value,
+              total: value * 60
+            });
 
+            var minZero = "";
+            var minDigit = Math.floor(this.state.total/60);
+            var secZero = "";
+            var secDigit = this.state.total % 60;
+            if(minDigit <= 9) minZero = "0";
+            if(secDigit <= 9) secZero = "0";
+            this.setState({ timeString: minZero + minDigit + ":" + secZero + secDigit });
+          }}
+          onSlidingComplete={(value)=>{
+            console.log("sliding complete", value);
+            this.setState({
+            });
+          }}
+        />
 
-              style={{
-                width: 300,
-    direction: "ltr",
-    borderColor: "red"
-              }}
-              value={this.state.value}
-              step={1}
-              minimumValue={0}
-              maximumValue={30}
-              onValueChange={(value) => {
-                this.setState({
-                  value: value,
-                  totalSeconds: value * 60
-
-                });
-
-                var minZero = "";
-                var minDigit = Math.floor(this.state.totalSeconds / 60);
-                var secZero = "";
-                var secDigit = this.state.totalSeconds % 60;
-                if (minDigit <= 9) minZero = "0";
-                if(secDigit <= 9 ) secZero = "0";
-                this.setState({
-                  timeString: minZero + minDigit + ":" + secZero + secDigit
-                });
-
-              }} />
-
-            <Text>{this.state.timeString}</Text>
+        <Text>{this.state.timeString}</Text>
 
         <Text>{"\n"}</Text>
 
-		<View style={Styles.BtnCont}>
+        <View style={Styles.BtnCont}>
           <TouchableOpacity
             style={this.state.callBtnStyles}
             onPress={() => {
@@ -257,8 +241,7 @@ export default class Timer extends React.Component {
         </TouchableOpacity>
 
         <View style={this.state.navBarHiding}>
-
-		<TouchableOpacity
+          <TouchableOpacity
             onPress={() =>
               navigate("Home", { recipient: this.state.recipient })
             }
