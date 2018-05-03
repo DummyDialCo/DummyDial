@@ -12,7 +12,6 @@ import TextBody from "./components/TextBody";
 import Timer from "./components/Timer";
 import Settings from "./components/Settings";
 import FAQs from "./components/FAQs";
-import AddContact from "./components/AddContact";
 
 /* Only Stack Navigator controls in this file */
 const DummyDial = StackNavigator(
