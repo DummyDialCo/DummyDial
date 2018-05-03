@@ -81,6 +81,8 @@ export default class Timer extends React.Component {
           total: this.state.total - 1,
         });
 
+        this.updatingTimeString();
+
         console.log("Total", this.state.total);
 
 
@@ -96,6 +98,16 @@ export default class Timer extends React.Component {
       }
     }, 1000);
   };
+
+  updatingTimeString = () => {
+    var minZero = "";
+    var minDigit = Math.floor(this.state.total/60);
+    var secZero = "";
+    var secDigit = this.state.total % 60;
+    if(minDigit <= 9) minZero = "0";
+    if(secDigit <= 9) secZero = "0";
+    this.setState({ timeString: minZero + minDigit + ":" + secZero + secDigit });
+  }
 
 
   resetTimer = () => {
@@ -171,13 +183,7 @@ export default class Timer extends React.Component {
               total: value * 60
             });
 
-            var minZero = "";
-            var minDigit = Math.floor(this.state.total/60);
-            var secZero = "";
-            var secDigit = this.state.total % 60;
-            if(minDigit <= 9) minZero = "0";
-            if(secDigit <= 9) secZero = "0";
-            this.setState({ timeString: minZero + minDigit + ":" + secZero + secDigit });
+            this.updatingTimeString();
           }}
           onSlidingComplete={(value)=>{
             console.log("sliding complete", value);
