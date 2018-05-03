@@ -112,7 +112,9 @@ export default class Timer extends React.Component {
 
   resetTimer = () => {
     clearInterval(this.beginCount);
-    this.setState({});
+    this.setState({
+      // TODO RETURN ALL STATE PROPERTIES TO ORIGINAL VALUE LATER
+    });
   };
 
   displayedBlack = () => {
@@ -215,7 +217,7 @@ export default class Timer extends React.Component {
               source={require("./imgs/phonew.png")}
               style={{ width: 24, height: 26 }}
             />
-            <Text style={Styles.btnTTxt}>Call</Text>
+            <Text style={Styles.btnTTxt}>Set Call</Text>
           </TouchableOpacity>
 
           <View style={Styles.smBreak3} />
@@ -238,7 +240,7 @@ export default class Timer extends React.Component {
               source={require("./imgs/textw.png")}
               style={{ width: 27, height: 21 }}
             />
-            <Text style={Styles.btnTTxt}>Text</Text>
+            <Text style={Styles.btnTTxt}>Set Text</Text>
           </TouchableOpacity>
         </View>
 

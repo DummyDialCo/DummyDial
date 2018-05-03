@@ -143,7 +143,7 @@ export default class TextBody extends React.Component {
                   source={require("./imgs/textw.png")}
                   style={{ width: 27, height: 21 }}
                 />
-                <Text style={Styles.btnTTxt}>Text</Text>
+                <Text style={Styles.btnTTxt}>Text Now</Text>
               </TouchableOpacity>
             </View>
           </View>
