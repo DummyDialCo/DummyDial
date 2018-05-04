@@ -67,18 +67,10 @@ export default class Welcome extends React.Component {
             source={require("./imgs/greyX.png")}
             style={Styles.faqX}
             />
-		
+			
           <Text style={Styles.faqTxt}>
-			  
-			<Text style={Styles.blueTxt}>FAQs</Text>
-			
-            {"\n"} 
-			{"\n"} 
-			
             <Text style={Styles.blueTxt}>Why do you need my number?</Text>
-			
             {"\n"}
-	
             <Text style={Styles.faqTxtParas}>
               Dummy Dial works by sending real calls and text messages straight
               to your own phone.
@@ -88,26 +80,29 @@ export default class Welcome extends React.Component {
             <Text style={Styles.blueTxt}>Will my number be shared?</Text>
             {"\n"}
             <Text style={Styles.faqTxtParas}>
-              Your phone number will be kept confidential and never shared.
+             No, your number will not be shared. 
+			{"\n"}
+			{"\n"}
+			Dummy Dial will not access, send, or share your number. Your information is safe with us.
             </Text>
             {"\n"}
             {"\n"}
             <Text style={Styles.blueTxt}>
-              Why do I have to create a contact using a certain number?
+              Why do you need to access my contacts?
             </Text>
             {"\n"}
 
             <Text style={Styles.faqTxtParas}>
-              Dummy Dial uses a custom number to send you calls and texts.
-              Saving this number into your contacts allows you to change the
-              appearance of calls & texts.
-            </Text>
-            {"\n"}
-            {"\n"}
-            <Text style={Styles.faqTxtParas}>
-              Example: enter the number into your contacts as “Mom” then when
-              recieving a call or text it will appear as though “Mom” contacting
-              you.
+            Dummy Dial allows you to customize the look of the calls and texts by adding the number used to call or text your device into your contacts, with the name you provide.
+			  {"\n"}
+			  {"\n"}
+			  You can change / view this contact in your phones contacts at any time.
+			  {"\n"}
+			  {"\n"}
+			  Example:
+			  {"\n"}
+			  Entering the name of the contact as “Mom” will appear as though “Mom” is contacting you when you receive a call or text.
+
             </Text>
           </Text>
 		</TouchableOpacity>
