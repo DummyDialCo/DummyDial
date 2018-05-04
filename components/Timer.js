@@ -179,15 +179,8 @@ export default class Timer extends React.Component {
           <Text style={Styles.blueTxt}>To hide timer tap here for black screen</Text>
         </TouchableOpacity>
 
-<<<<<<< HEAD
         <View style={Styles.smBreak} />
 
-=======
-        <Text>
-          {"\n"}
-        </Text>
-		
->>>>>>> f1e60a37b11fd9c61592b79f5bc5fe1cb22ede66
 		<View style={Styles.timeCont}>
 
 		<Text style={Styles.timeDis}>{this.state.timeString}</Text>
