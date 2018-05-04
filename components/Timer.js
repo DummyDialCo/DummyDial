@@ -34,6 +34,7 @@ export default class Timer extends React.Component {
       // evaluates which button was clicked
       clickedCallBtn: false,
       clickedTextBtn: false,
+      displayStop: Styles.stopBtnHidden,
       // events after the timer starts
       navBarHiding: Styles.navBar, // style changes to hidden when timer is running
       displayBlack: Styles.blckBGhidden, // styling changes to display: flex; after
@@ -73,7 +74,8 @@ export default class Timer extends React.Component {
     this.setState({
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Tap here to exit timer",
-      countingDown: this.state.initialTime
+      countingDown: this.state.initialTime,
+      displayStop: Styles.stopBtnShowing
     });
 
     this.beginCount = setInterval(() => {
@@ -125,6 +127,7 @@ export default class Timer extends React.Component {
       textBtnStyles: Styles.btn,
       clickedCallBtn: false,
       clickedTextBtn: false,
+      displayStop: Styles.stopBtnHidden,
       navBarHiding: Styles.navBar,
       displayBlack: Styles.blckBGhidden,
       blckActive: null
@@ -190,9 +193,9 @@ export default class Timer extends React.Component {
             direction: "ltr"
           }}
           value={this.state.countingDown}
-          step={1}
+          step={0.5}
           minimumValue={0}
-          maximumValue={30}
+          maximumValue={20}
           onValueChange={(value) => {
             this.setState({
               countingDown: value,
@@ -211,6 +214,13 @@ export default class Timer extends React.Component {
         />
 
         <Text>{this.state.timeString}</Text>
+
+        <TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
+          <Image
+            source={require("./imgs/stopicon.png")}
+            style={{ width: 40, height: 40 }}
+          />
+        </TouchableOpacity>
 
         <Text>{"\n"}</Text>
 
