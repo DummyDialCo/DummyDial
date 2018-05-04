@@ -11,6 +11,7 @@ import {
   Keyboard
 } from "react-native";
 import { StackNavigator } from "react-navigation";
+import FadeView from "react-native-fade-view";
 import Styles from "./scss/Styles.scss";
 
 export default class TextBody extends React.Component {
@@ -21,44 +22,52 @@ export default class TextBody extends React.Component {
       recipient: this.props.navigation.state.params.recipient,
       myMsg: "",
       behavior: "position",
-      saveCheckMark: null
+      active: true
     };
   }
 
   componentDidMount = () => {
     // Retrieves the stored message
     AsyncStorage.getItem("storeTheMsg")
-    .then(value => {
-      if (value !== null) {
-        // Logs out the current message if there is one
-        console.log("Current stored text body:", value);
-        this.setState({
-          myMsg: value
-        });
-      }
-    })
-    .catch(error => {
-      console.log(error);
-    });
+      .then(value => {
+        if (value !== null) {
+          // Logs out the current message if there is one
+          console.log("Current stored text body:", value);
+          this.setState({
+            myMsg: value
+          });
+        }
+      })
+      .catch(error => {
+        console.log(error);
+      });
   };
 
   saveText = () => {
     Keyboard.dismiss();
     // saving text message to AsyncStorage
-    AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then(()=>{
-      this.setState({
-        saveCheckMark: require("./imgs/checkC.png")
+    AsyncStorage.setItem("storeTheMsg", this.state.myMsg)
+      .then(() => {
+        this.setState({
+          active: false
+        });
       })
-    }).catch(err => {
+      .catch(err => {
         console.log(err);
       });
+
+    this.fadeCheckMark = setTimeout(() => {
+      this.setState({
+        active: true
+      });
+    }, 2000);
   };
 
   sendText = () => {
     Keyboard.dismiss();
     // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
-   this.saveText();
+    this.saveText();
 
     fetch(
       "https://quiet-fortress-33478.herokuapp.com/" +
@@ -102,9 +111,7 @@ export default class TextBody extends React.Component {
             </Text>
 
             <View style={Styles.txtMsgInpCont}>
-              <Text style={Styles.steps}>
-                Enter text message content below
-              </Text>
+              <Text style={Styles.steps}>Enter text message content below</Text>
 
               <View style={Styles.smBreak2} />
 
@@ -148,10 +155,12 @@ export default class TextBody extends React.Component {
 
               <Text>{"\n"}</Text>
 
-              <Image
-                source={this.state.saveCheckMark}
-                style={{ width: 30, height: 30 }}
-              />
+              <FadeView active={this.state.active}>
+                <Image
+                  source={require("./imgs/checkC.png")}
+                  style={{ width: 30, height: 30 }}
+                />
+              </FadeView>
             </View>
           </View>
         </View>
