@@ -164,6 +164,8 @@ export default class Timer extends React.Component {
           <Text>{"\n"}</Text>
           <Text style={Styles.tBanTitle}>Timer</Text>
         </View>
+		
+		<TouchableOpacity onPress={this.displayedBlack} style={Styles.timeTitles}>
 
         <Text>
           {"\n"}
@@ -177,15 +179,38 @@ export default class Timer extends React.Component {
 
         <View style={Styles.smBreak2} />
 
-        <TouchableOpacity onPress={this.displayedBlack}>
-          <Text style={Styles.blueTxt}>Tap here for black screen</Text>
+          <Text style={Styles.blueTxt}>To hide timer tap here for black screen</Text>
         </TouchableOpacity>
 
         <View style={Styles.smBreak} />
+		
+		<View style={Styles.timeCont}>
+		
+		<Text style={Styles.timeDis}>{this.state.timeString}</Text>
+		
+		 <Text>
+          {"\n"}
+          {"\n"}
+        </Text>
+		
+		<TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
+          <Image
+            source={require("./imgs/stopicon.png")}
+            style={Styles.stopBtn}
+          />
+        </TouchableOpacity>
+		  
+		  </View>
+		  <View>
+			  
+		<View style={Styles.timeLength}>
+		  <Text style={Styles.steps}>0m</Text>
+		  <Text style={Styles.steps}>20m</Text>
+		 </View>
 
         <Slider
-          trackStyle={{ height: 20, backgroundColor: "#fff", borderRadius: 50 }}
-          thumbStyle={{ width: 40, height: 40, borderRadius: 20 }}
+          trackStyle={{ height: 15, backgroundColor: "#fff", borderRadius: 50 }}
+          thumbStyle={{ width: 35, height: 35, borderRadius: 20 }}
           thumbTintColor={"#5cacee"}
           minimumTrackTintColor={"#5cacee"}
           style={{
@@ -212,17 +237,10 @@ export default class Timer extends React.Component {
             });
           }}
         />
+		
+		</View>
 
-        <Text>{this.state.timeString}</Text>
-
-        <TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
-          <Image
-            source={require("./imgs/stopicon.png")}
-            style={{ width: 40, height: 40 }}
-          />
-        </TouchableOpacity>
-
-        <Text>{"\n"}</Text>
+        <View style={Styles.smBreak}/>
 
         <View style={Styles.BtnCont}>
           <TouchableOpacity
