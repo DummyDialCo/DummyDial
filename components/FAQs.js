@@ -37,67 +37,48 @@ export default class FAQs extends React.Component {
         >
           <Text>{"\n"}</Text>
 
-        <Text style={Styles.tBanTitle}>FAQs</Text>
+          <Text style={Styles.tBanTitle}>FAQs</Text>
         </TouchableOpacity>
-            <Text></Text>
+        <Text>{"\n"}{"\n"}{"\n"}</Text>
         <View style={Styles.whiteBG}>
-        <Text style={Styles.faqTxt}>
-          <Text style={Styles.blueTxt}>Why do you need my number?</Text>
-          {"\n"}
-          <Text style={Styles.faqTxtParas}>
-            Dummy Dial works by sending real calls and text messages straight to
-            your own phone.
-          </Text>
-          {"\n"}
-          {"\n"}
-          <Text style={Styles.blueTxt}>Will my number be shared?</Text>
-          {"\n"}
-          <Text style={Styles.faqTxtParas}>
-            Your phone number will be kept confidential and never shared.
-          </Text>
-          {"\n"}
-          {"\n"}
-          <Text style={Styles.blueTxt}>
-            Why do I have to create a contact using a certain number?
-          </Text>
-          {"\n"}
-
-          <Text style={Styles.faqTxtParas}>
-            Dummy Dial uses a custom number to send you calls and texts. Saving this number into your contacts allows you to change the appearance of calls & texts.
-          </Text>
-          {"\n"}
-          {"\n"}
-          <Text style={Styles.faqTxtParas}>
-            Example: enter the number into your contacts as “Mom” then when
-            recieving a call or text it will appear as though “Mom” contacting
-            you.
-          </Text>
-          {"\n"}
-          {"\n"}
-
-    <Text style={Styles.blueTxt}>For all other inquiries:</Text>
-        </Text>
-           </View>
-            <Text>
+          <Text style={Styles.faqTxt}>
+            <Text style={Styles.blueTxt}>Why do you need my number?</Text>
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Dummy Dial works by sending real calls and text messages straight
+              to your own phone.
             </Text>
-        <TouchableOpacity
-          style={Styles.setBtnsCont}
-          onPress={() =>
-            Linking.openURL(
-              "mailto:rajanrai93@icloud.com?subject=DummyDial&body="
-            )
-          }
-        >
-          <View style={Styles.setBtnL}>
-            <Image
-              style={{ width: 28, height: 21 }}
-              source={require("./imgs/mail.png")}
-            />
-            <Text style={Styles.setBtnsTitle}>Contact us</Text>
-          </View>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.blueTxt}>Will my number be shared?</Text>
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Ensuring your privacy is important to us. DummyDial does not send,
+              share or store information that you provided. DummyDial cannot
+              access your information, your information is only stored on the
+              authorized device.
+            </Text>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.blueTxt}>
+              Why do you need to access my contacts?
+            </Text>
+            {"\n"}
 
-          <Text style={Styles.setArw}>></Text>
-        </TouchableOpacity>
+            <Text style={Styles.faqTxtParas}>
+              DummyDial lets you customize the look of calls/texts by adding our
+              phone number (which we use to call you) into your contacts, with
+              your preferred contact ID name that you enter. We do this so you
+              don’t have to exit the app to add the information.
+            </Text>
+            {"\n"}
+            {"\n"}
+            <Text style={Styles.faqTxtParas}>
+              Example: Entering the number into your contacts as “Mom” will
+              appear as though “Mom” is contacting you when you receive a call or text.
+            </Text>
+          </Text>
+        </View>
 
         <View style={Styles.navBar}>
           <TouchableOpacity

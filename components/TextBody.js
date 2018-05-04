@@ -45,11 +45,11 @@ export default class TextBody extends React.Component {
   saveText = () => {
     Keyboard.dismiss();
     // saving text message to AsyncStorage
-    AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then(
+    AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then(()=>{
       this.setState({
         saveCheckMark: require("./imgs/checkC.png")
-      });
-    ).catch(err => {
+      })
+    }).catch(err => {
         console.log(err);
       });
   };
