@@ -28,36 +28,37 @@ export default class TextBody extends React.Component {
   componentDidMount = () => {
     // Retrieves the stored message
     AsyncStorage.getItem("storeTheMsg")
-      .then(value => {
-        if (value !== null) {
-          // Logs out the current message if there is one
-          console.log("Current stored text body:", value);
-          this.setState({
-            myMsg: value
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    .then(value => {
+      if (value !== null) {
+        // Logs out the current message if there is one
+        console.log("Current stored text body:", value);
+        this.setState({
+          myMsg: value
+        });
+      }
+    })
+    .catch(error => {
+      console.log(error);
+    });
   };
 
   saveText = () => {
     Keyboard.dismiss();
     // saving text message to AsyncStorage
-    AsyncStorage.setItem("storeTheMsg", this.state.myMsg).catch(err => {
-      console.log(err);
-    });
-    this.setState({
-      saveCheckMark: require("./imgs/checkC.png")
-    });
+    AsyncStorage.setItem("storeTheMsg", this.state.myMsg).then(
+      this.setState({
+        saveCheckMark: require("./imgs/checkC.png")
+      });
+    ).catch(err => {
+        console.log(err);
+      });
   };
 
   sendText = () => {
     Keyboard.dismiss();
     // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
 
-    this.saveText();
+   this.saveText();
 
     fetch(
       "https://quiet-fortress-33478.herokuapp.com/" +
@@ -101,7 +102,9 @@ export default class TextBody extends React.Component {
             </Text>
 
             <View style={Styles.txtMsgInpCont}>
-              <Text style={Styles.steps}>Enter text message content below</Text>
+              <Text style={Styles.steps}>
+                Enter text message content below
+              </Text>
 
               <View style={Styles.smBreak2} />
 
