@@ -309,20 +309,6 @@ export default class Timer extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("TextBody", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 37, height: 30 }}
-                source={require("./imgs/stext.png")}
-              />
-              <Text style={Styles.navTxt}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
               navigate("Timer", { recipient: this.state.recipient })
             }
           >
@@ -332,6 +318,20 @@ export default class Timer extends React.Component {
                 source={require("./imgs/stimeb.png")}
               />
               <Text style={Styles.navTxtB}>Timer</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() =>
+              navigate("TextBody", { recipient: this.state.recipient })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 37, height: 30 }}
+                source={require("./imgs/stext.png")}
+              />
+              <Text style={Styles.navTxt}>Text Body</Text>
             </View>
           </TouchableOpacity>
 

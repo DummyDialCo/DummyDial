@@ -184,22 +184,6 @@ export default class TextBody extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("TextPage", {
-                recipient: this.state.recipient
-              })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 37, height: 30 }}
-                source={require("./imgs/stextb.png")}
-              />
-              <Text style={Styles.navTxtB}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
               navigate("Timer", {
                 recipient: this.state.recipient
               })
@@ -211,6 +195,22 @@ export default class TextBody extends React.Component {
                 source={require("./imgs/stime.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() =>
+              navigate("TextPage", {
+                recipient: this.state.recipient
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 37, height: 30 }}
+                source={require("./imgs/stextb.png")}
+              />
+              <Text style={Styles.navTxtB}>Text Body</Text>
             </View>
           </TouchableOpacity>
 
