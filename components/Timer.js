@@ -302,38 +302,38 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 28, height: 30 }}
+                style={{ width: 23, height: 25 }}
                 source={require("./imgs/sphone.png")}
               />
               <Text style={Styles.navTxt}>Instant</Text>
             </View>
           </TouchableOpacity>
 
-          <TouchableOpacity
-            onPress={() =>
-              navigate("TextBody", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 37, height: 30 }}
-                source={require("./imgs/stext.png")}
-              />
-              <Text style={Styles.navTxt}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
+         <TouchableOpacity
             onPress={() =>
               navigate("Timer", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/stimeb.png")}
               />
-              <Text style={Styles.navTxtB}>Timer</Text>
+              <Text style={Styles.navTxt}>Timer</Text>
+            </View>
+          </TouchableOpacity>
+
+       <TouchableOpacity
+            onPress={() =>
+              navigate("TextBody", { recipient: this.state.recipient })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 32, height: 25 }}
+                source={require("./imgs/stext.png")}
+              />
+              <Text style={Styles.navTxt}>Text Body</Text>
             </View>
           </TouchableOpacity>
 
@@ -344,7 +344,7 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgear.png")}
               />
               <Text style={Styles.navTxt}>Settings</Text>

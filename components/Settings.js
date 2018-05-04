@@ -175,17 +175,15 @@ export default class Settings extends React.Component {
           <Text style={Styles.setArw}>></Text>
         </TouchableOpacity>
 
-        <View style={Styles.navBar}>
+<View style={Styles.navBar}>
           <TouchableOpacity
             onPress={() =>
-              navigate("Home", {
-                recipient: this.state.recipient
-              })
+              navigate("Home", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 28, height: 30 }}
+                style={{ width: 23, height: 25 }}
                 source={require("./imgs/sphone.png")}
               />
               <Text style={Styles.navTxt}>Instant</Text>
@@ -194,14 +192,26 @@ export default class Settings extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("TextBody", {
-                recipient: this.state.recipient
-              })
+              navigate("Timer", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 37, height: 30 }}
+                style={{ width: 25, height: 25 }}
+                source={require("./imgs/stime.png")}
+              />
+              <Text style={Styles.navTxt}>Timer</Text>
+            </View>
+          </TouchableOpacity>
+				
+		<TouchableOpacity
+            onPress={() =>
+              navigate("TextBody", { recipient: this.state.recipient })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 32, height: 25 }}
                 source={require("./imgs/stext.png")}
               />
               <Text style={Styles.navTxt}>Text Body</Text>
@@ -210,35 +220,18 @@ export default class Settings extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("Timer", {
-                recipient: this.state.recipient
-              })
+              navigate("Settings", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 30, height: 30 }}
-                source={require("./imgs/stime.png")}
-              />
-              <Text style={Styles.navTxt}>Timer</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigate("Settings", {
-                recipient: this.state.recipient
-              })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgearb.png")}
               />
-              <Text style={Styles.navTxtB}>Settings</Text>
+              <Text style={Styles.navTxt}>Settings</Text>
             </View>
           </TouchableOpacity>
+				
         </View>
       </View>
     );

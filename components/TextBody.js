@@ -60,7 +60,7 @@ export default class TextBody extends React.Component {
       this.setState({
         active: true
       });
-    }, 2000);
+    }, 1000);
   };
 
   sendText = () => {
@@ -141,6 +141,15 @@ export default class TextBody extends React.Component {
                   style={{ width: 21, height: 21 }}
                 />
                 <Text style={Styles.btnTTxt}>Save</Text>
+				<FadeView 
+				active={this.state.active}
+				style={Styles.checkTxtBodCont}>
+                <Image
+                  source={require("./imgs/checkC.png")}
+                  style={Styles.checkTxtBod}
+                />
+              </FadeView>
+				
               </TouchableOpacity>
 
               <View style={Styles.smBreak3} />
@@ -154,28 +163,19 @@ export default class TextBody extends React.Component {
               </TouchableOpacity>
 
               <Text>{"\n"}</Text>
-
-              <FadeView active={this.state.active}>
-                <Image
-                  source={require("./imgs/checkC.png")}
-                  style={{ width: 30, height: 30 }}
-                />
-              </FadeView>
             </View>
           </View>
         </View>
 
-        <View style={Styles.navBar}>
+<View style={Styles.navBar}>
           <TouchableOpacity
             onPress={() =>
-              navigate("Home", {
-                recipient: this.state.recipient
-              })
+              navigate("Home", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 28, height: 30 }}
+                style={{ width: 23, height: 25 }}
                 source={require("./imgs/sphone.png")}
               />
               <Text style={Styles.navTxt}>Instant</Text>
@@ -184,51 +184,46 @@ export default class TextBody extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("TextPage", {
-                recipient: this.state.recipient
-              })
+              navigate("Timer", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 37, height: 30 }}
-                source={require("./imgs/stextb.png")}
-              />
-              <Text style={Styles.navTxtB}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigate("Timer", {
-                recipient: this.state.recipient
-              })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/stime.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
             </View>
           </TouchableOpacity>
-
-          <TouchableOpacity
+				
+		<TouchableOpacity
             onPress={() =>
-              navigate("Settings", {
-                recipient: this.state.recipient
-              })
+              navigate("TextBody", { recipient: this.state.recipient })
             }
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 30, height: 30 }}
+                style={{ width: 32, height: 25 }}
+                source={require("./imgs/stextb.png")}
+              />
+              <Text style={Styles.navTxt}>Text Body</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() =>
+              navigate("Settings", { recipient: this.state.recipient })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgear.png")}
               />
               <Text style={Styles.navTxt}>Settings</Text>
             </View>
           </TouchableOpacity>
+				
         </View>
       </View>
     );
