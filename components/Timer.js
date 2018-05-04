@@ -27,6 +27,7 @@ export default class Timer extends React.Component {
       total: 0,
       timeString: "00:00",
       initialTime: 0,
+      countingDown: 0,
       // btn styling - !clicked turns grey
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
@@ -72,6 +73,7 @@ export default class Timer extends React.Component {
     this.setState({
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Tap here to exit timer",
+      countingDown: this.state.initialTime
     });
 
     this.beginCount = setInterval(() => {
@@ -79,6 +81,7 @@ export default class Timer extends React.Component {
       if (this.state.total > 0) {
         this.setState({
           total: this.state.total - 1,
+          countingDown: this.state.countingDown - (1/60)
         });
 
         this.updatingTimeString();
@@ -86,7 +89,7 @@ export default class Timer extends React.Component {
         console.log("Total", this.state.total);
 
 
-        if (this.state.total === 0) {
+        if (this.state.total === 0 || this.state.countingDown <= 0) {
           if (this.state.clickedCallBtn) {
             fetch("https://dummydial93.herokuapp.com/" + this.state.recipient);
           } else if (this.state.clickedTextBtn) {
@@ -175,7 +178,7 @@ export default class Timer extends React.Component {
             width: 300,
             direction: "ltr"
           }}
-          value={this.state.value}
+          value={this.state.countingDown}
           step={1}
           minimumValue={0}
           maximumValue={30}
@@ -190,6 +193,7 @@ export default class Timer extends React.Component {
           onSlidingComplete={(value)=>{
             console.log("sliding complete", value);
             this.setState({
+              initialTime: value
             });
           }}
         />
