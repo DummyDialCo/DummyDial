@@ -23,18 +23,18 @@ export default class Timer extends React.Component {
       recipient: this.props.navigation.state.params.recipient,
       myMsg: "",
       // time props
-      value: 0,
-      total: 0,
-      timeString: "00:00",
-      initialTime: 0,
-      countingDown: 0,
+      value: 0, // position of the circle on the slider
+      total: 0, // total time, in seconds
+      timeString: "00:00", // displays before the timer is set
+      initialTime: 0, // is set once timer starts, does not change after
+      countingDown: 0, // reduces by 1/60th of value each interval
       // btn styling - !clicked turns grey
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
       // evaluates which button was clicked
       clickedCallBtn: false,
       clickedTextBtn: false,
-      // events after the timer starts\
+      // events after the timer starts
       navBarHiding: Styles.navBar, // style changes to hidden when timer is running
       displayBlack: Styles.blckBGhidden, // styling changes to display: flex; after
       blckActive: null // function changes this to a boolean
@@ -116,7 +116,18 @@ export default class Timer extends React.Component {
   resetTimer = () => {
     clearInterval(this.beginCount);
     this.setState({
-      // TODO RETURN ALL STATE PROPERTIES TO ORIGINAL VALUE LATER
+      value: 0,
+      total: 0,
+      timeString: "00:00",
+      initialTime: 0,
+      countingDown: 0,
+      callBtnStyles: Styles.btn,
+      textBtnStyles: Styles.btn,
+      clickedCallBtn: false,
+      clickedTextBtn: false,
+      navBarHiding: Styles.navBar,
+      displayBlack: Styles.blckBGhidden,
+      blckActive: null
     });
   };
 
