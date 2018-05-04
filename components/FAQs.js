@@ -108,7 +108,7 @@ export default class FAQs extends React.Component {
               <Text style={Styles.navTxt}>Timer</Text>
             </View>
           </TouchableOpacity>
-				
+
 		<TouchableOpacity
             onPress={() =>
               navigate("TextBody", { recipient: this.state.recipient })
@@ -136,9 +136,9 @@ export default class FAQs extends React.Component {
               <Text style={Styles.navTxt}>Settings</Text>
             </View>
           </TouchableOpacity>
-				
+
         </View>
-				
+
       </View>
     );
   }

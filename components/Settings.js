@@ -63,50 +63,49 @@ export default class Settings extends React.Component {
         </Text>
 
         <View style={Styles.settingsInpCont}>
-
           <Text style={Styles.steps2}>Update your phone number</Text>
 
           <View style={Styles.smBreak2} />
 
           <View style={Styles.setInpBtnCont}>
-		 	<View style={Styles.setInptBox}>
-            <TextInput
-              style={Styles.setInpt}
-              keyboardType="number-pad"
-              returnKeyType="done"
-              placeholder={this.state.recipient}
-              onChangeText={recipient => {
-                this.setState({ recipient });
-                if (this.validatePhoneNum(recipient)) {
-                  this.setState({
-                    inputFormStatus: require("./imgs/checkC.png")
-                  });
-                } else if (
-                  this.state.inputFormStatus ===
-                    require("./imgs/checkC.png") &&
-                  !this.validatePhoneNum(recipient)
-                ) {
-                  // Condition only changes to invalid if it was previously true
-                  this.setState({
-                    inputFormStatus: require("./imgs/checkXC.png")
-                  });
-                }
-              }}
-              onSubmitEditing={this.changePhoneNumber}
-            />
-
-            <View style={Styles.checkBoxSet}>
-              <Image
-                source={this.state.inputFormStatus}
-                style={Styles.check}
+            <View style={Styles.setInptBox}>
+              <TextInput
+                style={Styles.setInpt}
+                keyboardType="number-pad"
+                returnKeyType="done"
+                placeholder={this.state.recipient}
+                onChangeText={recipient => {
+                  this.setState({ recipient });
+                  if (this.validatePhoneNum(recipient)) {
+                    this.setState({
+                      inputFormStatus: require("./imgs/checkC.png")
+                    });
+                  } else if (
+                    this.state.inputFormStatus ===
+                      require("./imgs/checkC.png") &&
+                    !this.validatePhoneNum(recipient)
+                  ) {
+                    // Condition only changes to invalid if it was previously true
+                    this.setState({
+                      inputFormStatus: require("./imgs/checkXC.png")
+                    });
+                  }
+                }}
+                onSubmitEditing={this.changePhoneNumber}
               />
+
+              <View style={Styles.checkBoxSet}>
+                <Image
+                  source={this.state.inputFormStatus}
+                  style={Styles.check}
+                />
+              </View>
             </View>
-			</View>
 
             <TouchableOpacity
               style={Styles.btn}
               onPress={this.changePhoneNumber}
-			>
+            >
               <Image
                 source={require("./imgs/savew.png")}
                 style={{ width: 21, height: 21 }}
@@ -116,35 +115,13 @@ export default class Settings extends React.Component {
           </View>
 
           <View style={Styles.smBreak2} />
-
-          <Text style={Styles.steps2}>Add this number to your contacts</Text>
-
-          <View style={Styles.smBreak2} />
-
-          <View style={Styles.setInpBtnCont}>
-            <View style={Styles.contNum}>
-              <Text style={Styles.setPhnNum}>1(604)3302056</Text>
-            </View>
-
-            <TouchableOpacity style={Styles.btn}>
-              <Image
-                source={require("./imgs/copyw.png")}
-                style={{ width: 19, height: 21 }}
-              />
-              <Text style={Styles.btnTTxt}>Copy</Text>
-            </TouchableOpacity>
-          </View>
         </View>
 
         <Text>{"\n"}</Text>
 
         <TouchableOpacity
           style={Styles.setBtnsCont}
-          onPress={() =>
-            Linking.openURL(
-              "mailto:dummydialapp@gmail.com"
-            )
-          }
+          onPress={() => Linking.openURL("mailto:dummydialapp@gmail.com")}
         >
           <View style={Styles.setBtnL}>
             <Image
@@ -175,7 +152,7 @@ export default class Settings extends React.Component {
           <Text style={Styles.setArw}>></Text>
         </TouchableOpacity>
 
-<View style={Styles.navBar}>
+        <View style={Styles.navBar}>
           <TouchableOpacity
             onPress={() =>
               navigate("Home", { recipient: this.state.recipient })
@@ -203,8 +180,8 @@ export default class Settings extends React.Component {
               <Text style={Styles.navTxt}>Timer</Text>
             </View>
           </TouchableOpacity>
-				
-		<TouchableOpacity
+
+          <TouchableOpacity
             onPress={() =>
               navigate("TextBody", { recipient: this.state.recipient })
             }
@@ -231,7 +208,6 @@ export default class Settings extends React.Component {
               <Text style={Styles.navTxt}>Settings</Text>
             </View>
           </TouchableOpacity>
-				
         </View>
       </View>
     );

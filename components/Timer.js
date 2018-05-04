@@ -88,9 +88,6 @@ export default class Timer extends React.Component {
 
         this.updatingTimeString();
 
-        console.log("Total", this.state.total);
-
-
         if (this.state.total === 0 || this.state.countingDown <= 0) {
           if (this.state.clickedCallBtn) {
             fetch("https://dummydial93.herokuapp.com/" + this.state.recipient);
@@ -164,7 +161,7 @@ export default class Timer extends React.Component {
           <Text>{"\n"}</Text>
           <Text style={Styles.tBanTitle}>Timer</Text>
         </View>
-		
+
 		<TouchableOpacity onPress={this.displayedBlack} style={Styles.timeTitles}>
 
         <Text>
@@ -182,29 +179,34 @@ export default class Timer extends React.Component {
           <Text style={Styles.blueTxt}>To hide timer tap here for black screen</Text>
         </TouchableOpacity>
 
+<<<<<<< HEAD
+        <View style={Styles.smBreak} />
+
+=======
         <Text>
           {"\n"}
         </Text>
 		
+>>>>>>> f1e60a37b11fd9c61592b79f5bc5fe1cb22ede66
 		<View style={Styles.timeCont}>
-		
+
 		<Text style={Styles.timeDis}>{this.state.timeString}</Text>
-		
+
 		 <Text>
           {"\n"}
           {"\n"}
         </Text>
-		
+
 		<TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
           <Image
             source={require("./imgs/stopicon.png")}
             style={Styles.stopBtn}
           />
         </TouchableOpacity>
-		  
+
 		  </View>
 		  <View>
-			  
+
 		<View style={Styles.timeLength}>
 		  <Text style={Styles.steps}>0min</Text>
 		  <Text style={Styles.steps}>20min</Text>
@@ -233,13 +235,12 @@ export default class Timer extends React.Component {
             this.updatingTimeString();
           }}
           onSlidingComplete={(value)=>{
-            console.log("sliding complete", value);
             this.setState({
               initialTime: value
             });
           }}
         />
-		
+
 		</View>
 
         <View style={Styles.smBreak}/>

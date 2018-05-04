@@ -98,7 +98,7 @@ export default class Instant extends React.Component {
             <Text style={Styles.btnMTxt}>Text Now</Text>
           </View>
         </TouchableOpacity>
-			
+
 			<View style={Styles.navBar}>
           <TouchableOpacity
             onPress={() =>
@@ -127,7 +127,7 @@ export default class Instant extends React.Component {
               <Text style={Styles.navTxt}>Timer</Text>
             </View>
           </TouchableOpacity>
-				
+
 		<TouchableOpacity
             onPress={() =>
               navigate("TextBody", { recipient: this.state.recipient })

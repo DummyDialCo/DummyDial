@@ -141,15 +141,15 @@ export default class TextBody extends React.Component {
                   style={{ width: 21, height: 21 }}
                 />
                 <Text style={Styles.btnTTxt}>Save</Text>
-				<FadeView 
-				active={this.state.active}
-				style={Styles.checkTxtBodCont}>
-                <Image
-                  source={require("./imgs/checkC.png")}
-                  style={Styles.checkTxtBod}
-                />
-              </FadeView>
-				
+                <FadeView
+                  active={this.state.active}
+                  style={Styles.checkTxtBodCont}
+                >
+                  <Image
+                    source={require("./imgs/checkC.png")}
+                    style={Styles.checkTxtBod}
+                  />
+                </FadeView>
               </TouchableOpacity>
 
               <View style={Styles.smBreak3} />
@@ -167,7 +167,7 @@ export default class TextBody extends React.Component {
           </View>
         </View>
 
-<View style={Styles.navBar}>
+        <View style={Styles.navBar}>
           <TouchableOpacity
             onPress={() =>
               navigate("Home", { recipient: this.state.recipient })
@@ -195,8 +195,8 @@ export default class TextBody extends React.Component {
               <Text style={Styles.navTxt}>Timer</Text>
             </View>
           </TouchableOpacity>
-				
-		<TouchableOpacity
+
+          <TouchableOpacity
             onPress={() =>
               navigate("TextBody", { recipient: this.state.recipient })
             }
@@ -223,7 +223,6 @@ export default class TextBody extends React.Component {
               <Text style={Styles.navTxt}>Settings</Text>
             </View>
           </TouchableOpacity>
-				
         </View>
       </View>
     );
