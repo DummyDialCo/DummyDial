@@ -229,6 +229,15 @@ $black: #000000;
 	margin-left: 0.8rem;
 }
 
+.checkTxtBodCont {
+	margin-left: 1.1rem;
+}
+
+.checkTxtBod {
+	width: 1.5rem;
+	height: 1.5rem;
+}
+
 .txtMsgInpCont {
 	display: flex;
 	flex-direction: column;
@@ -252,7 +261,7 @@ $black: #000000;
 }
 
 .timeCont {
-	height: 4.5rem;
+	height: 6.5rem;
 	width: 100%;
 	display: flex;
 	align-items: center;
