@@ -195,6 +195,7 @@ export default class Timer extends React.Component {
           maximumValue={30}
           onValueChange={(value) => {
             this.setState({
+              countingDown: value,
               value: value,
               total: value * 60
             });
