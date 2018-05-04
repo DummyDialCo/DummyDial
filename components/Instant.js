@@ -118,22 +118,6 @@ export default class Instant extends React.Component {
 
           <TouchableOpacity
             onPress={() =>
-              navigate("TextBody", {
-                recipient: this.state.recipient
-              })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 37, height: 30 }}
-                source={require("./imgs/stext.png")}
-              />
-              <Text style={Styles.navTxt}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
               navigate("Timer", {
                 recipient: this.state.recipient
               })
@@ -145,6 +129,22 @@ export default class Instant extends React.Component {
                 source={require("./imgs/stime.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() =>
+              navigate("TextBody", {
+                recipient: this.state.recipient
+              })
+            }
+          >
+            <View style={Styles.navBarBtn}>
+              <Image
+                style={{ width: 37, height: 30 }}
+                source={require("./imgs/stext.png")}
+              />
+              <Text style={Styles.navTxt}>Text Body</Text>
             </View>
           </TouchableOpacity>
 
