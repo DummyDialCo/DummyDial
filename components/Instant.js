@@ -107,7 +107,7 @@ export default class Instant extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 23, height: 25 }}
+			 	style={Styles.instantNav}
                 source={require("./imgs/sphoneb.png")}
               />
               <Text style={Styles.navTxtB}>Instant</Text>
@@ -121,7 +121,7 @@ export default class Instant extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 25, height: 25 }}
+				style={Styles.timerNav}
                 source={require("./imgs/stime.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
@@ -135,7 +135,7 @@ export default class Instant extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 32, height: 25 }}
+				style={Styles.textNav}
                 source={require("./imgs/stext.png")}
               />
               <Text style={Styles.navTxt}>Text Body</Text>
@@ -149,7 +149,7 @@ export default class Instant extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 25, height: 25 }}
+				style={Styles.settingsNav}
                 source={require("./imgs/sgear.png")}
               />
               <Text style={Styles.navTxt}>Settings</Text>

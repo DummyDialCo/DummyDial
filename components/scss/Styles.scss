@@ -56,8 +56,8 @@ $black: #000000;
 
 .navTxt {
 	color: $grey;
-	padding-top: 0.5rem;
-	font-size: 0.95rem;
+	padding-top: 0.3rem;
+	font-size: 0.85rem;
 }
 
 .navTxtB {
@@ -483,4 +483,24 @@ $black: #000000;
 .backA {
 	width: 10;
 	height: 15;
+}
+
+.instantNav {
+	width: 20; 
+	height: 22;
+}
+
+.timerNav {
+	width: 22; 
+	height: 22;
+}
+
+.textNav {
+	width: 29; 
+	height: 22;
+}
+
+.settingsNav {
+	width: 22; 
+	height: 22;
 }
