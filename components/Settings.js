@@ -37,11 +37,11 @@ export default class Settings extends React.Component {
         console.log(err);
       });
       this.setState({
-        inputFormStatus: Styles.setInpt
+        inputFormStatus: require("./imgs/checkC.png")
       });
     } else {
       this.setState({
-        inputFormStatus: Styles.setInptInvalid
+        inputFormStatus: require("./imgs/checkXC.png")
       });
     }
   };
