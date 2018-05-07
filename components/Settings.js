@@ -160,7 +160,7 @@ export default class Settings extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 23, height: 25 }}
+                style={{ width: 26, height: 28 }}
                 source={require("./imgs/sphone.png")}
               />
               <Text style={Styles.navTxt}>Instant</Text>
@@ -174,7 +174,7 @@ export default class Settings extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 25, height: 25 }}
+                style={{ width: 28, height: 28 }}
                 source={require("./imgs/stime.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
@@ -188,7 +188,7 @@ export default class Settings extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 32, height: 25 }}
+                style={{ width: 35, height: 28 }}
                 source={require("./imgs/stext.png")}
               />
               <Text style={Styles.navTxt}>Text Body</Text>
@@ -202,7 +202,7 @@ export default class Settings extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 25, height: 25 }}
+                style={{ width: 28, height: 28 }}
                 source={require("./imgs/sgearb.png")}
               />
               <Text style={Styles.navTxt}>Settings</Text>
