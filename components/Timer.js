@@ -32,6 +32,7 @@ export default class Timer extends React.Component {
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
       // evaluates which button was clicked
+      timerIsRunning: false,
       clickedCallBtn: false,
       clickedTextBtn: false,
       displayStop: Styles.stopBtnHidden,
@@ -75,7 +76,8 @@ export default class Timer extends React.Component {
       navBarHiding: Styles.navBarHidden,
       exitTimerMessage: "Tap here to exit timer",
       countingDown: this.state.initialTime,
-      displayStop: Styles.stopBtnShowing
+      displayStop: Styles.stopBtnShowing,
+      timerIsRunning: true
     });
 
     this.beginCount = setInterval(() => {
@@ -122,6 +124,7 @@ export default class Timer extends React.Component {
       countingDown: 0,
       callBtnStyles: Styles.btn,
       textBtnStyles: Styles.btn,
+      timerIsRunning: false,
       clickedCallBtn: false,
       clickedTextBtn: false,
       displayStop: Styles.stopBtnHidden,
@@ -207,7 +210,7 @@ export default class Timer extends React.Component {
 
         <Slider
           trackStyle={{ height: 15, backgroundColor: "#fff", borderRadius: 50, shadowOpacity: 0.9,
-          shadowRadius: 5, shadowColor: '#CECECE', 
+          shadowRadius: 5, shadowColor: '#CECECE',
           shadowOffset: { height: 0, width: 0 } }}
           thumbStyle={{ width: 35, height: 35, borderRadius: 20}}
           thumbTintColor={"#5cacee"}
