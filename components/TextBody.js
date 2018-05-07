@@ -146,7 +146,7 @@ export default class TextBody extends React.Component {
                   style={Styles.checkTxtBodCont}
                 >
                   <Image
-                    source={require("./imgs/checkC.png")}
+                    source={require("./imgs/checkW.png")}
                     style={Styles.checkTxtBod}
                   />
                 </FadeView>
@@ -206,7 +206,7 @@ export default class TextBody extends React.Component {
                 style={{ width: 32, height: 25 }}
                 source={require("./imgs/stextb.png")}
               />
-              <Text style={Styles.navTxt}>Text Body</Text>
+              <Text style={Styles.navTxtB}>Text Body</Text>
             </View>
           </TouchableOpacity>
 

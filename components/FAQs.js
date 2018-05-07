@@ -141,7 +141,7 @@ export default class FAQs extends React.Component {
                 style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgearb.png")}
               />
-              <Text style={Styles.navTxt}>Settings</Text>
+              <Text style={Styles.navTxtB}>Settings</Text>
             </View>
           </TouchableOpacity>
 
