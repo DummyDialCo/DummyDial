@@ -134,7 +134,10 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>Contact Us</Text>
                     </View>
-                    <Text style={Styles.setArw}>></Text>
+						<Image
+                		source={require("./imgs/frwA.png")}
+						style={Styles.backA}
+              			/>
                 </TouchableOpacity>
                 <View style={Styles.smBreak2} />
                 <TouchableOpacity
@@ -150,7 +153,10 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>FAQs</Text>
                     </View>
-                    <Text style={Styles.setArw}>></Text>
+                    <Image
+                		source={require("./imgs/frwA.png")}
+						style={Styles.backA}
+              			/>
                 </TouchableOpacity>
                 <View style={Styles.navBar}>
                     <TouchableOpacity
