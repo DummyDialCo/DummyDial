@@ -192,7 +192,7 @@ export default class Timer extends React.Component {
 
 		<TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
           <Image
-            source={require("./imgs/stopicon.png")}
+            source={require("./imgs/stopC.png")}
             style={Styles.stopBtn}
           />
         </TouchableOpacity>
