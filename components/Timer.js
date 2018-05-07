@@ -298,7 +298,7 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 26, height: 28 }}
+                style={{ width: 23, height: 25 }}
                 source={require("./imgs/sphone.png")}
               />
               <Text style={Styles.navTxt}>Instant</Text>
@@ -312,7 +312,7 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 28, height: 28 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/stimeb.png")}
               />
               <Text style={Styles.navTxt}>Timer</Text>
@@ -326,7 +326,7 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 35, height: 28 }}
+                style={{ width: 32, height: 25 }}
                 source={require("./imgs/stext.png")}
               />
               <Text style={Styles.navTxt}>Text Body</Text>
@@ -340,7 +340,7 @@ export default class Timer extends React.Component {
           >
             <View style={Styles.navBarBtn}>
               <Image
-                style={{ width: 28, height: 28 }}
+                style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgear.png")}
               />
               <Text style={Styles.navTxt}>Settings</Text>
