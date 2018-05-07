@@ -125,7 +125,7 @@ export default class Welcome extends React.Component {
           <View style={Styles.all}>
             <Image
               source={require("./imgs/DDLogo.png")}
-              style={{ width: 78, height: 100 }}
+              style={{ width: 72, height: 90 }}
             />
 
             <View style={Styles.smBreak2} />
@@ -151,16 +151,16 @@ export default class Welcome extends React.Component {
                     this.setState({ recipient });
                     if (this.validatePhoneNum(recipient)) {
                       this.setState({
-                        inputFormStatus: require("./imgs/checkC.png")
+                        inputFormStatus: require("./imgs/checkB.png")
                       });
                     } else if (
                       this.state.inputFormStatus ===
-                        require("./imgs/checkC.png") &&
+                        require("./imgs/checkB.png") &&
                       !this.validatePhoneNum(recipient)
                     ) {
                       // Condition only changes to invalid if it was previously true
                       this.setState({
-                        inputFormStatus: require("./imgs/checkXC.png")
+                        inputFormStatus: require("./imgs/checkXG.png")
                       });
                     }
                   }}
@@ -204,7 +204,6 @@ export default class Welcome extends React.Component {
             </TouchableOpacity>
 
             <View style={Styles.smBreak} />
-            <Text />
 
             <TouchableOpacity
               style={Styles.qInfo}

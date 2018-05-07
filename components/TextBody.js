@@ -54,7 +54,7 @@ export default class TextBody extends React.Component {
             });
         }, 1000);
     };
-
+	
     saveText = () => {
         Keyboard.dismiss();
         // saving text message to AsyncStorage

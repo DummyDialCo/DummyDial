@@ -45,7 +45,7 @@ export default class Settings extends React.Component {
             }, 1000);
         } else {
             this.setState({
-                inputFormStatus: require("./imgs/checkXC.png")
+                inputFormStatus: require("./imgs/checkXG.png")
             });
         }
     };
@@ -63,7 +63,7 @@ export default class Settings extends React.Component {
                     {"\n"}
                 </Text>
                 <View style={Styles.settingsInpCont}>
-                    <Text style={Styles.steps2}>Update your phone number</Text>
+                    <Text style={Styles.steps}>Update your phone number</Text>
                     <View style={Styles.smBreak2} />
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>
@@ -76,16 +76,16 @@ export default class Settings extends React.Component {
                                     this.setState({ recipient });
                                     if (this.validatePhoneNum(recipient)) {
                                         this.setState({
-                                            inputFormStatus: require("./imgs/checkC.png")
+                                            inputFormStatus: require("./imgs/checkB.png")
                                         });
                                     } else if (
                                         this.state.inputFormStatus ===
-                                            require("./imgs/checkC.png") &&
+                                            require("./imgs/checkB.png") &&
                                         !this.validatePhoneNum(recipient)
                                     ) {
                                         // Condition only changes to invalid if it was previously true
                                         this.setState({
-                                            inputFormStatus: require("./imgs/checkXC.png")
+                                            inputFormStatus: require("./imgs/checkXG.png")
                                         });
                                     }
                                 }}
@@ -112,7 +112,7 @@ export default class Settings extends React.Component {
                                 style={Styles.checkTxtBodCont}
                             >
                                 <Image
-                                    source={require("./imgs/checkC.png")}
+                                    source={require("./imgs/checkW.png")}
                                     style={Styles.checkTxtBod}
                                 />
                             </FadeView>
@@ -134,7 +134,10 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>Contact Us</Text>
                     </View>
-                    <Text style={Styles.setArw}>></Text>
+						<Image
+                		source={require("./imgs/frwA.png")}
+						style={Styles.backA}
+              			/>
                 </TouchableOpacity>
                 <View style={Styles.smBreak2} />
                 <TouchableOpacity
@@ -150,7 +153,10 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>FAQs</Text>
                     </View>
-                    <Text style={Styles.setArw}>></Text>
+                    <Image
+                		source={require("./imgs/frwA.png")}
+						style={Styles.backA}
+              			/>
                 </TouchableOpacity>
                 <View style={Styles.navBar}>
                     <TouchableOpacity
@@ -210,7 +216,7 @@ export default class Settings extends React.Component {
                                 style={{ width: 25, height: 25 }}
                                 source={require("./imgs/sgearb.png")}
                             />
-                            <Text style={Styles.navTxt}>Settings</Text>
+                            <Text style={Styles.navTxtB}>Settings</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

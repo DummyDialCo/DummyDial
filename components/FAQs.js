@@ -37,7 +37,15 @@ export default class FAQs extends React.Component {
         >
           <Text>{"\n"}</Text>
 
-          <Text style={Styles.tBanTitle}>FAQs</Text>
+          <View style={Styles.backACont}>
+			  <Image
+                source={require("./imgs/backA.png")}
+				style={Styles.backA}
+              />
+			 <Text style={Styles.tBanTitle}>FAQs</Text>
+			 <View></View>
+			</View>
+		  
         </TouchableOpacity>
         <Text></Text>
         <View style={Styles.whiteBG}>
@@ -133,7 +141,7 @@ export default class FAQs extends React.Component {
                 style={{ width: 25, height: 25 }}
                 source={require("./imgs/sgearb.png")}
               />
-              <Text style={Styles.navTxt}>Settings</Text>
+              <Text style={Styles.navTxtB}>Settings</Text>
             </View>
           </TouchableOpacity>
 
