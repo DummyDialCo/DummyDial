@@ -176,7 +176,7 @@ export default class Timer extends React.Component {
 
         <View style={Styles.smBreak2} />
 
-          <Text style={Styles.blueTxt}>To hide timer tap here for black screen</Text>
+          <Text style={Styles.blueTxt}> To hide screen tap here  </Text>
         </TouchableOpacity>
 
         <View style={Styles.smBreak} />
@@ -206,8 +206,10 @@ export default class Timer extends React.Component {
 		 </View>
 
         <Slider
-          trackStyle={{ height: 15, backgroundColor: "#fff", borderRadius: 50 }}
-          thumbStyle={{ width: 35, height: 35, borderRadius: 20 }}
+          trackStyle={{ height: 15, backgroundColor: "#fff", borderRadius: 50, shadowOpacity: 0.9,
+          shadowRadius: 5, shadowColor: '#CECECE', 
+          shadowOffset: { height: 0, width: 0 } }}
+          thumbStyle={{ width: 35, height: 35, borderRadius: 20}}
           thumbTintColor={"#5cacee"}
           minimumTrackTintColor={"#5cacee"}
           style={{
