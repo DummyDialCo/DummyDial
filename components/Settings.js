@@ -63,7 +63,7 @@ export default class Settings extends React.Component {
                     {"\n"}
                 </Text>
                 <View style={Styles.settingsInpCont}>
-                    <Text style={Styles.steps2}>Update your phone number</Text>
+                    <Text style={Styles.steps}>Update your phone number</Text>
                     <View style={Styles.smBreak2} />
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>

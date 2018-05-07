@@ -37,7 +37,15 @@ export default class FAQs extends React.Component {
         >
           <Text>{"\n"}</Text>
 
-          <Text style={Styles.tBanTitle}>FAQs</Text>
+          <View style={Styles.backACont}>
+			  <Image
+                source={require("./imgs/backA.png")}
+				style={Styles.backA}
+              />
+			 <Text style={Styles.tBanTitle}>FAQs</Text>
+			 <View></View>
+			</View>
+		  
         </TouchableOpacity>
         <Text></Text>
         <View style={Styles.whiteBG}>
