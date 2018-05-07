@@ -15,23 +15,19 @@ import { StackNavigator } from "react-navigation";
 import Styles from "./scss/Styles.scss";
 import { Linking } from "react-native";
 import FadeView from "react-native-fade-view";
-
 export default class Settings extends React.Component {
     constructor(props) {
         super(props);
-
         this.state = {
             recipient: this.props.navigation.state.params.recipient,
             inputFormStatus: null,
             active: true
         };
     }
-
     validatePhoneNum = phoneNum => {
         const regex = /^\d{10}$/;
         return regex.test(phoneNum);
     };
-
     changePhoneNumber = () => {
         if (this.validatePhoneNum(this.state.recipient)) {
             // Stores the new phone number in AsyncStorage
@@ -53,28 +49,22 @@ export default class Settings extends React.Component {
             });
         }
     };
-
     render() {
         const { navigate } = this.props.navigation;
-
         return (
             <View style={Styles.all}>
                 <View style={Styles.tBan}>
                     <Text>{"\n"}</Text>
                     <Text style={Styles.tBanTitle}>Settings</Text>
                 </View>
-
                 <Text>
                     {"\n"}
                     {"\n"}
                     {"\n"}
                 </Text>
-
                 <View style={Styles.settingsInpCont}>
                     <Text style={Styles.steps2}>Update your phone number</Text>
-
                     <View style={Styles.smBreak2} />
-
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>
                             <TextInput
@@ -101,7 +91,6 @@ export default class Settings extends React.Component {
                                 }}
                                 onSubmitEditing={this.changePhoneNumber}
                             />
-
                             <View style={Styles.checkBoxSet}>
                                 <Image
                                     source={this.state.inputFormStatus}
@@ -109,7 +98,6 @@ export default class Settings extends React.Component {
                                 />
                             </View>
                         </View>
-
                         <TouchableOpacity
                             style={Styles.btn}
                             onPress={this.changePhoneNumber}
@@ -130,12 +118,9 @@ export default class Settings extends React.Component {
                             </FadeView>
                         </TouchableOpacity>
                     </View>
-
                     <View style={Styles.smBreak2} />
                 </View>
-
                 <Text>{"\n"}</Text>
-
                 <TouchableOpacity
                     style={Styles.setBtnsCont}
                     onPress={() =>
@@ -147,15 +132,11 @@ export default class Settings extends React.Component {
                             style={{ width: 28, height: 21 }}
                             source={require("./imgs/mail.png")}
                         />
-
                         <Text style={Styles.setBtnsTitle}>Contact Us</Text>
                     </View>
-
                     <Text style={Styles.setArw}>></Text>
                 </TouchableOpacity>
-
                 <View style={Styles.smBreak2} />
-
                 <TouchableOpacity
                     style={Styles.setBtnsCont}
                     onPress={() =>
@@ -169,10 +150,8 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>FAQs</Text>
                     </View>
-
                     <Text style={Styles.setArw}>></Text>
                 </TouchableOpacity>
-
                 <View style={Styles.navBar}>
                     <TouchableOpacity
                         onPress={() =>
@@ -189,7 +168,6 @@ export default class Settings extends React.Component {
                             <Text style={Styles.navTxt}>Instant</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() =>
                             navigate("Timer", {
@@ -205,7 +183,6 @@ export default class Settings extends React.Component {
                             <Text style={Styles.navTxt}>Timer</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() =>
                             navigate("TextBody", {
@@ -221,7 +198,6 @@ export default class Settings extends React.Component {
                             <Text style={Styles.navTxt}>Text Body</Text>
                         </View>
                     </TouchableOpacity>
-
                     <TouchableOpacity
                         onPress={() =>
                             navigate("Settings", {
