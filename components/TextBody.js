@@ -1,230 +1,264 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
-  View,
-  TextInput,
-  Button,
-  AsyncStorage,
-  TouchableOpacity,
-  Image,
-  Keyboard
+    StyleSheet,
+    Text,
+    View,
+    TextInput,
+    Button,
+    AsyncStorage,
+    TouchableOpacity,
+    Image,
+    Keyboard
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 import FadeView from "react-native-fade-view";
 import Styles from "./scss/Styles.scss";
 
 export default class TextBody extends React.Component {
-  constructor(props) {
-    super(props);
+    constructor(props) {
+        super(props);
 
-    this.state = {
-      recipient: this.props.navigation.state.params.recipient,
-      myMsg: "",
-      behavior: "position",
-      active: true
+        this.state = {
+            recipient: this.props.navigation.state.params.recipient,
+            myMsg: "",
+            defaultMsg: "Emergency, come now!",
+            behavior: "position",
+            active: true
+        };
+    }
+
+    componentDidMount = () => {
+        // Retrieves the stored message
+        AsyncStorage.getItem("storeTheMsg")
+            .then(value => {
+                if (value !== null) {
+                    // Logs out the current message if there is one
+                    console.log("Current stored text body:", value);
+                    this.setState({
+                        myMsg: value
+                    });
+                }
+            })
+            .catch(error => {
+                console.log(error);
+            });
     };
-  }
 
-  componentDidMount = () => {
-    // Retrieves the stored message
-    AsyncStorage.getItem("storeTheMsg")
-      .then(value => {
-        if (value !== null) {
-          // Logs out the current message if there is one
-          console.log("Current stored text body:", value);
-          this.setState({
-            myMsg: value
-          });
-        }
-      })
-      .catch(error => {
-        console.log(error);
-      });
-  };
-
-  saveText = () => {
-    Keyboard.dismiss();
-    // saving text message to AsyncStorage
-    AsyncStorage.setItem("storeTheMsg", this.state.myMsg)
-      .then(() => {
+    flashCheckMark = () => {
         this.setState({
-          active: false
+            active: false
         });
-      })
-      .catch(err => {
-        console.log(err);
-      });
+        this.fadeCheckMark = setTimeout(() => {
+            this.setState({
+                active: true
+            });
+        }, 1000);
+    };
 
-    this.fadeCheckMark = setTimeout(() => {
-      this.setState({
-        active: true
-      });
-    }, 1000);
-  };
+    saveText = () => {
+        Keyboard.dismiss();
+        // saving text message to AsyncStorage
+        if (this.state.myMsg.length > 0) {
+            AsyncStorage.setItem("storeTheMsg", this.state.myMsg).catch(err => {
+                console.log(err);
+            });
+        }
+    };
 
-  sendText = () => {
-    Keyboard.dismiss();
-    // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
+    sendText = () => {
+        Keyboard.dismiss();
+        // If there is a message, save it, otherwise, send the default.
+        // This only applies if the input is edited.
+        // Otherwise, the previously saved message will be sent
+        if (this.state.myMsg.length > 0) {
+            // Included in both saveText() and sendText() so that either can be clicked, and the message body will save
+            this.saveText();
+            fetch(
+                "https://quiet-fortress-33478.herokuapp.com/" +
+                    this.state.recipient +
+                    "/" +
+                    this.state.myMsg
+            );
+        } else {
+            fetch(
+                "https://quiet-fortress-33478.herokuapp.com/" +
+                    this.state.recipient +
+                    "/" +
+                    this.state.defaultMsg
+            );
+        }
+    };
 
-    this.saveText();
+    componentWillMount() {
+        this.keyboardDidHideListener = Keyboard.addListener(
+            "keyboardDidHide",
+            this._keyboardDidHide
+        );
+    }
 
-    fetch(
-      "https://quiet-fortress-33478.herokuapp.com/" +
-        this.state.recipient +
-        "/" +
-        this.state.myMsg
-    );
-  };
+    componentWillUnmount() {
+        this.keyboardDidHideListener.remove();
+    }
 
-  componentWillMount() {
-    this.keyboardDidHideListener = Keyboard.addListener(
-      "keyboardDidHide",
-      this._keyboardDidHide
-    );
-  }
+    _keyboardDidHide() {
+        Keyboard.dismiss();
+    }
 
-  componentWillUnmount() {
-    this.keyboardDidHideListener.remove();
-  }
+    render() {
+        const { navigate } = this.props.navigation;
 
-  _keyboardDidHide() {
-    Keyboard.dismiss();
-  }
+        return (
+            <View style={Styles.all}>
+                <View style={Styles.tBan}>
+                    <Text>{"\n"}</Text>
+                    <Text style={Styles.tBanTitle}>Text Body</Text>
+                </View>
 
-  render() {
-    const { navigate } = this.props.navigation;
+                <View behavior={this.state.behavior}>
+                    <View>
+                        <Text>
+                            {"\n"}
+                            {"\n"}
+                            {"\n"}
+                        </Text>
 
-    return (
-      <View style={Styles.all}>
-        <View style={Styles.tBan}>
-          <Text>{"\n"}</Text>
-          <Text style={Styles.tBanTitle}>Text Body</Text>
-        </View>
+                        <View style={Styles.txtMsgInpCont}>
+                            <Text style={Styles.steps}>
+                                Enter text message content below
+                            </Text>
 
-        <View behavior={this.state.behavior}>
-          <View>
-            <Text>
-              {"\n"}
-              {"\n"}
-              {"\n"}
-            </Text>
+                            <View style={Styles.smBreak2} />
 
-            <View style={Styles.txtMsgInpCont}>
-              <Text style={Styles.steps}>Enter text message content below</Text>
+                            <TextInput
+                                style={Styles.inptTxtMsg}
+                                multiline={true}
+                                numberOfLines={4}
+                                blurOnSubmit={true}
+                                underlineColorAndroid="transparent"
+                                returnKeyType={"default"}
+                                placeholder="eg. &quot;Emergency, come now!&quot; "
+                                ref={el => {
+                                    this.myMsg = el;
+                                }}
+                                onChangeText={myMsg => {
+                                    this.setState({ myMsg });
+                                    console.log(this.state.myMsg.length);
+                                }}
+                                value={this.state.myMsg}
+                                onSubmitEditing={this.saveText}
+                            />
+                        </View>
 
-              <View style={Styles.smBreak2} />
+                        <Text>{"\n"}</Text>
 
-              <TextInput
-                style={Styles.inptTxtMsg}
-                multiline={true}
-                numberOfLines={4}
-                blurOnSubmit={true}
-                underlineColorAndroid="transparent"
-                returnKeyType={"default"}
-                placeholder="eg. &quot;Emergency, come now!&quot; "
-                ref={el => {
-                  this.myMsg = el;
-                }}
-                onChangeText={myMsg => this.setState({ myMsg })}
-                value={this.state.myMsg}
-                onSubmitEditing={this.saveText}
-              />
+                        <View style={Styles.BtnCont}>
+                            <TouchableOpacity
+                                style={Styles.btn}
+                                onPress={() => {
+                                    this.flashCheckMark();
+                                    this.saveText();
+                                }}
+                            >
+                                <Image
+                                    source={require("./imgs/savew.png")}
+                                    style={{ width: 21, height: 21 }}
+                                />
+                                <Text style={Styles.btnTTxt}>Save</Text>
+                                <FadeView
+                                    active={this.state.active}
+                                    style={Styles.checkTxtBodCont}
+                                >
+                                    <Image
+                                        source={require("./imgs/checkC.png")}
+                                        style={Styles.checkTxtBod}
+                                    />
+                                </FadeView>
+                            </TouchableOpacity>
+
+                            <View style={Styles.smBreak3} />
+
+                            <TouchableOpacity
+                                style={Styles.btn}
+                                onPress={this.sendText}
+                            >
+                                <Image
+                                    source={require("./imgs/textw.png")}
+                                    style={{ width: 27, height: 21 }}
+                                />
+                                <Text style={Styles.btnTTxt}>Text Now</Text>
+                            </TouchableOpacity>
+
+                            <Text>{"\n"}</Text>
+                        </View>
+                    </View>
+                </View>
+
+                <View style={Styles.navBar}>
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate("Home", {
+                                recipient: this.state.recipient
+                            })
+                        }
+                    >
+                        <View style={Styles.navBarBtn}>
+                            <Image
+                                style={{ width: 23, height: 25 }}
+                                source={require("./imgs/sphone.png")}
+                            />
+                            <Text style={Styles.navTxt}>Instant</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate("Timer", {
+                                recipient: this.state.recipient
+                            })
+                        }
+                    >
+                        <View style={Styles.navBarBtn}>
+                            <Image
+                                style={{ width: 25, height: 25 }}
+                                source={require("./imgs/stime.png")}
+                            />
+                            <Text style={Styles.navTxt}>Timer</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate("TextBody", {
+                                recipient: this.state.recipient
+                            })
+                        }
+                    >
+                        <View style={Styles.navBarBtn}>
+                            <Image
+                                style={{ width: 32, height: 25 }}
+                                source={require("./imgs/stextb.png")}
+                            />
+                            <Text style={Styles.navTxt}>Text Body</Text>
+                        </View>
+                    </TouchableOpacity>
+
+                    <TouchableOpacity
+                        onPress={() =>
+                            navigate("Settings", {
+                                recipient: this.state.recipient
+                            })
+                        }
+                    >
+                        <View style={Styles.navBarBtn}>
+                            <Image
+                                style={{ width: 25, height: 25 }}
+                                source={require("./imgs/sgear.png")}
+                            />
+                            <Text style={Styles.navTxt}>Settings</Text>
+                        </View>
+                    </TouchableOpacity>
+                </View>
             </View>
-
-            <Text>{"\n"}</Text>
-
-            <View style={Styles.BtnCont}>
-              <TouchableOpacity style={Styles.btn} onPress={this.saveText}>
-                <Image
-                  source={require("./imgs/savew.png")}
-                  style={{ width: 21, height: 21 }}
-                />
-                <Text style={Styles.btnTTxt}>Save</Text>
-                <FadeView
-                  active={this.state.active}
-                  style={Styles.checkTxtBodCont}
-                >
-                  <Image
-                    source={require("./imgs/checkC.png")}
-                    style={Styles.checkTxtBod}
-                  />
-                </FadeView>
-              </TouchableOpacity>
-
-              <View style={Styles.smBreak3} />
-
-              <TouchableOpacity style={Styles.btn} onPress={this.sendText}>
-                <Image
-                  source={require("./imgs/textw.png")}
-                  style={{ width: 27, height: 21 }}
-                />
-                <Text style={Styles.btnTTxt}>Text Now</Text>
-              </TouchableOpacity>
-
-              <Text>{"\n"}</Text>
-            </View>
-          </View>
-        </View>
-
-        <View style={Styles.navBar}>
-          <TouchableOpacity
-            onPress={() =>
-              navigate("Home", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 23, height: 25 }}
-                source={require("./imgs/sphone.png")}
-              />
-              <Text style={Styles.navTxt}>Instant</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigate("Timer", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 25, height: 25 }}
-                source={require("./imgs/stime.png")}
-              />
-              <Text style={Styles.navTxt}>Timer</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigate("TextBody", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 32, height: 25 }}
-                source={require("./imgs/stextb.png")}
-              />
-              <Text style={Styles.navTxt}>Text Body</Text>
-            </View>
-          </TouchableOpacity>
-
-          <TouchableOpacity
-            onPress={() =>
-              navigate("Settings", { recipient: this.state.recipient })
-            }
-          >
-            <View style={Styles.navBarBtn}>
-              <Image
-                style={{ width: 25, height: 25 }}
-                source={require("./imgs/sgear.png")}
-              />
-              <Text style={Styles.navTxt}>Settings</Text>
-            </View>
-          </TouchableOpacity>
-        </View>
-      </View>
-    );
-  }
+        );
+    }
 }
