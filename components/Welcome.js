@@ -120,9 +120,12 @@ export default class Welcome extends React.Component {
         <View style={Styles.smBreak2}>
           <Text> </Text>
         </View>
-
-        <KeyboardAvoidingView>
+         
           <View style={Styles.all}>
+          
+           <KeyboardAvoidingView behavior='position'>
+           <View style={Styles.keyAvoid}>
+           
             <Image
               source={require("./imgs/DDLogo.png")}
               style={{ width: 72, height: 90 }}
@@ -132,7 +135,7 @@ export default class Welcome extends React.Component {
 
             <Text style={Styles.title}>DummyDial</Text>
 
-            <Text>{"\n"}</Text>
+           <View style={Styles.smBreak} />
 
             <Text style={Styles.steps2}>
               Calls & texts will be sent to this number:
@@ -194,8 +197,7 @@ export default class Welcome extends React.Component {
 
             <Text style={Styles.star}>
               * These can be changed later in settings
-            </Text>
-
+			</Text>
             <Text />
             <Text />
 
@@ -204,7 +206,9 @@ export default class Welcome extends React.Component {
             </TouchableOpacity>
 
             <View style={Styles.smBreak} />
-
+          </View>
+		</KeyboardAvoidingView>
+           
             <TouchableOpacity
               style={Styles.qInfo}
               onPress={() => {
@@ -218,15 +222,14 @@ export default class Welcome extends React.Component {
                 <Text style={Styles.qMrkTxt}>?</Text>
               </View>
             </TouchableOpacity>
-
             <Text>
-              {"\n"}
-              {"\n"}
-              {"\n"}
-              {"\n"}
+              	{"\n"}
+              	{"\n"}
+              	{"\n"}
+              	{"\n"}
             </Text>
+            
           </View>
-        </KeyboardAvoidingView>
 			{faqs}
       </View>
     );

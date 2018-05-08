@@ -14,6 +14,13 @@ $black: #000000;
 	align-items: center;
 }
 
+.keyAvoid {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
 .smBreak {
 	margin-top: 1.3rem;
 }
@@ -75,6 +82,7 @@ $black: #000000;
 	height: 4rem;
 	background-color: $blue;
 	align-items: center;
+	z-index: 1;
 }
 
 .tBanTitle {
