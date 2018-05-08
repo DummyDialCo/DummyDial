@@ -228,6 +228,18 @@ $black: #000000;
 	margin-left: 0.8rem;
 }
 
+// SPINNER
+.spinner {
+	flex: 1;
+	justify-content: center;
+	flex-direction: column;
+	margin-top: -5rem;
+}
+.spinnerHidden {
+	@extend .spinner;
+	display: none;
+}
+
 .checkTxtBodCont {
 	margin-left: 1.1rem;
 }
@@ -486,21 +498,21 @@ $black: #000000;
 }
 
 .instantNav {
-	width: 20; 
+	width: 20;
 	height: 22;
 }
 
 .timerNav {
-	width: 22; 
+	width: 22;
 	height: 22;
 }
 
 .textNav {
-	width: 29; 
+	width: 29;
 	height: 22;
 }
 
 .settingsNav {
-	width: 22; 
+	width: 22;
 	height: 22;
 }
