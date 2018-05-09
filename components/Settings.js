@@ -53,10 +53,10 @@ export default class Settings extends React.Component {
         }
     };
     render() {
-		
+
 	var signOut = (
       <View style={this.state.displaySignOut}>
-       
+
        <View style={Styles.signOutCont}>
         <View style={Styles.signOutCont2}>
         <View>
@@ -66,11 +66,11 @@ export default class Settings extends React.Component {
         Your number will be cleared and you will be redirected to the sign up page.
         </Text>
         </View>
-        
+
         	<Text>
              {"\n"}
          	</Text>
-        
+
          <View style={Styles.SBtnCont}>
            <TouchableOpacity style={Styles.Sbtn}
                     onPress={() => {
@@ -82,23 +82,23 @@ export default class Settings extends React.Component {
                         });
                     }}
                 >
-          
+
           <Text style={Styles.SbtnTxt}>
           Confirm
           </Text>
           </TouchableOpacity>
-          
+
           <TouchableOpacity  onPress={() => this.setState({ displaySignOut: Styles.signOutHidden })} style={Styles.Sbtn}>
           <Text style={Styles.SbtnTxt}>Cancel</Text>
           </TouchableOpacity>
-          
-         	 </View> 
+
+         	 </View>
          	</View>
 		</View>
 		</View>
 		)
-		
-		
+
+
         const { navigate } = this.props.navigation;
         return (
             <View style={Styles.all}>
@@ -106,21 +106,21 @@ export default class Settings extends React.Component {
                 <View style={Styles.tBan}>
                     <Text>{"\n"}</Text>
                     <Text style={Styles.tBanTitle}>Settings</Text>
-                    
+
                 </View>
                 <Text>
                     {"\n"}
                     {"\n"}
                     {"\n"}
                 </Text>
-                
+
                 <View style={Styles.settingsInpCont}>
                 <Text style={Styles.steps1}>Your current phone number</Text>
                 <View style={Styles.smBreak2} />
                 <Text style={Styles.blueTxtCenter}>{this.state.recipientOnUpdate}</Text>
-                   
+
                     <View style={Styles.smBreak} />
-                    
+
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>
                             <TextInput
@@ -177,7 +177,7 @@ export default class Settings extends React.Component {
                     <View style={Styles.smBreak2} />
                 </View>
                 <Text></Text>
-                
+
                 <TouchableOpacity
                     style={Styles.setBtnsCont}
                     onPress={() =>
@@ -215,7 +215,7 @@ export default class Settings extends React.Component {
                         style={Styles.backA}
                     />
                 </TouchableOpacity>
-                
+
            <TouchableOpacity
              style={Styles.clearSet}
              onPress={() => {
