@@ -280,20 +280,17 @@ $black: #000000;
 }
 
 .timeCont {
-	height: 6.5rem;
 	width: 100%;
 	display: flex;
 	align-items: center;
 }
 
 .timeDis {
-	position: absolute;
 	color: $grey;
 	font-size: 2.5rem;
 }
 
 .displayStop {
-	position: absolute;
 }
 
 .stopBtn {

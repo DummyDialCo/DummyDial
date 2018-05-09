@@ -187,18 +187,14 @@ export default class Timer extends React.Component {
 		<View style={Styles.timeCont}>
 
 		<Text style={Styles.timeDis}>{this.state.timeString}</Text>
-
-		 <Text>
-          {"\n"}
-          {"\n"}
-        </Text>
-
 		<TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
           <Image
             source={require("./imgs/stopHal.png")}
             style={Styles.stopBtn}
           />
         </TouchableOpacity>
+        
+        <View style={Styles.smBreak} />
 
 		  </View>
 		  <View>
