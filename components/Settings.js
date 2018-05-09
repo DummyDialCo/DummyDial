@@ -134,10 +134,10 @@ export default class Settings extends React.Component {
                         />
                         <Text style={Styles.setBtnsTitle}>Contact Us</Text>
                     </View>
-						<Image
-                		source={require("./imgs/frwA.png")}
-						style={Styles.backA}
-              			/>
+                    <Image
+                        source={require("./imgs/frwA.png")}
+                        style={Styles.backA}
+                    />
                 </TouchableOpacity>
                 <View style={Styles.smBreak2} />
                 <TouchableOpacity
@@ -154,10 +154,24 @@ export default class Settings extends React.Component {
                         <Text style={Styles.setBtnsTitle}>FAQs</Text>
                     </View>
                     <Image
-                		source={require("./imgs/frwA.png")}
-						style={Styles.backA}
-              			/>
+                        source={require("./imgs/frwA.png")}
+                        style={Styles.backA}
+                    />
                 </TouchableOpacity>
+
+                <TouchableOpacity
+                    onPress={() => {
+                        AsyncStorage.setItem("storeTheMsg", "").catch(err => {
+                            console.log(err);
+                        });
+                        navigate("Welcome", {
+                            recipient: ""
+                        });
+                    }}
+                >
+                    <Text>Clear Number and Sign Out</Text>
+                </TouchableOpacity>
+
                 <View style={Styles.navBar}>
                     <TouchableOpacity
                         onPress={() =>
