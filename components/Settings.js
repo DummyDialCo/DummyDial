@@ -22,7 +22,8 @@ export default class Settings extends React.Component {
             recipient: this.props.navigation.state.params.recipient,
             recipientOnUpdate: this.props.navigation.state.params.recipient,
             inputFormStatus: null,
-            active: true
+            active: true,
+			displaySignOut: Styles.signOutHidden
         };
     }
     validatePhoneNum = phoneNum => {
@@ -52,18 +53,65 @@ export default class Settings extends React.Component {
         }
     };
     render() {
+		
+	var signOut = (
+      <View style={this.state.displaySignOut}>
+       
+       <View style={Styles.signOutCont}>
+        
+        <View>
+        <Text style={Styles.steps1}>Clear number & sign out?
+        {"\n"}
+        {"\n"}
+        Your number will be cleared and you will be redirected to the sign up page.
+        </Text>
+        </View>
+        
+        	<Text>
+             {"\n"}
+         	</Text>
+        
+         <View style={Styles.SBtnCont}>
+           <TouchableOpacity style={Styles.Sbtn}
+                    onPress={() => {
+                        AsyncStorage.setItem("storeTheMsg", "").catch(err => {
+                            console.log(err);
+                        });
+                        navigate("Welcome", {
+                            recipient: ""
+                        });
+                    }}
+                >
+          
+          <Text style={Styles.SbtnTxt}>
+          Confirm
+          </Text>
+          </TouchableOpacity>
+          
+          <TouchableOpacity  onPress={() => this.setState({ displaySignOut: Styles.signOutHidden })} style={Styles.Sbtn}>
+          <Text style={Styles.SbtnTxt}>Cancel</Text>
+          </TouchableOpacity>
+          
+          </View> 
+         </View>
+		</View>
+		)
+		
+		
         const { navigate } = this.props.navigation;
         return (
             <View style={Styles.all}>
                 <View style={Styles.tBan}>
                     <Text>{"\n"}</Text>
                     <Text style={Styles.tBanTitle}>Settings</Text>
+                    {signOut}
                 </View>
                 <Text>
                     {"\n"}
                     {"\n"}
                     {"\n"}
                 </Text>
+                
                 <View style={Styles.settingsInpCont}>
                 <Text style={Styles.steps1}>Your current phone number</Text>
                 <View style={Styles.smBreak2} />
@@ -124,7 +172,8 @@ export default class Settings extends React.Component {
                     </View>
                     <View style={Styles.smBreak2} />
                 </View>
-                <Text>{"\n"}</Text>
+                <Text></Text>
+                
                 <TouchableOpacity
                     style={Styles.setBtnsCont}
                     onPress={() =>
@@ -162,19 +211,18 @@ export default class Settings extends React.Component {
                         style={Styles.backA}
                     />
                 </TouchableOpacity>
-
-                <TouchableOpacity
-                    onPress={() => {
-                        AsyncStorage.setItem("storeTheMsg", "").catch(err => {
-                            console.log(err);
-                        });
-                        navigate("Welcome", {
-                            recipient: ""
-                        });
-                    }}
-                >
-                    <Text>Clear Number and Sign Out</Text>
-                </TouchableOpacity>
+                
+           <TouchableOpacity
+             style={Styles.clearSet}
+             onPress={() => {
+                this.setState({ displaySignOut: Styles.singOutPopUp });
+                console.log("clicked faqs");
+              }}
+            >
+            <View>
+				<Text style={Styles.blueTxt}>Tap here to clear number & sign out</Text>
+			</View>
+            </TouchableOpacity>
 
                 <View style={Styles.navBar}>
                     <TouchableOpacity

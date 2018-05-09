@@ -154,8 +154,8 @@ $black: #000000;
 
 .check {
 	position: absolute;
-	width: 1.5rem;
-	height: 1.5rem;
+	width: 1.15rem;
+	height: 1.15rem;
 }
 
 .inpt {
@@ -257,8 +257,8 @@ $black: #000000;
 }
 
 .checkTxtBod {
-	width: 1.5rem;
-	height: 1.5rem;
+	width: 1.15rem;
+	height: 1.15rem;
 }
 
 .txtMsgInpCont {
@@ -343,7 +343,7 @@ $black: #000000;
 }
 
 .setInpBtnCont {
-	width: 19rem;
+	width: 18rem;
 	display: flex;
 	flex-direction: row;
 	align-items: center;
@@ -527,4 +527,61 @@ $black: #000000;
 .settingsNav {
 	width: 22;
 	height: 22;
+}
+
+.clearSet {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	position: absolute;
+	bottom: 5rem;
+	padding: 1rem;
+}
+
+.signOutPopup {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	align-items: center;
+}
+
+.signOutHidden {
+	display: none;
+}
+
+.signOutCont {
+	margin-top: 3.5rem;
+	width: 18rem;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	border-radius: 0.5rem;
+	padding: 1.5rem;
+	background-color: $white;
+	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
+}
+
+.SBtnCont {
+	display: flex;
+	flex-direction: row;
+}
+
+.Sbtn {
+	width: 7rem;
+	height: 2.2rem;
+	background-color: $blue;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	border-radius: 0.5rem;
+	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
+	margin: .5rem;
+}
+
+.SbtnTxt {
+	color: $white;
+	font-size: 1.1rem;
 }

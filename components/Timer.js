@@ -179,7 +179,7 @@ export default class Timer extends React.Component {
 
         <View style={Styles.smBreak2} />
 
-          <Text style={Styles.blueTxt}> To hide screen tap here  </Text>
+          <Text style={Styles.blueTxt}>Tap here to hide screen</Text>
         </TouchableOpacity>
 
         <View style={Styles.smBreak} />
@@ -195,7 +195,7 @@ export default class Timer extends React.Component {
 
 		<TouchableOpacity onPress={this.resetTimer} style={this.state.displayStop}>
           <Image
-            source={require("./imgs/stopC.png")}
+            source={require("./imgs/stopHal.png")}
             style={Styles.stopBtn}
           />
         </TouchableOpacity>
