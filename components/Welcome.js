@@ -9,7 +9,8 @@ import {
   TouchableOpacity,
   Image,
   KeyboardAvoidingView,
-  Header
+  Header,
+  Keyboard
 } from "react-native";
 import { StackNavigator } from "react-navigation";
 
@@ -34,6 +35,8 @@ export default class Welcome extends React.Component {
   finishSignup = () => {
     const { navigate } = this.props.navigation;
 
+    Keyboard.dismiss();
+
     if (this.validatePhoneNum(this.state.recipient)) {
       // Stores the phone number in AsyncStorage
       AsyncStorage.setItem("storeTheNum", this.state.recipient).catch(err => {
@@ -50,24 +53,24 @@ export default class Welcome extends React.Component {
   render() {
     var faqs = (
       <View style={this.state.displayFAQ}>
-		
+
 		<Text>
-		{"\n"} 
-		{"\n"} 
-		{"\n"} 
+		{"\n"}
+		{"\n"}
+		{"\n"}
 		{"\n"}
 		</Text>
-		
+
         <View style={Styles.whiteBG}>
 
 		<TouchableOpacity
           onPress={() => this.setState({ displayFAQ: Styles.faqPopupHidden })}>
-		
+
 			<Image
             source={require("./imgs/greyX.png")}
             style={Styles.faqX}
             />
-			
+
           <Text style={Styles.faqTxt}>
             <Text style={Styles.blueTxt}>Why do you need my number?</Text>
             {"\n"}
@@ -80,7 +83,7 @@ export default class Welcome extends React.Component {
             <Text style={Styles.blueTxt}>Will my number be shared?</Text>
             {"\n"}
             <Text style={Styles.faqTxtParas}>
-             No, your number will not be shared. 
+             No, your number will not be shared.
 			{"\n"}
 			{"\n"}
 			Dummy Dial will not access, send, or share your number. Your information is safe with us.
@@ -120,12 +123,12 @@ export default class Welcome extends React.Component {
         <View style={Styles.smBreak2}>
           <Text> </Text>
         </View>
-         
+
           <View style={Styles.all}>
-          
+
            <KeyboardAvoidingView behavior='position'>
            <View style={Styles.keyAvoid}>
-           
+
             <Image
               source={require("./imgs/DDLogo.png")}
               style={{ width: 72, height: 90 }}
@@ -208,7 +211,7 @@ export default class Welcome extends React.Component {
             <View style={Styles.smBreak} />
           </View>
 		</KeyboardAvoidingView>
-           
+
             <TouchableOpacity
               style={Styles.qInfo}
               onPress={() => {
@@ -228,7 +231,7 @@ export default class Welcome extends React.Component {
               	{"\n"}
               	{"\n"}
             </Text>
-            
+
           </View>
 			{faqs}
       </View>
