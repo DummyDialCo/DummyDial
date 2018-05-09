@@ -168,7 +168,7 @@ export default class Settings extends React.Component {
                     </View>
                     <View style={Styles.smBreak2} />
                 </View>
-                <Text>{"\n"}</Text>
+                <Text></Text>
                 
                 <TouchableOpacity
                     style={Styles.setBtnsCont}
