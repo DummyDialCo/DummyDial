@@ -77,6 +77,11 @@ export default class Settings extends React.Component {
                         AsyncStorage.setItem("storeTheMsg", "").catch(err => {
                             console.log(err);
                         });
+                        AsyncStorage.setItem("storeTheNum", "").catch(
+                            err => {
+                                console.log(err);
+                            }
+                        );
                         navigate("Welcome", {
                             recipient: ""
                         });
