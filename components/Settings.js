@@ -20,6 +20,7 @@ export default class Settings extends React.Component {
         super(props);
         this.state = {
             recipient: this.props.navigation.state.params.recipient,
+            recipientOnUpdate: this.props.navigation.state.params.recipient,
             inputFormStatus: null,
             active: true,
 			displaySignOut: Styles.signOutHidden
@@ -39,7 +40,8 @@ export default class Settings extends React.Component {
             );
             this.setState({
                 inputFormStatus: null,
-                active: false
+                active: false,
+                recipientOnUpdate: this.state.recipient
             });
             this.fadeCheckMark = setTimeout(() => {
                 this.setState({ active: true });
@@ -111,7 +113,9 @@ export default class Settings extends React.Component {
                 </Text>
                 
                 <View style={Styles.settingsInpCont}>
-                    <Text style={Styles.steps}>Update your phone number</Text>
+                <Text style={Styles.steps1}>Your current phone number</Text>
+                <View style={Styles.smBreak2} />
+                <Text style={Styles.blueTxtCenter}>{this.state.recipientOnUpdate}</Text>
                     <View style={Styles.smBreak2} />
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>
@@ -119,12 +123,12 @@ export default class Settings extends React.Component {
                                 style={Styles.setInpt}
                                 keyboardType="number-pad"
                                 returnKeyType="done"
-                                placeholder={this.state.recipient}
+                                placeholder="Update Number"
                                 onChangeText={recipient => {
-                                    this.setState({ recipient });
                                     if (this.validatePhoneNum(recipient)) {
                                         this.setState({
-                                            inputFormStatus: require("./imgs/checkB.png")
+                                            inputFormStatus: require("./imgs/checkB.png"),
+                                            recipient: recipient
                                         });
                                     } else if (
                                         this.state.inputFormStatus ===

@@ -76,6 +76,10 @@ $black: #000000;
 	color: $blue;
 	font-size: 1rem;
 }
+.blueTxtCenter {
+	@extend .blueTxt;
+	text-align: center;
+}
 
 .tBan {
 	width: 100%;
