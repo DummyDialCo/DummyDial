@@ -271,7 +271,7 @@ $black: #000000;
 	width: 18rem;
 	height: 10rem;
 	color: $blue;
-	font-size: 0.9rem;
+	font-size: 1rem;
 	border-radius: 0.5rem;
 	background-color: $white;
 	padding: 1rem;
@@ -371,11 +371,11 @@ $black: #000000;
 	display: flex;
 	color: $blue;
 	background-color: $white;
-	font-size: 1.1rem;
+	font-size: 1rem;
 	border-radius: 0.5rem;
 	box-shadow: 0.1rem 0.3rem 0.1rem $lightgrey;
 	margin-right: 0.5rem;
-	padding-left: 1rem;
+	padding-left: .9rem;
 }
 
 .setInptValid {

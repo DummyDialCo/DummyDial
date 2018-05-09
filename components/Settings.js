@@ -116,14 +116,16 @@ export default class Settings extends React.Component {
                 <Text style={Styles.steps1}>Your current phone number</Text>
                 <View style={Styles.smBreak2} />
                 <Text style={Styles.blueTxtCenter}>{this.state.recipientOnUpdate}</Text>
-                    <View style={Styles.smBreak2} />
+                   
+                    <View style={Styles.smBreak} />
+                    
                     <View style={Styles.setInpBtnCont}>
                         <View style={Styles.setInptBox}>
                             <TextInput
                                 style={Styles.setInpt}
                                 keyboardType="number-pad"
                                 returnKeyType="done"
-                                placeholder="Update Number"
+                                placeholder="Update number"
                                 onChangeText={recipient => {
                                     if (this.validatePhoneNum(recipient)) {
                                         this.setState({
