@@ -58,7 +58,7 @@ export default class Settings extends React.Component {
       <View style={this.state.displaySignOut}>
        
        <View style={Styles.signOutCont}>
-        
+        <View style={Styles.signOutCont2}>
         <View>
         <Text style={Styles.steps1}>Clear number & sign out?
         {"\n"}
@@ -92,8 +92,9 @@ export default class Settings extends React.Component {
           <Text style={Styles.SbtnTxt}>Cancel</Text>
           </TouchableOpacity>
           
-          </View> 
-         </View>
+         	 </View> 
+         	</View>
+		</View>
 		</View>
 		)
 		
@@ -101,10 +102,11 @@ export default class Settings extends React.Component {
         const { navigate } = this.props.navigation;
         return (
             <View style={Styles.all}>
+			{signOut}
                 <View style={Styles.tBan}>
                     <Text>{"\n"}</Text>
                     <Text style={Styles.tBanTitle}>Settings</Text>
-                    {signOut}
+                    
                 </View>
                 <Text>
                     {"\n"}
