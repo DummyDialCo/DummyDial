@@ -217,7 +217,7 @@ export default class Welcome extends React.Component {
               }}
             >
               <Text style={Styles.blueTxt}>FAQs</Text>
-              <Text> </Text>
+              <Text></Text>
               <View style={Styles.qMrk}>
                 <Text style={Styles.qMrkTxt}>?</Text>
               </View>

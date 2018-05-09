@@ -179,7 +179,7 @@ export default class Timer extends React.Component {
 
         <View style={Styles.smBreak2} />
 
-          <Text style={Styles.blueTxt}> To hide screen tap here  </Text>
+          <Text style={Styles.blueTxt}>Tap here to hide screen</Text>
         </TouchableOpacity>
 
         <View style={Styles.smBreak} />
